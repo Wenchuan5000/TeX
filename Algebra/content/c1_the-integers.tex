@@ -91,7 +91,7 @@
 
 \begin{enumerate}[1.]
 	%--------------------------------
-	\item If $m,n$ are integers $\ge 1$ and $n \ge m$, define the \textbf{binomial coefficient}
+	\item If $m,n$ are integers $\ge 1$ and $n \ge m$, define the \textit{binomial coefficient}
 	$$
 	{n \choose m} = \frac{n!}{m!(n - m)!}.
 	$$
@@ -275,14 +275,49 @@ $$
 	$$
 \end{definition}
 
+To find $\mathrm{gcd(m,n)}$ for all $m,n \in \mathbb Z \setminus \{0\}$ by JavaScript, see \href{https://github.com/Wenchuan5000/TeX/blob/main/Algebra/reference/c1/s3/greatest%20common%20divisors.md}{greatest common divisors.md}.
 
 
+%--------------------------------
+\begin{definition}
+	Let $J \subseteq \mathbb Z$. We say that $J$ is an \textit{ideal} iff it has the following properties:
+	\begin{enumerate}[(i)]
+		\item $0 \in J$;
+		\item $m + n \in J \implies m + n \in J$;
+		\item $m \in J \implies \forall n \in \mathbb Z$, $nm \in J$.
+	\end{enumerate}
+\end{definition}
 
 
+%--------------------------------
+\begin{definition}
+	Let $X \subseteq \mathbb Z$ with $|X|= r$. Let $J$ be a set such that
+	\begin{enumerate}
+		\item $0 \in J$, and
+		\item $\forall j \in J$, $j = \displaystyle \sum_{i \in I \subseteq X} z_ix_i$ with $z_i \in \mathbb Z$ and $x_i \in X$ for all $i$,
+	\end{enumerate}
+	then all elements in $X$ are called the \textit{generators} of $J$.
+\end{definition}
+
+Clearly, $|J| = \aleph_0$.
+
+For example, let $X = \{ -11,12,11, -131 \}$, then those $j \in J$ with $\min X \le j \le \max X$ form a set
+$$
+\begin{aligned}
+\left\{
+\begin{matrix}
+-131, & -121, & -120, & -119, & -110, & -99, \\
+-88, & -77, & -66, & -55, & -44, & -33, \\
+-22, & -11, & 0, & 1, & 11, & 12
+\end{matrix}
+\right\}	
+\end{aligned}.
+$$
+
+(Computed by )
 
 
-
-
+%\{0, 11, 12, 22, 23, 24, 33, 36, 44, 48, 55, 60, 66, 72, 77, 84, 88, 96, 99, 108, 110, 120, 121, 131 \}
 
 
 
