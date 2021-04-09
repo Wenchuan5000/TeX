@@ -237,6 +237,7 @@ $$
 	\mathrm{div}(-24) &= \{ \pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 8,  \pm 12 \}, \\
 	\mathrm{div}(35) &= \{ \pm 1, \pm 5, \pm 7, \pm 36 \} .
 \end{aligned}
+$$
 
 Clearly, for all $n \in \mathbb Z \setminus \{0\}$, for all $x \in \mathrm{div}(n) \setminus \{\pm n\}$
 $$
@@ -261,9 +262,18 @@ $$
 \begin{aligned}
 	\mathrm{cd}(18, 12) &= \{ 2, 3, 6 \}, \\
 	\mathrm{cd}(-18, 12) &= \{ 2, 3, 6 \}, \\
-	\mathrm{cd}(24, -20) &= \{ 2, 4 \},
+	\mathrm{cd}(24, -20) &= \{ 2, 4 \}.
 \end{aligned}
 $$
+
+
+%--------------------------------
+\begin{definition}
+	Given $m,n \in \mathbb Z \setminus \{0\}$, the \textit{greatest common divisor} of $m,n$ is defined to be
+	$$
+	\mathrm{gcd}(m,n) = \max(\mathrm{cd}(m,n)).
+	$$
+\end{definition}
 
 
 
