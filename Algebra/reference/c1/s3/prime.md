@@ -1,36 +1,39 @@
-​	
+Js:
 
 ```js
-var myInts = [];
-
-var myIntsMax = 23;
-
-for (var i = 1; i <= myIntsMax; i++) {
-  myInts.push(i);
-}
-
-// console.log(myInts);
-
-var myPrime = [];
-
-for (var k = 0; k < myInts.length; k++) {
-  var currentNumber = k + 1;
-
+function findDiv(n) {
   var divisors = [];
-
-  for (var i = 1; i <= myInts[k]; i++) {
-    if (myInts[k] % i == 0) {
+  for (var i = 1; i <= n; i++) {
+    if (n % i == 0) {
       divisors.push(i);
     }
   }
-  console.log(divisors);
-
-  if (divisors.length == 2) {
-    myPrime.push(currentNumber);
-    console.log(currentNumber + " is a prime.")
-  }
+  return divisors;
 }
 
-console.log("The prime number(s) before " + myIntsMax + " is \{" + myPrime + "\}");
+function findCd(_n, _m) {
+  var cd = [];
+  var div_n = findDiv(_n);
+  var div_m = findDiv(_m);
+
+  for (var i = 0; i < div_n.length; i++) {
+    for (var k = 0; k < div_m.length; k++) {
+      if (div_n[i] == div_m[k]) {
+        cd.push(div_m[k]);
+      }
+    }
+  }
+
+  var gcd = cd[cd.length - 1];
+
+  console.log(gcd);
+  return cd;
+}
+```
+
+The console:
+
+```js
+4
 ```
 
