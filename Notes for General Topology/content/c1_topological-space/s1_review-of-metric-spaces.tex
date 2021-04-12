@@ -1,0 +1,211 @@
+%================================
+\section{Review of Metric Spaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	Let $X$ be a set. A \textit{metric} on $X$ is a function $\rho: X \times X \to \mathbb R_{\ge 0}$, such that $\forall x, y, z \in X$, the following (metric axioms) holds:
+	\begin{enumerate}[M1.]
+		\item $\rho(x,y) = 0 \iff x = y$ (identity of indiscernibles);
+		\item $\rho(x,y) = \rho(y,x)$ (symmetry).
+		\item $\rho(x,y) + \rho(y,z) \ge \rho(x,z)$ (triangle inequality);
+	\end{enumerate}
+	A \textit{metric space} is a set together with a metric on it, or more formally, a pair $(X,\rho)$ where $X$ is a set and $\rho$ is a metric on $X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example} \ 
+	\begin{enumerate}[(i)]
+		%--------------------------------
+		\item The function $\rho_p: \mathbb R^n \times \mathbb R^n \to \mathbb R_{\ge 0}$ defined by $\forall p \in \mathbb R_{\ge 1}$, $\forall x,y \in \mathbb R^n$,
+			$$
+			\rho_p (x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p},
+			$$
+			is a metric on $\mathbb R^n$. Clearly it satisfies identity of indiscernibles and symmetry. For triangle inequality, it is suggested by Minkowski inequality.
+			
+			Given $x \in \mathbb R^3$, $r \in \mathbb R_{\ge 0}$, and
+			$$
+			B_\rho = \left\{ y \in \mathbb R^3 \;|\; \rho (x,y) \le r \right\}.
+			$$
+			
+			
+			$\forall p, q \in \mathbb R_{\ge 1}$, it is true that, $\forall x,y \in \mathbb R^n$,
+			$$
+			p \le q \implies \rho_p(x,y) \ge \rho_{q}(x,y).
+			$$
+			Thus, $B_p \subseteq B_q$.
+			
+			Geometrically, as $p = 1$, $B$ is a octahedron in $\mathbb R^3$ with center $x$ and radius $r$; as $p = 2$, $B$ is a sphere in $\mathbb R^3$ with center $x$ and radius $r$. It is easy to observe that as $p \to \infty$, $B$ tends to the cube in $\mathbb R^3$ with center $x$ and edge length $2r$; i.e.,
+			$$
+			\rho_\infty(x,y) = \lim_{p \to \infty} \rho_p (x,y) = \sup_{i \in \{1, \ldots, n\}} |x_i - y_i|.
+			$$
+		%--------------------------------
+		
+		
+		%--------------------------------
+		\item Let $f: (X, \rho) \to \mathbb R^n$ with $X \subseteq \mathbb R^m$ be a continuous map on $X$. Let $x, y \in X$, then $\rho': f[X] \times f[X] \to \mathbb R_{\ge 0}$ defined by
+			$$
+			\rho_p'(x,y) = \int_0^1 f(\ell(t))d_ps(t)
+			$$
+			where
+			$$
+			\ell (t) = x + t(y - a)
+			$$
+			and
+			$$
+			d_p s(t) = \left( \sum_{i = 1}^m \left|\frac{dg_i}{dt}(t)\right|^p\right)^\frac{1}{p} dt.
+			$$
+			with $p \ge \mathbb R_{\ge 1}$ is a metric on $f[X]$.
+			
+			Fix $x$ and given $r \in \mathbb R_{\ge 0}$, the set
+			$$
+			B_p = \left\{ y \in \mathbb R^m : \rho_p'(x,y) \le r \right\}
+			$$
+			describes a set ``attached'' on $f[X]$ with center $x$.			
+			If $p = 2$, $m = 2$ and $n = 3$, and $f: \mathbb R^2 \to \mathbb R^3$ is defined by
+			$$
+			f(\lambda, \phi) = \begin{cases}
+				r \sin \lambda \cos \phi, \\
+				r \sin \lambda \sin \phi, \\
+				r \cos \phi,
+			\end{cases}
+			$$
+			then $\rho_2'$ here is a \textit{great circle metric} defined by
+			$$
+			p_2'(x,y) = r\arccos(\sin x_\phi \sin y_\phi + \cos x_\phi \cos y_\phi \cos(x_\lambda - y_\lambda)).
+			$$
+		%--------------------------------
+		
+		
+		%--------------------------------
+		\item Let $a,b \in \mathbb R$ with $a \le b$, and $p \in \mathbb R_{\ge 1}$, and $C[a,b]$ denote the set of continuous function $[a,b] \to \mathbb R$.
+		
+			Then $d_p$ defined by $\forall f, g \in C[a,b]$,
+			$$
+			\rho_{p}(f,g) = \left( \int_a^b |f - g|^{p} \right)^\frac{1}{p}
+			$$
+			is a metric on $C[a,b]$.
+			
+			
+			Similar to $\rho_p$ on $\mathbb R^n$,
+			$$
+			B_{p} = \left\{ g \;|\; \rho(f, g) \le r \right\}
+			$$
+			defines a set with ``center'' $f$ and ``radius'' $r \in \mathbb R_{\ge 0}$.
+			
+			It also implies that, on $C[a,b]$, $\forall p, q \in \mathbb R_{\ge 1}$, $\forall x,y \in \mathbb R^n$
+			$$
+			p \le q \implies d_p(f,g) \ge d_q(f,g),
+			$$
+			and, naturally, $B_p \subseteq B_q$. This is a straight corollary from the same case of $d_p$ on $\mathbb R^n$.
+		%--------------------------------
+		
+		
+		%--------------------------------
+		\item Let $A$ be a set. The \textit{Hamming metric} $\rho$ on a set $A^n$ is given by $\forall x,y \in A^n$
+			$$
+			\rho(x,y) = \# \left\{ i \in \{1, \ldots, n\} : x_i \ne y_i \right\}.
+			$$
+			An example from Wikipedia. The word ``karolin'' and ``kathrin'' can be considered as tuples
+			$$
+			x = ( \mathrm{ k, a, r, o, l, i, n } ), \; y = ( \mathrm{k, a, t, h, r, i, n} ).
+			$$
+			For all $i \in \{0, \ldots, 6\} \setminus \{ 0, 1, 4, 6 \}$, $x_i \ne y_i$, and $\# (\{0, \ldots, 6\} \setminus \{ 0, 1, 4, 6 \}) = 3$, thus
+			$$
+			\rho(x,y) = 3.
+			$$
+		%--------------------------------
+		
+		
+		%--------------------------------	
+		\item Let $(M, \rho)$ be a metric space (for example, $\rho = \rho_2$ on $\mathbb R^n$), and $X, Y \in \mathcal P(M)$. The Hausdorff metric $\rho_\mathrm{H}$ on $\mathcal P(M)$ is defined by
+			$$
+			\rho_\mathrm{H}(X,Y) = \max \left\{ \sup_{x \in X} \rho(x,Y), \sup_{y \in Y} \rho(X,y) \right\},
+			$$
+			where $\rho(a, B) = \inf_{b \in B} \rho(a,b)$ for all $B \in \mathcal P(M)$ and $a \in M$.
+			
+			This metric can be used to measure how close two figures (as sets of points) are.
+		%--------------------------------
+	\end{enumerate}
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	Let $X$ be a metric space, let $x \in X$, and $\varepsilon > 0$. The \textit{open ball with center $x$ and radius $\varepsilon$}, or more briefly the \textit{open $\varepsilon$-ball about $x$} is the subset
+	$$
+	B(x, \varepsilon) = \{ y \in X: \rho (x,y) \le \varepsilon \} \subseteq X.
+	$$
+	Similarly, the \textit{closed $\varepsilon$-ball around $x$} is
+	$$
+	\overline B (x, \varepsilon) = \{ y \in X: \rho(x,y) \le \varepsilon \} \subseteq X.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Clearly, the word ``ball'' does not mean it should look like a ball. Clearly, for all $x \in \mathbb R^3$, the ball $\{ y \in \mathbb R^3 : \rho_\infty (x,y) < 1 \}$ is a cube without its surface.
+	
+	And it is interesting to think that on $C[a,b]$ with conditions above,
+	$$
+	\{ g \in C[a,b] : \rho_p(f,g) < 1 \}
+	$$
+	defines a open ball in $C[a,b]$.
+	
+	
+\end{note}
+%--------------------------------
+
+
+\begin{note}
+	For hamming metric $\rho$ with conditions above, for $\varepsilon \in \mathbb R_{(0,1)}$, the ball
+	$$
+	\{ y \in A^n : \rho(x,y) < 1 \} = \{x\}.
+	$$
+	is a singleton.
+\end{note}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
