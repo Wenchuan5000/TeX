@@ -163,6 +163,7 @@
 %--------------------------------
 
 
+%--------------------------------
 \begin{note}
 	For hamming metric $\rho$ with conditions above, for $\varepsilon \in \mathbb R_{(0,1)}$, the ball
 	$$
@@ -170,10 +171,61 @@
 	$$
 	is a singleton.
 \end{note}
+%--------------------------------
 
 
+%--------------------------------
+\begin{definition}
+	Let $X$ be a metric space.
+	\begin{enumerate}[(i)]
+		\item A subset $U$ of $X$ is \textit{open in $X$} (or an \textit{open subset of $X$}) iff
+		$$
+		\forall u \in U, \ \exists \varepsilon \in \mathbb R_{> 0} , \;\; B(u, \varepsilon ) \subseteq U.
+		$$
+		\item A subset $V$ is \textit{closed in $X$} iff $X\setminus V$ is open in $X$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{note}
+	Equivalently, $U$ is open in $X$ iff $\exists \varepsilon \in \mathbb R_{>0}$,
+	$$
+	U = \bigcup_{x \in U} B(x, \varepsilon );
+	$$
+	and $V$ is closed in $X$ iff
+	$$
+	V = \bigcap_{x \in U} (X \setminus B(x, \varepsilon)),
+	$$
+	by De Morgan's Law.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	Let $X$ be a metric space, let $\{x_n\}_{n \in \mathbb N}$ be a sequence in $X$ and let $x \in X$. Then $\{x_n\}$ \textit{converges} to $x$ iff
+	$$
+	d(x_n, x) \to 0 \text{ as } n \to \infty.
+	$$
+	Explicitly, then, $\{ x_n \}$ converges to $x$ iff
+	$$
+	\forall \varepsilon \in \mathbb R_{> 0}, \exists N \in \mathbb N_{\ge 1}, \forall n \in \mathbb N_{\ge N}, \quad d(x_n , x) < \varepsilon.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Equivalently, $\{x_n\}$ converges to $x$ iff
+	$$
+	\forall \varepsilon \in \mathbb R_{>0}, \# (\{ x_n \} \cap B(x,\varepsilon)) = \aleph_0 \land \# ( \{x_n\} \setminus B(x, \varepsilon)) < \aleph_0.
+	$$
+	In other words, $B(x, \varepsilon)$ contains all but finitely many $x_n$.
+\end{note}
+%--------------------------------
 
 
 
