@@ -18,7 +18,7 @@
 
 %--------------------------------
 \begin{example} \ 
-	\begin{enumerate}[(i)]
+	\begin{enumerate}
 		%--------------------------------
 		\item The function $\rho_p: \mathbb R^n \times \mathbb R^n \to \mathbb R_{\ge 0}$ defined by $\forall p \in \mathbb R_{\ge 1}$, $\forall x,y \in \mathbb R^n$,
 			$$
@@ -196,7 +196,7 @@
 	$$
 	and $V$ is closed in $X$ iff
 	$$
-	V = \bigcap_{x \in U} (X \setminus B(x, \varepsilon)),
+	V = X \setminus \bigcup_{x \in U} B(x, \varepsilon) = \bigcap_{x \in U} (X \setminus B(x, \varepsilon)),
 	$$
 	by De Morgan's Law.
 \end{note}
@@ -205,9 +205,9 @@
 
 %--------------------------------
 \begin{definition}
-	Let $X$ be a metric space, let $\{x_n\}_{n \in \mathbb N}$ be a sequence in $X$ and let $x \in X$. Then $\{x_n\}$ \textit{converges} to $x$ iff
+	Let $X$ be a metric space, let $\{x_n\}_{n = 1}^{\infty}$ be a sequence in $X$ and let $x \in X$. Then $\{x_n\}$ \textit{converges} in $X$ iff
 	$$
-	d(x_n, x) \to 0 \text{ as } n \to \infty.
+	\exists x \in X, \lim_{n \to \infty} d(x_n, x) = 0.
 	$$
 	Explicitly, then, $\{ x_n \}$ converges to $x$ iff
 	$$
@@ -218,18 +218,125 @@
 
 
 %--------------------------------
-\begin{note}
-	Equivalently, $\{x_n\}$ converges to $x$ iff
-	$$
-	\forall \varepsilon \in \mathbb R_{>0}, \# (\{ x_n \} \cap B(x,\varepsilon)) = \aleph_0 \land \# ( \{x_n\} \setminus B(x, \varepsilon)) < \aleph_0.
-	$$
-	In other words, $B(x, \varepsilon)$ contains all but finitely many $x_n$.
+\begin{note} \ 
+	\begin{enumerate}
+		\item Equivalently, $\{x_n\}$ converges in $X$ iff
+			$$
+			\exists x \in X, \ \forall \varepsilon \in \mathbb R_{>0}, \# (\{ x_n \} \cap B(x,\varepsilon)) = \aleph_0 \land \# ( \{x_n\} \setminus B(x, \varepsilon)) < \aleph_0.
+			$$
+			In other words, $B(x, \varepsilon)$ contains all but finitely many $x_n$.
+		\item Let $X \subseteq S$. $\{x_n\}$ converges to $x \in S$ does not means it need to converge in $X$. For example $\mathbb Q \subseteq \mathbb R$, the sequence
+			$$
+			\left\{ x_n = \frac{1}{x} + r : r^2 = 2 \right\}_{n \in \mathbb N}
+			$$
+			does converge to $\sqrt{2} \in \mathbb R$, but $\sqrt{2} \notin \mathbb Q$, so $\{x_n\}$ converges in $\mathbb R$, but does not converge in $\mathbb Q$.
+	\end{enumerate}
 \end{note}
 %--------------------------------
 
 
+%--------------------------------
+\begin{lemma}
+	Let $X$ be a metric space and $V \subseteq X$. Then $V$ is closed in $X$ iff
+	$$
+	\forall \{x_n\}_{n = 1}^\infty \subseteq V, \ \forall x \in X, \quad \lim_{n \to \infty} d(x_n, x) = 0 \implies x \in V.
+	$$
+\end{lemma}
+%--------------------------------
 
 
+%--------------------------------
+\begin{proof}
+	Suppose $V$ is closed in $X$, then $X \setminus V$ is open in $X$. Suppose $\exists x \in X \setminus V$, such that $\exists \{x_n\}_{n = 1}^\infty \subseteq V$, $\{x_n\}$ converges to $x$, then $\forall \varepsilon \in \mathbb R_{> 0}$, $B(x, \varepsilon) \cap \{x_n\} \ne \emptyset$. $\{x_n\} \subseteq V$, so $B(x, \varepsilon) \cap V \ne \emptyset$. This implies that $X \setminus V$ is not open, then $V$ is not closed (for if $V$ is closed, then $X \setminus V$ is open). It is contradicted to the assumption.
+	
+	Now, suppose $V$ is not closed in $X$, then $X \setminus V$ is not open. Then, $\exists p \in X \setminus V$, such that $\forall \varepsilon \in \mathbb R_{> 0}$, $B(p, \varepsilon) \cap V \ne \emptyset$. This implies there are some $\{x_n\}_{n = 1}^\infty \subseteq V$, such that $B(p, \varepsilon)$ contains all but finite elements in $\{x_n\}$. Thus, $\{x_n\}$ converges to $p \in X \setminus V$, contradicting to the conditions.
+\end{proof}
+%--------------------------------
+
+
+%--------------------------------
+\begin{lemma}
+	\label{lem: open sets are closed under blah blah blah}
+	Let $X$ be a metric space, and $\mathcal T$ be the family of open subsets of $X$. Then,
+	\begin{enumerate}[(i)]
+		\item $\mathcal T$ is closed under arbitrary union.
+		\item $\mathcal T$ is closed under finite intersection.
+		\item $\emptyset, X \in \mathcal T$.
+	\end{enumerate}
+\end{lemma}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proof} \ 
+	\begin{enumerate}
+		\item Let $I$ be an index set. For all $i \in I$, let $U_i \in \mathcal T$. Then for some $\varepsilon \in \mathbb R_{> 0}$,
+			$$
+			U_i = \bigcup_{x \in U_i} B(x, \varepsilon).
+			$$
+			Let $U = \bigcup_{i \in I} U_i$, then we have,
+			$$
+			U = \bigcup_{i \in I} \bigcup_{x \in U_i} B(x, \varepsilon) = \bigcup_{x \in U} B(x, \varepsilon)
+			$$
+			for some $\varepsilon \in \mathbb R_{> 0}$.
+		
+		\item Let $\mathcal C$ be the family of closed subsets of $X$, and let $U, V \in \mathcal C$. Then for all $\{u_n\}_{n = 1}^\infty \subseteq U$, $\forall u \in X$, $\{u_n\}$ converges to $u$ implies that $u \in U$. It also holds for $U \cup V \supseteq U$. Similarly, for all $\{v_m\}_{m = 1}^\infty$, $\forall v \in X$, $\{v_m\}$ converges to $v$ implies $v \in V$. It also holds for $U \cup V \supseteq V$. Thus $U \cup V$ is closed.
+			
+			Then, $X \setminus (U \cup V) = (X \setminus U) \cap (X \setminus V)$ is open, where $X \setminus U$ and $X \setminus V$ are open for $U$ and $V$ are closed.
+		
+		\item $\emptyset = \bigcup_{i \in \emptyset} U_i$ for all $U_i \in \mathcal T$, so $\emptyset$ is open. $\emptyset = U \cap V$ for all mutually disjoint closed subsets $U, V \subseteq X$, so $\emptyset$ is closed, so $X = X \setminus \emptyset$ is open.
+	\end{enumerate}
+\end{proof}
+%--------------------------------
+
+
+%--------------------------------
+\begin{lemma}
+	Let $X$ be a metric space, and $\mathcal C$ be the family of all closed subsets of $X$. Then,
+	\begin{enumerate}[(i)]
+		\item $\mathcal C$ is closed under arbitrary intersection.
+		\item $\mathcal C$ is closed under finite union.
+		\item $\emptyset, X \in \mathcal C$.
+	\end{enumerate}
+\end{lemma}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proof}
+	Let $\mathcal T$ be the family of all open subset of $X$, and let $I$ be any index set.
+	\begin{enumerate}
+		\item It has been proved that $\mathcal T$ is closed under arbitrary union, so by De Morgan's law, for any $i \in I$, if $U_i \in \mathcal T$, then
+			$$
+			X \setminus \bigcup_{i \in I} U_i = \bigcap_{i \in I} (X \setminus U_i) \in \mathcal C.
+			$$
+		\item It has been proved in Lemma \ref{lem: open sets are closed under blah blah blah}.
+		\item It has been proved that $\emptyset$ is open in $X$. So $X = X \setminus \emptyset$ is closed in $X$.
+	\end{enumerate}
+\end{proof}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{definition}
+	Let $(X, \rho)$ and $(Y, \rho')$ be metric spaces. A function $f: X \to Y$ is \textit{continuous} on a point $p \in X$ iff
+	$$
+	\forall \varepsilon \in \mathbb R_{> 0}, \ \exists \delta \in \mathbb R_{> 0}, \ \forall x \in B(p, \delta), \quad f(x) \in B(f(x), \varepsilon).
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note} \
+	\begin{enumerate}
+		\item If $\rho$ is a discrete metric on $X$, then $B(p, \delta) = \{p\}$ for all $\delta$. Then, by definition, for all $\varepsilon$, $f(x) \in B(f(x,), \varepsilon)$. So $f$ is continuous everywhere.
+		\item On the contrary, if $\rho'$ is a discrete metric on $Y$, but for all $p\in X$, $\rho$ suffices for all $\delta \in \mathbb R_{> 0}$, $\# B(p, \delta) \ge \aleph_0$, then for some $\varepsilon \in \mathbb R_{>0}$, for all $\delta \in \mathbb R_{> 0}$, there exists $x \in B(p, \delta)$, such that $f(x) \notin B(f(x), \varepsilon)$. Thus $f$ is not continuous on such $p$.
+	\end{enumerate}
+\end{note}
+
+%--------------------------------
 
 
 
