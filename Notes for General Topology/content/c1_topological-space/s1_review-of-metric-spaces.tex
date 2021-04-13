@@ -20,7 +20,7 @@
 \begin{example} \ 
 	\begin{enumerate}
 		%--------------------------------
-		\item The function $\rho_p: \mathbb R^n \times \mathbb R^n \to \mathbb R_{\ge 0}$ defined by $\forall p \in \mathbb R_{\ge 1}$, $\forall x,y \in \mathbb R^n$,
+		\item The function $\rho_p: \mathbb R^n \times \mathbb R^n \to \mathbb R_{\ge 0}$ defined by $\forall p \in \overline{\mathbb R}_{\ge 1}$, $\forall x,y \in \mathbb R^n$,
 			$$
 			\rho_p (x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p},
 			$$
@@ -32,13 +32,13 @@
 			$$
 			
 			
-			$\forall p, q \in \mathbb R_{\ge 1}$, it is true that, $\forall x,y \in \mathbb R^n$,
+			$\forall p, q \in \overline{\mathbb R}_{\ge 1}$, it is true that, $\forall x,y \in \mathbb R^n$,
 			$$
 			p \le q \implies \rho_p(x,y) \ge \rho_{q}(x,y).
 			$$
 			Thus, $B_p \subseteq B_q$.
 			
-			Geometrically, as $p = 1$, $B$ is a octahedron in $\mathbb R^3$ with center $x$ and radius $r$; as $p = 2$, $B$ is a sphere in $\mathbb R^3$ with center $x$ and radius $r$. It is easy to observe that as $p \to \infty$, $B$ tends to the cube in $\mathbb R^3$ with center $x$ and edge length $2r$; i.e.,
+			Geometrically, as $p = 1$, $B$ is a octahedron in $\mathbb R^3$ with center $x$ and radius $r$; as $p = 2$, $B$ is a sphere in $\mathbb R^3$ with center $x$ and radius $r$. It is easy to observe that as $p \to \infty$, $B$ tends to a cube in $\mathbb R^3$ with center $x$ and edge length $2r$; i.e.,
 			$$
 			\rho_\infty(x,y) = \lim_{p \to \infty} \rho_p (x,y) = \sup_{i \in \{1, \ldots, n\}} |x_i - y_i|.
 			$$
@@ -58,7 +58,7 @@
 			$$
 			d_p s(t) = \left( \sum_{i = 1}^m \left|\frac{dg_i}{dt}(t)\right|^p\right)^\frac{1}{p} dt.
 			$$
-			with $p \ge \mathbb R_{\ge 1}$ is a metric on $f[X]$.
+			with $p \ge \overline{\mathbb R}_{\ge 1}$ is a metric on $f[X]$.
 			
 			Fix $x$ and given $r \in \mathbb R_{\ge 0}$, the set
 			$$
@@ -81,7 +81,7 @@
 		
 		
 		%--------------------------------
-		\item Let $a,b \in \mathbb R$ with $a \le b$, and $p \in \mathbb R_{\ge 1}$, and $C[a,b]$ denote the set of continuous function $[a,b] \to \mathbb R$.
+		\item Let $a,b \in \mathbb R$ with $a \le b$, and $p \in \overline{\mathbb R}_{\ge 1}$, and $C[a,b]$ denote the set of continuous function $[a,b] \to \mathbb R$.
 		
 			Then $d_p$ defined by $\forall f, g \in C[a,b]$,
 			$$
@@ -96,7 +96,7 @@
 			$$
 			defines a set with ``center'' $f$ and ``radius'' $r \in \mathbb R_{\ge 0}$.
 			
-			It also implies that, on $C[a,b]$, $\forall p, q \in \mathbb R_{\ge 1}$, $\forall x,y \in \mathbb R^n$
+			It also implies that, on $C[a,b]$, $\forall p, q \in \overline{\mathbb R}_{\ge 1}$, $\forall x,y \in \mathbb R^n$
 			$$
 			p \le q \implies d_p(f,g) \ge d_q(f,g),
 			$$
@@ -320,9 +320,10 @@
 
 %--------------------------------
 \begin{definition}
-	Let $(X, \rho)$ and $(Y, \rho')$ be metric spaces. A function $f: X \to Y$ is \textit{continuous} on a point $p \in X$ iff
+	\label{def: continuous function}
+	Let $(X, \rho)$ and $(Y, \rho')$ be metric spaces. A function $f: (X, \rho) \to (Y, \rho)$ is \textit{continuous} on a point $p \in X$ iff
 	$$
-	\forall \varepsilon \in \mathbb R_{> 0}, \ \exists \delta \in \mathbb R_{> 0}, \ \forall x \in B(p, \delta), \quad f(x) \in B(f(x), \varepsilon).
+	\forall \varepsilon \in \mathbb R_{> 0}, \ \exists \delta \in \mathbb R_{> 0}, \ \forall x \in B(p, \delta), \quad f(x) \in B(f(p), \varepsilon).
 	$$
 \end{definition}
 %--------------------------------
@@ -331,13 +332,32 @@
 %--------------------------------
 \begin{note} \
 	\begin{enumerate}
-		\item If $\rho$ is a discrete metric on $X$, then $B(p, \delta) = \{p\}$ for all $\delta$. Then, by definition, for all $\varepsilon$, $f(x) \in B(f(x,), \varepsilon)$. So $f$ is continuous everywhere.
-		\item On the contrary, if $\rho'$ is a discrete metric on $Y$, but for all $p\in X$, $\rho$ suffices for all $\delta \in \mathbb R_{> 0}$, $\# B(p, \delta) \ge \aleph_0$, then for some $\varepsilon \in \mathbb R_{>0}$, for all $\delta \in \mathbb R_{> 0}$, there exists $x \in B(p, \delta)$, such that $f(x) \notin B(f(x), \varepsilon)$. Thus $f$ is not continuous on such $p$.
+		\item If $\rho$ is a discrete metric on $X$, then $B(p, \delta) = \{p\}$ for all $\delta$. Then, by definition, for all $\varepsilon$, $f(x) \in B(f(p), \varepsilon)$. So $f$ is continuous everywhere.
+		
+		\item On the contrary, if $\rho'$ is a discrete metric on $Y$, but for all $p\in X$, $\rho$ suffices for all $\delta \in \mathbb R_{> 0}$, $\# B(p, \delta) \ge \aleph_0$, then for some $\varepsilon \in \mathbb R_{>0}$, for all $\delta \in \mathbb R_{> 0}$, there exists $x \in B(p, \delta)$, such that $f(x) \notin B(f(p), \varepsilon)$. Thus $f$ is not continuous on such $p$.
 	\end{enumerate}
 \end{note}
-
 %--------------------------------
 
+
+%--------------------------------
+\begin{lemma}
+	Let $(X, \rho)$ and $(Y, \rho')$ be metric spaces and let $f: (X, \rho) \to (Y, \rho)$ be a function. The following are equivalent:
+	\begin{enumerate}[(i)]
+		\item $f$ is continuous on $X$;
+		\item for all open $U \subseteq Y$, the preimage $f^{-1}[U] \subseteq X$ is open;
+		\item for all closed $V \subseteq Y$, the preimage $f^{-1}[V] \subseteq X$ is closed.
+	\end{enumerate}
+\end{lemma}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proof} \ 
+	For (i) $\implies$ (ii), suppose $f$ is continuous on $X$, then, by Definition \ref{def: continuous function}, for all $p \in X$, there exists $B(p, \delta)$, such that $f(x) \in B(f(p), \varepsilon)$.
+	
+\end{proof}
+%--------------------------------
 
 
 
