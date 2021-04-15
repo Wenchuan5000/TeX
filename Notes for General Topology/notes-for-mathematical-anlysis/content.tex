@@ -1,0 +1,268 @@
+%================================
+%::::::::::::::::::::::::::::::::
+\chapter{Set Theory}
+%::::::::::::::::::::::::::::::::
+%================================
+
+
+%================================
+\section{Countability of Sets}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+    \label{def: countability}
+    A set $A$ is said to be \textit{countable} iff there is a bijection $f: I \to A$ with $I \subseteq \mathbb N$.
+    
+    $A$ is said to be \textit{uncountable} iff for any injection $f: I \to A$ with $I \supseteq \mathbb N$, $f$ is not surjection.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+    \label{def: cardinal number}
+    The \textit{cardinal number} of a set $A$, denoted $|A|$ or $\#A$, is defined to the quantity of it elements.
+
+    Customarily, we write $\aleph_0$ for $|\mathbb N|$, and $\mathfrak{c}$ for $|\mathbb R|$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+    \label{def: comparing cardinal number}
+    Given $A$ and $B$ as sets, we define the following:
+    \begin{enumerate}[(i)]
+        \item $|A| = |B|$ iff there is a bijection $f: A \to B$;
+        \item $|A| \le |B|$ iff there is an injection $g: A \to B$;
+        \item $|A| < |B|$ iff for any injection $g: A \to B$, $g$ is not surjection.
+    \end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+    \label{def: finite and infinite sets}
+    A set $A$ is said to be \textit{finite} iff $|A| < \aleph_0$; it is \textit{infinite} iff $|A| \ge \aleph_0$.
+\end{definition}
+%--------------------------------
+
+
+By \ref{def: comparing cardinal number}, $A$ is finite iff for all injection $f: A \to \mathbb N$, $f$ is not surjection. Respectively, $A$ is infinite iff there exists injection $f: \mathbb N \to A$.
+
+
+%--------------------------------
+\begin{proposition}
+    For any countable set $A$, $|A| \le \aleph_0$.
+    
+    %--------------------------------
+	\begin{proof}
+	    If $A$ is finite, i.e., $|A| < \aleph_0$, it is clearly countable.
+	    
+	    If $A$ is infinite, by Definition \ref{def: finite and infinite sets}, $|A| \ge \aleph_0$. As $A$ is countable, there must be an bijective $f: I \to A$ with $I \subseteq \mathbb N$, then (iii) in Definition \ref{def: comparing cardinal number} fails, so $|A| = \aleph_0$.
+	\end{proof}
+	%--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+    \label{prop: uncountable iff uncountable cardinal number}
+    
+    For any set $A$, $A$ is uncountable iff $|A| > \aleph_0$.
+    
+    %--------------------------------
+	\begin{proof}
+	    By Definition \ref{def: countability}, $A$ is uncountable iff for any injection $f: I \to A$ with $I \supseteq \mathbb N$, $f$ is not surjection. This holds iff for any $I \subseteq \mathbb N$, $|I| < |A|$. $\mathbb N \subseteq \mathbb N$, Thus $\aleph_0 < |A|$.
+	\end{proof}
+	%--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	The subsets of any countable sets are countable.
+	
+	%--------------------------------
+	\begin{proof}
+		Clearly, by intuition or by Definition \ref{def: comparing cardinal number}, for any sets $A$ and $B$, $A \subseteq B$ implies $|A| \le |B|$. By Proposition \ref{prop: uncountable iff uncountable cardinal number}, $B$ is countable iff $|B| \le \aleph_0$. Then we have $|A| \le \aleph_0$. This holds iff $A$ is countable.
+	\end{proof}
+	%--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	The super sets of any uncountable sets are uncountable.
+	
+	%--------------------------------
+	\begin{proof}
+		Let $A$ be an uncountable set. $|A| > \aleph_0$ implies that for any $B \supseteq A$, $|B| > |A| > \aleph_0$. Thus, by Proposition \ref{prop: uncountable iff uncountable cardinal number}.
+	\end{proof}
+	%--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: The Cartesian product of countable sets is countable}
+    The Cartesian product of countable sets is countable.
+    
+    %--------------------------------
+    \begin{proof}
+    	If $A$ or $B$ is empty, $A \times B$ is empty. The empty set is countable.
+    	
+    	Let $A$ and $B$ be both infinite countable, then there exist $f: \mathbb N \to A$ and $g: \mathbb N \to B$. Let $h: \mathbb N \to \mathcal P(A \times B)$ defined by
+    	$$
+        h(x) =
+        \begin{cases}
+        \{(f_0, g_0)\} & x = 0 \\
+        \{(f_0, g_1), (f_1, g_0)\} & x = 1 \\
+        \{(f_0, g_2), (f_1, g_1), (f_2, g_0)\} & x = 2 \\
+        \{(f_0, g_3), (f_1, g_2), (f_2, g_1), (f_3, g_0)\} & x = 3 \\
+        \vdots & \vdots
+        \end{cases}
+        $$
+        
+        Now we have
+        $$
+        A \times B = \bigcup_{x = 0}^\infty f(x).
+        $$
+        Thus,
+        $$
+        |A \times B| = \left| \bigcup_{x = 0}^\infty f(x) \right| = \sum_{x = 0}^\infty (x + 1).
+        $$
+        
+        Clearly,
+        $$
+        \aleph_0 = |\{0\} \cup \{1, 2\} \cup \{3,4,5\} \cup \ldots | = |A \times B|.
+        $$
+        Thus, $A\times B$ is countable.
+    \end{proof}
+    %--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: The countable union of countable sets is countable}
+    The countable unions of countable sets is countable.
+    
+    \begin{proof}
+        Similar to \ref{prop: The Cartesian product of countable sets is countable}.
+    \end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+    If $A$ is a countable set but $B$ is not, then $B \setminus A$ is uncountable.
+
+	%--------------------------------    
+    \begin{proof}
+        If $B \setminus A$ is countable, $B \setminus A \cup A$ must be countable. Then $B \subseteq B \setminus A \cup A$ is also countable, contradicted to the condition.
+    \end{proof}
+    %--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	There is no countably infinite $\mathcal P(X)$ for any set $X$.
+	
+	%--------------------------------
+	\begin{proof}
+		As $\aleph_0$ is the smallest infinite cardinal number, let $X = \mathbb N$.
+		
+	\end{proof}
+	%--------------------------------
+\end{proposition}
+%--------------------------------
+
+
+\
+
+\
+
+\
+
+---
+
+
+
+
+
+
+
+
+
+\begin{proposition}
+    $\mathbb R$ is uncountable.
+    
+    \begin{proof}
+        If the interval $[0,1) \subseteq \mathbb R$ is countable, there must be an bijection $f: I \to \mathbb R$ with $I \subseteq \mathbb N$, then we have the following list:
+        $$
+        \begin{aligned}
+            & f_0: 0.a_{0_0} a_{0_1} a_{0_2} \ldots \\
+            & f_1: 0.a_{1_0} a_{1_1} a_{1_2} \ldots \\
+            & f_2: 0.a_{2_0} a_{2_1} a_{2_2} \ldots \\
+            & \vdots
+        \end{aligned}
+        $$
+        
+        Construct a new decimal number as following:
+        $$
+        z = 0.x_1 x_2 x_3 \ldots
+        $$
+        where $x_n = 0$ if $a_{n_n} \ne 0$ and $x_n = 1$ if $a_{n_n} = 0$. Thus $z$ is not an element of $f[I]$ for any $I \subseteq \mathbb N$. It implies that $f$ is not bijective. Thus $[0,1)$ is uncountable, thus $\mathbb R \supsetneq [0,1)$ is also uncountable.
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
