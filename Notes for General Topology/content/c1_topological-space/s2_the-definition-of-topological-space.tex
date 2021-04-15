@@ -218,6 +218,12 @@
 %--------------------------------
 \begin{proof}
 	If $U \ni x$ and $U \in \mathcal T$, then $U$ is an open neighbourhood of $x$, naturally, it is a neighbourhood of $x$.
+	
+	For only if, clearly, if for all $x \in U$, there is a neighbourhood $N_x' \subseteq U$, then, by definition, there is $N_x \subseteq N_x'$ with $N_x \in \mathcal T$. Now we have $x \in N_x \subseteq N_x' \subseteq U$, then,
+	$$
+	U = \bigcup_{x \in U} N_x.
+	$$
+	By definition, $\mathcal T$ is closed under arbitrary union, thus $U$ is open.
 \end{proof}
 %--------------------------------
 

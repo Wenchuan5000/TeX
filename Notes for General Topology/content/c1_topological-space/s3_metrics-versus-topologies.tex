@@ -1,0 +1,112 @@
+%================================
+\section{Metrics versus Topologies}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	Let $X$ be a set, and let $\rho$ and $\rho'$ be metrics on $X$. We say that $\rho$ and $\rho'$ are \textit{topologically equivalent} if they induce the same topology on $X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	$\rho $ and $\rho'$ are \textit{Lipschitz equivalent} iff there exist $c, C \in \mathbb R_{>0}$ such that for all $x,y \in X$,
+	$$
+	c \rho(x,y) \le \rho'(x,y) \le C\rho(x,y).
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{lemma}
+	Lipschitz equivalence implies topological equivalence.
+\end{lemma}
+%--------------------------------
+
+%--------------------------------
+\begin{proof}
+	As $\rho$ and $\rho'$ are Lipschitz equivalent, by definition, there exist $c \in \mathbb R_{>0}$ such that for all $x,y \in X$,
+	$$
+	c \rho(x, y) \le \rho'(x, y).
+	$$
+	
+	Given $r > 0$ and $x \in X$,
+	$$
+	B_{c\rho}(x, r) = \left\{ y \in X : c\rho(x, r) < r \right\}
+	$$
+	and
+	$$
+	B_{\rho'}(x,r) = \{ y \in X : \rho'(x,r) < r \}.
+	$$
+	
+	As $r$ is non-underestimated compared to $\rho'$, then
+	$$
+	B_{\rho'}(x,r) \supseteq B_{c\rho}(x, r) = B_{\rho}\left(x, \frac{1}{c}r \right)
+	$$
+	is an open neighbourhood of $x$ in $(X, \rho')$ and is a subset
+	
+	Let $U \in \mathcal T_{\rho'}$, then for some $\varepsilon > 0$,
+	$$
+	U \supseteq B_{\rho'} (x, \varepsilon) \supseteq B_{\rho}\left( x, \frac{1}{c}r \right).
+	$$
+	Thus $U$ is open with respect to $\rho$, i.e., $U \in \mathcal T_{\rho}$.
+	
+	It is not necessary to prove converse for there always exists $C \in \mathbb R_{>0}$ such that $c = \frac{1}{C}$.
+\end{proof}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note} \ 
+	\begin{enumerate}
+		%--------------------------------
+		\item For all $p \ge 0$, $\rho_p: \mathbb R^n \times \mathbb R^n \to \mathbb R_{\ge 0}$ are topological equivalent.
+		%--------------------------------
+		
+		%--------------------------------
+		\item 
+		%--------------------------------
+	\end{enumerate}
+\end{note}
+%--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
