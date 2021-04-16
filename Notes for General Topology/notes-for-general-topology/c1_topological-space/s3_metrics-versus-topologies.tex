@@ -92,11 +92,123 @@
 %--------------------------------
 \begin{note} \
 	\begin{enumerate}
-		\item On $\mathbb Z$, 
+		\item Let $(\mathbb Z, \mathcal T)$ with
+		$$
+		\mathcal T = \{ U \in \mathcal P(\mathbb Z) : |U| \le 1 \},
+		$$
+		Then $\mathcal T$ is not induced by any metric. Suppose it were, then all open set $U \in \mathcal T$ should be monotone, and for all $\varepsilon > 0$, and for all $x \in \mathbb Z$, $B(x, \varepsilon)$ should be monotone. But if $\mathcal T$ is induced by some metric, then for all $I \in \mathcal P(X)$ with $|I| > 1$, a set
+		$$
+		W = \bigcup_{x \in I} B(x, \varepsilon) \in \mathcal T,
+		$$
+		then $|W| > 1$, which is contradicted to the conditions.
 	\end{enumerate}
 \end{note}
 %--------------------------------
 
+
+%--------------------------------
+\begin{definition} \
+	\begin{enumerate}[(i)]
+		\item A topological space $(X, \mathcal T)$ is said to be $T_1$ iff every monotone in $\mathcal P(X)$ is closed.
+		\item A topological space $(X, \mathcal T)$ is said to be $T_2$ or \textit{Hausdorff} iff
+			$$
+			\forall x, y \in X \ (x \ne y), \ \exists U, W \in \mathcal T \ (U \cap W = \emptyset), \quad x \in U \land y \in W.
+			$$
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note} \ 
+	\begin{enumerate}
+		\item $(X, \mathcal T_{\rho_\text{disc}})$ is $T_1$, for as any set $U \subseteq X$ is closed for $X \setminus U \in \mathcal T_{\rho_\text{disc}}$ as well. It is also Hausdorff, because for all $x,y \in X$, $\{x\}, \{y\} \in \mathcal T_{\rho_\text{disc}}$ and $\{x\} \cap \{y\} = \emptyset$ if $x \ne y$.
+		\item On the other hand, $(X, \{\emptyset, X\})$ is $T_1$ iff $|X| = 1$. And $(X, \{\emptyset, X\})$ is not Hausdorff, because there exist $x,y \in X$ with $x \ne y$, the only open set contains $x$ is $X$, and the only open set contains $y$ is $X$. Clearly, $X \cap X$
+	\end{enumerate}
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{lemma} \
+	\begin{enumerate}[(i)]
+		\item Every metrizable space is Hausdorff.
+		\item Every Hausdorff topological space is $T_1$.
+	\end{enumerate}
+\end{lemma}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proof} \
+	\begin{enumerate} [(i)]
+		\item Let $(X, \rho)$ be metric space, then for all $x, y \in X$, let $r = \frac{\rho(x,y)}{2}$. Suppose $(X, \rho)$ is not Hausdorff, i.e., there is $z \in B(x, r) \cap B(y, r)$. By metric axioms, we have
+			$$
+			\rho(x, z) + \rho(y, z) \ge \rho (x,y) = 2r.
+			$$
+			But $z \in B(x, r)$ implies that $\rho(x,z) < r$, and $z \in B(y, r)$ implies that $\rho(y,z) < r$, then we have
+			$$
+			\rho(x, z) + \rho(y, z) < \rho(x,y),
+			$$
+			which is contradicted to the metric axioms.
+			
+		\item (Just an outline...) Let $(X, \mathcal T)$ be Hausdorff. Suppose $X$ is not $T_1$, then there is $\{x\} \subseteq X$ which is not closed. Then there must be a smallest $V \supsetneq \{x\}$ which is closed (Why?). Then there must be a smallest $U \in \mathcal T$ with $U \supseteq V$ (Why?). Then for all $x, y \in U$, there is no disjoint $U_x, U_y$ such that $U_x \ni x$ and $U_y \ni y$.
+	\end{enumerate}
+\end{proof}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	Let $(X, \mathcal T)$ be a topological space, let $\{x_n\}_{n = 1}^\infty$ be a sequence in $X$, and let $x \in X$. Then $\{x_n\}$ \textit{converges} in $X$ iff there is an $x \in X$, for all $U \in \mathcal T$ with $x \in U$, $U$ contains all but finite elements in $\{x_n\}$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note} \
+	\begin{enumerate}
+		\item If $(X, \mathcal T)$ is metrizable, i.e., there is a metric $\rho$ can induce $\mathcal T$. If $\{x_n\} \subseteq X$ converges in $X$, then there exists $x \in X$, for all $\varepsilon > 0$, $B(x, \varepsilon)$ contains all but finite elements in $\{x_n\}$.
+		\item If $\mathcal T$ is a discrete topology, a sequence $\{x_n\}$ converges in $(X, \mathcal T)$ iff there is an $N$ such that for all $n \ge N$, $x_n = x_{n + 1}$.
+		\item If $\mathcal T$ is an indiscrete topology, then any $\{x_n\} \subseteq X$ converges to any point in $X$, for there is only one non-empty open set which is $X$ itself.
+	\end{enumerate}
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{lemma}
+	In Hausdorff topological space, any convergent sequence converges to at most one point.
+\end{lemma}
+%--------------------------------
+
+%--------------------------------
+\begin{proof}
+	Let $(X, \mathcal T)$ be a Hausdorff topological space. Suppose there is a sequence $\{x_n\}$ converges to $x,y \in X$ with $x \ne y$. By the definition of topological convergence, there are $U_x, U_y \in \mathcal T$ both contains all but finite elements in $\{x_n\}$. $U_x \cap U_y$ must be non-empty (Explain!). $x,y \in U_x \cap U_y$, for if they were not, by Hausdorff property, there must be open $V_x \subseteq U_x$ and $V_y \subseteq U_x$ with $V_x \ni x$ and $V_y \ni y$, and they both contains all but finite elements in $\{x_n\}$, which is not possible. Thus, there is no such open sets $V_x \ni x$ and $V_y \ni y$ with $V_x \cap V_y = \emptyset$, which implies $(X, \mathcal T)$ is not Hausdorff. This is a contradition.
+\end{proof}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition} \
+	\begin{enumerate}[(i)]
+		\item A topological space $(X, \mathcal T)$ is \textit{regular} iff for all closed sets $V \subseteq X$ and $x \in X$ with $x \notin V$, there exist disjoint open sets $U,W \subseteq X$ such that $V \subseteq U$ and $x \in W$.
+		\item $(X, \mathcal T)$ is \textit{normal} iff for all disjoint closed sets $V, Z \subseteq X$, there exist disjoint open sets $U, W \subseteq X$ such that $V \subseteq U$ and $Z \subseteq W$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	[To do] \
+	\begin{enumerate}
+		\item Can I find a regular space which is not normal?
+		\item Can I find a normal space which is not regular?
+		\item Does regular implies normal or normal implies regular?
+	\end{enumerate}
+\end{note}
+%--------------------------------
 
 
 
