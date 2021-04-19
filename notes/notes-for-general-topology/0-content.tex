@@ -1,13 +1,223 @@
 %================================
 %::::::::::::::::::::::::::::::::
-\chapter{Topological Spaces}
+\chapter{Definitions}
 %::::::::::::::::::::::::::::::::
 %================================
 
-\input{notes-for-general-topology/c1_topological-space/s1_review-of-metric-spaces}
 
-\input{notes-for-general-topology/c1_topological-space/s2_the-definition-of-topological-space}
+%================================
+\section{Basic Definitions}
+%================================
 
-\input{notes-for-general-topology/c1_topological-space/s3_metrics-versus-topologies}
 
-\input{notes-for-general-topology/c1_topological-space/s4_continuous-maps}
+
+%--------------------------------
+\begin{definition}
+	[Topology and Topological Space]
+	\label{def: topology and topological space}
+	Let $X$ be a set, and let a family $\mathcal T \subseteq \mathcal P(X)$. $\mathcal T$ is called a topology on $X$ iff
+	\begin{enumerate}[(i)]
+		\item $\emptyset, X \in \mathcal T$;
+		\item $\mathcal T$ is closed under arbitrary union;
+		\item $\mathcal T$ is closed under finite intersection.
+	\end{enumerate}
+	The pair $(X, \mathcal T)$ is called a \textit{topological space}. The elements of $\mathcal T$ are called \textit{open sets} in $(X, \mathcal T)$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Metrizable Topology]
+	\label{def: metrizable topology}
+	Let $(X, \mathcal T)$ be a topological space.
+\end{definition}
+%--------------------------------
+
+
+%================================
+\section{Untitled}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[Cover]
+	\label{def: cover}
+	Let $(X, \mathcal T)$ be a topological space, and let $U \subseteq X$, then a family $\mathcal C \subseteq \mathcal P(X)$ is called a \textit{cover} of $U$ iff the union of $\mathcal C$ is a superset of $U$. That is,
+	$$
+	U \subseteq \bigcup \mathcal C.
+	$$
+	
+	If $\mathcal C \subseteq \mathcal T$, then we call $\mathcal C$ an \textit{open cover} of $U$.
+	
+	Let $\mathcal C' \subseteq \mathcal C$, iff the union of $\mathcal C'$ is still a superset of $U$, then we call $\mathcal C'$ a subcover of $\mathcal C$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Basis]
+	\label{def: basis}
+	Let $(X, \mathcal T)$ be a topological space, let $U \subseteq X$, and let $\mathcal B \subseteq \mathcal P(X)$ be a cover of $X$. We call $\mathcal B$ a \textit{base} of $(X, \mathcal T)$ iff $\mathcal B \subseteq \mathcal T$ and the union of $\mathcal B$ is exactly $U$ itself. That is,
+	$$
+	\mathcal B \subseteq \mathcal T, \text{ and } U = \bigcup \mathcal B.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Subspace Topology]
+	\label{def: subspace topology}
+	Let $(X, \mathcal T)$ be a topological space and let $A \subseteq X$. The \textit{subspace topology} $\mathcal T_A$ on $A$ is defined to be the family of the intersections of open sets in $(X, \mathcal T)$ and $A$. That is,
+	$$
+	\mathcal T_A = \left\{ U \cap A : \ U \in \mathcal T \right\}.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Quotient Topology]
+	\label{def: quotient topology}
+	Let $(X, \mathcal T)$ be a topological space and let $\sim$ be an equivalence relation on $X$. The \textit{quotient topology} is a topology on $\mathcal P(X/ \sim)$; it is defined as
+	$$
+	\mathcal T_{X / \sim} = \left\{ U \in \mathcal P(X/\sim) : \{ x \in X: [x] \in U \} \in \mathcal T_X \right\}.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Continuous Functions]
+	\label{def: continuous functions}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A function $f: X \to Y$ is said to be \textit{continuous} iff for all open subset $U$ of $Y$, the preimage $f^{-1}[U]$ is open in $X$. That is,
+	$$
+	\forall U \in \mathcal T_{Y}, \quad f^{-1}[U] \in \mathcal T_X.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Homeomorphisms]
+	\label{def: homomorphisms}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A bijection $f: X \to Y$ is called a \textit{homeomorphism} iff it is continuous and its inverse is also continuous.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Homeomorphic]
+	\label{def: homomorphisms}
+	Two topological spaces $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ are said to be \textit{homeomorphic} or \textit{topologically equivalent}, denoted $X \cong Y$, iff there is an homeomorphism between them.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Compactness]
+	\label{def: compactness}
+	A topological space $(X, \mathcal T)$ is said to be \textit{compact} iff every open cover of $X$ has a finite subcover. That is,
+	$$
+	\forall \mathcal C \subseteq \mathcal T : \bigcup \mathcal C = X, \ \exists \mathcal S \subseteq \mathcal C : \bigcup \mathcal S = X, \quad |\mathcal S| < \aleph_0.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Connectedness]
+	\label{def: connectedness}
+	Let $(X, \mathcal T)$ be a topological space. $(X, \mathcal T)$ is said to be \textit{connected} iff $X$ is not empty and it it not the union of any disjoint open sets. That is,
+	$$
+	\forall U, V \in \mathcal T : X = U \cup V, \quad U \cap V \ne \emptyset.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Path-connectedness]
+	\label{def: path-connectedness}
+	Let $(X, \mathcal T)$ be a topological space.
+	\begin{enumerate}[(i)]
+		\item A map $\gamma: [0,1] \to X$ is called a \textit{path} in $X$ iff it is continuous. If $\gamma(0) = x$ and $\gamma(1)=y$, we say that $\gamma$ is path from $x$ to $y$ in $X$.
+		\item $X$ is said to be \textit{path-connected} iff for all $x, y \in X$ there is a path from $x$ to $y$ in $X$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_0$ space]
+	\label{def: T_1 space}
+	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are \textit{topologically distinguishable}. That is
+	$$
+	\forall x,y \in X : x \ne y, \ \exists N \in \mathcal T, \quad x \in N \land y \notin N.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$R_0$ space]
+\end{definition}
+%--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
