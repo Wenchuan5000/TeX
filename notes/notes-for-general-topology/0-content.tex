@@ -1,6 +1,6 @@
 %================================
 %::::::::::::::::::::::::::::::::
-\chapter{Definitions}
+%\chapter{Definitions}
 %::::::::::::::::::::::::::::::::
 %================================
 
@@ -13,7 +13,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Topology and Topological Space]
+	[topological space]
 	\label{def: topology and topological space}
 	Let $X$ be a set, and let a family $\mathcal T \subseteq \mathcal P(X)$. $\mathcal T$ is called a topology on $X$ iff
 	\begin{enumerate}[(i)]
@@ -28,7 +28,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Metrizable Topology]
+	[metrizable topology]
 	\label{def: metrizable topology}
 	Let $(X, \mathcal T)$ be a topological space.
 \end{definition}
@@ -42,7 +42,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Cover]
+	[cover]
 	\label{def: cover}
 	Let $(X, \mathcal T)$ be a topological space, and let $U \subseteq X$, then a family $\mathcal C \subseteq \mathcal P(X)$ is called a \textit{cover} of $U$ iff the union of $\mathcal C$ is a superset of $U$. That is,
 	$$
@@ -58,7 +58,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Basis]
+	[basis]
 	\label{def: basis}
 	Let $(X, \mathcal T)$ be a topological space, let $U \subseteq X$, and let $\mathcal B \subseteq \mathcal P(X)$ be a cover of $X$. We call $\mathcal B$ a \textit{base} of $(X, \mathcal T)$ iff $\mathcal B \subseteq \mathcal T$ and the union of $\mathcal B$ is exactly $U$ itself. That is,
 	$$
@@ -70,7 +70,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Subspace Topology]
+	[subspace topology]
 	\label{def: subspace topology}
 	Let $(X, \mathcal T)$ be a topological space and let $A \subseteq X$. The \textit{subspace topology} $\mathcal T_A$ on $A$ is defined to be the family of the intersections of open sets in $(X, \mathcal T)$ and $A$. That is,
 	$$
@@ -82,7 +82,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Quotient Topology]
+	[quotient topology]
 	\label{def: quotient topology}
 	Let $(X, \mathcal T)$ be a topological space and let $\sim$ be an equivalence relation on $X$. The \textit{quotient topology} is a topology on $\mathcal P(X/ \sim)$; it is defined as
 	$$
@@ -94,7 +94,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Continuous Functions]
+	[continuous functions]
 	\label{def: continuous functions}
 	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A function $f: X \to Y$ is said to be \textit{continuous} iff for all open subset $U$ of $Y$, the preimage $f^{-1}[U]$ is open in $X$. That is,
 	$$
@@ -106,7 +106,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Homeomorphisms]
+	[homeomorphisms]
 	\label{def: homomorphisms}
 	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A bijection $f: X \to Y$ is called a \textit{homeomorphism} iff it is continuous and its inverse is also continuous.
 \end{definition}
@@ -115,7 +115,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Homeomorphic]
+	[homeomorphic]
 	\label{def: homomorphisms}
 	Two topological spaces $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ are said to be \textit{homeomorphic} or \textit{topologically equivalent}, denoted $X \cong Y$, iff there is an homeomorphism between them.
 \end{definition}
@@ -124,7 +124,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Compactness]
+	[compactness]
 	\label{def: compactness}
 	A topological space $(X, \mathcal T)$ is said to be \textit{compact} iff every open cover of $X$ has a finite subcover. That is,
 	$$
@@ -136,7 +136,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Connectedness]
+	[connectedness]
 	\label{def: connectedness}
 	Let $(X, \mathcal T)$ be a topological space. $(X, \mathcal T)$ is said to be \textit{connected} iff $X$ is not empty and it it not the union of any disjoint open sets. That is,
 	$$
@@ -148,7 +148,7 @@
 
 %--------------------------------
 \begin{definition}
-	[Path-connectedness]
+	[path-connectedness]
 	\label{def: path-connectedness}
 	Let $(X, \mathcal T)$ be a topological space.
 	\begin{enumerate}[(i)]
@@ -161,11 +161,16 @@
 
 %--------------------------------
 \begin{definition}
-	[$T_0$ space]
-	\label{def: T_1 space}
-	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are \textit{topologically distinguishable}. That is
+	[topologically indistinguishable]
+	\label{def: topologically indistinguishable}
+	Let $(X, \mathcal T)$ be a topological space. Two points $x,y \in X$ are said to be \textit{topologically indistinguishable} iff they share all their neighbourhoods. That is, let $\mathcal N_x$ be the family of all neighbourhoods of $x$ and let $\mathcal N_y$ be the family of all neibourhoods of $y$, we have
 	$$
-	\forall x,y \in X : x \ne y, \ \exists N \in \mathcal T, \quad x \in N \land y \notin N.
+	\mathcal N_x = \mathcal N_y.
+	$$
+	
+	Respectively, $x,y$ are said to be \textit{topologically distinguishable} iff they are not topologically distinguishable; i.e.,
+	$$
+	\mathcal N_x \ne \mathcal N_y.
 	$$
 \end{definition}
 %--------------------------------
@@ -173,9 +178,21 @@
 
 %--------------------------------
 \begin{definition}
-	[$R_0$ space]
+	[$T_0$ spaces]
+	\label{def: T_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are \textit{topologically distinguishable}.
 \end{definition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$R_0$ spaces]
+	\label{def: R_0 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $R_0$ iff any two topologically distinguishable points in $X$ are separated. That is, for any topologically distinguishable points $x,y \in X$, there is $U_x, U_y \in \mathcal T$ with $U_x \ni x$ and $U_y \ni y$, $U_x \cap U_y = \emptyset$.
+\end{definition}
+%--------------------------------
+
 
 
 
