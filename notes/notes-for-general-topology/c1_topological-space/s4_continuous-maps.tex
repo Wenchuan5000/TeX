@@ -51,16 +51,23 @@
 
 %--------------------------------
 \begin{note}
+	This is not vise versa, i.e., there exists discontinuous map preserve convergence of sequence either.
 	
+	For example, let $(X, \mathcal T)$ and $(X, \mathcal T')$ be topological space. Let $\mathcal T'$ be discrete topology, and let
+	$$
+	\mathcal T = \{ \text{monotones of $X$} \} \cup \{ \emptyset, X \}.
+	$$
+	Then any $\{x_n\} \subseteq X$ converges iff it is in the form of
+	$$
+	x, x, x, \ldots
+	$$
+	Clearly, for all $f:(X, \mathcal T) \to (X, \mathcal T')$, for any $\{x_n\}$ converges to $x \in (X, \mathcal T)$, $\{f(x_n)\}$ also converges to $f(x) \in (X, \mathcal T')$. It is in the form of
+	$$
+	f(x), f(x), f(x), \ldots
+	$$
+	But, $f$ is not continuous over $(X, \mathcal T)$. (For any $U \subsetneq X$ with $|U|>1$, $f^{-1}[U] \notin \mathcal T$).
 \end{note}
 %--------------------------------
-
-
-
-
-
-
-
 
 
 
