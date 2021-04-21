@@ -98,7 +98,7 @@
 	\label{def: continuous functions}
 	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A function $f: X \to Y$ is said to be \textit{continuous} iff for all open subset $U$ of $Y$, the preimage $f^{-1}[U]$ is open in $X$. That is,
 	$$
-	\forall U \in \mathcal T_{Y}, \quad f^{-1}[U] \in \mathcal T_X.
+	\forall U \in \mathcal T_{Y} : f^{-1}[U] \in \mathcal T_X.
 	$$
 \end{definition}
 %--------------------------------
@@ -128,7 +128,7 @@
 	\label{def: compactness}
 	A topological space $(X, \mathcal T)$ is said to be \textit{compact} iff every open cover of $X$ has a finite subcover. That is,
 	$$
-	\forall \mathcal C \subseteq \mathcal T : \bigcup \mathcal C = X, \ \exists \mathcal S \subseteq \mathcal C : \bigcup \mathcal S = X, \quad |\mathcal S| < \aleph_0.
+	\forall \mathcal C \subseteq \mathcal T : \bigcup \mathcal C = X : \exists \mathcal S \subseteq \mathcal C : \bigcup \mathcal S = X : |\mathcal S| < \aleph_0.
 	$$
 \end{definition}
 %--------------------------------
@@ -140,7 +140,7 @@
 	\label{def: connectedness}
 	Let $(X, \mathcal T)$ be a topological space. $(X, \mathcal T)$ is said to be \textit{connected} iff $X$ is not empty and it it not the union of any disjoint open sets. That is,
 	$$
-	\forall U, V \in \mathcal T : X = U \cup V, \quad U \cap V \ne \emptyset.
+	\forall U, V \in \mathcal T : X = U \cup V : U \cap V \ne \emptyset.
 	$$
 \end{definition}
 %--------------------------------
@@ -178,6 +178,25 @@
 
 %--------------------------------
 \begin{definition}
+	[saperated sets]
+	Let $(X, \mathcal T)$ be a topological space, and let $A, B \in \mathcal P(X)$.
+	
+	\begin{enumerate}[(i)]
+		\item $A$ and $B$ are said to be \textit{separated} iff each is disjoint from other's closure.
+		\item $A$ and $B$ are said to be \textit{separated by neighbourhoods} iff there are neighbourhoods $N_A$ of $A$ and $N_B$ of $B$ such that $N_A$ and $N_B$ are disjoint.
+		\item $A$ and $B$ are said to be \textit{separated by closed neighbourhoods} iff there are closed neighbourhoods $\overline N_A$ of $A$ and $\overline N_B$ of $B$ such that $\overline N_A$ and $\overline N_B$ are disjoint.
+		\item $A$ and $B$ are said to be \textit{separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f[A] = \{0\}$ and $f[B] = \{1\}$.
+		\item $A$ and $B$ are said to be \textit{precisely separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f^{-1}[\{0\}] = A$ and $f^{-1}[\{1\}] = B$
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+\href{https://en.wikipedia.org/wiki/Separated_sets}{See Wikipedia.org}
+
+
+%--------------------------------
+\begin{definition}
 	[$T_0$ spaces]
 	\label{def: T_1 spaces}
 	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are \textit{topologically distinguishable}.
@@ -189,15 +208,126 @@
 \begin{definition}
 	[$R_0$ spaces]
 	\label{def: R_0 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $R_0$ iff any two topologically distinguishable points in $X$ are separated. That is, for any topologically distinguishable points $x,y \in X$, there is $U_x, U_y \in \mathcal T$ with $U_x \ni x$ and $U_y \ni y$, $U_x \cap U_y = \emptyset$.
+	A topological space $(X, \mathcal T)$ is said to be $R_0$ iff any two topologically distinguishable points in $X$ are separated.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_1$ spaces]
+	\label{def: T_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff any two distinct points in $X$ are separated.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: all singletons in a T_1 space are closed}
+	
+	All singletons in a $T_1$ space are closed, That is, if a topological space $(X, \mathcal T)$ is $T_1$, then
+	$$
+	\forall x \in (X, \mathcal T) : \exists U \in \mathcal T : \{x\} = X \setminus U.
+	$$
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_2$ spaces]
+	\label{def: T_2 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_2$ or \textit{Hausdorff} or \textit{separated} iff any two distinct points in $(X, \mathcal T)$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_{2 \nicefrac{1}{2}}$ spaces]
+	\label{def: T_2.5 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_{2 \nicefrac{1}{2}}$ or \textit{Urysohn} iff two distinct points in $X$ are separated by closed neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_3$ spaces]
+	\label{def: T_3 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_3$ or \textit{regular} iff it is $T_0$ and given any point $x \in (X, \mathcal T)$ and closed set $V \subseteq X$ with $x \notin V$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_{3\nicefrac{1}{2}}$ spaces]
+	\label{def: T_3.5 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_{3 \nicefrac{1}{2}}$, or \textit{Tychonoff} or, \textit{completely $T_3$}, or \textit{completely regular}, iff it is $T_0$ and given any point $x$ and closed set $V \subseteq X$ with $x \notin V$, they are separated by a continuous function.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_4$ spaces]
+	\label{def: T_4 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_4$ or \textit{normal} iff it is Hausdorff and any tow disjoint closed subsets of $X$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[Urysohn's lemma]
+	\label{prop: urysohn's lemma}
+	A topological space is normal iff any two disjoint closed sets are separated by a continuous function.
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_5$ spaces]
+	\label{def: T_5 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_5$ or \textit{completely $T_4$} iff it is $T_1$ any two separated sets are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Every subspace of a $T_5$ space is normal.
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_6$ spaces]
+	\label{def: T_6 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_6$, or \textit{perfectly $T_4$} or \textit{perfectly normal} iff it is $T_1$ and any two disjoint closed sets are precisely separated by a continuous function.
 \end{definition}
 %--------------------------------
 
 
 
-
-
-
+%--------------------------------
+\begin{proposition}
+	[Tietze extension theorem]
+	\label{prop: Tietze extension theorem}
+	Let $(X, \mathcal T)$ be normal topological space, and let $f: A \to (\mathbb R, \mathcal T')$ be a continuous map where $A$ is a closed subset of $X$ and $\mathcal T'$ is the standard topology (induced by Euclidean metric). Then there exists a continuous map
+	$$
+	F: (X, \mathcal T) \to (\mathbb R, \mathcal T'),
+	$$
+	such that
+	$$
+	\forall x \in A: f(x) = g(x).
+	$$
+\end{proposition}
+%--------------------------------
 
 
 
