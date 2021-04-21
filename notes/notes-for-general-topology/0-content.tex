@@ -1,20 +1,28 @@
 %================================
 %::::::::::::::::::::::::::::::::
-%\chapter{Definitions}
+\chapter{Metric Spaces}
+%::::::::::::::::::::::::::::::::
+%================================
+
+
+
+%================================
+%::::::::::::::::::::::::::::::::
+\chapter{Topological Spaces}
 %::::::::::::::::::::::::::::::::
 %================================
 
 
 %================================
-\section{Basic Definitions}
+\section{Topological Spaces}
 %================================
 
 
 
 %--------------------------------
 \begin{definition}
-	[topological space]
-	\label{def: topology and topological space}
+	[topology]
+	\label{def: topology}
 	Let $X$ be a set, and let a family $\mathcal T \subseteq \mathcal P(X)$. $\mathcal T$ is called a topology on $X$ iff
 	\begin{enumerate}[(i)]
 		\item $\emptyset, X \in \mathcal T$;
@@ -28,11 +36,52 @@
 
 %--------------------------------
 \begin{definition}
-	[metrizable topology]
-	\label{def: metrizable topology}
-	Let $(X, \mathcal T)$ be a topological space.
+	[topological spaces]
+	\label{def: topological spaces}
+	Let $X$ be any set, and let $\mathcal T$ be a topology on $X$, then the pair $(X, \mathcal T)$ is called a \textit{topological space}. All subsets of $X$ in $\mathcal T$ are called \textit{open sets} of $(X, \mathcal T)$.
 \end{definition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[finer and coarser topology]
+	\label{def: finer and coarser topology} Let $X$ be any set, and let $\mathcal T, \mathcal T'$ be topologies on $X$. $\mathcal T$ is said to be \textit{finer} than $\mathcal T'$ iff $\mathcal T \supseteq \mathcal T'$; respectively, $\mathcal T$ is said to be \textit{coarser} than $\mathcal T'$ iff $\mathcal T \subseteq \mathcal T'$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[neighbourhood]
+	\label{def: neighbourhood}
+	Given $(X, \mathcal T)$ as a topological space and a point $x \in X$, a subset $N \subseteq X$ is called a \textit{neighbourhood} iff it contains an open set $U$ containing $x$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Given $(X, \mathcal T)$ as a topological space and $U \subseteq X$, $U$ is open iff for all $x \in U$, there is a neighbourhood $N$ of $x$ contained in $U$.
+	
+	\begin{proof}
+		If $U$ is open, then $U$ itself is a neighbourhood of $x$ contained in $U$.
+		
+		Conversely, if for all $x \in U$, there is a neighbourhood $N_x$ of $x$ contained in $U$, then there is a open neighbourhood $U_x \ni x$ contained in $N_x$. Then we have
+		$$
+		U \supseteq \bigcup_{x \in U} U_x.
+		$$
+		Suppose $U$ is not open, then $U$ is a proper superset in the relation above. Then there exists $y \in U$ which is not in any $U_x$. This implies that such a $y$ does not have any neighbourhood $N_y$ in $U$, for such an $N_y$ must contains an open $U_y \ni y$. For if it does, then there must be a $U_x$ contains $y$. This is a contradiction. Thus,
+		$$
+		U = \bigcup_{x \in U} U_x
+		$$
+		is open.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
 
 
 %================================
