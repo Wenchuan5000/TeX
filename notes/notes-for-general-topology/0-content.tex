@@ -62,6 +62,7 @@
 
 %--------------------------------
 \begin{proposition}
+	\label{prop: alt-def of open sets by neighbourhoods}
 	Given $(X, \mathcal T)$ as a topological space and $U \subseteq X$, $U$ is open iff for all $x \in U$, there is a neighbourhood $N$ of $x$ contained in $U$.
 	
 	\begin{proof}
@@ -81,11 +82,51 @@
 %--------------------------------
 
 
+%================================
+\section{Continuous Maps}
+%================================
 
+
+%--------------------------------
+\begin{definition}
+	[continuous maps]
+	\label{def: continuous maps}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is said to be \textit{continuous} iff for any open set $U$ of $Y$, the preimage $f^{-1}[U]$ is open in $X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: alt-def of continuous maps by neighbourhoods}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is continuous at $x \in X$ iff for any neighbourhood $N_y$ of $f(x)$, there is a neighbourhood $N_x$ of $x$, such that $f[N_x] \subseteq N_y$.
+	
+	\begin{proof}
+		Let $N_y$ be a neighbourhood of $f(x)$. Clearly, there exists an open set $U_y$ contains $y$.
+	
+		By Definition \ref{def: continuous maps}, $f$ is continuous at $x$ iff $x \in f^{-1}[U_y] \in \mathcal T_X$. Clearly, $f^{-1}[U_y]$ is a neighbourhood of $x$. We have $f[f^{-1}[U_y]] = U_y \subseteq N_y$.
+		
+		By Proposition \ref{prop: alt-def of open sets by neighbourhoods}, there $U_x$ must contains at least one neighbourhood $N_x$ of $x$, thus, $f[N_x] \subseteq U_y$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_{Y})$ be metrizable spaces. A map $f: X \to Y$ is continuous at $p \in X$ iff for any $\varepsilon > 0$, there is a $\delta > 0$, such that for all $x \in B_X(p, \delta)$, $f(x) \in B_Y(f(p), \varepsilon)$, where $B_X$ is defined by any metrics $\rho_X$ induces $\mathcal T_X$, and $B_Y$ is defined by any metrics $\rho_Y$ induces $\mathcal T_Y$.
+	
+	\begin{proof}
+		Clearly, for all $\varepsilon > 0$, $B_Y(f(x,), \varepsilon)$ is an open neighbourhood of $f(x)$.
+		
+		$f$ is not necessarily be injective, so $f^{-1}[B_Y(f(x), \varepsilon)] = U \in x$. By Definition \ref{def: continuous maps}, $U$ is open, so for some $\delta > 0$, $B_X(x, \delta) \subseteq U$. Thus, By Proposition \ref{prop: alt-def of continuous maps by neighbourhoods}, $f$ is continuous iff $f[B_X(x, \delta)] \subseteq B_Y(f(x), \varepsilon)$. This is equivalent to the conditions we have.
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
 
 %================================
-\section{Untitled}
+\section{Cover}
 %================================
 
 
@@ -93,14 +134,14 @@
 \begin{definition}
 	[cover]
 	\label{def: cover}
-	Let $(X, \mathcal T)$ be a topological space, and let $U \subseteq X$, then a family $\mathcal C \subseteq \mathcal P(X)$ is called a \textit{cover} of $U$ iff the union of $\mathcal C$ is a superset of $U$. That is,
+	Let $(X, \mathcal T)$ be a topological space, and let $U \subseteq X$, then a family $\mathcal C \subseteq \mathcal P(X)$ is called a \textit{cover} of $U$ iff the union of all sets in $\mathcal C$ is a superset of $U$. That is,
 	$$
 	U \subseteq \bigcup \mathcal C.
 	$$
 	
 	If $\mathcal C \subseteq \mathcal T$, then we call $\mathcal C$ an \textit{open cover} of $U$.
 	
-	Let $\mathcal C' \subseteq \mathcal C$, iff the union of $\mathcal C'$ is still a superset of $U$, then we call $\mathcal C'$ a subcover of $\mathcal C$.
+	Let $\mathcal S \subseteq \mathcal C$, iff the union of $\mathcal S$ is still a superset of $U$, then we call $\mathcal S$ a \textit{subcover} of $\mathcal C$.
 \end{definition}
 %--------------------------------
 
@@ -109,12 +150,29 @@
 \begin{definition}
 	[basis]
 	\label{def: basis}
-	Let $(X, \mathcal T)$ be a topological space, let $U \subseteq X$, and let $\mathcal B \subseteq \mathcal P(X)$ be a cover of $X$. We call $\mathcal B$ a \textit{base} of $(X, \mathcal T)$ iff $\mathcal B \subseteq \mathcal T$ and the union of $\mathcal B$ is exactly $U$ itself. That is,
+	Let $(X, \mathcal T)$ be a topological space, let $U \subseteq X$, and let $\mathcal B$ be a open cover of $X$. We call $\mathcal B$ a \textit{base} of $X$ iff the union of $\mathcal B$ is precisely $U$ itself, i.e.,
 	$$
-	\mathcal B \subseteq \mathcal T, \text{ and } U = \bigcup \mathcal B.
+	U = \bigcup \mathcal B.
 	$$
 \end{definition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[synthetic basis]
+	\label{def: synthetic basis}
+	Let $(X, \mathcal T)$ be a topological space, and let $\mathcal B$ be a base of $X$. $\mathcal B$ is said to be \textit{synthetic} iff for any $A, B \in \mathcal B$,
+	$$
+	A \cap B = \bigcup_{i = 1}^{n} B_i, \quad B_i \in \mathcal B.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%================================
+\section{Untitled}
+%================================
 
 
 %--------------------------------
@@ -136,18 +194,6 @@
 	Let $(X, \mathcal T)$ be a topological space and let $\sim$ be an equivalence relation on $X$. The \textit{quotient topology} is a topology on $\mathcal P(X/ \sim)$; it is defined as
 	$$
 	\mathcal T_{X / \sim} = \left\{ U \in \mathcal P(X/\sim) : \{ x \in X: [x] \in U \} \in \mathcal T_X \right\}.
-	$$
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{definition}
-	[continuous functions]
-	\label{def: continuous functions}
-	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A function $f: X \to Y$ is said to be \textit{continuous} iff for all open subset $U$ of $Y$, the preimage $f^{-1}[U]$ is open in $X$. That is,
-	$$
-	\forall U \in \mathcal T_{Y} : f^{-1}[U] \in \mathcal T_X.
 	$$
 \end{definition}
 %--------------------------------
