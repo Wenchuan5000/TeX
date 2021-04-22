@@ -29,7 +29,6 @@
 		\item $\mathcal T$ is closed under arbitrary union;
 		\item $\mathcal T$ is closed under finite intersection.
 	\end{enumerate}
-	The pair $(X, \mathcal T)$ is called a \textit{topological space}. The elements of $\mathcal T$ are called \textit{open sets} in $(X, \mathcal T)$.
 \end{definition}
 %--------------------------------
 
@@ -38,7 +37,19 @@
 \begin{definition}
 	[topological spaces]
 	\label{def: topological spaces}
-	Let $X$ be any set, and let $\mathcal T$ be a topology on $X$, then the pair $(X, \mathcal T)$ is called a \textit{topological space}. All subsets of $X$ in $\mathcal T$ are called \textit{open sets} of $(X, \mathcal T)$.
+	Let $X$ be any set, and let $\mathcal T$ be a topology on $X$, then the pair $(X, \mathcal T)$ is called a \textit{topological space}. All subsets of $X$ in $\mathcal T$ are called \textit{open sets} in $(X, \mathcal T)$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[closed sets]
+	\label{def: closed sets}
+	Let $(X, \mathcal T)$ be a topological space. A subset $V$ of $X$ is said to be \textit{closed} iff there is an open set $U$ in $X$ such that
+	$$
+	V = X \setminus V.
+	$$
 \end{definition}
 %--------------------------------
 
@@ -83,7 +94,12 @@
 
 
 %================================
-\section{Continuous Maps}
+\section{Metrizable Spaces}
+%================================
+
+
+%================================
+\section{Continuity}
 %================================
 
 
@@ -91,7 +107,7 @@
 \begin{definition}
 	[continuous maps]
 	\label{def: continuous maps}
-	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is said to be \textit{continuous} iff for any open set $U$ of $Y$, the preimage $f^{-1}[U]$ is open in $X$.
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is said to be \textit{continuous} iff for any open set $U$ in $Y$, its preimage in $X$ under $f$ is open.
 \end{definition}
 %--------------------------------
 
@@ -119,10 +135,26 @@
 	\begin{proof}
 		Clearly, for all $\varepsilon > 0$, $B_Y(f(x,), \varepsilon)$ is an open neighbourhood of $f(x)$.
 		
-		$f$ is not necessarily be injective, so $f^{-1}[B_Y(f(x), \varepsilon)] = U \in x$. By Definition \ref{def: continuous maps}, $U$ is open, so for some $\delta > 0$, $B_X(x, \delta) \subseteq U$. Thus, By Proposition \ref{prop: alt-def of continuous maps by neighbourhoods}, $f$ is continuous iff $f[B_X(x, \delta)] \subseteq B_Y(f(x), \varepsilon)$. This is equivalent to the conditions we have.
+		$f$ is not necessarily be injective, so $f^{-1}[B_Y(f(x), \varepsilon)] = U \in x$. By Definition \ref{def: continuous maps}, $U$ is open, so for some $\delta > 0$, $B_X(x, \delta) \subseteq U$. Thus, By Proposition \ref{prop: alt-def of continuous maps by neighbourhoods}, $f$ is continuous iff $f[B_X(x, \delta)] \subseteq B_Y(f(x), \varepsilon)$. This satisfies the conditions we have.
 	\end{proof}
 \end{proposition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A function $f: X \to Y$ is said to be continuous iff for any closed set $V$ in $Y$, its preimage in $X$ under $f$ is closed.
+	
+	\begin{proof}
+		Let $U_Y$ be any open set in $Y$, let $U_X$ be the preimage of $U_Y$ under $f$. By Definition \ref{def: continuous maps}, $U_X$ is open in $X$. Let
+		$$
+		V_X = f^{-1}[Y \setminus U_Y] = X \setminus U_X,
+		$$
+		Then $V_X$ is closed.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
 
 
 %================================
@@ -422,6 +454,58 @@
 	\forall x \in A: f(x) = g(x).
 	$$
 \end{proposition}
+%--------------------------------
+
+% todo: the definition of convergence doesn't have a place to go
+%================================
+\section{Limit Points}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[limit points]
+	\label{def: limit points}
+	Let $(X, \mathcal T_X)$ be a topological space, and let $A \subseteq X$. A point $x \in X$ is called a \textit{limit point} of $A$ iff for all neighbourhood $N_x$ of $x$, $N_x \setminus \{x\}$ intersects $A$.
+\end{definition}
+%--------------------------------
+
+\newcommand{\Int}{\mathrm{Int}}
+
+%--------------------------------
+\begin{proposition}
+	Let $A$ be any set, and let $x$ be a limit point of $A$, then $x$ is an element of the closure of $A$.
+	
+	\begin{proof}
+		If $A$ is empty, then this is vacuously true. So, suppose $A$ is not empty.
+	
+		By Definition \ref{def: limit points}, for all neighbourhood $N_x$ of $x$, $N_x \setminus \{x\} \cap A$ is not empty. Naturally, $N_x \cap A$ is not empty.
+		
+		Assume that $x \notin \overline A$, then $X \setminus \overline A$ is a neighbourhood of $x$, by Definition \ref{def: neighbourhood}, and is disjoint from $A$. This is contradicted to the conditions.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	In this proof, the proposition also holds for $N_x \cap A^\circ = \emptyset$. Because if it is true, then
+	$$
+	\begin{aligned}
+		N_x \cap \partial A = (N_x \cap A) \setminus (N_x \cap A^\circ) = N_x \cap A.
+	\end{aligned}
+	$$
+	This implies that $A = \partial A$. Then $A^\circ = A \setminus \partial A = \emptyset$. In this case, $A$ is closed. Assume that $x\notin A$, then we have the same conclusion.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[convergent sequences]
+	\label{def: convergent sequences}
+	Let $(X, \mathcal T_X)$ be a topological space. A sequence $\{x_n\}$ in $X$ is said to be \textit{convergence} in $X$ iff there is an open set $U$ contains all but finite terms of $\{x_n\}$.
+\end{definition}
 %--------------------------------
 
 
