@@ -456,10 +456,47 @@
 \end{proposition}
 %--------------------------------
 
-% todo: the definition of convergence doesn't have a place to go
+
 %================================
-\section{Limit Points}
+\section{Boundaries and Limit Points}
 %================================
+
+
+%--------------------------------
+\begin{definition}
+	[interiors]
+	\label{def: interiors}
+	The \textit{interior} of a set $A$, denoted $A^\circ$, is defined to be the union of all open subsets of $A$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[closure]
+	\label{def: closure}
+	The \textit{closure} of a set $A$, denoted $\overline A$, is defined to be the intersection of all closed supersets of $A$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[boundaries]
+	\label{def: boundaries}
+	Let $A$ be any set, the \textit{boundary} of $A$, denoted $\partial A$, is defined to be the complement of the interior of $A$ in the closure of $A$; i.e.,
+	$$
+	\partial A = \overline A \setminus A^\circ.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	A set $A$ is closed iff $\partial A \subseteq A$.
+\end{proposition}
+%--------------------------------
 
 
 %--------------------------------
@@ -469,8 +506,6 @@
 	Let $(X, \mathcal T_X)$ be a topological space, and let $A \subseteq X$. A point $x \in X$ is called a \textit{limit point} of $A$ iff for all neighbourhood $N_x$ of $x$, $N_x \setminus \{x\}$ intersects $A$.
 \end{definition}
 %--------------------------------
-
-\newcommand{\Int}{\mathrm{Int}}
 
 %--------------------------------
 \begin{proposition}
@@ -492,12 +527,19 @@
 	In this proof, the proposition also holds for $N_x \cap A^\circ = \emptyset$. Because if it is true, then
 	$$
 	\begin{aligned}
-		N_x \cap \partial A = (N_x \cap A) \setminus (N_x \cap A^\circ) = N_x \cap A.
+		N_x \cap \partial A \supseteq (N_x \cap A) \setminus (N_x \cap A^\circ) = N_x \cap A.
 	\end{aligned}
 	$$
-	This implies that $A = \partial A$. Then $A^\circ = A \setminus \partial A = \emptyset$. In this case, $A$ is closed. Assume that $x\notin A$, then we have the same conclusion.
+	This implies that $A \subseteq \partial A$. In this case, $\overline A = \partial A$, for
+	
+	Assume that $x\notin \partial A$, then we have the same conclusion.
+	
+	Then $A^\circ = A \setminus \partial A = \emptyset$. 
 \end{note}
 %--------------------------------
+
+
+
 
 
 %--------------------------------
