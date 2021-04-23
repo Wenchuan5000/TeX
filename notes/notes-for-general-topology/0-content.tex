@@ -55,6 +55,19 @@
 
 
 %--------------------------------
+\begin{proposition}
+	\label{prop: dark side of topology}
+	Let $X$ be a set, and let $\mathcal C$ be the family of all closed sets in $X$. Then
+	\begin{enumerate}[(i)]
+		\item $\emptyset, X \in \mathcal C$;
+		\item $\mathcal C$ is closed under arbitrary intersection;
+		\item $\mathcal C$ is closed under finite union.
+	\end{enumerate}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
 \begin{definition}
 	[finer and coarser topology]
 	\label{def: finer and coarser topology} Let $X$ be any set, and let $\mathcal T, \mathcal T'$ be topologies on $X$. $\mathcal T$ is said to be \textit{finer} than $\mathcal T'$ iff $\mathcal T \supseteq \mathcal T'$; respectively, $\mathcal T$ is said to be \textit{coarser} than $\mathcal T'$ iff $\mathcal T \subseteq \mathcal T'$.
@@ -458,7 +471,7 @@
 
 
 %================================
-\section{Boundaries and Limit Points}
+\section{Boundaries}
 %================================
 
 
@@ -482,6 +495,24 @@
 
 %--------------------------------
 \begin{definition}
+	[dense sets]
+	\label{def: dense sets}
+	Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$. $A$ is said to be dense, iff $\overline A = X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[nowhere dense sets]
+	\label{def: nowhere dense sets}
+	A set $A$ is said to be \textit{nowhere dense} iff the interior of its closure is empty.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
 	[boundaries]
 	\label{def: boundaries}
 	Let $A$ be any set, the \textit{boundary} of $A$, denoted $\partial A$, is defined to be the complement of the interior of $A$ in the closure of $A$; i.e.,
@@ -494,9 +525,229 @@
 
 %--------------------------------
 \begin{proposition}
-	A set $A$ is closed iff $\partial A \subseteq A$.
+	[properties of interiors]
+	\label{prop: properties of interiors}
+	Let $(X, \mathcal T)$ be any topological space and $A, B \subseteq X$.
+	\begin{enumerate}[(i)]
+		\item
+		(Intensive) $A^\circ \subseteq A$.
+		
+		\item
+		$A$ is open iff $A = A^\circ$.
+		
+		\item
+		(Idempotence) $(A^\circ)^\circ = A^\circ$.
+		
+		\item
+		$(A \cap B)^\circ = A^\circ \cap B^\circ$.
+		
+		\item
+		$A \subseteq B \implies A^\circ \subseteq B^\circ$.
+		
+		\item
+		If $B$ is open, then $B \subseteq A$ iff $B \subseteq A^\circ$.
+		
+	\end{enumerate}
+	
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			By Definition \ref{def: interiors}, naturally, $A^\circ \subseteq A$.
+			
+			\item
+			By Definition \ref{def: topological spaces}, $A^\circ$ is the union of open sets hence it is open. $A$ is open iff it is the union of all open subsets of $A$. Thus $A = A^\circ$.
+			
+			\item
+			$A^\circ$ is open, thus $(A^\circ)^\circ = A^\circ$.
+			
+			\item
+			By Definition \ref{def: interiors}, we have
+			$$
+			\begin{aligned}
+				(A \cap B)^\circ &= \left\{ \bigcup U : U \in \mathcal T \land U \subseteq A \cap B \right\} \\
+				&= \left\{ \bigcup U: (U \in \mathcal T \land U \subseteq A) \land (U \in \mathcal T \land U \subseteq B) \right\} \\
+				&= \left\{ \bigcup U: U \in \mathcal T \land  U \subseteq A \right\} \cap \left\{ \bigcup U : U \in \mathcal T \land U \subseteq B \right\} \\
+				&= A^\circ \cap B^\circ.
+			\end{aligned}
+			$$
+			
+			\item
+			Clearly, $A^\circ \subseteq A$, thus,
+			$$
+			\begin{aligned}
+				A \subseteq B &\implies A^\circ \subseteq B
+			\end{aligned}
+			$$
+			Suppose $A^\circ \not \subseteq B^\circ$, then $A^\circ \setminus B^\circ$ is not empty ($\emptyset$ is the subset of any set, so $A^\circ$ is not empty). 
+			
+			Then there exists $x \in A^\circ$ with $x \in \partial B$ ($x \in B$ but $x\notin B^\circ$). Then there exists neighbourhood $N_x \ni x$, and $N_x \cap \partial B \ne \emptyset.$ But this is impossible, for $A^\circ \subseteq B$ implies that $A^\circ \cap \partial B = \emptyset$ (This is a straight consequence of $A^\circ \cap \partial A = \emptyset$. See Proposition \ref{prop: properties of boundaries}), so such $N_x$ does not exist. Thus,
+			$$
+			A^\circ \subseteq B^\circ.
+			$$
+			
+			\item
+			If $B$ is open, then $B = B^\circ$. Then $B \subseteq A$ iff $B^\circ \subseteq A^\circ$.
+ 		\end{enumerate}
+	\end{proof}
 \end{proposition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[properties of closures]
+	\label{prop: properties of closures}
+	Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	\begin{enumerate}[(i)]
+		\item
+		$\overline A$ is closed.
+		
+		\item
+		$A$ is closed iff $A = \overline A$.
+		
+		\item
+		$A \subseteq B$ implies $\overline A \subseteq \overline B$.
+		
+		\item
+		If $A$ is closed, then $A \supseteq B$ iff $A \supseteq \overline B$
+	\end{enumerate}
+	
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			By Definition \ref{def: closure}, $\overline A$ is the intersection of closed sets. By Proposition \ref{prop: dark side of topology}, $\overline A$ is closed.
+			
+			\item
+			Proposition \ref{prop: dark side of topology} implies that any closed set is the intersection of closed sets, this is precisely what Definition \ref{def: closure} says.
+			
+			\item
+			Clearly, $B \subseteq \overline B$, so
+			$$
+			A \subseteq B \implies A \subseteq \overline B.
+			$$
+			Suppose $\overline A \not \subseteq \overline B$,
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+% todo: starts from here.
+
+
+%--------------------------------
+\begin{proposition}
+	[properties of boundaries]
+	\label{prop: properties of boundaries}
+	Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	\begin{enumerate} [(i)]
+		\item 
+		$\partial A$ is closed.
+		
+		\item
+		$A^\circ \cap \partial A = \emptyset$.
+		
+		\item
+		$\overline A = A^\circ \cup \partial A$.
+		
+		\item
+		$A$ is closed iff $\partial A \subseteq A$.
+		
+		\item
+		$\partial A$ is nowhere dense.
+		
+		\item
+		$\partial \overline A \subseteq \partial A \subseteq \partial A^\circ$.
+		
+		\item
+		$\partial A = \partial (X \setminus A)$.
+		
+		\item
+		$A$ is dense iff $\partial A = X \setminus A^\circ$.
+		
+	\end{enumerate}
+	
+	\begin{proof} \
+		\begin{enumerate} [(i)]
+			\item
+			$\overline A$ is closed, and $X \setminus A^\circ$ is also closed. Thus
+			$$
+			\partial A = \overline A \setminus A^\circ = \overline A \cap (X \setminus A)
+			$$
+			is closed.
+			
+			\item
+			By Definition \ref{def: boundaries}, we have
+			$$
+			\begin{aligned}
+				\partial A = \overline A \setminus A^\circ &\iff \partial A \cap A^\circ = \overline A \setminus A^\circ \cap A^\circ = \overline A \cap \emptyset = \emptyset.
+			\end{aligned}
+			$$
+			
+			\item
+			We have
+			$$
+			\begin{aligned}
+				\partial A = \overline A \setminus A^\circ &\iff \partial A \cup A^\circ = \overline A \setminus A^\circ \cup A^\circ = \overline A \cap (X \setminus A^\circ \cup A^\circ) \\
+				&\iff \partial A \cup A^\circ = \overline A \cap X |_\text{for $A^\circ \subseteq X$} = \overline A.
+			\end{aligned}
+			$$
+			
+			\item As $A$ is closed, $A = \overline A$ (this can be straightly proved by Definition \ref{def: closure}). By Definition \ref{def: boundaries}, it is clear that $\partial A \subseteq \overline A$, thus $\partial A \subseteq A$.
+			
+			\item
+			By Definition \ref{def: nowhere dense sets}, $\partial A$ is nowhere dense iff $\overline{\partial A}^\circ$ is empty. We have
+			$$
+			\begin{aligned}
+				\overline{\partial A}^\circ &= \overline{\overline A \setminus A^\circ}^\circ \\
+				&= (\overline A \setminus A^\circ) \cup (\overline A \setminus A^\circ) \setminus (\overline A \setminus A^\circ) \\
+				&= \emptyset.
+			\end{aligned}			
+			$$
+			
+			\item
+			$\overline A \supseteq A^\circ$ implies $\overline A^\circ \supseteq (A^\circ)^\circ = A^\circ$, then we have,
+			$$
+			\begin{aligned}
+				\partial \overline A &= \overline{\overline A} \setminus  \overline A^\circ \subseteq \overline A \setminus A^\circ = \partial A.
+			\end{aligned}
+			$$
+			
+			$A^\circ \subseteq A$ implies $ \overline{A^\circ} \subseteq \overline A$, then we have,
+			$$
+			\begin{aligned}
+				\partial A^\circ = \overline{A^\circ} \setminus (A^\circ)^\circ \supseteq \overline A \setminus A^\circ.
+			\end{aligned}
+			$$
+			
+			\item
+			We have
+			$$
+			\begin{aligned}
+				\partial (X \setminus A) &= \overline{X \setminus A} \setminus (X \setminus A)^\circ \\
+				&= X \setminus A^\circ \setminus (X \setminus \overline A) \\
+				&= X \setminus A^\circ \cap \overline A \\
+				&= \overline A \setminus A^\circ \\
+				&= \partial A.
+			\end{aligned}
+			$$
+			
+			\item
+			By Definition \ref{def: dense sets}, $A$ is dense  in $X$ iff $\overline A = X$. Then we have,
+			$$
+			\begin{aligned}
+				\overline A = X &\iff \overline A \setminus A^\circ = X \setminus A^\circ \\
+				&\iff \partial A = X \setminus A^\circ.
+			\end{aligned}
+			$$
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%================================
+\section{Limit Points}
+%================================
 
 
 %--------------------------------
@@ -509,6 +760,7 @@
 
 %--------------------------------
 \begin{proposition}
+	\label{prop: limit points are always in the closure}
 	Let $A$ be any set, and let $x$ be a limit point of $A$, then $x$ is an element of the closure of $A$.
 	
 	\begin{proof}
@@ -539,8 +791,20 @@
 %--------------------------------
 
 
+%--------------------------------
+\begin{proposition}
+	A set is closed iff it contains all its limit point.
+	
+	\begin{proof}
+		Let $A$ be a set. By proposition \ref{prop: limit points are always in the closure}, for every limit point of $A$, it is also an element of the closure $\overline A$. And $A$ is closed iff $A = \overline A$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
 
+\
+
+\
 
 %--------------------------------
 \begin{definition}
