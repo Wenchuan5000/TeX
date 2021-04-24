@@ -624,10 +624,21 @@
 			$A \subseteq B$ iff $X \setminus A \supseteq X \setminus B$. Then we have
 			$$
 			\begin{aligned}
-				& X \setminus (X \setminus A)^\circ \subseteq X \setminus (X \setminus B)^\circ.
+				& X \setminus (X \setminus A)^\circ \subseteq X \setminus (X \setminus B)^\circ
 			\end{aligned}
 			$$
-			$X \setminus (X \setminus A)^\circ$ is closed
+			
+			Clearly, $(X \setminus A)^\circ$ is the union of all open set disjoint from $A$, then, by De Morgan's laws, $X \setminus (X \setminus A)^\circ$ is the intersection of all closed sets containing $A$. By Definition \ref{def: closure}, we have $(X\setminus A)^\circ = \overline A$. Thus
+			$$
+			\overline A \subseteq \overline B.
+			$$
+			
+			\item
+			If $A$ is closed, then $A = \overline A$. Suppose $B \subseteq A$, then we have
+			$$
+			\overline B \subseteq \overline A \iff \overline B \subseteq A.
+			$$
+			
 			
 			
 		\end{enumerate}
