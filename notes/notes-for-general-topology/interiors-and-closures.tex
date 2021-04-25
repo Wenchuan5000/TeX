@@ -1,0 +1,166 @@
+%================================
+\section{Interiors and Closures}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[interiors]
+	\label{def: interiors}
+	The \textit{interior} of a set $A$, denoted $A^\circ$, is defined to be the union of all open subsets of $A$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[closure]
+	\label{def: closure}
+	The \textit{closure} of a set $A$, denoted $\overline A$, is defined to be the intersection of all closed supersets of $A$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[dense sets]
+	\label{def: dense sets}
+	Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$. $A$ is said to be dense, iff $\overline A = X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[nowhere dense sets]
+	\label{def: nowhere dense sets}
+	A set $A$ is said to be \textit{nowhere dense} iff the interior of its closure is empty.
+\end{definition}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{proposition}
+	[properties of interiors]
+	\label{prop: properties of interiors}
+	Let $(X, \mathcal T)$ be any topological space and $A, B \subseteq X$.
+	\begin{enumerate}[(i)]
+		\item
+		(Intensive) $A^\circ \subseteq A$.
+		
+		\item
+		$A$ is open iff $A = A^\circ$.
+		
+		\item
+		(Idempotence) $(A^\circ)^\circ = A^\circ$.
+		
+		\item
+		$(A \cap B)^\circ = A^\circ \cap B^\circ$.
+		
+		\item
+		$A \subseteq B \implies A^\circ \subseteq B^\circ$.
+		
+		\item
+		If $B$ is open, then $B \subseteq A$ iff $B \subseteq A^\circ$.
+		
+	\end{enumerate}
+	
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			By Definition \ref{def: interiors}, naturally, $A^\circ \subseteq A$.
+			
+			\item
+			By Definition \ref{def: topological spaces}, $A^\circ$ is the union of open sets hence it is open. $A$ is open iff it is the union of all open subsets of $A$. Thus $A = A^\circ$.
+			
+			\item
+			$A^\circ$ is open, thus $(A^\circ)^\circ = A^\circ$.
+			
+			\item
+			By Definition \ref{def: interiors}, we have
+			$$
+			\begin{aligned}
+				(A \cap B)^\circ &= \left\{ \bigcup U : U \in \mathcal T \land U \subseteq A \cap B \right\} \\
+				&= \left\{ \bigcup U: (U \in \mathcal T \land U \subseteq A) \land (U \in \mathcal T \land U \subseteq B) \right\} \\
+				&= \left\{ \bigcup U: U \in \mathcal T \land  U \subseteq A \right\} \cap \left\{ \bigcup U : U \in \mathcal T \land U \subseteq B \right\} \\
+				&= A^\circ \cap B^\circ.
+			\end{aligned}
+			$$
+			
+			\item
+			Clearly, $A^\circ \subseteq A$, thus,
+			$$
+			\begin{aligned}
+				A \subseteq B &\implies A^\circ \subseteq B
+			\end{aligned}
+			$$
+			Suppose $A^\circ \not \subseteq B^\circ$, then $A^\circ \setminus B^\circ$ is not empty ($\emptyset$ is the subset of any set, so $A^\circ$ is not empty). 
+			
+			Then there exists $x \in A^\circ$ with $x \in \partial B$ ($x \in B$ but $x\notin B^\circ$). Then there exists neighbourhood $N_x \ni x$, and $N_x \cap \partial B \ne \emptyset.$ But this is impossible, for $A^\circ \subseteq B$ implies that $A^\circ \cap \partial B = \emptyset$ (This is a straight consequence of $A^\circ \cap \partial A = \emptyset$. See Proposition \ref{prop: properties of boundaries}), so such $N_x$ does not exist. Thus,
+			$$
+			A^\circ \subseteq B^\circ.
+			$$
+			
+			\item
+			If $B$ is open, then $B = B^\circ$. Then $B \subseteq A$ iff $B^\circ \subseteq A^\circ$.
+ 		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[properties of closures]
+	\label{prop: properties of closures}
+	Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	\begin{enumerate}[(i)]
+		\item
+		$\overline A$ is closed.
+		
+		\item
+		$A$ is closed iff $A = \overline A$.
+		
+		\item
+		$A \subseteq B$ implies $\overline A \subseteq \overline B$.
+		
+		\item
+		If $A$ is closed, then $A \supseteq B$ iff $A \supseteq \overline B$
+	\end{enumerate}
+	
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			By Definition \ref{def: closure}, $\overline A$ is the intersection of closed sets. By Proposition \ref{prop: dark side of topology}, $\overline A$ is closed.
+			
+			\item
+			Proposition \ref{prop: dark side of topology} implies that any closed set is the intersection of closed sets, this is precisely what Definition \ref{def: closure} says.
+			
+			\item
+			$A \subseteq B$ iff $X \setminus A \supseteq X \setminus B$. Then we have
+			$$
+			\begin{aligned}
+				& X \setminus (X \setminus A)^\circ \subseteq X \setminus (X \setminus B)^\circ
+			\end{aligned}
+			$$
+			
+			Clearly, $(X \setminus A)^\circ$ is the union of all open set disjoint from $A$, then, by De Morgan's laws, $X \setminus (X \setminus A)^\circ$ is the intersection of all closed sets containing $A$. By Definition \ref{def: closure}, we have $(X\setminus A)^\circ = \overline A$. Thus
+			$$
+			\overline A \subseteq \overline B.
+			$$
+			
+			\item
+			If $A$ is closed, then $A = \overline A$. Suppose $B \subseteq A$, then we have
+			$$
+			\overline B \subseteq \overline A \iff \overline B \subseteq A.
+			$$
+			
+			
+			
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+% todo: starts from here.

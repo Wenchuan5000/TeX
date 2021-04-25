@@ -1,0 +1,29 @@
+%================================
+\section{Connectedness}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[connectedness]
+	\label{def: connectedness}
+	Let $(X, \mathcal T)$ be a topological space. $(X, \mathcal T)$ is said to be \textit{connected} iff $X$ is not empty and it it not the union of any disjoint open sets. That is,
+	$$
+	\forall U, V \in \mathcal T : X = U \cup V : U \cap V \ne \emptyset.
+	$$
+\end{definition}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{definition}
+	[path-connectedness]
+	\label{def: path-connectedness}
+	Let $(X, \mathcal T)$ be a topological space.
+	\begin{enumerate}[(i)]
+		\item A map $\gamma: [0,1] \to X$ is called a \textit{path} in $X$ iff it is continuous. If $\gamma(0) = x$ and $\gamma(1)=y$, we say that $\gamma$ is path from $x$ to $y$ in $X$.
+		\item $X$ is said to be \textit{path-connected} iff for all $x, y \in X$ there is a path from $x$ to $y$ in $X$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------

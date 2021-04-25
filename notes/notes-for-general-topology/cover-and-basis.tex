@@ -1,0 +1,43 @@
+%================================
+\section{Cover and Basis}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[cover]
+	\label{def: cover}
+	Let $(X, \mathcal T)$ be a topological space, and let $U \subseteq X$, then a family $\mathcal C \subseteq \mathcal P(X)$ is called a \textit{cover} of $U$ iff the union of all sets in $\mathcal C$ is a superset of $U$. That is,
+	$$
+	U \subseteq \bigcup \mathcal C.
+	$$
+	
+	If $\mathcal C \subseteq \mathcal T$, then we call $\mathcal C$ an \textit{open cover} of $U$.
+	
+	Let $\mathcal S \subseteq \mathcal C$, iff the union of $\mathcal S$ is still a superset of $U$, then we call $\mathcal S$ a \textit{subcover} of $\mathcal C$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[basis]
+	\label{def: basis}
+	Let $(X, \mathcal T)$ be a topological space, let $U \subseteq X$, and let $\mathcal B$ be a open cover of $X$. We call $\mathcal B$ a \textit{base} of $X$ iff the union of $\mathcal B$ is precisely $U$ itself, i.e.,
+	$$
+	U = \bigcup \mathcal B.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[synthetic basis]
+	\label{def: synthetic basis}
+	Let $(X, \mathcal T)$ be a topological space, and let $\mathcal B$ be a base of $X$. $\mathcal B$ is said to be \textit{synthetic} iff for any $A, B \in \mathcal B$,
+	$$
+	A \cap B = \bigcup_{i = 1}^{n} B_i, \quad B_i \in \mathcal B.
+	$$
+\end{definition}
+%--------------------------------

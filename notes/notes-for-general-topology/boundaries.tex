@@ -1,0 +1,126 @@
+%================================
+\section{Boundaries}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[boundaries]
+	\label{def: boundaries}
+	Let $A$ be any set, the \textit{boundary} of $A$, denoted $\partial A$, is defined to be the complement of the interior of $A$ in the closure of $A$; i.e.,
+	$$
+	\partial A = \overline A \setminus A^\circ.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[properties of boundaries]
+	\label{prop: properties of boundaries}
+	Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	\begin{enumerate}[(i)]
+		\item 
+		$\partial A$ is closed.
+		
+		\item
+		$A^\circ \cap \partial A = \emptyset$.
+		
+		\item
+		$\overline A = A^\circ \cup \partial A$.
+		
+		\item
+		$A$ is closed iff $\partial A \subseteq A$.
+		
+		\item
+		$\partial A$ is nowhere dense.
+		
+		\item
+		$\partial \overline A \subseteq \partial A \subseteq \partial A^\circ$.
+		
+		\item
+		$\partial A = \partial (X \setminus A)$.
+		
+		\item
+		$A$ is dense iff $\partial A = X \setminus A^\circ$.
+		
+	\end{enumerate}
+	
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			$\overline A$ is closed, and $X \setminus A^\circ$ is also closed. Thus
+			$$
+			\partial A = \overline A \setminus A^\circ = \overline A \cap (X \setminus A)
+			$$
+			is closed.
+			
+			\item
+			By Definition \ref{def: boundaries}, we have
+			$$
+			\begin{aligned}
+				\partial A = \overline A \setminus A^\circ &\iff \partial A \cap A^\circ = \overline A \setminus A^\circ \cap A^\circ = \overline A \cap \emptyset = \emptyset.
+			\end{aligned}
+			$$
+			
+			\item
+			We have
+			$$
+			\begin{aligned}
+				\partial A = \overline A \setminus A^\circ &\iff \partial A \cup A^\circ = \overline A \setminus A^\circ \cup A^\circ = \overline A \cap (X \setminus A^\circ \cup A^\circ) \\
+				&\iff \partial A \cup A^\circ = \overline A \cap X |_\text{for $A^\circ \subseteq X$} = \overline A.
+			\end{aligned}
+			$$
+			
+			\item As $A$ is closed, $A = \overline A$ (this can be straightly proved by Definition \ref{def: closure}). By Definition \ref{def: boundaries}, it is clear that $\partial A \subseteq \overline A$, thus $\partial A \subseteq A$.
+			
+			\item
+			By Definition \ref{def: nowhere dense sets}, $\partial A$ is nowhere dense iff $\overline{\partial A}^\circ$ is empty. We have
+			$$
+			\begin{aligned}
+				\overline{\partial A}^\circ &= \overline{\overline A \setminus A^\circ}^\circ \\
+				&= (\overline A \setminus A^\circ) \cup (\overline A \setminus A^\circ) \setminus (\overline A \setminus A^\circ) \\
+				&= \emptyset.
+			\end{aligned}			
+			$$
+			
+			\item
+			$\overline A \supseteq A^\circ$ implies $\overline A^\circ \supseteq (A^\circ)^\circ = A^\circ$, then we have,
+			$$
+			\begin{aligned}
+				\partial \overline A &= \overline{\overline A} \setminus  \overline A^\circ \subseteq \overline A \setminus A^\circ = \partial A.
+			\end{aligned}
+			$$
+			
+			$A^\circ \subseteq A$ implies $ \overline{A^\circ} \subseteq \overline A$, then we have,
+			$$
+			\begin{aligned}
+				\partial A^\circ = \overline{A^\circ} \setminus (A^\circ)^\circ \supseteq \overline A \setminus A^\circ.
+			\end{aligned}
+			$$
+			
+			\item
+			We have
+			$$
+			\begin{aligned}
+				\partial (X \setminus A) &= \overline{X \setminus A} \setminus (X \setminus A)^\circ \\
+				&= X \setminus A^\circ \setminus (X \setminus \overline A) \\
+				&= X \setminus A^\circ \cap \overline A \\
+				&= \overline A \setminus A^\circ \\
+				&= \partial A.
+			\end{aligned}
+			$$
+			
+			\item
+			By Definition \ref{def: dense sets}, $A$ is dense  in $X$ iff $\overline A = X$. Then we have,
+			$$
+			\begin{aligned}
+				\overline A = X &\iff \overline A \setminus A^\circ = X \setminus A^\circ \\
+				&\iff \partial A = X \setminus A^\circ.
+			\end{aligned}
+			$$
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------

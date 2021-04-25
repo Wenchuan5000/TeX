@@ -1,0 +1,55 @@
+%================================
+\section{Continuity}
+%================================
+
+%--------------------------------
+\begin{definition}
+	[continuous maps]
+	\label{def: continuous maps}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is said to be \textit{continuous} iff for any open set $U$ in $Y$, its preimage in $X$ under $f$ is open.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: alt-def of continuous maps by neighbourhoods}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is continuous at $x \in X$ iff for any neighbourhood $N_y$ of $f(x)$, there is a neighbourhood $N_x$ of $x$, such that $f[N_x] \subseteq N_y$.
+	
+	\begin{proof}
+		Let $N_y$ be a neighbourhood of $f(x)$. Clearly, there exists an open set $U_y$ contains $y$.
+	
+		By Definition \ref{def: continuous maps}, $f$ is continuous at $x$ iff $x \in f^{-1}[U_y] \in \mathcal T_X$. Clearly, $f^{-1}[U_y]$ is a neighbourhood of $x$. We have $f[f^{-1}[U_y]] = U_y \subseteq N_y$.
+		
+		By Proposition \ref{prop: alt-def of open sets by neighbourhoods}, there $U_x$ must contains at least one neighbourhood $N_x$ of $x$, thus, $f[N_x] \subseteq U_y$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_{Y})$ be metrizable spaces. A map $f: X \to Y$ is continuous at $p \in X$ iff for any $\varepsilon > 0$, there is a $\delta > 0$, such that for all $x \in B_X(p, \delta)$, $f(x) \in B_Y(f(p), \varepsilon)$, where $B_X$ is defined by any metrics $\rho_X$ induces $\mathcal T_X$, and $B_Y$ is defined by any metrics $\rho_Y$ induces $\mathcal T_Y$.
+	
+	\begin{proof}
+		Clearly, for all $\varepsilon > 0$, $B_Y(f(x,), \varepsilon)$ is an open neighbourhood of $f(x)$.
+		
+		$f$ is not necessarily be injective, so $f^{-1}[B_Y(f(x), \varepsilon)] = U \in x$. By Definition \ref{def: continuous maps}, $U$ is open, so for some $\delta > 0$, $B_X(x, \delta) \subseteq U$. Thus, By Proposition \ref{prop: alt-def of continuous maps by neighbourhoods}, $f$ is continuous iff $f[B_X(x, \delta)] \subseteq B_Y(f(x), \varepsilon)$. This satisfies the conditions we have.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A function $f: X \to Y$ is said to be continuous iff for any closed set $V$ in $Y$, its preimage in $X$ under $f$ is closed.
+	
+	\begin{proof}
+		Let $U_Y$ be any open set in $Y$, let $U_X$ be the preimage of $U_Y$ under $f$. By Definition \ref{def: continuous maps}, $U_X$ is open in $X$. Let
+		$$
+		V_X = f^{-1}[Y \setminus U_Y] = X \setminus U_X,
+		$$
+		Then $V_X$ is closed.
+	\end{proof}
+\end{proposition}
+%--------------------------------

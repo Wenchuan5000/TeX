@@ -1,0 +1,68 @@
+%================================
+\section{Limit Points}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[limit points]
+	\label{def: limit points}
+	Let $(X, \mathcal T_X)$ be a topological space, and let $A \subseteq X$. A point $x \in X$ is called a \textit{limit point} of $A$ iff for all neighbourhood $N_x$ of $x$, $N_x \setminus \{x\}$ intersects $A$.
+\end{definition}
+%--------------------------------
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: limit points are always in the closure}
+	Let $A$ be any set, and let $x$ be a limit point of $A$, then $x$ is an element of the closure of $A$.
+	
+	\begin{proof}
+		If $A$ is empty, then this is vacuously true. So, suppose $A$ is not empty.
+	
+		By Definition \ref{def: limit points}, for all neighbourhood $N_x$ of $x$, $N_x \setminus \{x\} \cap A$ is not empty. Naturally, $N_x \cap A$ is not empty.
+		
+		Assume that $x \notin \overline A$, then $X \setminus \overline A$ is a neighbourhood of $x$, by Definition \ref{def: neighbourhood}, and is disjoint from $A$. This is contradicted to the conditions.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	In this proof, the proposition also holds for $N_x \cap A^\circ = \emptyset$. Because if it is true, then
+	$$
+	\begin{aligned}
+		N_x \cap \partial A \supseteq (N_x \cap A) \setminus (N_x \cap A^\circ) = N_x \cap A.
+	\end{aligned}
+	$$
+	This implies that $A \subseteq \partial A$. In this case, $\overline A = \partial A$, for
+	
+	Assume that $x\notin \partial A$, then we have the same conclusion.
+	
+	Then $A^\circ = A \setminus \partial A = \emptyset$. 
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	A set is closed iff it contains all its limit point.
+	
+	\begin{proof}
+		Let $A$ be a set. By proposition \ref{prop: limit points are always in the closure}, for every limit point of $A$, it is also an element of the closure $\overline A$. And $A$ is closed iff $A = \overline A$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+\
+
+\
+
+%--------------------------------
+\begin{definition}
+	[convergent sequences]
+	\label{def: convergent sequences}
+	Let $(X, \mathcal T_X)$ be a topological space. A sequence $\{x_n\}$ in $X$ is said to be \textit{convergence} in $X$ iff there is an open set $U$ contains all but finite terms of $\{x_n\}$.
+\end{definition}
+%--------------------------------
