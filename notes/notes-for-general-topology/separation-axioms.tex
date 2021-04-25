@@ -2,7 +2,7 @@
 \section{Separation Axioms}
 %================================
 
-
+% https://en.wikipedia.org/wiki/Separated_sets
 %--------------------------------
 \begin{definition}
 	[topologically indistinguishable]
@@ -36,15 +36,21 @@
 %--------------------------------
 
 
-\href{https://en.wikipedia.org/wiki/Separated_sets}{See Wikipedia.org}
-
-
 %--------------------------------
 \begin{definition}
 	[$T_0$ spaces]
 	\label{def: T_1 spaces}
 	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are \textit{topologically distinguishable}.
 \end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[non-$T_0$ sets]
+	\label{eg: non-T_0 sets}
+	The a set $X$ with the discrete topology is $T_0$ iff $|X| \in \{0,1\}$ (vacuously true).
+\end{example}
 %--------------------------------
 
 
@@ -59,42 +65,87 @@
 
 %--------------------------------
 \begin{example}
-	[$T_0$ but not $R_0$]
-	% todo: check if it exists!
+	[$R_0$ but not $T_0$]
+	\label{eg: R_0 but not T_0}
+	Let $X$ be any set, let $U \subsetneq X$ with $|X \setminus U| > 1$, let $V \subsetneq U$ with $|V| = 1$, and let
+	$$
+	\mathcal T = \mathcal P(X) \setminus \mathcal P(X \setminus U) \setminus \mathcal P(V) \cup \{ \emptyset, X \}.
+	$$
+	For any two distinct points $x,y \in U$, the family $\mathcal N_x$ of neighbourhoods of $x$ and the family $\mathcal N_y$ of neighbourhoods of $y$ are different; and for all such $x$ and $y$, $x \notin \overline{ \{y\} } = \{ y \}$ (i.e., they are separated; but, be caution, they are not necessarily be separated by neighbourhoods; for if $y \in V$, the smallest neighbourhood of $y$ is $X$). Thus $(X, \mathcal T)$ is $R_0$. But $X$ is not $T_0$, because for two distinct points $x,y \in X \setminus U \cup V$, the families of their neighbourhoods are the same.
 \end{example}
 %--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$T_0$ but not $R_0$]
+	\label{eg: T_0 but not T_1}
+	Let $(\mathbb R_{\ge 0}, \mathcal T)$ be a topological space with
+	$$
+	\mathcal T = \left\{ U \subseteq \mathbb R : \forall i \in \mathbb R_{\ge 0}, \ U_i = [0, i)  \right\},
+	$$
+	Then for all $x,y \in (\mathbb R_{\ge 0}, \mathcal T)$, if $x \ne y$, then there are $|y - x|$ neighbourhoods $N_x$ of $x$ do not contain $y$. Thus, it is $T_0$.
+	
+	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in [0,y]$
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[alternative definitions of $R_0$ spaces]
+	\label{prop: alternative definitions of R_0 spaces}
+	Let $(X, \mathcal T)$ be $R_0$, then the following conditions are equivalent.
+	\begin{enumerate}[(i)]
+		\item
+		The closure of all singletons in $X$ are not $T_0$ subspace.
+		
+		\item
+		For any two points $x,y \in X$, $x \in \overline{ \{y\} }$ iff $y \in \overline{ \{x\} }$.
+		
+		\item
+		Every open set is the union of closed sets.
+	\end{enumerate}
+	
+	% todo: start from here!
+	% todo: prove them!
+	\begin{proof}
+		\
+		\begin{enumerate}[(i)]
+			\item
+			By Definition \ref{def: R_0 spaces}, if $y$ and $x$ are topologically distinguishable, by Definition \ref{def: R_0 spaces}, $x$ and $y$ are separated; i.e., $x \notin \overline {\{y\}}$ and $y \notin \overline{\{x\}}$.
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
 
 
 %--------------------------------
 \begin{definition}
 	[$T_1$ spaces]
 	\label{def: T_1 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff any two distinct points in $X$ are separated.
+	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff it is $T_0$ and $R_0$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{proposition}
-	[alternative definition of $T_1$ spaces]
-	\label{prop: alternative definition of T_1 spaces}
-	A topological space $(X, \mathcal T)$ is $T_1$ iff all singletons in $X$ are closed.
-\end{proposition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{example}
-	[$T_0$ but not $T_1$]
-	\label{eg: T_0 but not T_1}
-	Let $(\mathbb N, \mathcal T)$ be a topological space with
-	$$
-	\mathcal T = \left\{ U \subseteq \mathbb N : U = \bigcup_{i = 0}^{n} [ 0, i ) \right\},
-	$$
-	Then for all $x,y \in (\mathbb N, \mathcal T)$, if $x \ne y$, then there are $|y - x|$ neighbourhoods $N_x$ of $x$ do not contain $y$. Thus, it is $T_0$.
+	[alternative definitions of $T_1$ spaces]
+	\label{prop: alternative definitions of T_1 spaces}
+	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
+	\begin{enumerate}[(i)]
+		\item All singletons in $X$ are closed.
+		\item Every subset of $X$ is the intersection of all open sets containing it.
+		\item Every cofinite subset of $X$ is open.
+	\end{enumerate}
 	
-	On the other hand, it not $T_1$, for all singletons in $(\mathbb N, \mathcal T)$ except $\{0\}$ are not closed. By Proposition \ref{prop: alternative definition of T_1 spaces}, it is not $T_1$.
-\end{example}
+	% todo: prove them!
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
 %--------------------------------
 
 
