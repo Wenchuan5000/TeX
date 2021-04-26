@@ -2,6 +2,8 @@
 \section{Separation Axioms}
 %================================
 
+% https://en.wikipedia.org/wiki/Separation_axiom
+
 % https://en.wikipedia.org/wiki/Separated_sets
 %--------------------------------
 \begin{definition}
@@ -107,13 +109,19 @@
 		Every open set is the union of closed sets.
 	\end{enumerate}
 	
-	% todo: start from here!
 	% todo: prove them!
 	\begin{proof}
 		\
 		\begin{enumerate}[(i)]
 			\item
 			By Definition \ref{def: R_0 spaces}, if $y$ and $x$ are topologically distinguishable, by Definition \ref{def: R_0 spaces}, $x$ and $y$ are separated; i.e., $x \notin \overline {\{y\}}$ and $y \notin \overline{\{x\}}$.
+			
+			\item
+			By Definition \ref{def: R_0 spaces}, for all $x,y \in X$, $x,y$ are not separated only if they are topologically indistinguishable. By Definition \ref{def: topologically indistinguishable}, they share all their neighbourhoods, thus they have the same closure; i.e., $\overline{\{x\}} = \overline{\{y\}}$.
+			
+			\item
+			(Remained as a problem!)
+			% todo: Remained as a problem!
 		\end{enumerate}
 	\end{proof}
 \end{proposition}
@@ -163,6 +171,25 @@
 
 %--------------------------------
 \begin{definition}
+	[$R_1$ spaces]
+	\label{def: R_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $R_1$ iff any two topological distinguishable points in $X$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$R_0$ but not $R_1$]
+	\label{eg: R_0 but not R_1}
+	(Remained as a problem!)
+	% todo: Remained as a problem
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
 	[$T_2$ spaces]
 	\label{def: T_2 spaces}
 	A topological space $(X, \mathcal T)$ is said to be $T_2$ or \textit{Hausdorff} or \textit{separated} iff any two distinct points in $(X, \mathcal T)$ are separated by neighbourhoods.
@@ -194,6 +221,18 @@
 	\label{def: T_2.5 spaces}
 	A topological space $(X, \mathcal T)$ is said to be $T_{2 \nicefrac{1}{2}}$ or \textit{Urysohn} iff two distinct points in $X$ are separated by closed neighbourhoods.
 \end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$T_2$ but not $T_{2 \nicefrac{1}{2}}$]
+	\footnote{
+		See \href{https://planetmath.org/hausdorffspacenotcompletelyhausdorff}{MathPlanet}.
+	}
+	(Remained as a problem)
+	% todo: Remained as a problem!
+\end{example}
 %--------------------------------
 
 
