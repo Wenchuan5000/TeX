@@ -23,6 +23,20 @@
 
 
 %--------------------------------
+\begin{note}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces, if $\mathcal T_X$ is the discrete topology on $X$, then any function with domain $X$ is continuous. If $\mathcal T_Y$ is the indiscrete topology on $Y$, then any function with codomain $Y$ is continuous.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	A function is continuous bijection does not implies that its inverse is continuous. For example, let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be its topologies. If $\mathcal T$ is finer than $\mathcal T'$, then any bijection $f: (X, \mathcal T) \to (X, \mathcal T')$ is continuous. In this case, however, if $\mathcal T \ne \mathcal T'$, then $f^{-1}$ is not continuous.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
 \begin{proposition}
 	\label{prop: alt-def of continuous maps by neighbourhoods}
 	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is continuous at $x \in X$ iff for any neighbourhood $N_y$ of $f(x)$, there is a neighbourhood $N_x$ of $x$, such that $f[N_x] \subseteq N_y$.
@@ -70,7 +84,7 @@
 \begin{definition}
 	[convergence of sequences]
 	\label{def: convergence of sequences}
-	Let $(X, \mathcal T)$ be a topological space, and let $\{x_n\}$ be a sequence in $X$. Then $\{x_n\}$ is said to be \textit{converges} in $X$ iff there is an open set $U$ containing all but finite many terms of $\{x_n\}$. That is, there exists $N$ in the domain of $\{x_n\}$, for any natural numbers $n \ge N$, $x_n \in U$.
+	Let $(X, \mathcal T)$ be a topological space, and let $\{x_n\}$ be a sequence in $X$. Then $\{x_n\}$ is said to be \textit{converges} in $X$ iff there is an $x \in X$, such that for any open neighbourhood $U_x$ of $x$, it contains a cofinite subset of $\{x_n\}$. That is, there exists $N$ in the domain of $\{x_n\}$, for any natural numbers $n \ge N$, $x_n \in U_x$.
 \end{definition}
 %--------------------------------
 
@@ -90,6 +104,18 @@
 	\end{enumerate}
 \end{example}
 %--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological space, let $f: X \to Y$ be a continuous function, and let $\{x_n\}$ be a convergent sequence in $X$. Then $f[\{x_n\}]$ is a sequence convergent in $Y$.
+	
+	\begin{proof}
+		Let $U_y$ be any open neighbourhood of $f(x)$. By Definition \ref{def: continuous maps}, $f^{-1}[U_y]$ is also an open neighbourhood of $x$. By Definition \ref{def: convergence of sequences}, $f^{-1}[U_y]$ contains a cofinite subset $L \subseteq \{x_n\}$. Then $f[L]$ is a cofinite subset of $f[\{x_n\}]$. As $f[f^{-1}[U_y]] \supseteq f^{-1}[L]$, $f[\{x_n\}]$ converges in $f[f^{-1}[U_y]] \supseteq f^{-1}[L]$.
+	\end{proof}		
+\end{proposition}
+%--------------------------------
+
 
 % todo: !!!!!!!start!!!!!!
 
