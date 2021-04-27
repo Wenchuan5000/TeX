@@ -42,12 +42,31 @@
 %--------------------------------
 \begin{proposition}
 	\label{prop: dark side of topology}
-	Let $X$ be a set, and let $\mathcal C$ be the family of all closed sets in $X$. Then
+	Let $(X, \mathcal T)$ be a topological space, and let $\mathcal C$ be the family of all closed sets in $X$. Then
 	\begin{enumerate}[(i)]
-		\item $\emptyset, X \in \mathcal C$;
-		\item $\mathcal C$ is closed under arbitrary intersection;
-		\item $\mathcal C$ is closed under finite union.
+		\item
+		$\emptyset, X \in \mathcal C$;
+		
+		\item
+		$\mathcal C$ is closed under arbitrary intersection;
+		
+		\item
+		$\mathcal C$ is closed under finite union.
 	\end{enumerate}
+	
+	\begin{proof}
+		\
+		\begin{enumerate}[(i)]
+			\item
+			$X \in \mathcal T$ implies $X \setminus X = \emptyset \in \mathcal C$; and $\emptyset \in \mathcal T$ implies $X \setminus \emptyset = X \in \mathcal C$;
+			
+			\item
+			As $\mathcal T$ is closed under arbitrary union, then by Definition \ref{def: closed sets} and De Morgan's Law, $\mathcal C$ is closed under arbitrary intersection.
+			
+			\item
+			As $\mathcal T$ is closed under finite intersection, then by Definition \ref{def: closed sets} and De Morgan's Law, $\mathcal C$ is closed under finite union.
+		\end{enumerate}
+	\end{proof}
 \end{proposition}
 %--------------------------------
 

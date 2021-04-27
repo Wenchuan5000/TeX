@@ -12,6 +12,17 @@
 
 
 %--------------------------------
+\begin{note}
+	In Definition \ref{def: continuous maps}, note that even if for any open set $U$ in $X$, $f[X]$ is open in $Y$, $f$ is not necessarily continuous. For example, let $X = (\mathbb R, \mathcal T_X)$ with $\mathcal T_X$ induced by standard Euclidean metric, let $Y=(\mathbb R, \mathcal T_Y)$ with $\mathcal T_Y$ as a indiscrete topology, and define
+	$$
+	f(x) = [x],
+	$$
+	where $[x]$ denotes the integer part of $x$. Then for all $U \subseteq X$, $f[U]$ is open in $Y$, but by Definition \ref{def: continuous maps}, $f$ is not continuous.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
 \begin{proposition}
 	\label{prop: alt-def of continuous maps by neighbourhoods}
 	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A map $f: X \to Y$ is continuous at $x \in X$ iff for any neighbourhood $N_y$ of $f(x)$, there is a neighbourhood $N_x$ of $x$, such that $f[N_x] \subseteq N_y$.
@@ -53,3 +64,69 @@
 	\end{proof}
 \end{proposition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[convergence of sequences]
+	\label{def: convergence of sequences}
+	Let $(X, \mathcal T)$ be a topological space, and let $\{x_n\}$ be a sequence in $X$. Then $\{x_n\}$ is said to be \textit{converges} in $X$ iff there is an open set $U$ containing all but finite many terms of $\{x_n\}$. That is, there exists $N$ in the domain of $\{x_n\}$, for any natural numbers $n \ge N$, $x_n \in U$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	\
+	\begin{enumerate}
+		\item
+		In a discrete topological space, a sequence $\{x_n\}$ converges iff there is an $N$ in the domain of $\{x_n\}$, for any natural numbers $m > N$, $x_N = x_m$.
+		
+		\item
+		In a indiscrete topological space, any sequence $\{x_n\}$ in $X$ converges in $X$. And
+		$$
+		\lim_{n \to \infty} \{x_n\} = X.
+		$$
+	\end{enumerate}
+\end{example}
+%--------------------------------
+
+% todo: !!!!!!!start!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
