@@ -1,3 +1,56 @@
 %================================
 \section{Metrizability}
 %================================
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: metric spaces are Hausdorff}
+	Let $(X, \rho)$ be a metric space, then for all $x, y \in X$ ($x \ne y$), $\exists \varepsilon > 0$ such that $B(x, \varepsilon) \cap B (y, \varepsilon) = \emptyset$.
+	
+	\begin{proof}
+		Suppose for all $\varepsilon > 0$, $B(x, \varepsilon) \cap B(y, \varepsilon) \ne \emptyset$, then there must be a $z \in X$ such that $z \in B(x, \varepsilon) \cap B(y, \varepsilon)$. $z \in B(x, \varepsilon)$ only if $\rho(x,z) < \varepsilon$, and $z \in B(y, \varepsilon)$ only if $\rho (z,y) < \varepsilon$. Thus
+		$$
+		\rho(x, z) + \rho(y,z) < 2\varepsilon.
+		$$
+		As the assumption holds for all $\varepsilon > 0$, we may put
+		$$
+		\varepsilon = \frac{\rho(x,y)}{2}.
+		$$
+		Then, we have
+		$$
+		\rho(x,z) + \rho(y,z) < \rho(x,y),
+		$$
+		which is impossible.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

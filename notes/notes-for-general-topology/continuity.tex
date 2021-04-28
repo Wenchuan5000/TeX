@@ -101,6 +101,11 @@
 		$$
 		\lim_{n \to \infty} \{x_n\} = X.
 		$$
+		
+		\item
+		In a metrizable space, any convergent sequence converges to a unique point. This is quite intuitive, if the space is induced by the standard Euclidean metric.
+		
+		Let $(X, \mathcal T)$ be a topological space, with $\mathcal T$ be induced from a metric $\rho$ on $X$, and let $\{x_n\}$ be a sequence in $X$. Suppose $\{x_n\}$ converges to both $x$ and $y$ in $X$ ($x \ne y$), then, for all neighbourhoods $N_x$  of $x$ and $N_y$ of $y$, $N_x$ contains a cofinite subset $A \subseteq \{x_n\}$ and $N_y$ contains a cofinite subset $B \subseteq \{x_n\}$. If this were true, $N_x \cap N_y$ should be non-empty, for if $N_x$ and $N_y$ are disjoint, it means $N_y \subseteq \{x_n\} \setminus N_x$ or $N_x \subseteq \{x_n\} \setminus N_y$, then $N_x$ or $N_y$ should be finite. But, by Proposition \ref{prop: metric spaces are Hausdorff}, there must be mutually disjoint $N_x$ and $N_y$. Thus, the assumption causes a contradiction.
 	\end{enumerate}
 \end{example}
 %--------------------------------
