@@ -1,0 +1,102 @@
+%================================
+\section{More on Separation Axioms}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	[$T_{2 \nicefrac{1}{2}}$ spaces]
+	\label{def: T_2.5 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_{2 \nicefrac{1}{2}}$ or \textit{Urysohn} iff two distinct points in $X$ are separated by closed neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$T_2$ but not $T_{2 \nicefrac{1}{2}}$]
+	\footnote{
+		See \href{https://planetmath.org/hausdorffspacenotcompletelyhausdorff}{MathPlanet}.
+	}
+	(Remained as a problem)
+	% todo: Remained as a problem!
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_3$ spaces]
+	\label{def: T_3 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_3$ or \textit{regular} iff it is $T_0$ and given any point $x \in (X, \mathcal T)$ and closed set $V \subseteq X$ with $x \notin V$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_{3\nicefrac{1}{2}}$ spaces]
+	\label{def: T_3.5 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_{3 \nicefrac{1}{2}}$, or \textit{Tychonoff} or, \textit{completely $T_3$}, or \textit{completely regular}, iff it is $T_0$ and given any point $x$ and closed set $V \subseteq X$ with $x \notin V$, they are separated by a continuous function.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_4$ spaces]
+	\label{def: T_4 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_4$ or \textit{normal} iff it is Hausdorff and any tow disjoint closed subsets of $X$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[Urysohn's lemma]
+	\label{prop: urysohn's lemma}
+	A topological space is normal iff any two disjoint closed sets are separated by a continuous function.
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_5$ spaces]
+	\label{def: T_5 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_5$ or \textit{completely $T_4$} iff it is $T_1$ any two separated sets are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Every subspace of a $T_5$ space is normal.
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_6$ spaces]
+	\label{def: T_6 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_6$, or \textit{perfectly $T_4$} or \textit{perfectly normal} iff it is $T_1$ and any two disjoint closed sets are precisely separated by a continuous function.
+\end{definition}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{proposition}
+	[Tietze extension theorem]
+	\label{prop: Tietze extension theorem}
+	Let $(X, \mathcal T)$ be normal topological space, and let $f: A \to (\mathbb R, \mathcal T')$ be a continuous map where $A$ is a closed subset of $X$ and $\mathcal T'$ is the standard topology (induced by Euclidean metric). Then there exists a continuous map
+	$$
+	F: (X, \mathcal T) \to (\mathbb R, \mathcal T'),
+	$$
+	such that
+	$$
+	\forall x \in A: f(x) = g(x).
+	$$
+\end{proposition}
+%--------------------------------

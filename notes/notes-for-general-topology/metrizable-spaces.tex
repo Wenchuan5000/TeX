@@ -1,12 +1,90 @@
 %================================
-\section{Metrizability}
+\section{Metric Spaces and Metrizability of Topological Spases}
 %================================
+
+
+%--------------------------------
+\begin{definition}
+	[metric spaces]
+	\label{def: metric spaces}
+	Let $X$ be any set. A \textit{metric} $\rho$ on $X$ is a function $\rho: X \times X \to \mathbb R$ satisfying the following conditions: for all $x,y,z \in X$
+	\begin{enumerate}[(i)]
+		\item $\rho(x,y) \ge 0$, and $\rho(x,y) = 0$ iff $x = y$;
+		\item $\rho(x,y) = \rho(y,z)$;
+		\item $\rho(x,z) + \rho(z,y) \ge \rho(x,y)$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[balls]
+	\label{def: balls}
+	Let $(X, \rho)$ be a metric space, let $x \in X$, and let $\varepsilon > 0$. The \textit{open $\varepsilon$-ball about $x$} or just \textit{$\varepsilon$-ball about $x$} is defined to be
+	$$
+	B(x, \varepsilon) = \left\{ y \in X : \rho(x,y) < \varepsilon \right\}.
+	$$
+	The \textit{closed $\varepsilon$-ball about $x$} is defined to be
+	$$
+	\overline B (x, \varepsilon) = \{ y \in X : \rho(x,y) \le \varepsilon \}.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	\label{eg: Euclidean metrics}
+	Let $X$ be any set, and let metric $\rho_p$ on $X^n$ ($n \in \mathbb Z_+$) defined by
+	$$
+	\rho_p (x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p},
+	$$
+	where $p \ge 1$. $\rho_2$ is so called the \textit{standard Euclidean metric}. If $X = \mathbb R$, then the metric space $(\mathbb R^n, \rho_2)$ is so-called \textit{Euclidean $n$-space}.
+	
+	For all $p,q \ge 1$, if $p < q$, then for all $\varepsilon > 0$ and for all $x,y \in X$, $\rho_p(x,y) \ge \rho_q(x,y)$; in particular, $\rho_p = \rho_q$ iff there is a unique $k \in \{1, \ldots, n\}$, such that for all $i \in \{1, \ldots, n\} \setminus \{k\}$, $x_i = 0$. As $\rho_p(x,y)$ is always ``overestimated'' than $\rho_q(x,y)$, we have $B_{\rho_p}(x, \varepsilon) \supseteq B_{\rho_q}(x,\varepsilon)$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	\label{eg: discrete metric}
+	Let $X$ be any set. The \textit{discrete metric} $\rho$ on $X$ is defined to be
+	$$
+	\rho(x,y) =
+	\begin{cases}
+		0 & \text{if $x = y$}, \\
+		1 & \text{otherwise}.
+	\end{cases}
+	$$
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $a,b \in \mathbb R$ with $a< b$, and let metric $\rho_p$ on $C[a,b]$ defined by
+	$$
+	\rho_p (f, g) = \left( \int_a^b |f(t) - g(t)|^p dt \right)^\frac{1}{p},
+	$$
+	where $p \ge 1$. In particular,
+	$$
+	\rho_\infty (f,g) = \sup_{t \in [a,b]} |f(t) - g(t)|.
+	$$
+\end{example}
+%--------------------------------
+
+% todo: more examples
+% 1. Hamming metric
+% 2. Great circle metric
+% 3. Hausdorff metric
 
 
 %--------------------------------
 \begin{proposition}
 	\label{prop: metric spaces are Hausdorff}
-	Let $(X, \rho)$ be a metric space, then for all $x, y \in X$ ($x \ne y$), $\exists \varepsilon > 0$ such that $B(x, \varepsilon) \cap B (y, \varepsilon) = \emptyset$.
+	Let $(X, \rho)$ be a metric space, then for all $x, y \in X$ ($x \ne y$), there is an $\varepsilon > 0$ such that $B(x, \varepsilon) \cap B (y, \varepsilon) = \emptyset$.
 	
 	\begin{proof}
 		Suppose for all $\varepsilon > 0$, $B(x, \varepsilon) \cap B(y, \varepsilon) \ne \emptyset$, then there must be a $z \in X$ such that $z \in B(x, \varepsilon) \cap B(y, \varepsilon)$. $z \in B(x, \varepsilon)$ only if $\rho(x,z) < \varepsilon$, and $z \in B(y, \varepsilon)$ only if $\rho (z,y) < \varepsilon$. Thus
@@ -25,6 +103,106 @@
 	\end{proof}
 \end{proposition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[induced topologies]
+	\label{def: induced topologies}
+	Let $(X, \rho)$ be a metric space. A topology $\mathcal T$ on $X$ is said to be \textit{induced} by $\rho$ iff for all $\varepsilon > 0$, any $U \in \mathcal T$ is the union of ball(s) in $X$; i.e.,
+	$$
+	\mathcal T = \left\{ U \subseteq X :  U = \bigcup_{x \in X} B(x, \varepsilon) \right\}.
+	$$
+	
+	In this case, $\mathcal T$ is called the \textit{underlying topology} of $\rho$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[metrizable spaces]
+	\label{def: metrizable spaces}
+	Let $(X, \mathcal T)$ be a topological space. If there is any $\rho$ induce $\mathcal T$, then $(X, \mathcal T)$ is said to be \textit{metrizable}.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Lipschitz equivalence]
+	\label{def: Lipschitz equivalence}
+	Let $X$ be any set, and let $\rho$ and $\rho'$ be metrics on $X$. $\rho$ and $\rho'$ are said to be \textit{Lipschitz equivalent} iff there exist $c, C > 0$, such that for all $x,y \in X$,
+	$$
+	c \rho(x,y) \le \rho'(x,y) \le C \rho(x,y).
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: Lipschitz equivalence is a equivalence relation}
+	Lipschitz equivalence is an equivalence relation.
+	
+	\begin{proof}
+		Clearly, Definition \ref{def: Lipschitz equivalence} also holds for $\rho = \rho'$. So, Lipschitz equivalence is reflexive. In Definition \ref{def: Lipschitz equivalence}, the relation also holds for $\frac{1}{C} \rho' \le \rho \le \frac{1}{c} \rho'$. So Lipschitz equivalence is symmetric.
+		
+		If there is another $\rho''$ be Lipschitz equivalent to $\rho'$, then there is $r, R > 0$, such that for all $x,y \in X$,
+		$$
+		r\rho''(x,y) \le \rho'(x,y) \le R\rho''(x,y).
+		$$
+		By the conditions in Definition \ref{def: Lipschitz equivalence}, we have
+		$$
+		\frac{c}{r} \rho(x,y) \le \rho''(x,y) \le  \frac{C}{R} \rho(x,y),
+		$$
+		i.e., $\rho$ and $\rho''$ are also Lipschitz equivalent. So Lipschitz equivalence is transitive.
+		
+		Above all, Lipschitz equivalence is an equivalence relation.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: Lipschitz equivalent metrics induces the same topology}
+	Let $X$ be any set, and let $\rho$ and $\rho'$ be metrics on $X$. If $\rho$ and $\rho'$ are Lipschitz equivalent, then $\rho$ and $\rho'$ induce the same topology.
+	
+	\begin{proof}
+		As $\rho$ and $\rho'$ are Lipschitz equivalent, by Definition \ref{def: Lipschitz equivalence}, there is a $c > 0$ such that for all $x,y \in X$,
+		$$
+		c \rho(x,y) \le \rho'(x,y).
+		$$
+		
+		For all $\varepsilon > 0$ and $x \in X$, we have
+		$$
+		B_{\rho'}(x, \varepsilon) \subseteq B_{c \rho}(x, \varepsilon) = B_\rho \left( x, \frac{1}{c} \varepsilon \right).
+		$$
+		
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	In Example \ref{eg: Euclidean metrics}, for all $p,q \ge 1$, all $\rho_p$ and $\rho_q$ induce the same topology. Let $X$ be any subset of $\mathbb R^n$, then for all $x,y \in X$, if $p < q$, then
+	$$
+	\rho_p (x,y) \ge \rho_q (x,y).
+	$$
+	Thus, if $\rho_1$ and $\rho_\infty$ are Lipschitz equivalent, then any other $\rho_p$ and $\rho_q$ are Lipschitz equivalent. We have
+	$$
+	\rho_1 (x,y) = \sum_{i = 1}^n |x_i - y_i| \ge \max_{i \in \{1, \ldots, n\}} |x_i - y_i| = \rho_\infty (x,y).
+ 	$$
+ 	Clearly,
+ 	$$
+ 	\rho_\infty (x,y) \le \rho_1 (x,y) \le n \rho_\infty (x,y).
+ 	$$
+ 	By Definition \ref{def: Lipschitz equivalence}, $\rho_1$ and $\rho_\infty$ are Lipschitz equivalent, hence for all $p, q \ge 1$, $\rho_p$ and $\rho_q$ are Lipschitz equivalent. Thus, by Proposition \ref{prop: Lipschitz equivalent metrics induces the same topology}, they induce the same topology.
+\end{example}
+%--------------------------------
+
 
 
 
