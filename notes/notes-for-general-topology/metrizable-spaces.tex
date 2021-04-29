@@ -1,5 +1,5 @@
 %================================
-\section{Metric Spaces and Metrizability of Topological Spases}
+\section{Metrizability}
 %================================
 
 
@@ -21,7 +21,7 @@
 \begin{definition}
 	[balls]
 	\label{def: balls}
-	Let $(X, \rho)$ be a metric space, let $x \in X$, and let $\varepsilon > 0$. The \textit{open $\varepsilon$-ball about $x$} or just \textit{$\varepsilon$-ball about $x$} is defined to be
+	Let $(X, \rho)$ be a metric space, let $x \in X$, and let $\varepsilon \in \mathbb R_{> 0}$. The \textit{open $\varepsilon$-ball about $x$} or just \textit{$\varepsilon$-ball about $x$} is defined to be
 	$$
 	B(x, \varepsilon) = \left\{ y \in X : \rho(x,y) < \varepsilon \right\}.
 	$$
@@ -36,13 +36,13 @@
 %--------------------------------
 \begin{example}
 	\label{eg: Euclidean metrics}
-	Let $X$ be any set, and let metric $\rho_p$ on $X^n$ ($n \in \mathbb Z_+$) defined by
+	Let $X$ be any set, and let metric $\rho_p$ on $X^n$ ($n \in \mathbb Z_{>0}$) defined by
 	$$
 	\rho_p (x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p},
 	$$
-	where $p \ge 1$. $\rho_2$ is so called the \textit{standard Euclidean metric}. If $X = \mathbb R$, then the metric space $(\mathbb R^n, \rho_2)$ is so-called \textit{Euclidean $n$-space}.
+	where $p \in \mathbb R_{\ge 1}$. $\rho_2$ is so called the \textit{standard Euclidean metric}. If $X = \mathbb R$, then the metric space $(\mathbb R^n, \rho_2)$ is so-called \textit{Euclidean $n$-space}.
 	
-	For all $p,q \ge 1$, if $p < q$, then for all $\varepsilon > 0$ and for all $x,y \in X$, $\rho_p(x,y) \ge \rho_q(x,y)$; in particular, $\rho_p = \rho_q$ iff there is a unique $k \in \{1, \ldots, n\}$, such that for all $i \in \{1, \ldots, n\} \setminus \{k\}$, $x_i = 0$. As $\rho_p(x,y)$ is always ``overestimated'' than $\rho_q(x,y)$, we have $B_{\rho_p}(x, \varepsilon) \supseteq B_{\rho_q}(x,\varepsilon)$.
+	For all $p,q \in \mathbb R_{\ge 1}$, if $p < q$, then for all $\varepsilon \in \mathbb R_{> 0}$ and for all $x,y \in X$, $\rho_p(x,y) \ge \rho_q(x,y)$; in particular, $\rho_p = \rho_q$ iff there is a unique $k \in \{1, \ldots, n\}$, such that for all $i \in \{1, \ldots, n\} \setminus \{k\}$, $x_i = 0$. As $\rho_p(x,y)$ is always ``overestimated'' than $\rho_q(x,y)$, we have $B_{\rho_p}(x, \varepsilon) \supseteq B_{\rho_q}(x,\varepsilon)$.
 \end{example}
 %--------------------------------
 
@@ -175,13 +175,28 @@
 		c \rho(x,y) \le \rho'(x,y).
 		$$
 		
-		Given $r > 0$ and for all $x \in X$, we have
+		Given $r \in \mathbb R_{> 0}$ and for all $x \in X$, we have
 		$$
-		B_{\rho'}(x, r) \subseteq B_{c \rho}(x, r) = B_\rho \left( x, \frac{1}{c} r \right).
+		B_{\rho'}(x, cr) \subseteq B_{c \rho}(x, r) = B_\rho \left( x, \frac{1}{c} r \right).
 		$$
+		For all $U \in \mathcal T_\rho$, for all $x \in U$, there is an $\varepsilon \in \mathbb R_{> 0}$, such that
+		$$
+		B_{\rho'} (x, \varepsilon) \subseteq B_{\rho}(x, \varepsilon) \subseteq U.
+		$$
+		So $U \in \mathcal T_\rho'$. Then we have $\mathcal T_{\rho} \subseteq \mathcal T_{\rho'}$.
 		
+		Similarly, $U \in \mathcal T_{\rho'}$ only if $U \in \mathcal T_\rho$. Then we have $\mathcal T_{\rho'} \subseteq \mathcal T_{\rho}$.
+		
+		Above all, $\mathcal T_{\rho} = \mathcal T_{\rho'}$.
 	\end{proof}
 \end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	In this proposition, $\mathcal T_\rho$ and $\mathcal T_{\rho'}$ are said to be homeomorphic or topologically equivalent (see Definition \ref{def: homomorphic}). And $\rho$ and $\rho'$ are also said to be topologically equivalent.
+\end{note}
 %--------------------------------
 
 
