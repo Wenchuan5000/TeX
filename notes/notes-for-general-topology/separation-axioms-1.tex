@@ -1,10 +1,14 @@
 %================================
-\section{Separation Axioms}
+\section{Separation Axioms. From Hausdorff to $T_0$}
 %================================
 
 % https://en.wikipedia.org/wiki/Separation_axiom
 
 % https://en.wikipedia.org/wiki/Separated_sets
+
+% https://proofwiki.org/wiki/Definition:Tychonoff_Separation_Axioms
+
+
 %--------------------------------
 \begin{definition}
 	[topologically indistinguishable]
@@ -23,36 +27,75 @@
 
 
 %--------------------------------
-\begin{definition}
-	[saperated sets]
-	Let $(X, \mathcal T)$ be a topological space, and let $A, B \in \mathcal P(X)$.
-	
-	\begin{enumerate}[(i)]
-		\item $A$ and $B$ are said to be \textit{separated} iff each is disjoint from other's closure.
-		\item $A$ and $B$ are said to be \textit{separated by neighbourhoods} iff there are neighbourhoods $N_A$ of $A$ and $N_B$ of $B$ such that $N_A$ and $N_B$ are disjoint.
-		\item $A$ and $B$ are said to be \textit{separated by closed neighbourhoods} iff there are closed neighbourhoods $\overline N_A$ of $A$ and $\overline N_B$ of $B$ such that $\overline N_A$ and $\overline N_B$ are disjoint.
-		\item $A$ and $B$ are said to be \textit{separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f[A] = \{0\}$ and $f[B] = \{1\}$.
-		\item $A$ and $B$ are said to be \textit{precisely separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f^{-1}[\{0\}] = A$ and $f^{-1}[\{1\}] = B$
-	\end{enumerate}
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{definition}
-	[$T_0$ spaces]
-	\label{def: T_1 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are \textit{topologically distinguishable}.
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
 \begin{example}
-	[non-$T_0$ sets]
-	\label{eg: non-T_0 sets}
-	The a set $X$ with the discrete topology is $T_0$ iff $|X| \in \{0,1\}$ (vacuously true).
+	In an indiscrete topological space, all distinct points are topologically indistinguishable.
 \end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Hausdorff Spaces]
+	\label{def: Hausdorff spaces}
+	A topological space is said to be \textit{Hausdorff} or $T_1$ iff all distinct points in the space are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	All metrizable spaces are Hausdorff
+	
+	\begin{proof}
+		Let $(X, \mathcal T)$ be a metrizable space. There exists a metric $\rho$ on $X$ that induces $\mathcal T$. Given distinct points $x,y \in X$, suppose for all $\varepsilon \in \mathbb R_{> 0}$, there exists $z \in B(x, \varepsilon) \cap B(y, \varepsilon)$. Then $\rho(x, z) < \varepsilon$ and $\rho(y, z) < \varepsilon$. Now we have
+		$$
+		\rho(x, z) + \rho(y, z) < 2\varepsilon.
+		$$
+		
+		Put $\rho(x,y) > 2\varepsilon$ as $x$ and $y$ are arbitrarily given. Then we have
+		$$
+		\rho(x, z) + \rho(y,z) < \rho(x,y),
+		$$
+		which implies that $\rho$ is not a metric on $X$. Hence, $(X, \mathcal T)$ is not metrizable which is contradicted to the condition.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: T2 implies T1}
+	All singletons in a Hausdorff space are closed.
+	
+	\begin{proof}
+		Let $(X, \mathcal T)$ be a Hausdorff space, and let $x \in X$. For all $y \in X$ with $x \ne y$, there is a open neighbourhood $U_y$ of $y$ such that $x \notin U_y$. Then, for all such $U_y$, we have
+		$$
+		\forall y \in X, \; x \in X \setminus U_y = \{x\} \iff x \in \bigcap_{y \in X \setminus \{x\}} X \setminus U_y  = \{x\}.
+		$$
+		As all $X \setminus U_y$ are closed, their intersection $\{x\}$ is closed.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Fr\'echet spaces]
+	\label{def: T_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff for all singletons in $X$ are closed.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: T2 implies R0}
+	In a Hausdorff space, any two topologically distinguishable points are separated.
+	
+	\begin{proof}
+		Clearly, in a Hausdorff space, any two points are topologically distinguishable points iff they are distinct. Then, of course, they are separated.
+	\end{proof}
+\end{proposition}
 %--------------------------------
 
 
@@ -67,13 +110,65 @@
 
 %--------------------------------
 \begin{example}
-	[$R_0$ but not $T_0$]
-	\label{eg: R_0 but not T_0}
-	Let $X$ be any set, let $U \subsetneq X$ with $|X \setminus U| > 1$, let $V \subsetneq U$ with $|V| = 1$, and let
+	[Fr\'echet but not Hausdorff]
+	\label{eg: T_1 but not T_2}
+	Let $X$ be a nonempty set, let $p \in X$, let $\mathcal T'$ be a Hausdorff topology on $X \setminus \{p\}$, and let
 	$$
-	\mathcal T = \mathcal P(X) \setminus \mathcal P(X \setminus U) \setminus \mathcal P(V) \cup \{ \emptyset, X \}.
+	\mathcal T = \{X\} \cup \mathcal T'.
 	$$
-	For any two distinct points $x,y \in U$, the family $\mathcal N_x$ of neighbourhoods of $x$ and the family $\mathcal N_y$ of neighbourhoods of $y$ are different; and for all such $x$ and $y$, $x \notin \overline{ \{y\} } = \{ y \}$ (i.e., they are separated; but, be caution, they are not necessarily be separated by neighbourhoods; for if $y \in V$, the smallest neighbourhood of $y$ is $X$). Thus $(X, \mathcal T)$ is $R_0$. But $X$ is not $T_0$, because for two distinct points $x,y \in X \setminus U \cup V$, the families of their neighbourhoods are the same.
+	Then, all $x \in (X, \mathcal T)$ are closed, thus $(X, \mathcal T)$ is Fr\'echet. But the only neighbourhood of $p$ is $X$, so its closure is $X$. Then, for any $x \in X \setminus \{p\}$, $x$ and $p$ are not separated, in which case $(X, \mathcal T)$ is not $R_0$. Thus, $(X, \mathcal T)$ is not Hausdorff.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	A topological space $(X, \mathcal T)$ is Fr\'echet only if it is $R_0$. Because for distinct points all $x,y \in X$, $x \notin \overline{\{y\}} = \{y\}$ (being $R_0$), as all singletons are closed (being Fr\'echet). But, on the contrary, being $R_0$ does not imply being $T_1$, for we can find topological spaces being $R_0$ but not Fr\'echet.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$R_0$ but not $T_1$]
+	\label{eg: R_0 but not T_1}
+	
+	Let $X$ be any set with $|X| \ge 3$, let $U \subsetneq X$ with $|U| \ge 2$, let $\mathcal T_{X \setminus U}$ be a $T_1$ topology on $X \setminus U$, and let $\mathcal T$
+	$$
+	\mathcal T = \mathcal T_{X \setminus U} \cup \{X, U\}.
+	$$
+	
+	For all $x,y \in X$, if $x \ne y$, then they are separated. Thus, the space is $R_0$.
+	
+	But $(X, \mathcal T)$ is not $T_1$, because all $\{u\} \in U$ share the same closure which is $U$ itself.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_0$ spaces]
+	\label{def: T_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are topologically distinguishable.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	In Example \ref{eg: R_0 but not R_1}, all $u \in U$ are topologically indistinguishable, for they have the same family of neighbourhoods which is $\{U, X\}$. Thus, in the example, $(X, \mathcal T)$ is not $T_0$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	On $\mathbb R^n$, let $P$ be a partition set with countable cardinality, let
+	$$
+	\mathcal B = 
+	$$
+	
+	% todo: starFromHere()!!!!!!!!!!
 \end{example}
 %--------------------------------
 
@@ -91,6 +186,64 @@
 	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in [0,y]$
 \end{example}
 %--------------------------------
+
+
+
+
+
+
+\
+
+\
+
+\
+
+---
+
+\
+
+\
+
+\
+
+
+
+
+
+%--------------------------------
+\begin{definition}
+	[saperated sets]
+	Let $(X, \mathcal T)$ be a topological space, and let $A, B \in \mathcal P(X)$.
+	
+	\begin{enumerate}[(i)]
+		\item $A$ and $B$ are said to be \textit{separated} iff each is disjoint from other's closure.
+		\item $A$ and $B$ are said to be \textit{separated by neighbourhoods} iff there are neighbourhoods $N_A$ of $A$ and $N_B$ of $B$ such that $N_A$ and $N_B$ are disjoint.
+		\item $A$ and $B$ are said to be \textit{separated by closed neighbourhoods} iff there are closed neighbourhoods $\overline N_A$ of $A$ and $\overline N_B$ of $B$ such that $\overline N_A$ and $\overline N_B$ are disjoint.
+		\item $A$ and $B$ are said to be \textit{separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f[A] = \{0\}$ and $f[B] = \{1\}$.
+		\item $A$ and $B$ are said to be \textit{precisely separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f^{-1}[\{0\}] = A$ and $f^{-1}[\{1\}] = B$
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+
+
+
+%--------------------------------
+\begin{example}
+	[non-$T_0$ sets]
+	\label{eg: non-T_0 sets}
+	The a set $X$ with the discrete topology is $T_0$ iff $|X| \in \{0,1\}$ (vacuously true).
+\end{example}
+%--------------------------------
+
+
+
+
+
+
+
+
 
 
 %--------------------------------
@@ -129,12 +282,11 @@
 
 
 
+
+
+
 %--------------------------------
-\begin{definition}
-	[$T_1$ spaces]
-	\label{def: T_1 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff it is $T_0$ and $R_0$.
-\end{definition}
+
 %--------------------------------
 
 
@@ -188,25 +340,7 @@
 %--------------------------------
 
 
-%--------------------------------
-\begin{definition}
-	[$T_2$ spaces]
-	\label{def: T_2 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $T_2$ or \textit{Hausdorff} or \textit{separated} iff any two distinct points in $(X, \mathcal T)$ are separated by neighbourhoods.
-\end{definition}
-%--------------------------------
 
-%--------------------------------
-\begin{example}
-	[$T_2$ but not $T_1$]
-	\label{eg: T_2 but not T_1}
-	Let $X$ be an nonempty set, and let $\mathcal U = \mathcal P(X \setminus \{x \in X\})$. Then the topological space $(X, \mathcal T)$ with
-		$$
-		\mathcal T = \mathcal U \cup \{X\}
-		$$
-		is $T_1$. But it is $T_2$ iff $|X| = 1$ (This is vacuously true). As $|X| > 1$, $\{x\}$ is not open.
-\end{example}
-%--------------------------------
 
 %--------------------------------
 \begin{proposition}
