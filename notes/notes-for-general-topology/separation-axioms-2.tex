@@ -5,6 +5,22 @@
 
 %--------------------------------
 \begin{definition}
+	[saperated sets]
+	Let $(X, \mathcal T)$ be a topological space, and let $A, B \in \mathcal P(X)$.
+	
+	\begin{enumerate}[(i)]
+		\item $A$ and $B$ are said to be \textit{separated} iff each is disjoint from other's closure.
+		\item $A$ and $B$ are said to be \textit{separated by neighbourhoods} iff there are neighbourhoods $N_A$ of $A$ and $N_B$ of $B$ such that $N_A$ and $N_B$ are disjoint.
+		\item $A$ and $B$ are said to be \textit{separated by closed neighbourhoods} iff there are closed neighbourhoods $\overline N_A$ of $A$ and $\overline N_B$ of $B$ such that $\overline N_A$ and $\overline N_B$ are disjoint.
+		\item $A$ and $B$ are said to be \textit{separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f[A] = \{0\}$ and $f[B] = \{1\}$.
+		\item $A$ and $B$ are said to be \textit{precisely separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f^{-1}[\{0\}] = A$ and $f^{-1}[\{1\}] = B$
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
 	[$T_{2 \nicefrac{1}{2}}$ spaces]
 	\label{def: T_2.5 spaces}
 	A topological space $(X, \mathcal T)$ is said to be $T_{2 \nicefrac{1}{2}}$ or \textit{Urysohn} iff two distinct points in $X$ are separated by closed neighbourhoods.

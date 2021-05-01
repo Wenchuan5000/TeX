@@ -11,6 +11,24 @@
 
 %--------------------------------
 \begin{definition}
+	[saperated]
+	\label{def: seperated}
+	In a topological space, two sets are said to be \textit{separated} iff each is disjoint from other's closure.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[separated by neighbourhoods]
+	\label{def: separated by neighbourhoods}
+	In a topological space $(X, \mathcal T)$, two sets $A$ and $B$ are said to be \textit{separated by neighbourhood} iff there are neighbourhoods $N_A$ of $A$ and $N_B$ of $B$ such that $N_A$ and $N_B$ are disjoint.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
 	[topologically indistinguishable]
 	\label{def: topologically indistinguishable}
 	Let $(X, \mathcal T)$ be a topological space. Two points $x,y \in X$ are said to be \textit{topologically indistinguishable} iff they share all their neighbourhoods. That is, let $\mathcal N_x$ be the family of all neighbourhoods of $x$ and let $\mathcal N_y$ be the family of all neighbourhoods of $y$, we have
@@ -33,11 +51,25 @@
 %--------------------------------
 
 
+\centering{
+	\subsection*{On Hausdorff Spaces}
+}
+
+
 %--------------------------------
 \begin{definition}
 	[Hausdorff Spaces]
 	\label{def: Hausdorff spaces}
-	A topological space is said to be \textit{Hausdorff} or $T_1$ iff all distinct points in the space are separated by neighbourhoods.
+	A topological space is said to be \textit{Hausdorff} or $T_2$ iff all distinct points in the space are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$R_1$ spaces]
+	\label{def: R_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $R_1$ iff any two topological distinguishable points in $X$ are separated by neighbourhoods.
 \end{definition}
 %--------------------------------
 
@@ -76,6 +108,11 @@
 	\end{proof}
 \end{proposition}
 %--------------------------------
+
+
+\centering{
+	\subsection*{On Fr\'echet spaces}
+}
 
 
 %--------------------------------
@@ -145,6 +182,11 @@
 %--------------------------------
 
 
+\centering{
+	\subsection*{On $T_0$ Spaces}
+}
+
+
 %--------------------------------
 \begin{definition}
 	[$T_0$ spaces]
@@ -163,12 +205,8 @@
 
 %--------------------------------
 \begin{example}
-	On $\mathbb R^n$, let $P$ be a partition set with countable cardinality, let
-	$$
-	\mathcal B = 
-	$$
-	
-	% todo: starFromHere()!!!!!!!!!!
+	[$R_0$ but not $T_0$]
+	Let $\mathcal T$ be a countable family of disjoint proper intervals on $\mathbb R^n$, and $\bigcup \mathcal T = \mathbb R^n$. $(X, \mathcal T)$ is $R_0$, but not $T_0$.
 \end{example}
 %--------------------------------
 
@@ -183,7 +221,7 @@
 	$$
 	Then for all $x,y \in (\mathbb R_{\ge 0}, \mathcal T)$, if $x \ne y$, then there are $|y - x|$ neighbourhoods $N_x$ of $x$ do not contain $y$. Thus, it is $T_0$.
 	
-	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in [0,y]$
+	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in \overline{\{y\}} = [0, y]$.
 \end{example}
 %--------------------------------
 
@@ -205,40 +243,6 @@
 \
 
 \
-
-
-
-
-
-%--------------------------------
-\begin{definition}
-	[saperated sets]
-	Let $(X, \mathcal T)$ be a topological space, and let $A, B \in \mathcal P(X)$.
-	
-	\begin{enumerate}[(i)]
-		\item $A$ and $B$ are said to be \textit{separated} iff each is disjoint from other's closure.
-		\item $A$ and $B$ are said to be \textit{separated by neighbourhoods} iff there are neighbourhoods $N_A$ of $A$ and $N_B$ of $B$ such that $N_A$ and $N_B$ are disjoint.
-		\item $A$ and $B$ are said to be \textit{separated by closed neighbourhoods} iff there are closed neighbourhoods $\overline N_A$ of $A$ and $\overline N_B$ of $B$ such that $\overline N_A$ and $\overline N_B$ are disjoint.
-		\item $A$ and $B$ are said to be \textit{separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f[A] = \{0\}$ and $f[B] = \{1\}$.
-		\item $A$ and $B$ are said to be \textit{precisely separated by a continuous function} iff there is a continuous function $f: X \to \mathbb R$, such that $f^{-1}[\{0\}] = A$ and $f^{-1}[\{1\}] = B$
-	\end{enumerate}
-\end{definition}
-%--------------------------------
-
-
-
-
-
-%--------------------------------
-\begin{example}
-	[non-$T_0$ sets]
-	\label{eg: non-T_0 sets}
-	The a set $X$ with the discrete topology is $T_0$ iff $|X| \in \{0,1\}$ (vacuously true).
-\end{example}
-%--------------------------------
-
-
-
 
 
 
@@ -321,13 +325,7 @@
 %--------------------------------
 
 
-%--------------------------------
-\begin{definition}
-	[$R_1$ spaces]
-	\label{def: R_1 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $R_1$ iff any two topological distinguishable points in $X$ are separated by neighbourhoods.
-\end{definition}
-%--------------------------------
+
 
 
 %--------------------------------
