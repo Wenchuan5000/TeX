@@ -52,17 +52,144 @@
 
 
 \centering{
-	\subsection*{On Hausdorff Spaces}
+	\subsection*{$T_0$ Spaces}
+}
+
+%--------------------------------
+\begin{definition}
+	[$T_0$ spaces]
+	\label{def: T_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are topologically distinguishable.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $X$ be any set and let $\mathcal T$ be the indiscrete topology on $X$. $(X, \mathcal T)$ is $T_0$ iff $|X| \in \{0, 1\}$.
+\end{example}
+%--------------------------------
+
+
+\centering{
+	\subsection*{$T_1$ Spaces}
 }
 
 
 %--------------------------------
 \begin{definition}
-	[Hausdorff Spaces]
-	\label{def: Hausdorff spaces}
-	A topological space is said to be \textit{Hausdorff} or $T_2$ iff all distinct points in the space are separated by neighbourhoods.
+	[$R_0$ spaces]
+	\label{def: R_0 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $R_0$ iff any two topologically distinguishable points in $X$ are separated.
 \end{definition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[$T_1$ Spaces]
+	\label{def: T_1 spaces}
+	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff it is $T_0$ and $R_0$; i.e., all distinct pionts $x,y \in X$ are separated.
+\end{definition}
+%-------------------------------
+
+%--------------------------------
+\begin{example}
+	[$R_0$ but not $T_0$]
+	Let $\mathcal T$ be a countable family of disjoint proper intervals on $\mathbb R^n$, and $\bigcup \mathcal T = \mathbb R^n$. $(X, \mathcal T)$ is $R_0$, but not $T_0$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$T_0$ but not $R_0$]
+	\label{eg: T_0 but not T_1}
+	Let $(\mathbb R_{\ge 0}, \mathcal T)$ be a topological space with
+	$$
+	\mathcal T = \left\{ U \subseteq \mathbb R : \forall i \in \mathbb R_{\ge 0}, \ U_i = [0, i)  \right\},
+	$$
+	Then for all $x,y \in (\mathbb R_{\ge 0}, \mathcal T)$, if $x \ne y$, then there are $|y - x|$ neighbourhoods $N_x$ of $x$ do not contain $y$. Thus, it is $T_0$.
+	
+	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in \overline{\{y\}} = [0, y]$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	[$R_0$ but not $T_1$]
+	\label{eg: R_0 but not T_1}
+	
+	Let $X$ be any set with $|X| \ge 3$, let $U \subsetneq X$ with $|U| \ge 2$, let $\mathcal T_{X \setminus U}$ be a $T_1$ topology on $X \setminus U$, and let $\mathcal T$
+	$$
+	\mathcal T = \mathcal T_{X \setminus U} \cup \{X, U\}.
+	$$
+	
+	For all $x,y \in X$, if $x \ne y$, then they are separated. Thus, the space is $R_0$.
+	
+	But $(X, \mathcal T)$ is not $T_1$, because all $\{u\} \in U$ share the same closure which is $U$ itself.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[alternative definitions of $R_0$ spaces]
+	\label{prop: alternative definitions of R_0 spaces}
+	Let $(X, \mathcal T)$ be $R_0$, then the following conditions are equivalent.
+	\begin{enumerate}[(i)]
+		\item
+		The closure of all singletons in $X$ are not $T_0$ subspace.
+		
+		\item
+		For any two points $x,y \in X$, $x \in \overline{ \{y\} }$ iff $y \in \overline{ \{x\} }$.
+		
+		\item
+		Every open set is the union of closed sets.
+	\end{enumerate}
+	
+	% todo: prove them!
+	\begin{proof}
+		\
+		\begin{enumerate}[(i)]
+			\item
+			By Definition \ref{def: R_0 spaces}, if $y$ and $x$ are topologically distinguishable, by Definition \ref{def: R_0 spaces}, $x$ and $y$ are separated; i.e., $x \notin \overline {\{y\}}$ and $y \notin \overline{\{x\}}$.
+			
+			\item
+			By Definition \ref{def: R_0 spaces}, for all $x,y \in X$, $x,y$ are not separated only if they are topologically indistinguishable. By Definition \ref{def: topologically indistinguishable}, they share all their neighbourhoods, thus they have the same closure; i.e., $\overline{\{x\}} = \overline{\{y\}}$.
+			
+			\item
+			(Remained as a problem!)
+			% todo: Remained as a problem!
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[alternative definitions of $T_1$ spaces]
+	\label{prop: alternative definitions of T_1 spaces}
+	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
+	\begin{enumerate}[(i)]
+		\item All singletons in $X$ are closed.
+		\item Every subset of $X$ is the intersection of all open sets containing it.
+		\item Every cofinite subset of $X$ is open.
+	\end{enumerate}
+	
+	% todo: prove them!
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+\centering{
+	\subsection*{$T_2$ Spaces (Hausdorff Spaces)}
+}
 
 
 %--------------------------------
@@ -70,6 +197,15 @@
 	[$R_1$ spaces]
 	\label{def: R_1 spaces}
 	A topological space $(X, \mathcal T)$ is said to be $R_1$ iff any two topological distinguishable points in $X$ are separated by neighbourhoods.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	[Hausdorff Spaces]
+	\label{def: Hausdorff spaces}
+	A topological space $(X, \mathcal T)$ is said to be \textit{Hausdorff} or $T_2$ iff it is $T_0$ and $R_1$; i.e., all distinct points $x, y \in X$ are separated by neighbourhoods.
 \end{definition}
 %--------------------------------
 
@@ -110,44 +246,9 @@
 %--------------------------------
 
 
-\centering{
-	\subsection*{On Fr\'echet spaces}
-}
-
-
-%--------------------------------
-\begin{definition}
-	[Fr\'echet spaces]
-	\label{def: T_1 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $T_1$ or \textit{Fr\'echet} iff for all singletons in $X$ are closed.
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{proposition}
-	\label{prop: T2 implies R0}
-	In a Hausdorff space, any two topologically distinguishable points are separated.
-	
-	\begin{proof}
-		Clearly, in a Hausdorff space, any two points are topologically distinguishable points iff they are distinct. Then, of course, they are separated.
-	\end{proof}
-\end{proposition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{definition}
-	[$R_0$ spaces]
-	\label{def: R_0 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $R_0$ iff any two topologically distinguishable points in $X$ are separated.
-\end{definition}
-%--------------------------------
-
-
 %--------------------------------
 \begin{example}
-	[Fr\'echet but not Hausdorff]
+	[$T_1$ but not Hausdorff]
 	\label{eg: T_1 but not T_2}
 	Let $X$ be a nonempty set, let $p \in X$, let $\mathcal T'$ be a Hausdorff topology on $X \setminus \{p\}$, and let
 	$$
@@ -158,91 +259,6 @@
 %--------------------------------
 
 
-%--------------------------------
-\begin{note}
-	A topological space $(X, \mathcal T)$ is Fr\'echet only if it is $R_0$. Because for distinct points all $x,y \in X$, $x \notin \overline{\{y\}} = \{y\}$ (being $R_0$), as all singletons are closed (being Fr\'echet). But, on the contrary, being $R_0$ does not imply being $T_1$, for we can find topological spaces being $R_0$ but not Fr\'echet.
-\end{note}
-%--------------------------------
-
-
-%--------------------------------
-\begin{example}
-	[$R_0$ but not $T_1$]
-	\label{eg: R_0 but not T_1}
-	
-	Let $X$ be any set with $|X| \ge 3$, let $U \subsetneq X$ with $|U| \ge 2$, let $\mathcal T_{X \setminus U}$ be a $T_1$ topology on $X \setminus U$, and let $\mathcal T$
-	$$
-	\mathcal T = \mathcal T_{X \setminus U} \cup \{X, U\}.
-	$$
-	
-	For all $x,y \in X$, if $x \ne y$, then they are separated. Thus, the space is $R_0$.
-	
-	But $(X, \mathcal T)$ is not $T_1$, because all $\{u\} \in U$ share the same closure which is $U$ itself.
-\end{example}
-%--------------------------------
-
-
-\centering{
-	\subsection*{On $T_0$ Spaces}
-}
-
-
-%--------------------------------
-\begin{definition}
-	[$T_0$ spaces]
-	\label{def: T_1 spaces}
-	A topological space $(X, \mathcal T)$ is said to be $T_0$ or \textit{Kolmogorov}, iff all distinct points $x,y \in X$ are topologically distinguishable.
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{note}
-	In Example \ref{eg: R_0 but not R_1}, all $u \in U$ are topologically indistinguishable, for they have the same family of neighbourhoods which is $\{U, X\}$. Thus, in the example, $(X, \mathcal T)$ is not $T_0$.
-\end{note}
-%--------------------------------
-
-
-%--------------------------------
-\begin{example}
-	[$R_0$ but not $T_0$]
-	Let $\mathcal T$ be a countable family of disjoint proper intervals on $\mathbb R^n$, and $\bigcup \mathcal T = \mathbb R^n$. $(X, \mathcal T)$ is $R_0$, but not $T_0$.
-\end{example}
-%--------------------------------
-
-
-%--------------------------------
-\begin{example}
-	[$T_0$ but not $R_0$]
-	\label{eg: T_0 but not T_1}
-	Let $(\mathbb R_{\ge 0}, \mathcal T)$ be a topological space with
-	$$
-	\mathcal T = \left\{ U \subseteq \mathbb R : \forall i \in \mathbb R_{\ge 0}, \ U_i = [0, i)  \right\},
-	$$
-	Then for all $x,y \in (\mathbb R_{\ge 0}, \mathcal T)$, if $x \ne y$, then there are $|y - x|$ neighbourhoods $N_x$ of $x$ do not contain $y$. Thus, it is $T_0$.
-	
-	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in \overline{\{y\}} = [0, y]$.
-\end{example}
-%--------------------------------
-
-
-
-
-
-
-\
-
-\
-
-\
-
----
-
-\
-
-\
-
-\
 
 
 
@@ -250,100 +266,10 @@
 
 
 
-%--------------------------------
-\begin{proposition}
-	[alternative definitions of $R_0$ spaces]
-	\label{prop: alternative definitions of R_0 spaces}
-	Let $(X, \mathcal T)$ be $R_0$, then the following conditions are equivalent.
-	\begin{enumerate}[(i)]
-		\item
-		The closure of all singletons in $X$ are not $T_0$ subspace.
-		
-		\item
-		For any two points $x,y \in X$, $x \in \overline{ \{y\} }$ iff $y \in \overline{ \{x\} }$.
-		
-		\item
-		Every open set is the union of closed sets.
-	\end{enumerate}
-	
-	% todo: prove them!
-	\begin{proof}
-		\
-		\begin{enumerate}[(i)]
-			\item
-			By Definition \ref{def: R_0 spaces}, if $y$ and $x$ are topologically distinguishable, by Definition \ref{def: R_0 spaces}, $x$ and $y$ are separated; i.e., $x \notin \overline {\{y\}}$ and $y \notin \overline{\{x\}}$.
-			
-			\item
-			By Definition \ref{def: R_0 spaces}, for all $x,y \in X$, $x,y$ are not separated only if they are topologically indistinguishable. By Definition \ref{def: topologically indistinguishable}, they share all their neighbourhoods, thus they have the same closure; i.e., $\overline{\{x\}} = \overline{\{y\}}$.
-			
-			\item
-			(Remained as a problem!)
-			% todo: Remained as a problem!
-		\end{enumerate}
-	\end{proof}
-\end{proposition}
-%--------------------------------
 
 
 
 
 
-
-%--------------------------------
-
-%--------------------------------
-
-
-%--------------------------------
-\begin{proposition}
-	[alternative definitions of $T_1$ spaces]
-	\label{prop: alternative definitions of T_1 spaces}
-	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
-	\begin{enumerate}[(i)]
-		\item All singletons in $X$ are closed.
-		\item Every subset of $X$ is the intersection of all open sets containing it.
-		\item Every cofinite subset of $X$ is open.
-	\end{enumerate}
-	
-	% todo: prove them!
-	\begin{proof}
-		
-	\end{proof}
-\end{proposition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{proposition}
-	\label{prop: all singletons in a T_1 space are closed}
-	
-	All singletons in a $T_1$ space are closed, That is, if a topological space $(X, \mathcal T)$ is $T_1$, then
-	$$
-	\forall x \in (X, \mathcal T) : \exists U \in \mathcal T : \{x\} = X \setminus U.
-	$$
-\end{proposition}
-%--------------------------------
-
-
-
-
-
-%--------------------------------
-\begin{example}
-	[$R_0$ but not $R_1$]
-	\label{eg: R_0 but not R_1}
-	(Remained as a problem!)
-	% todo: Remained as a problem
-\end{example}
-%--------------------------------
-
-
-
-
-%--------------------------------
-\begin{proposition}
-	All metric spaces are Hausdorff.
-\end{proposition}
-%--------------------------------
 
 
