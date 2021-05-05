@@ -135,6 +135,30 @@
 
 %--------------------------------
 \begin{proposition}
+	[alternative definitions of $T_1$ spaces]
+	\label{prop: alternative definitions of T_1 spaces}
+	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
+	\begin{enumerate}[(i)]
+		\item All singletons in $X$ are closed.
+		\item Every subset of $X$ is the intersection of all open sets containing it.
+		\item Every cofinite subset of $X$ is open.
+	\end{enumerate}
+	
+	% todo: START
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			Suppose there exists $\{x\} \subseteq X$ which is not closed, then there exists $A \in \mathcal T$ containing $x$, such that $A \setminus \{x\} \notin \mathcal T$ and all $B \subsetneq A$ is not open.
+			
+			
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
 	[alternative definitions of $R_0$ spaces]
 	\label{prop: alternative definitions of R_0 spaces}
 	Let $(X, \mathcal T)$ be $R_0$, then the following conditions are equivalent.
@@ -149,7 +173,6 @@
 		Every open set is the union of closed sets.
 	\end{enumerate}
 	
-	% todo: prove them!
 	\begin{proof}
 		\
 		\begin{enumerate}[(i)]
@@ -160,35 +183,25 @@
 			By Definition \ref{def: R_0 spaces}, for all $x,y \in X$, $x,y$ are not separated only if they are topologically indistinguishable. By Definition \ref{def: topologically indistinguishable}, they share all their neighbourhoods, thus they have the same closure; i.e., $\overline{\{x\}} = \overline{\{y\}}$.
 			
 			\item
-			(Remained as a problem!)
-			% todo: Remained as a problem!
+			For any $U \in \mathcal T$,
+			$$
+			U = \bigcup_{x \in U} \{x\}.
+			$$
+			If $(X, \mathcal T)$ is $T_1$, then we are done. Suppose $(X, \mathcal T)$ is not $T_1$, then there exists $A \in \mathcal T$ with $|A| > 1$, and for all $B \subsetneq A$, $B \notin \mathcal T$ (proof omitted). For such $A$, $X \setminus A$ is open, for $X \setminus A = \bigcup (\mathcal T \setminus \{A\})$, thus $A$ is also closed.
+			
+			Suppose for any such $A$ with $A \cap U \ne \emptyset$, $A \subseteq U$. Suppose it fails, i.e., $A \cap U \ne A$, then we have $A \cap U \subsetneq A$ and $A \cap U \in \mathcal T$, which is contradicted to the condition of $A$. Now we have
+			$$
+			U = \bigcup \mathcal A \cup \bigcup_{x \in I} \{x\}
+			$$
+			where $\mathcal A$ is the family of such $A$, and $I$ is the union of all closed singletons in $U$. Thus $U$ is open.
 		\end{enumerate}
 	\end{proof}
 \end{proposition}
 %--------------------------------
 
 
-%--------------------------------
-\begin{proposition}
-	[alternative definitions of $T_1$ spaces]
-	\label{prop: alternative definitions of T_1 spaces}
-	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
-	\begin{enumerate}[(i)]
-		\item All singletons in $X$ are closed.
-		\item Every subset of $X$ is the intersection of all open sets containing it.
-		\item Every cofinite subset of $X$ is open.
-	\end{enumerate}
-	
-	% todo: prove them!
-	\begin{proof}
-		
-	\end{proof}
-\end{proposition}
-%--------------------------------
-
-
 \centering{
-	\subsection*{$T_2$ Spaces (Hausdorff Spaces)}
+	\subsection*{Hausdorff Spaces}
 }
 
 
