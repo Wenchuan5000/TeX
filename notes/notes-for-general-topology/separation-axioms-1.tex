@@ -144,13 +144,15 @@
 		\item Every cofinite subset of $X$ is open.
 	\end{enumerate}
 	
-	% todo: START
+	
 	\begin{proof} \
 		\begin{enumerate}[(i)]
 			\item
-			Suppose there exists $\{x\} \subseteq X$ which is not closed, then there exists $A \in \mathcal T$ containing $x$, such that $A \setminus \{x\} \notin \mathcal T$ and all $B \subsetneq A$ is not open.
+			Suppose there exists $\{x\} \subseteq X$ with $\overline{\{x\}} \ne \{x\}$, then there exists $y \in \overline{\{x\}}$ with $x \ne y$. By Definition \ref{def: T_1 spaces}, this is impossible.
 			
-			
+			\item
+			Let $A \subseteq X$.
+			% todo: START
 		\end{enumerate}
 	\end{proof}
 \end{proposition}
