@@ -19,3 +19,69 @@
 	Two topological spaces $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ are said to be \textit{homeomorphic} or \textit{topologically equivalent}, denoted $X \cong Y$, iff there is an homeomorphism between them.
 \end{definition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Two topological spaces are homeomorphic only if they have the same cardinality.
+	
+	\begin{proof}
+		Let $X$ and $Y$ be two sets with $|X| < |Y|$. There is no surjection from $A$ to $B$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	$|X| = |Y|$ does not imply $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ are homeomorphic, even if they are finite. For example, let $X = Y = \{1, \ldots, n\}$, and let $\mathcal T_X$ be indiscrete topology on $X$ and $\mathcal T_Y = \mathcal P(X)$. There is no homeomorphism between $X$ and $Y$.
+	
+	On the other hand, even if $|X| = |Y| \ge \aleph_0$ and $\mathcal T_X$ and $\mathcal T_Y$ are induced by same metric, $X$ and $Y$ might not be homeomorphic. For example, if $\mathcal T_X$ and $\mathcal T_Y$ are both induced by standard Euclidean metric, and $X = [a, b] \subseteq \mathbb R$ and $Y = [c, d) \subseteq \mathbb R$ where $a < b$ and $c < d$. No doubt, $|X| = |Y| = \mathfrak c$, but $X$ and $Y$ are not homeomorphic.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $I$ be a proper interval in $\mathbb R^n$, let $\mathcal T$ be standard Euclidean topology on $\mathbb R^n$ and let $\mathcal T_I$ be a subspace topology on $I$. $I \cong \mathbb R^n$ iff $I$ is an open interval.
+	
+	But if $\mathcal T = \mathcal P(\mathbb R^n)$, then there exists bijection $f: I \to \mathbb R^n$, for $|I| = |\mathbb R^n|$, and such $f$ can be bicontinuous, for any subset $A \subseteq I$ is also open in $\mathbb R^n$, vise versa. In this case, $I \cong \mathbb R^n$ whenever $I$ is a closed, half-close, half-open, or open interval respect to standard Euclidean metric.
+\end{example}
+%--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

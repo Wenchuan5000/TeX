@@ -135,32 +135,6 @@
 
 %--------------------------------
 \begin{proposition}
-	[alternative definitions of $T_1$ spaces]
-	\label{prop: alternative definitions of T_1 spaces}
-	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
-	\begin{enumerate}[(i)]
-		\item All singletons in $X$ are closed.
-		\item Every subset of $X$ is the intersection of all open sets containing it.
-		\item Every cofinite subset of $X$ is open.
-	\end{enumerate}
-	
-	
-	\begin{proof} \
-		\begin{enumerate}[(i)]
-			\item
-			Suppose there exists $\{x\} \subseteq X$ with $\overline{\{x\}} \ne \{x\}$, then there exists $y \in \overline{\{x\}}$ with $x \ne y$. By Definition \ref{def: T_1 spaces}, this is impossible.
-			
-			\item
-			Let $A \subseteq X$.
-			% todo: START
-		\end{enumerate}
-	\end{proof}
-\end{proposition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{proposition}
 	[alternative definitions of $R_0$ spaces]
 	\label{prop: alternative definitions of R_0 spaces}
 	Let $(X, \mathcal T)$ be $R_0$, then the following conditions are equivalent.
@@ -196,6 +170,42 @@
 			U = \bigcup \mathcal A \cup \bigcup_{x \in I} \{x\}
 			$$
 			where $\mathcal A$ is the family of such $A$, and $I$ is the union of all closed singletons in $U$. Thus $U$ is open.
+		\end{enumerate}
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	[alternative definitions of $T_1$ spaces]
+	\label{prop: alternative definitions of T_1 spaces}
+	Let $(X, \mathcal T)$ be $T_1$, then the following conditions are equivalent.
+	\begin{enumerate}[(i)]
+		\item All singletons in $X$ are closed.
+		\item Every subset of $X$ is the intersection of all open sets containing it.
+		\item Every cofinite subset of $X$ is open.
+	\end{enumerate}
+	
+	
+	\begin{proof} \
+		\begin{enumerate}[(i)]
+			\item
+			Suppose there exists $\{x\} \subseteq X$ with $\overline{\{x\}} \ne \{x\}$, then there exists $y \in \overline{\{x\}}$ with $x \ne y$. By Definition \ref{def: T_1 spaces}, this is impossible.
+			
+			\item
+			For any $A \subseteq X$,
+			$$
+			A = \bigcup_{x \in A} \{x\}.
+			$$
+			Let $B = X \setminus A$. By De Morgan's law,
+			$$
+			B = \bigcap_{x \in A} X \setminus \{x\}.
+			$$
+			$(X, \mathcal T)$ is $T_1$ iff all $\{x\}$ are closed, in which case, $B$ is the intersection of all open sets $X \setminus \{x\} \supseteq B$.
+			
+			\item
+			Let $A$ be a cofinite subset of $X$. $X \setminus A$ is a finite union of singletons. As $(X, \mathcal T)$ is $T_1$, any singletons in $X$ is closed. By Proposition \ref{prop: dark side of topology}, $X \setminus A$ is closed. By Definition \ref{def: closed sets}, $A$ is open.å
 		\end{enumerate}
 	\end{proof}
 \end{proposition}
