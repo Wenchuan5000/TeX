@@ -7,7 +7,12 @@
 \begin{definition}
 	[homeomorphisms]
 	\label{def: homomorphisms}
-	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A bijection $f: X \to Y$ is called a \textit{homeomorphism} iff it is continuous and its inverse is also continuous.
+	Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces. A bijection $f: X \to Y$ is called a \textit{homeomorphism} iff
+	\begin{enumerate}[(i)]
+		\item $f$ is a bijection;
+		\item $f$ is continuous;
+		\item $f^{-1}$ is continuous.
+	\end{enumerate}
 \end{definition}
 %--------------------------------
 
@@ -63,7 +68,15 @@
 	$$
 	S^n = \left\{ x \in \mathbb R^{n + 1} : \rho(o, x) = r \right\},
 	$$
-	where $\rho$ is the standard Euclidean metric on $\mathbb R^{n+1}$. For any $x \in S^n$, let $U = B(x, \varepsilon) \cap S^n$ where $\varepsilon < \max_{x,y \in S^n} \rho(x,y)$
+	where $\rho$ is the standard Euclidean metric on $\mathbb R^{n+1}$. For any $x \in S^n$, let $U = B(x, \varepsilon) \cap S^n$ where $0\le \varepsilon < \max_{x,y \in S^n} \rho(x,y)$ (here $B(x, \varepsilon) = \{x\}$ if $\varepsilon = 0$), then $S^n \setminus U \cong \mathbb R^{n}$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Indeed, $S^1 \setminus \{x\} \cong \mathbb R$ where $x \in S^1$. But for any interval $I \in \mathbb R$, $S^1 \not \cong I$.
+	% todo: explain!
 \end{example}
 %--------------------------------
 

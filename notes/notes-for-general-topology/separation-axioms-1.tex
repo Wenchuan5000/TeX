@@ -2,6 +2,8 @@
 \section{Separation Axioms. From $T_0$ to Hausdorff}
 %================================
 
+% links
+
 % https://en.wikipedia.org/wiki/Separation_axiom
 
 % https://en.wikipedia.org/wiki/Separated_sets
@@ -35,7 +37,7 @@
 	$$
 	\mathcal N_x = \mathcal N_y.
 	$$
-	
+
 	Respectively, $x,y$ are said to be \textit{topologically distinguishable} iff they are not topologically distinguishable; i.e.,
 	$$
 	\mathcal N_x \ne \mathcal N_y.
@@ -110,7 +112,7 @@
 	\mathcal T = \left\{ U \subseteq \mathbb R : \forall i \in \mathbb R_{\ge 0}, \ U_i = [0, i)  \right\},
 	$$
 	Then for all $x,y \in (\mathbb R_{\ge 0}, \mathcal T)$, if $x \ne y$, then there are $|y - x|$ neighbourhoods $N_x$ of $x$ do not contain $y$. Thus, it is $T_0$.
-	
+
 	On the other hand, it is not $R_0$, because for all $x, y \in (\mathbb R_{\ge 0}, \mathcal T)$ with $x < y$, $x \in \overline{\{y\}} = [0, y]$.
 \end{example}
 %--------------------------------
@@ -120,14 +122,14 @@
 \begin{example}
 	[$R_0$ but not $T_1$]
 	\label{eg: R_0 but not T_1}
-	
+
 	Let $X$ be any set with $|X| \ge 3$, let $U \subsetneq X$ with $|U| \ge 2$, let $\mathcal T_{X \setminus U}$ be a $T_1$ topology on $X \setminus U$, and let $\mathcal T$
 	$$
 	\mathcal T = \mathcal T_{X \setminus U} \cup \{X, U\}.
 	$$
-	
+
 	For all $x,y \in X$, if $x \ne y$, then they are separated. Thus, the space is $R_0$.
-	
+
 	But $(X, \mathcal T)$ is not $T_1$, because all $\{u\} \in U$ share the same closure which is $U$ itself.
 \end{example}
 %--------------------------------
@@ -141,30 +143,30 @@
 	\begin{enumerate}[(i)]
 		\item
 		The closure of all singletons in $X$ are not $T_0$ subspace.
-		
+
 		\item
 		For any two points $x,y \in X$, $x \in \overline{ \{y\} }$ iff $y \in \overline{ \{x\} }$.
-		
+
 		\item
 		Every open set is the union of closed sets.
 	\end{enumerate}
-	
+
 	\begin{proof}
 		\
 		\begin{enumerate}[(i)]
 			\item
 			By Definition \ref{def: R_0 spaces}, if $y$ and $x$ are topologically distinguishable, by Definition \ref{def: R_0 spaces}, $x$ and $y$ are separated; i.e., $x \notin \overline {\{y\}}$ and $y \notin \overline{\{x\}}$.
-			
+
 			\item
 			By Definition \ref{def: R_0 spaces}, for all $x,y \in X$, $x,y$ are not separated only if they are topologically indistinguishable. By Definition \ref{def: topologically indistinguishable}, they share all their neighbourhoods, thus they have the same closure; i.e., $\overline{\{x\}} = \overline{\{y\}}$.
-			
+
 			\item
 			For any $U \in \mathcal T$,
 			$$
 			U = \bigcup_{x \in U} \{x\}.
 			$$
 			If $(X, \mathcal T)$ is $T_1$, then we are done. Suppose $(X, \mathcal T)$ is not $T_1$, then there exists $A \in \mathcal T$ with $|A| > 1$, and for all $B \subsetneq A$, $B \notin \mathcal T$ (proof omitted). For such $A$, $X \setminus A$ is open, for $X \setminus A = \bigcup (\mathcal T \setminus \{A\})$, thus $A$ is also closed.
-			
+
 			Suppose for any such $A$ with $A \cap U \ne \emptyset$, $A \subseteq U$. Suppose it fails, i.e., $A \cap U \ne A$, then we have $A \cap U \subsetneq A$ and $A \cap U \in \mathcal T$, which is contradicted to the condition of $A$. Now we have
 			$$
 			U = \bigcup \mathcal A \cup \bigcup_{x \in I} \{x\}
@@ -186,13 +188,13 @@
 		\item Every subset of $X$ is the intersection of all open sets containing it.
 		\item Every cofinite subset of $X$ is open.
 	\end{enumerate}
-	
-	
+
+
 	\begin{proof} \
 		\begin{enumerate}[(i)]
 			\item
 			Suppose there exists $\{x\} \subseteq X$ with $\overline{\{x\}} \ne \{x\}$, then there exists $y \in \overline{\{x\}}$ with $x \ne y$. By Definition \ref{def: T_1 spaces}, this is impossible.
-			
+
 			\item
 			For any $A \subseteq X$,
 			$$
@@ -203,9 +205,9 @@
 			B = \bigcap_{x \in A} X \setminus \{x\}.
 			$$
 			$(X, \mathcal T)$ is $T_1$ iff all $\{x\}$ are closed, in which case, $B$ is the intersection of all open sets $X \setminus \{x\} \supseteq B$.
-			
+
 			\item
-			Let $A$ be a cofinite subset of $X$. $X \setminus A$ is a finite union of singletons. As $(X, \mathcal T)$ is $T_1$, any singletons in $X$ is closed. By Proposition \ref{prop: dark side of topology}, $X \setminus A$ is closed. By Definition \ref{def: closed sets}, $A$ is open.å
+			Let $A$ be a cofinite subset of $X$. $X \setminus A$ is a finite union of singletons. As $(X, \mathcal T)$ is $T_1$, any singletons in $X$ is closed. By Proposition \ref{prop: dark side of topology}, $X \setminus A$ is closed. By Definition \ref{def: closed sets}, $A$ is open.ï¿½
 		\end{enumerate}
 	\end{proof}
 \end{proposition}
@@ -238,13 +240,13 @@
 %--------------------------------
 \begin{proposition}
 	All metrizable spaces are Hausdorff
-	
+
 	\begin{proof}
 		Let $(X, \mathcal T)$ be a metrizable space. There exists a metric $\rho$ on $X$ that induces $\mathcal T$. Given distinct points $x,y \in X$, suppose for all $\varepsilon \in \mathbb R_{> 0}$, there exists $z \in B(x, \varepsilon) \cap B(y, \varepsilon)$. Then $\rho(x, z) < \varepsilon$ and $\rho(y, z) < \varepsilon$. Now we have
 		$$
 		\rho(x, z) + \rho(y, z) < 2\varepsilon.
 		$$
-		
+
 		Put $\rho(x,y) > 2\varepsilon$ as $x$ and $y$ are arbitrarily given. Then we have
 		$$
 		\rho(x, z) + \rho(y,z) < \rho(x,y),
@@ -259,7 +261,7 @@
 \begin{proposition}
 	\label{prop: T2 implies T1}
 	All singletons in a Hausdorff space are closed.
-	
+
 	\begin{proof}
 		Let $(X, \mathcal T)$ be a Hausdorff space, and let $x \in X$. For all $y \in X$ with $x \ne y$, there is a open neighbourhood $U_y$ of $y$ such that $x \notin U_y$. Then, for all such $U_y$, we have
 		$$
@@ -282,19 +284,3 @@
 	Then, all $x \in (X, \mathcal T)$ are closed, thus $(X, \mathcal T)$ is Fr\'echet. But the only neighbourhood of $p$ is $X$, so its closure is $X$. Then, for any $x \in X \setminus \{p\}$, $x$ and $p$ are not separated, in which case $(X, \mathcal T)$ is not $R_0$. Thus, $(X, \mathcal T)$ is not Hausdorff.
 \end{example}
 %--------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
