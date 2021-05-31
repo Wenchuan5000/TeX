@@ -8,9 +8,9 @@
 \begin{definition}
 	[topology]
 	\label{def: topology}
-	Let $X$ be a set, and let a family $\mathcal T \subseteq \mathcal P(X)$. $\mathcal T$ is called a topology on $X$ iff
-	\begin{enumerate}[(i)]
-		\item $\emptyset, X \in \mathcal T$;
+	Let $X$ be a set, and let a family $\mathcal T \subseteq \mathcal P(X)$. $\mathcal T$ is called a \textit{topology} on $X$ iff it satisfies the \textit{open set axioms}:
+	\begin{enumerate}[\bf O1.]
+		\item $X \in \mathcal T$;
 		\item $\mathcal T$ is closed under arbitrary union;
 		\item $\mathcal T$ is closed under finite intersection.
 	\end{enumerate}
@@ -19,12 +19,54 @@
 
 
 %--------------------------------
+\begin{theorem}
+	$\emptyset \in \mathcal T$.
+	
+	\begin{proof}
+		By O2 in Definition \ref{def: topology}, for all $\mathcal A \subseteq \mathcal T$, $\bigcup \mathcal A \in \mathcal T$. Clearly, $\emptyset \in \mathcal T$, then we have
+		$$
+		\emptyset = \bigcup \emptyset \in \mathcal T.
+		$$
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
 \begin{definition}
 	[topological spaces]
 	\label{def: topological spaces}
-	Let $X$ be any set, and let $\mathcal T$ be a topology on $X$, then the pair $(X, \mathcal T)$ is called a \textit{topological space}. All subsets of $X$ in $\mathcal T$ are called \textit{open sets} in $(X, \mathcal T)$.
+	With the condition in Definition \ref{def: topology}, the pair $(X, \mathcal T)$ is called a \textit{topological space}. All subsets of $X$ in $\mathcal T$ are said to be \textit{open} in $(X, \mathcal T)$.
 \end{definition}
 %--------------------------------
+
+
+
+%--------------------------------
+\begin{theorem}
+	Let $(X, \rho)$ be a metric space, and let
+	$$
+	\mathcal T_\rho = \left\{ \bigcup_{x \in U} B_\rho (x, \varepsilon) : U \subseteq X \land \varepsilon \in \mathbb R_{> 0} \right\}.
+	$$
+	$(X, \mathcal T_\rho)$ is a topological space; i.e., $\mathcal T_\rho$ satisfies the open set axioms.
+	
+	\begin{proof}
+		For O1. Apparently, there exists (for any) $\varepsilon \in \mathbb R_{> 0}$,
+		$$
+		X = \bigcup_{x \in X} B(x, \varepsilon).
+		$$
+		
+		For O2. Let $I$ be an index set, and let $U_i \in T$ for all $i \in I$. There exists $\varepsilon \in \mathbb R_{> 0}$ we can define
+		$$
+		U = \bigcup_{i \in I} U_i = \bigcup_{i \in I} \bigcup_{x \in U_i} B(x, \varepsilon) = \bigcup_{x \in U} B(x, \varepsilon).
+		$$
+		Then, for all $x \in U$, there exists $B(x, \varepsilon) \ni x$. Thus $U \in \mathcal T$.
+		
+		%todo: start!
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
 
 
 %--------------------------------
