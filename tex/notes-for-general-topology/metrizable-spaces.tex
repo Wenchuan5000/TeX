@@ -82,6 +82,39 @@
 
 
 %--------------------------------
+\begin{theorem}
+	Let $(X, \rho)$ be a metric space, and let
+	$$
+	\mathcal T_\rho = \left\{ \bigcup_{x \in U} B_\rho (x, \varepsilon) : U \subseteq X \land \varepsilon \in \mathbb R_{> 0} \right\}.
+	$$
+	$(X, \mathcal T_\rho)$ is a topological space; i.e., $\mathcal T_\rho$ satisfies the open set axioms (Definition \ref{def: topology}).
+	
+	\begin{proof}
+		For O1. Apparently, there exists (for any) $\varepsilon \in \mathbb R_{> 0}$,
+		$$
+		X = \bigcup_{x \in X} B(x, \varepsilon).
+		$$
+		
+		For O2. Let $I$ be an index set, and let $U_i \in T$ for all $i \in I$. There exists $\varepsilon \in \mathbb R_{> 0}$ we can define
+		$$
+		U = \bigcup_{i \in I} U_i = \bigcup_{i \in I} \bigcup_{x \in U_i} B(x, \varepsilon) = \bigcup_{x \in U} B(x, \varepsilon).
+		$$
+		Then, for all $x \in U$, there exists $B(x, \varepsilon) \ni x$. Thus $U \in \mathcal T$.
+		
+		For O3. Let $U, V \in \mathcal T$. If $U \cap V = \emptyset$, then the proof is done. Suppose $U \cap V \ne \emptyset$, and let $x \in U \cap V$. $U$ is open and $x \in U$, so there exists $r_1 \in \mathbb R_{> 0}$ such that $B(x, r_1) \subseteq U$; $V$ is open and $x \in V$, so there exists $r_2 \in \mathbb R_{> 0}$ such that $B(x, r_2) \subseteq V$.
+		
+		If $r_1 = r_2$, then $B(x, r_1) = B(x, r_2)$. If $r_1 \ne r_2$, say $r_1 < r_2$, then $B(x, r_1) \subseteq B(x, r_2) \subseteq V$. Above all, for any $x \in U \cap V$, there exits $r \in \mathbb R_{>0}$ such that $B(x, r) \subseteq U \cap V$. Thus, there exists $\varepsilon \in \mathbb R_{> 0}$ such that
+		$$
+		U \cap V = \bigcup_{x \in U \cap V} B(x, \varepsilon),
+		$$
+		i.e., $U \cap V \in \mathcal T_\rho$.
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+
+%--------------------------------
 \begin{proposition}
 	\label{prop: metric spaces are Hausdorff}
 	Let $(X, \rho)$ be a metric space, then for all $x, y \in X$ ($x \ne y$), there is an $\varepsilon > 0$ such that $B(x, \varepsilon) \cap B (y, \varepsilon) = \emptyset$.
