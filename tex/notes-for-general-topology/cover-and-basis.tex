@@ -71,33 +71,13 @@
 
 %--------------------------------
 \begin{theorem}
-	Let $(X, \mathcal T)$ and $(X, \mathcal T')$ be topological spaces, and let $\mathcal B$ and $\mathcal B'$ be the basis for $\mathcal T$ and $\mathcal T'$ respectively. $\mathcal T'$ is finer than $\mathcal T$ iff for all $B \in \mathcal B$, there is a $B' \in \mathcal B'$ such that $B' \subseteq B$.
-	%--------------------------------
-	\begin{proof}
-		For $\implies$:
+	Let $(X, \mathcal T)$ and $(X, \mathcal T')$ be topological spaces, and let $\mathcal B$ and $\mathcal B'$ be the basis for $\mathcal T$ and $\mathcal T'$ respectively. $\mathcal T'$ is finer than $\mathcal T$ iff for any $x \in X$ and for any $B \in \mathcal B'$ with $B \ni x$, there exists $B' \in \mathcal B'$ such that $x \in B' \subseteq B$.
+	
+	\begin{proof}	
+		For $\implies$. Let $B \in \mathcal B$. Clearly, $B \in \mathcal T$. Also, $B \in \mathcal T'$ for $\mathcal T \subseteq \mathcal T'$. By Corollary \ref{coro: alt def of basis}, there exists $\mathcal I' \subseteq \mathcal B'$ such that $B = \bigcup \mathcal I'$. Clearly, all $\mathcal I'$-sets are subsets of $B$.
 		
-		\begin{enumerate}
-			\item
-			$B \in \mathcal B$ and $\mathcal B$ is a basis for $\mathcal T$, so $B \in \mathcal T$.
-			
-			\item
-			$B \in \mathcal T$ and $\mathcal T \subseteq \mathcal T'$, so $B \in \mathcal T'$.
-			
-			\item
-			$B \in \mathcal T'$, so, by Corollary \ref{coro: alt def of basis}, there exists $\mathcal I' \subseteq \mathcal B'$ such that $B = \bigcup \mathcal I'$. Clearly, all $\mathcal I'$-sets ($B'$) are subsets of $B$.
-		\end{enumerate}
-		
-		For $\impliedby$:
-		
-		\begin{enumerate}
-			\item
-			By the conditions, let $\mathcal K' \subseteq \mathcal B'$ where $B \supseteq \bigcup \mathcal K'$.
-			
-			\item
-			
-		\end{enumerate}
+		For $\impliedby$. For all $B \in \mathcal B$ and for all $x \in B$, there exists $B' \in \mathcal B'$ with $x \in B' \subseteq B$. Let $\mathcal J'$ denote all such $B'$, then we have $B = \bigcup \mathcal J'$. By Definition \ref{def: basis}, we have $B \in \mathcal B \subseteq \mathcal T'$. Above all, $\mathcal T \subseteq \mathcal T$.
 	\end{proof}
-	%--------------------------------
 \end{theorem}
 %--------------------------------
 
