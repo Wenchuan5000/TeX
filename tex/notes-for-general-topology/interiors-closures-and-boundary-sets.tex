@@ -1,0 +1,149 @@
+%================================
+\section{Interior}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	Let $(X, \mathcal T)$ be any topological space, and let $A \subseteq X$. The \textit{interior} of $A$, denoted $A^\circ$, is defined to be the union of all open subsets of $A$; i.e.,
+	$$
+	A^\circ = \bigcup \mathcal U, \quad \mathcal U = \mathcal P(X) \cap \mathcal T.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$A^\circ \subseteq A$.
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal P(X) \cap \mathcal T$. Clearly
+		$$
+		A^\circ = \bigcup \mathcal U \subseteq A.
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$A \in \mathcal T$ if and only if $A = A^\circ$.
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal P(X) \cap \mathcal T$.
+		
+		$\mathcal U$ is closed under arbitrary union, so if $A = A^\circ = \bigcup \mathcal U$, then $A \in \mathcal T$.
+		
+		On the other hand, suppose $A \in \mathcal T$ but $A \ne A^\circ$, then $A^\circ \subsetneq A$. As $A \in \mathcal T$, there exists $U \in \mathcal P(A) \cap \mathcal T$ with $U \ni x$. But as $x \in X \setminus A^\circ$, $U$ could not be a subset of $A^\circ$. Then we have $U \in \mathcal T$ but $U \not \subseteq \bigcup \mathcal U$, which is contradicted to the assumption.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$(A \cap B)^\circ = A^\circ \cap B^\circ$.
+	
+	\begin{proof}
+		$(A \cap B)^\circ \in \mathcal T$, so there exists $\mathcal U \subseteq \mathcal T$ such that 
+		$$
+		\bigcup \mathcal U = (A \cap B)^\circ.
+		$$
+		Clearly, $\mathcal U = \mathcal P(A \cap B) \cap \mathcal T$.
+		
+		Let $\mathcal I = \mathcal P(A) \cap \mathcal T$ and $\mathcal J = \mathcal P(B) \cap \mathcal T$, then $\mathcal I = A^\circ$ and $\mathcal J = B^\circ$. 
+		
+		$$
+		\begin{aligned}
+			\mathcal I \cap \mathcal J &= \mathcal P(A) \cap \mathcal T \cap \mathcal P(B) \cap \mathcal T \\
+			&= \mathcal P(A \cap B) \cap \mathcal T \\
+			&= \mathcal U.
+		\end{aligned}
+		$$
+		Then we have
+		$$
+		(A \cap B)^\circ = \bigcup \mathcal U = \bigcup \mathcal I \cup \bigcup \mathcal J = A^\circ \cap B^\circ.
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal P(A) \cap \mathcal T$, and let $\mathcal V = \mathcal P(B) \cap \mathcal T$
+	
+		$A^\circ \subseteq A$, so $A \subseteq B$ implies $A^\circ \subseteq B$, so $\mathcal U \subseteq \mathcal V$. Thus,
+		$$
+		A^\circ = \bigcup \mathcal{U} \subseteq \bigcup \mathcal V = B^\circ.
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathcal T$ be induced by a metric $\rho$ on $X$. The interior of $A^\circ$ is the union of all open balls in $A$; i.e., there exists $\varepsilon \in \mathbb R_{>0}$ such that
+	$$
+	A^\circ = \bigcup_{x \in A} B(x, \varepsilon).
+	$$
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal P(A) \cap \mathcal T$, then any $U \in \mathcal U$,
+		$$
+		U = \bigcup_{x \in U} B(x, \varepsilon).
+		$$
+		
+		??????????
+	
+		For any open subsets $U \in \mathcal U$ and for any $x \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$ such that
+		$$
+		A^\circ = \bigcup \mathcal U = \bigcup_{U \in \mathcal U} \bigcup_{x \in U} B(x, \varepsilon) = \bigcup_{x \in A} B(x, \varepsilon).
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
