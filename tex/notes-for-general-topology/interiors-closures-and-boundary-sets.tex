@@ -1,11 +1,14 @@
 %================================
-\section{Interior}
+\section{Interiors}
 %================================
+
+
+Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 
 
 %--------------------------------
 \begin{definition}
-	Let $(X, \mathcal T)$ be any topological space, and let $A \subseteq X$. The \textit{interior} of $A$, denoted $A^\circ$, is defined to be the union of all open subsets of $A$; i.e.,
+	The \textit{interior} of $A$, denoted $A^\circ$, is defined to be the union of all open subsets of $A$; i.e.,
 	$$
 	A^\circ = \bigcup \mathcal U, \quad \mathcal U = \mathcal P(X) \cap \mathcal T.
 	$$
@@ -18,7 +21,7 @@
 	$A^\circ \subseteq A$.
 	
 	\begin{proof}
-		Let $\mathcal U = \mathcal P(X) \cap \mathcal T$. Clearly
+		Let $\mathcal U = \mathcal P(A) \cap \mathcal T$. Clearly
 		$$
 		A^\circ = \bigcup \mathcal U \subseteq A.
 		$$
@@ -32,7 +35,7 @@
 	$A \in \mathcal T$ if and only if $A = A^\circ$.
 	
 	\begin{proof}
-		Let $\mathcal U = \mathcal P(X) \cap \mathcal T$.
+		Let $\mathcal U = \mathcal P(A) \cap \mathcal T$.
 		
 		$\mathcal U$ is closed under arbitrary union, so if $A = A^\circ = \bigcup \mathcal U$, then $A \in \mathcal T$.
 		
@@ -87,6 +90,22 @@
 %--------------------------------
 
 
+%--------------------------------
+\begin{note}
+	$A^\circ \subseteq B^\circ$ dose not implies $A \subseteq B$. For example, let $X = \mathbb R^n$, let $\mathcal T$ be induce by Euclidean metric $\rho$ on $X$, and let
+	$$
+	\begin{aligned}
+		& B = B_\rho (\vec 0, 1), \text{ and} \\
+		& A = \{ -\hat e_1 + (- \hat e_1 - \hat e)t : t \in (0, 1] \},
+	\end{aligned}
+	$$
+	where $\hat e_i$ denotes the $i$-th unit vector in $X$.
+	
+	Clearly $A^\circ = \emptyset \subseteq B^\circ$, but $A \not \subseteq B$ for $\hat e_1 \in A \setminus B$.
+\end{note}
+%--------------------------------
+
+
 
 %--------------------------------
 \begin{proposition}
@@ -100,8 +119,6 @@
 		$$
 		U = \bigcup_{x \in U} B(x, \varepsilon).
 		$$
-		
-		??????????
 	
 		For any open subsets $U \in \mathcal U$ and for any $x \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$ such that
 		$$
@@ -112,9 +129,139 @@
 %--------------------------------
 
 
+%================================
+\section{Closures}
+%================================
+
+Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+
+%--------------------------------
+\begin{definition}
+	The \textit{closure} of $A$, denoted $\overline A$, is defined to be the intersection of all closed supersets of $A$.
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{proposition}
+	$X \setminus A^\circ = \overline{X \setminus A}$.
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal P(A) \cap \mathcal T$, then $A^\circ = \bigcup \mathcal U$. By De Morgan's Law,
+		$$
+		X \setminus A^\circ = \bigcap_{U \in \mathcal U} (X \setminus U).
+		$$
+		As $\mathcal U$ is the family of all open subsets of $A$, the set of all $X \setminus U$ is the family of all closed superset of $X \setminus A$. Thus
+		$$
+		\bigcap_{U \in \mathcal U}(X \setminus U) = \overline{X \setminus A}.
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
+
+%--------------------------------
+\begin{proposition}
+	$\overline A$ is closed.
+	
+	\begin{proof}
+		As it is the intersection of some closed sets, $\overline A$ is closed.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$\overline A$ is closed if and only if $A = \overline A$.
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal P(X \setminus A) \cap \mathcal T$, then we have
+		$$
+		\begin{aligned}
+			X \setminus \bigcup \mathcal U &= X \setminus (X \setminus A)^\circ \\
+			&= \overline{X \setminus (X \setminus A)} \\
+			&= \overline A.
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	If $A \subseteq B$, then $\overline A \subseteq \overline B$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			A \subseteq B &\iff (X \setminus A) \supseteq (X \setminus B) \\
+			&\implies (X \setminus A)^\circ \supseteq (X \setminus B)^\circ \\
+			&\iff X \setminus (X \setminus A)^\circ \subseteq X \setminus (X \setminus B)^\circ \\
+			&\iff \overline{X \setminus (X \setminus A)} \subseteq \overline{X \setminus (X \setminus B)} \\
+			&\iff \overline A \subseteq \overline B.
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	If $A$ is closed, then $A \supseteq B$ if and only if $A \supseteq \overline B$.
+	
+	\begin{proof}
+		$A$ is closed, so $X \setminus A$ is open. $A \supseteq B$ if and only if $X \setminus A \subseteq X \setminus B$. These conditions hold if and only if $X \setminus A \subseteq (X \setminus B)^\circ$. This holds if and only if
+		$$
+		\begin{aligned}
+		X \setminus A \subseteq (X \setminus B)^\circ &\iff X \setminus (X \setminus A) \supseteq X \setminus (X \setminus B)^\circ \\
+		&\iff A \supseteq \overline B.
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%================================
+\section{Boundary Sets}
+%================================
+
+Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+
+%--------------------------------
+\begin{definition}
+	The \textit{boundary} of $A$, denoted $\partial A$, is defined to be the complement of the interior of $A$ in the closure of $A$; i.e.,
+	$$
+	\partial A = \overline A \setminus A^\circ.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	In Euclidean $n$-space, the volume of the boundary of any set must zero. For the topological spaces with countable elements, this property still holds, for the volume of any set in such spaces is zero. But for the topological spaces with uncountable elements, it is not necessarily the case.
+	
+	For example, let $(\mathbb R^n, \mathcal T)$ be a topological space where $\mathcal T$ is generated by $\{ B_\rho (\vec 0, 1) \}$ where $\rho$ is the Euclidean metric. In this case, $\overline{B_\rho (\vec 0, 1)} = \mathbb R^n$, and the volume of its boundary is infinite.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	$A$ is said to be \textit{everywhere dense}, or \textit{dense}, in $X$, if and only if $\overline A = X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	On Wikipedia, this is an alternative definition of another one. That is, $A$ is dense in $X$ if and only if for any $x \in X$ and for any neighbourhood $N$ of $x$, $N \cap A \ne \emptyset$, in other words, $x \in A$ or $x$ is a limit point of $A$.
+\end{note}
+%--------------------------------
 
 
 
