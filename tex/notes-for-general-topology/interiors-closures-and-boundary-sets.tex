@@ -251,26 +251,116 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 
 
 %--------------------------------
+\begin{proposition}
+	$\partial A$ is closed.
+	
+	\begin{proof}
+		$\overline A$ is closed, and so is $X \setminus A^\circ$. Then we have
+		$$
+		\partial A = \overline A \setminus A^\circ = \overline A \cap (X \setminus A^\circ).
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$A^\circ \cap \partial A = \emptyset$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			\partial A = \overline A \setminus A^\circ &\iff A^\circ \cap \partial A = \overline A \setminus A^\circ \cap A^\circ = \overline A \cap \emptyset = \emptyset.
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$\overline A = A^\circ \cup \partial A$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			\partial A = \overline A \setminus A^\circ &\iff \partial A \cup A^\circ = \overline A \setminus A^\circ \cup A^\circ = \overline A \cap (X \setminus A^\circ \cup A^\circ) \\
+			&\iff \partial A \cup A^\circ = \overline A \cap X = \overline A.
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$A$ is closed if and only if $\partial A \subseteq A$.
+	
+	\begin{proof}
+		$A$ is closed if and only if $A = \overline A = A^\circ \cap \partial A$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%================================
+\section{Limit points}
+%================================
+
+
+%--------------------------------
 \begin{definition}
-	$A$ is said to be \textit{everywhere dense}, or \textit{dense}, in $X$, if and only if $\overline A = X$.
+	$A$ is \textit{dense} in $X$ if and only if for any $x \in X$, $x$ is a limit point of $A$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{note}
-	On Wikipedia, this is an alternative definition of another one. That is, $A$ is dense in $X$ if and only if for any $x \in X$ and for any neighbourhood $N$ of $x$, $N \cap A \ne \emptyset$, in other words, $x \in A$ or $x$ is a limit point of $A$.
-\end{note}
+\begin{example}
+	For any topological space $(X, \mathcal T)$, $X$ is dense in itself, even if $X = \emptyset$ (vacuously true).
+\end{example}
 %--------------------------------
 
 
+%--------------------------------
+\begin{proposition}
+	$A$ is dense in $X$ if and only if $\overline A = X$.
+\end{proposition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{definition}
+	$A$ is said to be \textit{nowhere dense} if and only if for any $x \in X \setminus A$, ????????????????
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{definition}
+	$A$ is said to be \textit{nowhere dense} in $X$ if and only if the closure of its interior is empty; i.e.,
+	$$
+	\overline{A}^\circ = \emptyset.
+	$$
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{example}
+	$\mathbb Z$ is nowhere dense in $\mathbb R$.
+\end{example}
+%--------------------------------
 
+
+%--------------------------------
+\begin{example}
+	Let $f:(\mathbb R^n, \rho) \to (\mathbb R^{m}, \rho)$ be a function continuous over $A$, where $\rho$ is the Euclidean metric, and $n < m$. $f[A]$ is nowhere dense in $\mathbb R^{m}$.
+\end{example}
+%--------------------------------
 
 
 
