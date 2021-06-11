@@ -307,7 +307,61 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 
 
 %================================
-\section{Limit points}
+\section{Limit Points and Isolated Points}
+%================================
+
+
+Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+
+
+%--------------------------------
+\begin{definition}
+	A point $x \in X$ is a \textit{limit point} (or \textit{cluster point} or \textit{accumulation point}) of $A$ if and only if for any neighbourhood $N$ of $x$, $N \setminus \{x\} \cap A \ne \emptyset$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	Let a sequence $x_\bullet = (x_n)_{n = 1}^\infty \subseteq X$. $x_\bullet$ is said to be \textit{convergent} in $X$ if and only if it converges to an $x \in X$. That is, there exists $x \in X$ such that for any neighbourhood $N$ of $x$, $x_\bullet \setminus N$ is a cofinite subset of $A$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Clearly, if $x_\bullet$ converges to $x$ and it is not constant, then $x$ is a limit point of the sequence. But being a limit point of a sequence does not means that the sequence converges to it. For example, let
+	$$
+	x_\bullet = (\sin(n))_{n = 1}^\infty \subseteq (X, \rho),
+	$$
+	where $\rho$ is the Euclidean metric on $X$, then any $x \in \mathbb R_{[0,1]} \setminus \mathbb Q$ is a limit point of $x_\bullet$. But, clearly, $x_\bullet$ is not convergent in $X$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	A point $x \in A$ is an \textit{isolated point} of $A$ if and only if there exists neighbourhood $N$ of $x$ such that $N \cap (A \setminus \{x\}) = \emptyset$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	If $\mathcal T$ is a discrete topology on $X$, then any $x \in A$ is an isolated point of $A$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	
+\end{proposition}
+%--------------------------------
+
+
+%================================
+\section{Dense Sets}
 %================================
 
 
