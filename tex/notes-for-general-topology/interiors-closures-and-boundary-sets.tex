@@ -311,51 +311,110 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 %================================
 
 
-Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$. Also, let $u: I \to X$ with $I \subseteq \mathbb N$ and $|I| = \aleph_0$.
 
 
 %--------------------------------
 \begin{definition}
-	A point $x \in X$ is a \textit{limit point} (or \textit{cluster point} or \textit{accumulation point}) of $A$ if and only if for any neighbourhood $N$ of $x$, $N \setminus \{x\} \cap A \ne \emptyset$.
+	A point $x \in X$ is a \textit{limit point} (or \textit{cluster point} or \textit{accumulation point}) of $A$, denoted $L(A)$, if and only if for any neighbourhood $N$ of $x$, $N \setminus \{x\} \cap A \ne \emptyset$.
 \end{definition}
 %--------------------------------
 
-
 %--------------------------------
 \begin{definition}
-	Let a sequence $x_\bullet = (x_n)_{n = 1}^\infty \subseteq X$. $x_\bullet$ is said to be \textit{convergent} in $X$ if and only if it converges to an $x \in X$. That is, there exists $x \in X$ such that for any neighbourhood $N$ of $x$, $x_\bullet \setminus N$ is a cofinite subset of $A$.
+	A point $x \in X$ is called a \textit{limit} of $u$ if and only if for any neighbourhood $N$ of $x$,
+	$$
+	|u[I] \setminus N| \in \mathbb N.
+	$$
+	In words, any such $N$ contains all but finite element of $u[I]$.
+	
+	In this case, $u$ is said to be convergent in $X$, and we say that $x$ converges to $x$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{note}
-	Clearly, if $x_\bullet$ converges to $x$ and it is not constant, then $x$ is a limit point of the sequence. But being a limit point of a sequence does not means that the sequence converges to it. For example, let
+	In this definition, $x$ is a limit point of $u[I]$ only if $u$ is not constant. If $u$ is constant, then $u[I]$ contains only one element, $x$. As $u[I] = \{x\}$, any set $(N \setminus \{x\}) \cap \{x\} = \emptyset$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Being a limit point of the image of a sequence does not means that the sequence converges itself to this point. For example, let $u$ defined by
 	$$
-	x_\bullet = (\sin(n))_{n = 1}^\infty \subseteq (X, \rho),
+	u_n = \sin(n),
 	$$
-	where $\rho$ is the Euclidean metric on $X$, then any $x \in \mathbb R_{[0,1]} \setminus \mathbb Q$ is a limit point of $x_\bullet$. But, clearly, $x_\bullet$ is not convergent in $X$.
+	and let $\mathcal T$ be an Euclidean topology on $X$. Any $x \in \mathbb R_{[0,1]}$ is a limit point of $u[I]$. But, clearly, $u$ is not convergent in $X$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	If $(X, \mathcal T)$ is a Hausdorff space, such as Euclidean space, then $x$ is the unique limit of $u$; in this case, write
+	$$
+	\lim_{n \to \infty} u_n = x.
+	$$
+	But, by the definition of limits of sequences, in some space, a sequence may have many limits. For example, let $\mathcal T$ be an indiscrete topology on $X$, then any sequence $u$ in the space convergent, which means any $x \in X$ is a limit of $u$.
 \end{note}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	A point $x \in A$ is an \textit{isolated point} of $A$ if and only if there exists neighbourhood $N$ of $x$ such that $N \cap (A \setminus \{x\}) = \emptyset$.
+	A point $x \in A$ is an \textit{isolated point} of $A$, denoted $I(A)$, if and only if there exists neighbourhood $N$ of $x$ such that $N \setminus \{x\} \cap A = \emptyset$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{example}
-	If $\mathcal T$ is a discrete topology on $X$, then any $x \in A$ is an isolated point of $A$.
+	If $\mathcal T$ is a discrete topology on $X$, then any $x \in A$ is isolated. $X$ is discrete if and only if for any $x \in X$, there exists neighbourhood $N$ of $x$, such that $N \setminus \{x\} = \emptyset$, which means $X$ contains only isolated points. It is easy to show that $A = I(A)$ also.
 \end{example}
 %--------------------------------
 
 
 %--------------------------------
 \begin{proposition}
+	The closure of $A$ is a disjoint union of its limit points and isolated points; i.e.,
+
+	$$
+	\overline A = L(A) \sqcup I(A).
+	$$
 	
+	\begin{proof}
+		$x \in \overline A$ if and only if for any neighbourhood $N$ of $x$, $N \cap A \ne \emptyset$.
+		
+		% todo: check if the property above is proved.
+		
+		If $x \in \overline A \setminus I(A)$, then, for any neighbourhood $N$ of $x$, $N \setminus \{x\} \cap A \ne \emptyset$. This is precisely the definition of limit points, so $x \in L(A)$.
+		
+		On the other hand, if $x \in \overline A \setminus L(A)$, then there exists some neighbourhood $N$ of $x$, such that $N \setminus \{x\} \cap A = \emptyset$. This is precisely the definition of isolated points, so $x \in I(A)$.
+		
+		Above all, any elements in $\overline A$ is either an element of $I(A)$ or an element of $L(A)$, but not both. So $\overline A = L(A) \sqcup I(A)$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$A$ is closed if and only if it contains all its limit points.
+	
+	\begin{proof}
+		$A$ is closed if and only if $A = \overline A$. As we have proved, in this case, $\overline A = L(A) \sqcup I(A)$. So, $L(A) \subseteq \overline A$.
+		
+		On the other hand, let $x \in A \setminus L(A)$, then there exists neighbourhood $N$ of $x$, such that $N \setminus \{x\} \cap A = \emptyset$. Thus such $x$ must be an isolated points of $A$. If $A = L(A) \sqcup I(A)$, then $\overline A = A$, in which case $A$ is closed. Then we have
+		$$
+		\begin{aligned}
+			X = L(X) \sqcup I(X) & \iff X = L(X) \sqcup X \\
+			&\iff L(X) = \emptyset.
+		\end{aligned}
+		$$
+		It is easy to prove that $L(A) \subseteq L(X)$. Thus $L(A) = \emptyset$.
+	\end{proof}
 \end{proposition}
 %--------------------------------
 
@@ -365,9 +424,12 @@ Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 %================================
 
 
+Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+
+
 %--------------------------------
 \begin{definition}
-	$A$ is \textit{dense} in $X$ if and only if for any $x \in X$, $x$ is a limit point of $A$.
+	$A$ is \textit{dense} in $B$ if and only if for any $x \in B$, $x$ is a limit point of $A$.
 \end{definition}
 %--------------------------------
 
@@ -381,32 +443,59 @@ Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 
 %--------------------------------
 \begin{proposition}
-	$A$ is dense in $X$ if and only if $\overline A = X$.
+	$A$ is dense in $B$ if and only if $\overline{A \cap B} = \overline B$.
+	
+	??????????
+	
+	%todo: start
+	
+	\begin{proof}		
+		As any $x \in B$ is a limit point of $A$, $A \cap B \subseteq L(A \cap B)$. Clearly, $L(A \cap B) \subseteq A \cap B$. Thus $L(A) = B$.
+		
+		As any $x \in X$, $x$ is a limit point of $A$, so there is no $x \in A$ to be an isolated point of $A$.
+		
+		Then we have
+		$$
+		\begin{aligned}
+			\left. \overline A = L(A) \sqcup I(A) \right|_{I(A) = \emptyset} &\iff \left. \overline A = L(A) \right|_{L(A) = B} \\
+			&\iff \overline A = B.
+		\end{aligned}
+		$$
+	\end{proof}
 \end{proposition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	$A$ is said to be \textit{nowhere dense} if and only if for any $x \in X \setminus A$, ????????????????
+	$A$ is said to be \textit{nowhere dense} in $X$ if and only if for any $U \in \mathcal T$, $A$ is not dense in $U$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{definition}
-	$A$ is said to be \textit{nowhere dense} in $X$ if and only if the closure of its interior is empty; i.e.,
+\begin{proposition}
+	$A$ is said to be \textit{nowhere dense} in $X$ if and only if the interior of its closure is empty; i.e.,
 	$$
-	\overline{A}^\circ = \emptyset.
+	(\overline A)^\circ = \emptyset.
 	$$
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{example}
-	$\mathbb Z$ is nowhere dense in $\mathbb R$.
-\end{example}
+	
+	\begin{proof}
+		Firstly, suppose $A$ is nowhere dense in $B$ but $(\overline A)^\circ \ne \emptyset$. There must be non-empty $U \in \mathcal P(B) \cap \mathcal T$ with $U \subseteq (\overline A)^\circ$, then we have $U \subseteq \overline A$ for $(\overline A)^\circ \subseteq \overline A$. $U$ is open, so for any $x \in U$, there exists neighbourhood $N$ of $x$ such that $N \subseteq U$. $N \setminus \{x\} \subseteq N$, so of course $N \setminus \{x\} \subseteq U$.
+		
+		As $U$ is not empty, $N \setminus \{x\} \cap U = \emptyset$ if and only if $N \setminus \{x\} = \emptyset$. As $N$ is a neighbourhood of $\{x\}$, so $N \ne \emptyset$, so $N \setminus \{x\} = \emptyset$ if and only if $N = \{x\}$. In this case, $A$ is discrete and, hence, nowhere dense.
+		
+		Suppose $A$ is not discrete, then $\emptyset \ne N \setminus \{x\} \subseteq U$ implies that any $x \in U$ is a limit point of $A$, hence $A$ is dense in $U$, contradicted to the condition.
+		
+		Now, suppose $(\overline A)^\circ = \emptyset$, but there exists non-empty $U \in \mathcal T$ such that $A$ is dense in $U$.
+		
+		As $A$ is dense in $U$, we have $\overline{A \cap U} = U$. But $(\overline A)^\circ = \emptyset$ implies that there is no open subset in $\overline A$ but $\emptyset$, so, as
+		$$
+		\mathcal T \ni U = \overline{A \cap U} \subseteq \overline A,
+		$$
+		$U$ has to be empty, which is contradicted to the condition.
+	\end{proof}
+\end{proposition}
 %--------------------------------
 
 
@@ -414,6 +503,25 @@ Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 \begin{example}
 	Let $f:(\mathbb R^n, \rho) \to (\mathbb R^{m}, \rho)$ be a function continuous over $A$, where $\rho$ is the Euclidean metric, and $n < m$. $f[A]$ is nowhere dense in $\mathbb R^{m}$.
 \end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$A$ is nowhere dense if and only if $\mathcal P(\overline A) \cap \mathcal T = \emptyset$.
+	
+	\begin{proof}
+		$A$ is nowhere dense if and only if $(\overline A)^\circ = \emptyset$. Naturally, there exists no non-empty subset in $\overline A$.
+		
+		On the other hand, suppose there exists non-empty $U \in \mathcal T$ with $\overline A \supseteq U$, then we have
+		$$
+		\begin{aligned}
+			\left. U \subseteq \overline A \right|_{U \in \mathcal T} &\implies \left. U \subseteq (\overline A)^\circ \right|_{U \in \mathcal T} \\
+		\end{aligned}
+		$$
+		But $U$ is not empty, so $A$ is not nowhere dense, which is contradicted to the condition.
+	\end{proof}
+\end{proposition}
 %--------------------------------
 
 
