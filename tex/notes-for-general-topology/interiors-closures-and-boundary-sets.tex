@@ -429,8 +429,23 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 
 %--------------------------------
 \begin{definition}
-	$A$ is \textit{dense} in $B$ if and only if for any $x \in B$, $x$ is a limit point of $A$.
+	$A$ is \textit{dense} in $B$ if and only if for any $x \in B$, $x \in A$ or $x$ is a limit point of $A$.
 \end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $X = \mathbb R^n$, let $\mathcal T$ be induced by Euclidean metric $\rho$ on $X$, let
+	$$
+	A = B(\vec 0, 1) \sqcup \{\vec x \in \mathbb R^n \setminus \mathbb Q^n\} \setminus \mathbb Q^n,
+	$$
+	and let
+	$$
+	B = A \cup \mathbb Q^n.
+	$$
+	$A$ is dense in $B$, although $x \notin L(A)$ and $x \in B$.
+\end{example}
 %--------------------------------
 
 
@@ -443,26 +458,21 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 
 %--------------------------------
 \begin{proposition}
-	$A$ is dense in $B$ if and only if $\overline{A \cap B} = \overline B$.
+	$A$ is dense in $B$ if and only if $B \subseteq \overline{A}$.
 	
-	??????????
-	
-	%todo: start
-	
-	\begin{proof}		
-		As any $x \in B$ is a limit point of $A$, $A \cap B \subseteq L(A \cap B)$. Clearly, $L(A \cap B) \subseteq A \cap B$. Thus $L(A) = B$.
+	\begin{proof}
+		$A$ is dense in $B$, so for any $x \in B$, $x \in L(A)$. Now, we have $B \subseteq L(A)$. Thus, $B \subseteq \overline A$.
 		
-		As any $x \in X$, $x$ is a limit point of $A$, so there is no $x \in A$ to be an isolated point of $A$.
-		
-		Then we have
-		$$
-		\begin{aligned}
-			\left. \overline A = L(A) \sqcup I(A) \right|_{I(A) = \emptyset} &\iff \left. \overline A = L(A) \right|_{L(A) = B} \\
-			&\iff \overline A = B.
-		\end{aligned}
-		$$
+		On the other hand, let $B \subseteq \overline A$. $\overline A = L(A) \sqcup I(A)$, so any $x \in B$ is an element of $A$ or a limit point of $A$. Thus $A$ is dense in $B$.
 	\end{proof}
 \end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Naturally, $A$ is dense in $X$ if and only if $\overline A = X$. For example, $\mathbb Q$ is dense in $\mathbb R$.
+\end{note}
 %--------------------------------
 
 
@@ -481,19 +491,9 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 	$$
 	
 	\begin{proof}
-		Firstly, suppose $A$ is nowhere dense in $B$ but $(\overline A)^\circ \ne \emptyset$. There must be non-empty $U \in \mathcal P(B) \cap \mathcal T$ with $U \subseteq (\overline A)^\circ$, then we have $U \subseteq \overline A$ for $(\overline A)^\circ \subseteq \overline A$. $U$ is open, so for any $x \in U$, there exists neighbourhood $N$ of $x$ such that $N \subseteq U$. $N \setminus \{x\} \subseteq N$, so of course $N \setminus \{x\} \subseteq U$.
+		Suppose $A$ is nowhere dense, but $(\overline A)^\circ \ne \emptyset$. There exists $U \in \mathcal T$ with $U \subseteq \overline A$. As $U \in \mathcal T$, any $x \in \overline A$ is also an element of $\overline A$; and as $\overline A = L(A) \sqcup I(A)$, such an $x$ is either an element of $A$ or a limit point of $A$. So $A$ is dense in $U$, which is contradicted to the condition that $A$ is nowhere dense.
 		
-		As $U$ is not empty, $N \setminus \{x\} \cap U = \emptyset$ if and only if $N \setminus \{x\} = \emptyset$. As $N$ is a neighbourhood of $\{x\}$, so $N \ne \emptyset$, so $N \setminus \{x\} = \emptyset$ if and only if $N = \{x\}$. In this case, $A$ is discrete and, hence, nowhere dense.
-		
-		Suppose $A$ is not discrete, then $\emptyset \ne N \setminus \{x\} \subseteq U$ implies that any $x \in U$ is a limit point of $A$, hence $A$ is dense in $U$, contradicted to the condition.
-		
-		Now, suppose $(\overline A)^\circ = \emptyset$, but there exists non-empty $U \in \mathcal T$ such that $A$ is dense in $U$.
-		
-		As $A$ is dense in $U$, we have $\overline{A \cap U} = U$. But $(\overline A)^\circ = \emptyset$ implies that there is no open subset in $\overline A$ but $\emptyset$, so, as
-		$$
-		\mathcal T \ni U = \overline{A \cap U} \subseteq \overline A,
-		$$
-		$U$ has to be empty, which is contradicted to the condition.
+		On the other hand, $(\overline A)^\circ = \emptyset$ implies that $\emptyset$ is the only open subset of $\overline A$. Thus, for any $U \subseteq \mathcal T$, $U \setminus \overline A \ne \emptyset$. As $U \setminus \overline A$ is also open, for any $x \in U \setminus \overline A$, there exists neighbourhood $N$ of $x$, $N \cap \overline A = \emptyset$, in this case, naturally, $N \cap A = \emptyset$. Thus $A$ is not dense in $U$.
 	\end{proof}
 \end{proposition}
 %--------------------------------
@@ -519,7 +519,7 @@ Let $(X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 			\left. U \subseteq \overline A \right|_{U \in \mathcal T} &\implies \left. U \subseteq (\overline A)^\circ \right|_{U \in \mathcal T} \\
 		\end{aligned}
 		$$
-		But $U$ is not empty, so $A$ is not nowhere dense, which is contradicted to the condition.
+		But $U$ is not empty and, as $U$ is open, for any $x \in U$, there exists neighbourhood $N$ of $x$ such that $N \cap \overline A \ne \emptyset$. Clearly, such $x$ can not be isolated in $A$, so $x \in L(A)$. This implies $A$ is dense in $U$, which is contradicted to the condition.
 	\end{proof}
 \end{proposition}
 %--------------------------------

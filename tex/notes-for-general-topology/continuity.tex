@@ -1,0 +1,82 @@
+%================================
+\section{Continuity}
+%================================
+
+Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces, and let $f:X \to Y$.
+
+%--------------------------------
+\begin{definition}
+	$f$ is said to be \textit{continuous} if and only if for any $U \in \mathcal T_Y$, the preimage $f^{-1}[U] \in \mathcal T_X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Even if for any $U \in \mathcal T_X$ such that $f[X] \in \mathcal T_Y$, $f$ is not necessarily continuous. For example, let $X = \mathbb R$ and let $\mathcal T_X$ be induced by Euclidean metric, let $Y = \mathbb R$ and $\mathcal T_Y = \mathcal P(Y)$, and let $f$ defined by
+	$$
+	f(x) = x.
+	$$
+	For any $U \subseteq X$ (even unnecessary to be open), $f[U] \in \mathcal T$. But $f$ is not continuous, for there exists $U \in \mathcal T_Y$ such that $f^{-1}[U] \notin \mathcal T_X$; for example, for any $U \subseteq \mathbb Q$, or for any $\{y\} \in \mathcal T_Y$, etc.
+	
+	This example also shows that being bijective dose not implies continuity.  
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	If $\mathcal T_X = \mathcal P(X)$, then $f$ is alway continuous.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	$f$ is continuous at $x \in X$ if and only if for any neighbourhood $N_y$ of $f(x)$, there exists neighbourhood $N_x$ of $x$ such that $f[N_x] \subseteq N_y$.
+	
+	\begin{proof}
+		$f$ is continuous at $x$ if and only if $x \in f^{-1}[U_y] \in \mathcal T_X$.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
