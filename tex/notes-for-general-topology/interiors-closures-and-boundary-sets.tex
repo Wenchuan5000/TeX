@@ -352,12 +352,19 @@ Let $(X, \mathcal T)$ be a topological space, and let $A \subseteq X$. Also, let
 
 
 %--------------------------------
+\begin{proposition}
+	If $(X, \mathcal T)$ is Hausdorff, then $u$ converges to a unique point $x \in X$.
+	
+	\begin{proof}
+		Suppose $u$ converges to $x,y \in X$ with $x \ne y$, then for any neighbourhoods $N_x$ of $x$ and $N_y$ of $y$, $N_x$ contains a cofinite subset $A \subseteq u[I]$ and $N_y$ contains a cofinite subset $B \subseteq u[I]$. If this were true, $N_x \cap N_y$ should be non-empty, otherwise $N_x$ or $N_y$ should be finite. But it is impossible as $(X, \mathcal T)$ is a Hausdorff space.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
 \begin{note}
-	If $(X, \mathcal T)$ is a Hausdorff space, such as Euclidean space, then $x$ is the unique limit of $u$; in this case, write
-	$$
-	\lim_{n \to \infty} u_n = x.
-	$$
-	But, by the definition of limits of sequences, in some space, a sequence may have many limits. For example, let $\mathcal T$ be an indiscrete topology on $X$, then any sequence $u$ in the space convergent, which means any $x \in X$ is a limit of $u$.
+	As all metric space are Hausdorff, so any convergent sequence in a metrizable space converges to at most one point.
 \end{note}
 %--------------------------------
 
