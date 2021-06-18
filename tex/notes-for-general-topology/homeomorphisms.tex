@@ -11,10 +11,17 @@ Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces, and let $
 	$f$ is called a \textit{homeomorphism} between $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ if and only if
 	\begin{enumerate}[(i)]
 		\item $f$ is bijective;
-		\item $f$ is continuous;
-		\item $f^{-1}$ is continuous.
+		\item $f$ is a continuous map;
+		\item $f^{-1}$ is a continuous map.
 	\end{enumerate}
 \end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	A function should satisfy all of the three properties to be a homeomorphism. For example, if $f$ is not one-to-one, then $f^{-1}$ is not a map; if $f$ is not surjective, then $f^{-1}$ is not defined on whole $Y$; let $\mathcal T_X \supsetneq \mathcal T_Y$, and let $f$ be defined by $f(x) = x$, then $f$ is bijective and continuous, but $f^{-1}$ is bijective but not continuous.
+\end{note}
 %--------------------------------
 
 
@@ -28,10 +35,111 @@ Let $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ be topological spaces, and let $
 %--------------------------------
 \begin{proposition}
 	Being homeomorphic is an equivalent relation.
+	
+	\begin{proof}
+		Being homeomorphic is a reflexive relation, for any topological space are homeomorphic to itself.
+		
+		Being homeomorphic is a symmetric relation. Let $f$ be a homeomorphism between $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$. $f$ is bijective if and only if $f^{-1}$ is.
+		
+		Being homeomorphic is a transitive relation. Let $(Z, \mathcal T_Z)$ be another topological space. If $f$ is a homeomorphism between $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$, and $g$ is a homeomorphism between $(Y, \mathcal T_Y)$ and $(Z, \mathcal T_Z)$, then it is easy to show that $f\circ g$ is a homeomorphism between $(X, \mathcal T_X)$ and $(Z, \mathcal T_Z)$ by the properties of bijections and continuous maps.
+	\end{proof}
 \end{proposition}
 %--------------------------------
 
 
+%--------------------------------
+\begin{proposition}
+	If $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ are homeomorphic, then $X$ and $Y$ have the same cardinality.
+	
+	\begin{proof}
+		Suppose they are homeomorphic but with different cardinality, say $|X| < |Y|$, then there is no surjection from $|X|$ to $|Y|$. So this is impossible.
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	It is a simple and beautiful fact that $|X| = |Y|$ does not imply that they are homeomorphic. 
+	
+	For example, let $X = \mathbb R_{[0,1]}$ and $Y = \mathbb R_{[0,1)}$, and let $\mathcal T_X$ and $\mathcal T_Y$ be Euclidean topologies on $X$ and $Y$ respectively. Clearly, $|X| = |Y| = \mathfrak{c}$, but we can find no homeomorphism these two space. Intuitively, there is not any continuous way to deform from one of them to the other.
+	
+	Suppose there exists a homeomorphism $f:(X, \mathcal T_Y) \to (Y, \mathcal T_Y)$. $f$ should be continuous everywhere, so for $0, 1 \in X$, there should be neighbourhoods $N_0$ of $0$ and $N_1$ of $1$ such that $f[N_0] \subseteq N_{f(0)}$ and $f[N_1] \subseteq N_{f(1)}$ for any neighbourhoods $N_{f(0)}$ of $f(0)$ and $N_{f(1)}$ of $f(1)$. In this case, $f$ can not be bijective, for if $f$ is bijective, there are only to possible case: 
+	$$
+	\begin{aligned}
+		& f(0) = \min Y \land f(1) = \max Y, \\
+		& f(0) = \max Y \land f(1) = \min Y.
+	\end{aligned}
+	$$
+	Both of the case are impossible, for $\max Y$ does not exist. Thus $(X, \mathcal T_X)$ and $(Y, \mathcal T_Y)$ are not homeomorphic.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	In the examples below, all topological spaces are Hausdorff.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	$\mathbb R^n$ and $\mathbb R^m$ ($n \ne m$) are not homeomorphic, although $|\mathbb R^n| = |\mathbb R^m| = \mathfrak{c}$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Any proper open intervals in $\mathbb R^n$ are homeomorphic. But for any interval $I \in \mathbb R^n$, if $\max I$ or $\min I$ exists, then $I$ is not homeomorphic to $\mathbb R^2$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $S^n$ be an $n$-dimensional sphere with center $\vec o \in \mathbb R^{n + 1}$ and radius $r \in \mathbb R_{>0}$, i.e.,
+	$$
+	S^n = \left\{ \vec x \in \mathbb R^{n + 1} : \sum_{i = 1}^n |x_i - o_i|^2 = r^2 \right\}.
+	$$
+	
+	Let
+	$$
+	\varepsilon \in \left( 0, \max_{\vec x, \vec y \in S^n} |\vec x - \vec y| \right),
+	$$
+	and, for any $\vec x \in S^n$, let
+	$$
+	U = \left\{ \vec u \in \mathbb R^{n + 1} : 0 \le \sum_{i = 1}^n |u_i - x_i|^2 \le \varepsilon \right\}.
+	$$
+	Then, $S^n \setminus U \cong \mathbb R^n$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	In $\mathbb R^3$ a piecewise smooth coffee mug and a smooth donut are homeomorphic, but they are not homeomorphic to any closed ball, for a ball does not have a hole.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	In $\mathbb R^3$, a $1$-knot is homeomorphic to any half-closed or half-open interval in $\mathbb R$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	The graph of
+	$$
+	f = \left\{ \left(x, \sin \frac{1}{x} \right) \in \mathbb R^2 : x \in \mathbb R_{> 0} \right\}
+	$$
+	is not homeomorphic to any open intervals in $\mathbb R$.
+\end{example}
+%--------------------------------
 
 
 
