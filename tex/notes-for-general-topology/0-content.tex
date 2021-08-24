@@ -9,22 +9,151 @@
 %================================
 
 
-\input{notes-for-general-topology/interiors-closures-and-boundary-sets}
+%================================
+\section{Metric Spaces}
+%================================
 
-\input{notes-for-general-topology/continuity}
 
-\input{notes-for-general-topology/homeomorphisms}
+%--------------------------------
+\begin{definition}
+	\label{definition: metric space}
+	Let $X$ be any set. A mapping $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric on $X$} if and only if it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
+	\begin{enumerate}[\bf M1. ]
+		\item $d(x,y) = 0$ if and only if $x = y$;
+		\item $d(x,y) = d(y,x)$;
+		\item $d(x, z) \le d(x,y) + d(y,z)$.
+	\end{enumerate}
+	
+	In this case, the pair $M = (X, d)$ is called a \textit{metric space}.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	A $M = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$. An \textit{open $\varepsilon$-ball}, or just $\varepsilon$-ball, about $x$ is defined to be the set
+	$$
+	B_\varepsilon (x; d) = \{ y \in X : d(x,y) < \varepsilon \}.
+	$$
+	
+	A \textit{closed ball} is defined to be the set
+	$$
+	\overline{B}_\varepsilon (x; d) = \{ y \in X : d(x,y) \le \varepsilon \}.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	As
+	$$
+	M = (X, d), \ M' = (X, d'), \ M'' = (X, d''), \ \ldots
+	$$
+	are different although they share the same set $X$, for any $x \in X$ and any $\varepsilon \in \mathbb R_{> 0}$,
+	$$
+	B_\varepsilon(x; d),\ B_\varepsilon (x; d'), \ B(x; d''), \ \ldots
+	$$
+	are also different. However, if confusion is unlikely, we simply write ``$B_\varepsilon(x)$'' for ``$B_\varepsilon(x; d)$''.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	The \textit{Euclidean metric space} $M = (X, d)$ is an $n$-dimensional set $X$ equipped with the \textit{Euclidean metric} $d$ defined as
+	$$
+	d(x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac{1}{2}.
+	$$
+	
+	This is also called \textit{standard Euclidean metric}, in contrast to the \textit{non-standard Euclidean metrics}
+	$$
+	d_p(x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p}, \quad p \ge 1.
+	$$
+	
+	In particular,
+	$$
+	d_\infty (x,y) = \max_{1 \le i \le n} |x_i - y_i|.
+	$$
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	A \textit{discrete metric space} $M = (X, d)$ is a set $X$ equiped with the \textit{discrete metric} $d$ defined as
+	$$
+	d(x,y) =
+	\begin{cases}
+		0, & \text{if $x = y$}; \\
+		1, & \text{else}.
+	\end{cases}
+	$$
+	
+	This is an equivalent definition of the discrete metric:
+	$$
+	d(x, y) = (\mathrm{sgn}(d'(x,y)))^2,
+	$$
+	where $\mathrm{sgn}(\cdot)$ is a \href{https://en.wikipedia.org/wiki/Sign_function}{sign function}, and $d'$ is any metric on $X$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	\footnote{
+		See \href{https://en.wikipedia.org/wiki/Minkowski_inequality}{Minkowski inequality}.
+	}
+	Denote $C[a,b]$ for the set of all continuous mapping $\mathbb R_{[a,b]} \to \mathbb R$. On $C[a,b]$, we can define a metric $d$ as
+	$$
+	d_p(f, g) = \left( \int_{a}^{b} |f(t) - g(t)|^p \mathrm{d} t \right)^\frac{1}{p}, \quad p \ge 1.
+	$$
+	
+	In particular,
+	$$
+	d_\infty (f,g) = \sup_{t \in \mathbb R_{[a,b]}} |f(t) - g(t)|.
+	$$
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	\footnote{
+		See \href{https://en.wikipedia.org/wiki/Hausdorff_distance}{Hausdorff distance}.
+	}
+	Let $M = (X, d)$ be a metric space. The \textit{Hausdorff metric} $d_H$ on $2^X \setminus \{\emptyset\}$ is defined as
+	$$
+	d_H = \max \left\{ \sup_{x \in X}d(x,Y), \sup_{y \in Y} d(y, X)\right\},
+	$$
+	where
+	$$
+	\begin{aligned}
+		d(x,Y) = \inf_{y \in Y}(x,y), \text{ and } d(y, X) = \inf_{x \in X} (y, x).
+	\end{aligned}
+	$$
+\end{example}
+%--------------------------------
 
 
 %================================
-%::::::::::::::::::::::::::::::::
-\chapter{Creating New Spaces}
-%::::::::::::::::::::::::::::::::
+\section{Open sets in Metric Spaces}
 %================================
 
-\input{notes-for-general-topology/subspace}
+
+%--------------------------------
+\begin{definition}
+	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is said to be \textit{open in $M$} if and only if for any $y \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$, such that $B_\varepsilon(y) \subseteq U$.
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{lemma}
+	Let $M = (X, d)$ be a metric space, let $x \in A$ and let $\varepsilon \in \mathbb R_{> 0}$. For any $y \in B_\varepsilon (x)$, there is a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y)$
+	\href{definition: metric space}{sss}
+\end{lemma}
+%--------------------------------
 
 
 
