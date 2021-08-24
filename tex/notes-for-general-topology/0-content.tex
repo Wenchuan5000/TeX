@@ -4,7 +4,7 @@
 
 %================================
 %::::::::::::::::::::::::::::::::
-\chapter{Topological Spaces}
+\chapter{Metric Spaces}
 %::::::::::::::::::::::::::::::::
 %================================
 
@@ -17,9 +17,9 @@
 %--------------------------------
 \begin{definition}
 	\label{definition: metric space}
-	Let $X$ be any set. A mapping $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric on $X$} if and only if it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
+	Let $X$ be any set. A mapping $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric on $X$} iff it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
 	\begin{enumerate}[\bf M1. ]
-		\item $d(x,y) = 0$ if and only if $x = y$;
+		\item $d(x,y) = 0$ iff $x = y$;
 		\item $d(x,y) = d(y,x)$;
 		\item $d(x, z) \le d(x,y) + d(y,z)$.
 	\end{enumerate}
@@ -144,7 +144,8 @@
 
 %--------------------------------
 \begin{definition}
-	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is said to be \textit{open in $M$} if and only if for any $y \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$, such that $B_\varepsilon(y) \subseteq U$.
+	\label{definition: open set in metric space}
+	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is said to be \textit{open in $M$}, iff for any $y \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$, such that $B_\varepsilon(y) \subseteq U$.
 \end{definition}
 %--------------------------------
 
@@ -165,6 +166,8 @@
 		$$
 		
 		Thus, again, by the definition of open balls, we have $B_\delta(y) \subseteq B_\varepsilon(x)$.
+		
+		\qedlemma
 	\end{proof}
 \end{lemma}
 %--------------------------------
@@ -175,7 +178,7 @@
 	\footnote{
 		Shared on \href{https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki}.
 	}
-	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is open in $M$ if and only if it is a union of open balls.
+	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is open in $M$ iff it is a union of open balls.
 	
 	\begin{proof}
 		First, prove $\Rightarrow$.
@@ -187,7 +190,7 @@
 		U = \bigcup_{y \in U} B_{\varepsilon_y} (y).
 		$$
 		
-		\qedlemma
+		$\qedlemma$
 		
 		Now, prove $\Leftarrow$.
 		
@@ -202,6 +205,8 @@
 		This is a contradiction by the assumption.
 		
 		Thus, $U$ has to be open.
+		
+		\qed
 	\end{proof}
 \end{theorem}
 %--------------------------------
@@ -209,6 +214,8 @@
 
 %--------------------------------
 \begin{theorem}
+	\label{theorem: metric space is hausdorff}
+
 	Let $M = (X, d)$ be any metric space. $M$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
 	$$
 	B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset.
@@ -228,18 +235,76 @@
 		$$
 		
 		By M3 in metric axioms (Definition \ref{definition: metric space}), this is impossible.
+		
+		\qed
 	\end{proof}
 \end{theorem}
 %--------------------------------
 
 
 %--------------------------------
-
+\begin{definition}
+	\label{definition: closed set in metric space}
+	Let $M = (X, d)$ be any metric space, and let $V \subseteq X$. $V$ is said to be \textit{closed} in $M$, iff there is an open set $U$ satisfies $X \setminus U = V$.
+\end{definition}
 %--------------------------------
 
 
+%--------------------------------
+\begin{lemma}
+	In a metric space, any singleton is closed.
+	
+	\begin{proof}
+		Let $M=(X, d)$ be a metric space, let $x \in X$, and let $y \in X \setminus \{x\}$.
+		
+		As $M$ is Hausdorff (Theorem \ref{theorem: metric space is hausdorff}), there is an $\varepsilon \in \mathbb R_{> 0}$ such that
+		$$
+		0 < \varepsilon < d(x,y),
+		$$
+		thus $X \setminus \{x\}$ is open, hence, by Definition \ref{definition: metric space}, its complement $\{x\}$ is open.
+		
+		\qedlemma
+	\end{proof}
+\end{lemma}
+%--------------------------------
 
 
+%--------------------------------
+\begin{theorem}
+	Let $M = (X, d)$ be a metric space, denote $\mathcal T$ for the family of open subsets of $X$. Then $\mathcal T$ satisfies the following conditions:
+	
+	\begin{enumerate}[\bf O1.]
+		\item $X, \emptyset \in \mathcal T$;
+		\item For any $\mathcal U \subseteq \mathcal T$, $\bigcup \mathcal U \in \mathcal T$; in words, $\mathcal T$ is closed under arbitrary union;
+		\item For any finite $\mathcal V \subseteq \mathcal T$, $\bigcap \mathcal V \in \mathcal T$; in words, $\mathcal T$ is closed under finite intersection.
+	\end{enumerate}
+	
+	\begin{proof}
+		First, prove O1.
+		
+		As $\emptyset$ is the subset of any set, $\emptyset \in \mathcal T$. $\bigcup \emptyset = \emptyset \in \mathcal T$.
+		
+		By Definition \ref{definition: closed set in metric space}, $X = X \setminus \emptyset$.
+		
+		\qedlemma
+		
+		Then, prove O2.
+		
+		Let $\mathcal U \subseteq \mathcal T$, and denote $\mathcal O$ for the open balls in $M$.
+		
+		For any $U \in \mathcal U$, there is an $\mathcal O_U \subseteq \mathcal O$ such that $U = \bigcup \mathcal O_U$. 
+		
+		Let $\mathcal O: \mathcal T \to $
+		
+		Then we have
+		$$
+		\bigcup \mathcal U = \bigcup_{U \in \mathcal U} \left( \bigcup \mathcal O(U) \right).
+		$$
+		
+		Thus $\mathcal T$ is closed under arbitrary union.
+	\end{proof}
+\end{theorem}
+%--------------------------------
 
 
 

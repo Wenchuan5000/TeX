@@ -34,19 +34,21 @@
 \newtheorem{note}{Note}[section]
 
 
+
+
 \newcommand{\qedlemma}{\hfill \ensuremath{\Box}}
+\renewcommand{\qed}{\hfill \ensuremath{\blacksquare}}
 
-\renewcommand{\qedsymbol}{$\blacksquare$}
-
-\newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
-
+\newenvironment{proof}[]{}{}
 
 
 %\setlength{\parindent}{4em}
 %\setlength{\parskip}{0.5em}
 \renewcommand{\baselinestretch}{1.25}
 
-
+%\newcommand{\qedlemma}{\square}
+%\renewcommand{\qed}{\blacksquare}
 
 \newcommand{\Int}{\mathrm{Int}}
 \newcommand{\Cl}{\mathrm{Cl}}
+%\newcommand{\qed}{}
