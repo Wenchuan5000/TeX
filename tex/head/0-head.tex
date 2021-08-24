@@ -4,7 +4,6 @@
 \usepackage{amssymb} %subsetneq
 \usepackage{amsmath} %aligned
 \usepackage{enumerate}
-\usepackage{nameref}
 
 
 \usepackage{units}
@@ -34,6 +33,10 @@
 \newtheorem{example}{Example}[section]
 \newtheorem{note}{Note}[section]
 
+
+\newcommand{\qedlemma}{\hfill \ensuremath{\Box}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
 

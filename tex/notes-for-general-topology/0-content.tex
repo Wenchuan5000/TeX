@@ -31,6 +31,7 @@
 
 %--------------------------------
 \begin{definition}
+	\label{definition: ball}
 	A $M = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$. An \textit{open $\varepsilon$-ball}, or just $\varepsilon$-ball, about $x$ is defined to be the set
 	$$
 	B_\varepsilon (x; d) = \{ y \in X : d(x,y) < \varepsilon \}.
@@ -147,14 +148,94 @@
 \end{definition}
 %--------------------------------
 
+
 %--------------------------------
 \begin{lemma}
-	Let $M = (X, d)$ be a metric space, let $x \in A$ and let $\varepsilon \in \mathbb R_{> 0}$. For any $y \in B_\varepsilon (x)$, there is a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y)$
+	\label{lemma: open balls of point inside open ball}
+	Let $M = (X, d)$ be a metric space, let $x \in A$ and let $\varepsilon \in \mathbb R_{> 0}$. For any $y \in B_\varepsilon (x)$, there is a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_\varepsilon(x)$.
+	
+	\begin{proof}
+		For any $y \in B_\varepsilon (x)$, by the definition of open balls (Definition \ref{definition: ball}), we have $d(x,y) < \varepsilon$.
+		
+		Let $\delta \in \mathbb R_{> 0}$ such that $\delta + d(x,y) = \varepsilon$.
+		
+		By M3 in metric axioms (Definition \ref{definition: metric space}), for any $z \in A$ with $d(y,z) < \delta$, we have
+		$$
+		d(x, z) \le d(y, z) + d(x, y) < \varepsilon.
+		$$
+		
+		Thus, again, by the definition of open balls, we have $B_\delta(y) \subseteq B_\varepsilon(x)$.
+	\end{proof}
 \end{lemma}
 %--------------------------------
 
 
+%--------------------------------
+\begin{theorem}
+	\footnote{
+		Shared on \href{https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki}.
+	}
+	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is open in $M$ if and only if it is a union of open balls.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		As $U$ is open, for any $y \in U$, there exists $\varepsilon_y \in \mathbb R_{> 0}$ such that $B_{\varepsilon_y}(y) \subseteq U$.
+		
+		Therefore,
+		$$
+		U = \bigcup_{y \in U} B_{\varepsilon_y} (y).
+		$$
+		
+		\qedlemma
+		
+		Now, prove $\Leftarrow$.
+		
+		Aiming for a contradiction, suppose $U$ is a union of open balls but not open.
+		
+		As $U$ is not open, there is a $y \in U$ such that for any $\varepsilon \in \mathbb R_{> 0}$, $B_\varepsilon (y) \not \subseteq U$.
+		
+		As $U$ is a union of open balls, there is an $x \in U$ and $r \in \mathbb R_{> 0}$ such that $y \in B_r (x)$.
+		
+		By Lemma \ref{lemma: open balls of point inside open ball}, there exists a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_r (x)$.
+		
+		This is a contradiction by the assumption.
+		
+		Thus, $U$ has to be open.
+	\end{proof}
+\end{theorem}
+%--------------------------------
 
+
+%--------------------------------
+\begin{theorem}
+	Let $M = (X, d)$ be any metric space. $M$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
+	$$
+	B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset.
+	$$
+	
+	\begin{proof}
+		Aiming for a contradiction, suppose there are $x,y \in X$ with $x \ne y$, such that for any $\varepsilon \in \mathbb R_{> 0}$, we can always find a $z \in X$ such that
+		$$
+		z \in B_\varepsilon(x) \cap B_\varepsilon(y).
+		$$
+		
+		Let $r = d(x,y)/2$, and let $z \in B_r(x) \cap B_r(y)$.
+		
+		As $z \in B_r(x)$, by the definition of open balls (Definition \ref{definition: ball}), $d(x,z) < r$; as $z \in B_r(y)$, similarly, $d(y,z)< r$. Then we have
+		$$
+		d(x, z) + d(y, z) < 2r = d(x,y).
+		$$
+		
+		By M3 in metric axioms (Definition \ref{definition: metric space}), this is impossible.
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
+
+%--------------------------------
 
 
 
