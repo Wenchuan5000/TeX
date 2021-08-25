@@ -16,15 +16,21 @@
 
 %--------------------------------
 \begin{definition}
-	\label{definition: metric space}
-	Let $X$ be any set. A mapping $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric on $X$} iff it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
+	\label{definition: metric axioms}
+	Let $X$ be any set. A function $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric function}, or, simply, \textit{metric on $X$} iff it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
 	\begin{enumerate}[\bf M1. ]
 		\item $d(x,y) = 0$ iff $x = y$;
 		\item $d(x,y) = d(y,x)$;
 		\item $d(x, z) \le d(x,y) + d(y,z)$.
 	\end{enumerate}
-	
-	In this case, the pair $M = (X, d)$ is called a \textit{metric space}.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: metric space}
+	Let $X$ be any set and let $d$ be a structure on $X$. The pair $(X, d)$ is called a \textit{metric space} iff $d$ is a metric on $X$.
 \end{definition}
 %--------------------------------
 
@@ -34,12 +40,12 @@
 	\label{definition: ball}
 	A $M = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$. An \textit{open $\varepsilon$-ball}, or just $\varepsilon$-ball, about $x$ is defined to be the set
 	$$
-	B_\varepsilon (x; d) = \{ y \in X : d(x,y) < \varepsilon \}.
+	B_\varepsilon (x; d) := \{ y \in X : d(x,y) < \varepsilon \}.
 	$$
 	
 	A \textit{closed ball} is defined to be the set
 	$$
-	\overline{B}_\varepsilon (x; d) = \{ y \in X : d(x,y) \le \varepsilon \}.
+	\overline{B}_\varepsilon (x; d) := \{ y \in X : d(x,y) \le \varepsilon \}.
 	$$
 \end{definition}
 %--------------------------------
@@ -64,17 +70,17 @@
 \begin{example}
 	The \textit{Euclidean metric space} $M = (X, d)$ is an $n$-dimensional set $X$ equipped with the \textit{Euclidean metric} $d$ defined as
 	$$
-	d(x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac{1}{2}.
+	d(x,y) := \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac{1}{2}.
 	$$
 	
 	This is also called \textit{standard Euclidean metric}, in contrast to the \textit{non-standard Euclidean metrics}
 	$$
-	d_p(x,y) = \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p}, \quad p \ge 1.
+	d_p(x,y) := \left( \sum_{i = 1}^n |x_i - y_i|^p \right)^\frac{1}{p}, \quad p \ge 1.
 	$$
 	
 	In particular,
 	$$
-	d_\infty (x,y) = \max_{1 \le i \le n} |x_i - y_i|.
+	d_\infty (x,y) := \max_{1 \le i \le n} |x_i - y_i|.
 	$$
 \end{example}
 %--------------------------------
@@ -84,7 +90,7 @@
 \begin{example}
 	A \textit{discrete metric space} $M = (X, d)$ is a set $X$ equiped with the \textit{discrete metric} $d$ defined as
 	$$
-	d(x,y) =
+	d(x,y) :=
 	\begin{cases}
 		0, & \text{if $x = y$}; \\
 		1, & \text{else}.
@@ -93,7 +99,7 @@
 	
 	This is an equivalent definition of the discrete metric:
 	$$
-	d(x, y) = (\mathrm{sgn}(d'(x,y)))^2,
+	d(x, y) := (\mathrm{sgn}(d'(x,y)))^2,
 	$$
 	where $\mathrm{sgn}(\cdot)$ is a \href{https://en.wikipedia.org/wiki/Sign_function}{sign function}, and $d'$ is any metric on $X$.
 \end{example}
@@ -107,12 +113,12 @@
 	}
 	Denote $C[a,b]$ for the set of all continuous mapping $\mathbb R_{[a,b]} \to \mathbb R$. On $C[a,b]$, we can define a metric $d$ as
 	$$
-	d_p(f, g) = \left( \int_{a}^{b} |f(t) - g(t)|^p \mathrm{d} t \right)^\frac{1}{p}, \quad p \ge 1.
+	d_p(f, g) := \left( \int_{a}^{b} |f(t) - g(t)|^p \mathrm{d} t \right)^\frac{1}{p}, \quad p \ge 1.
 	$$
 	
 	In particular,
 	$$
-	d_\infty (f,g) = \sup_{t \in \mathbb R_{[a,b]}} |f(t) - g(t)|.
+	d_\infty (f,g) := \sup_{t \in \mathbb R_{[a,b]}} |f(t) - g(t)|.
 	$$
 \end{example}
 %--------------------------------
@@ -125,12 +131,12 @@
 	}
 	Let $M = (X, d)$ be a metric space. The \textit{Hausdorff metric} $d_H$ on $2^X \setminus \{\emptyset\}$ is defined as
 	$$
-	d_H = \max \left\{ \sup_{x \in X}d(x,Y), \sup_{y \in Y} d(y, X)\right\},
+	d_H := \max \left\{ \sup_{x \in X}d(x,Y), \sup_{y \in Y} d(y, X)\right\},
 	$$
 	where
 	$$
 	\begin{aligned}
-		d(x,Y) = \inf_{y \in Y}(x,y), \text{ and } d(y, X) = \inf_{x \in X} (y, x).
+		d(x,Y) := \inf_{y \in Y}(x,y), \text{ and } d(y, X) := \inf_{x \in X} (y, x).
 	\end{aligned}
 	$$
 \end{example}
@@ -160,7 +166,7 @@
 		
 		Let $\delta \in \mathbb R_{> 0}$ such that $\delta + d(x,y) = \varepsilon$.
 		
-		By M3 in metric axioms (Definition \ref{definition: metric space}), for any $z \in A$ with $d(y,z) < \delta$, we have
+		By M3 in metric axioms (Definition \ref{definition: metric axioms}), for any $z \in A$ with $d(y,z) < \delta$, we have
 		$$
 		d(x, z) \le d(y, z) + d(x, y) < \varepsilon.
 		$$
@@ -175,6 +181,7 @@
 
 %--------------------------------
 \begin{theorem}
+	\label{theorem: set is open iff union of open balls}
 	\footnote{
 		Shared on \href{https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki}.
 	}
@@ -215,7 +222,10 @@
 %--------------------------------
 \begin{theorem}
 	\label{theorem: metric space is hausdorff}
-
+	
+	\footnote{
+		Shared on \href{https://proofwiki.org/wiki/Metric_Space_is_Hausdorff}{ProofWiki}.
+	}
 	Let $M = (X, d)$ be any metric space. $M$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
 	$$
 	B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset.
@@ -234,7 +244,7 @@
 		d(x, z) + d(y, z) < 2r = d(x,y).
 		$$
 		
-		By M3 in metric axioms (Definition \ref{definition: metric space}), this is impossible.
+		By M3 in metric axioms (Definition \ref{definition: metric axioms}), this is impossible.
 		
 		\qed
 	\end{proof}
@@ -252,6 +262,7 @@
 
 %--------------------------------
 \begin{lemma}
+	\label{lemma: singleton in metric space is closed}
 	In a metric space, any singleton is closed.
 	
 	\begin{proof}
@@ -261,7 +272,7 @@
 		$$
 		0 < \varepsilon < d(x,y),
 		$$
-		thus $X \setminus \{x\}$ is open, hence, by Definition \ref{definition: metric space}, its complement $\{x\}$ is open.
+		thus $X \setminus \{x\}$ is open, hence, by Definition \ref{definition: metric axioms}, its complement $\{x\}$ is open.
 		
 		\qedlemma
 	\end{proof}
@@ -279,42 +290,273 @@
 		\item For any finite $\mathcal V \subseteq \mathcal T$, $\bigcap \mathcal V \in \mathcal T$; in words, $\mathcal T$ is closed under finite intersection.
 	\end{enumerate}
 	
-	\begin{proof}
-		First, prove O1.
+	\begin{proof} \
+		\begin{enumerate}[\bf O1.]
+			\item
+				As $\emptyset$ is the subset of any set, $\emptyset \in \mathcal T$. $\bigcup \emptyset = \emptyset \in \mathcal T$.
+			
+				By Definition \ref{definition: closed set in metric space}, $X = X \setminus \emptyset$.
+				
+				\qedlemma
+				
+			\item 
+				Let $\mathcal U \subseteq \mathcal T$, and denote $\mathcal O$ for the open balls in $M$.
+			
+				For any $U \in \mathcal U$, there is an $\mathcal O_U \subseteq \mathcal O$ such that $U = \bigcup \mathcal O_U$. 
+				
+				Then we have
+				$$
+				\bigcup \mathcal U = \bigcup_{U \in \mathcal U} \left( \bigcup \mathcal O_U \right) = \bigcup_{U \in \mathcal U} \mathcal O_U.
+				$$
+				
+				By Theorem \ref{theorem: set is open iff union of open balls}, $\bigcup \mathcal U$ is open.
+				
+				\qedlemma
+				
+			\item
+				\footnote{
+					Shared on \href{https://proofwiki.org/wiki/Finite_Intersection_of_Open_Sets_of_Metric_Space_is_Open}{ProofWiki}.
+				}
+				Let $\mathcal V$ be a finite subset of $\mathcal T$.
+				
+				Aiming for a contradiction, suppose $\bigcap \mathcal V$ is not open.
+				
+				By Definition \ref{definition: open set in metric space}, there exists a $y \in \bigcap \mathcal V$ such that for any $\varepsilon \in \mathbb R_{> 0}$, $B_\varepsilon(y) \setminus \bigcap \mathcal V \ne \emptyset$.
+				
+				By De Morgan's law, we have
+				$$
+				\bigcup_{V \in \mathcal V}(B_\varepsilon (y) \setminus V) \ne \emptyset.
+				$$
+				
+				Thus, there exists $V \in \mathcal V$ such that $B_\varepsilon (y) \setminus V \ne \emptyset$.
+				
+				As $V \in \mathcal T$ and $\varepsilon$ is arbitrarily given, by Lemma \ref{lemma: open balls of point inside open ball}, $y \notin V$. This is a contradiction.
+				
+				Thus, $\bigcap \mathcal V$ is open.
+				
+				\qedlemma
+		\end{enumerate}
 		
-		As $\emptyset$ is the subset of any set, $\emptyset \in \mathcal T$. $\bigcup \emptyset = \emptyset \in \mathcal T$.
+		Thus, the theorem is proved.
 		
-		By Definition \ref{definition: closed set in metric space}, $X = X \setminus \emptyset$.
-		
-		\qedlemma
-		
-		Then, prove O2.
-		
-		Let $\mathcal U \subseteq \mathcal T$, and denote $\mathcal O$ for the open balls in $M$.
-		
-		For any $U \in \mathcal U$, there is an $\mathcal O_U \subseteq \mathcal O$ such that $U = \bigcup \mathcal O_U$. 
-		
-		Let $\mathcal O: \mathcal T \to $
-		
-		Then we have
-		$$
-		\bigcup \mathcal U = \bigcup_{U \in \mathcal U} \left( \bigcup \mathcal O(U) \right).
-		$$
-		
-		Thus $\mathcal T$ is closed under arbitrary union.
+		\qed
 	\end{proof}
 \end{theorem}
 %--------------------------------
 
 
+%--------------------------------
+\begin{theorem}
+	Infinite intersections of open sets in some metric spaces are not necessarily open.
+	
+	\begin{proof}
+		Consider $\mathbb R$ is a Euclidean metric space, and denote $\mathcal T$.
+		
+		Clearly, for any $n \in \mathbb N_{> 0}$ and for any $x \in X$, the open interval $B_{\frac{1}{n}}(x)$ is open, but
+		$$
+		\bigcap\left\{ B_{\frac{1}{n}}\left( x \right) : n \in \mathbb N_{> 0} \right\} = \{ x \} .
+		$$
+		
+		For any $\varepsilon \in \mathbb R_{> 0}$, $B_\varepsilon(x) \setminus \{x\}$ is not empty, thus $\{x\}$ is not open.
+		
+		\qed
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%================================
+\section{Restrictions and Metric Subspaces}
+%================================
+
+
+Restriction of metric function is a useful tool to describe the relation between metric spaces with different sets but ``same'' metric function on the sets.
+
+As a restriction of a relation $R$ on $X \times Y$ to a subset $A \times B \subseteq X \times Y$ is defined to be
+$$
+R \restriction_{A \times B} := R \cap (X \times Y),
+$$
+a restriction of a metric $d$ on a set $S$ to a subset $U \subseteq S$ is defined to be
+$$
+d \restriction_{(U \times U) \times \mathbb R_{> 0}} := d \cap ((U \times U) \times \mathbb R_{> 0}).
+$$
+
+If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restriction_{A \times B}$. Similarly, as the codomain of a metric function is alway $\mathbb R_{> 0}$, so we simply write $d \restriction_{U \times U}$ instead of $d \restriction_{(U \times U) \times \mathbb R_{> 0}}$.
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: subspace metric}
+	Let $M = (X, d)$ be a metric space, and let $A \subseteq X$. The \textit{metric on $A$ induced by $d$}, or the \textit{subspace metric of $d$ with respect to $A$} is defined to be
+	$$
+	d_A := d\restriction_{A \times A}.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	Let $M = (X, d)$ be a metric space, and let $A \subseteq X$ and let $d_A := d\restriction_{A \times A}$. Then $(A, d_A)$ is a metric space.
+	
+	\begin{proof}		
+		As metric axioms (Definition \ref{definition: metric axioms}) holds for any $x,y \in X$, and $A \subseteq X$, they also holds for any $a, b \in A$. As $d_A$ is the subspace metric of $d$ with respect to $A$, $d_A$ is a metric on $A$.
+		
+		Thus, $(A, d_A)$ is a metric space.
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: metric subspace}
+	Let $M = (X, d)$ be a metric space, and let $A \subseteq X$. $(A, d_A)$ is a \textit{metric subspace} of $M$ iff $d_A$ is a subspace metric of $d$ with respect to $A$.
+\end{definition}
+%--------------------------------
 
 
 
+%================================
+%::::::::::::::::::::::::::::::::
+\chapter{Topological Spaces}
+%::::::::::::::::::::::::::::::::
+%================================
 
 
+%================================
+\section{Basic Definitions}
+%================================
 
 
+%--------------------------------
+\begin{definition}
+	\label{definition: open set axioms}
+	Let $X$ be any set, and let $\mathcal T \subseteq 2^X$. We call $\mathcal T$ a \textit{topology on $X$} iff it satisfies the \textit{open set axioms}. That is,
+	\begin{enumerate}[\bfseries O1.]
+		\item $X \in \mathcal T$;
+		\item For any $\mathcal U \subseteq \mathcal T$, $\bigcup \mathcal U \in \mathcal T$; in words, $\mathcal T$ is closed under arbitrary union.
+		\item For any finite $\mathcal V \subseteq \mathcal T$, $\bigcap \mathcal V \in \mathcal T$; in words, $\mathcal T$ is closed under finite intersection.
+	\end{enumerate}
+	
+	A subset $U \subseteq X$ is said to be \textit{open in $M$} iff it is an element of $\mathcal T$.
+\end{definition}
+%--------------------------------
 
+
+%--------------------------------
+\begin{definition}
+	\label{definition: topological space}
+	Let $X$ be any set, and let $\mathcal T$ be a structure on $X$. The pair $(X, \mathcal T)$ is called a \textit{topological space} iff $\mathcal T$ is a topology on $X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	\label{theorem: empty set is an element of topology}
+	Let $M = (X, \mathcal T)$ be a topological space. Then $\emptyset \in \mathcal T$.
+	
+	\begin{proof}
+		As empty set is an element of any set, it also an element of $\mathcal T$.
+		
+		Therefore, we have
+		$$
+		\emptyset = \bigcup \emptyset \in \mathcal T.
+		$$
+		
+		\qed
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: closed set}
+	Let $M = (X, \mathcal T)$ be a topological space. A subset $A \subseteq X$ is said to be \textit{closed in $M$} iff there exists a $U \in \mathcal T$ such that $A = X \setminus U$.
+\end{definition}
+%--------------------------------
+
+
+%================================
+\section{Some Important Topologies}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: discrete topology}
+	Let $X$ be any set. A family $\mathcal T \subseteq 2^X$ is a \textit{discrete topology on $X$} iff $\mathcal T = 2^X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: indiscrete topology}
+	Let $X$ be any set. A family $\mathcal T \subseteq 2^X$ is an \textit{indiscrete topology on $X$} iff $\mathcal T = \{X, \emptyset\}$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: induced topology}
+	Let $M = (X, d)$ be a metric space. A family $\mathcal T \subseteq 2^X$ is a \textit{topology induced by $d$} iff $\mathcal T$ is the set of all open sets in $M$.
+\end{definition}
+%--------------------------------
+
+
+%================================
+\section{Comparison of Topologies}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{definition: comparison of topologies}
+	Let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be topologies on $X$. We say that $\mathcal T$ is \textit{coarser} than $\mathcal T'$, or $\mathcal T'$ is \textit{finer} than $\mathcal T$, iff $\mathcal T \subseteq \mathcal T'$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	By the definition of cardinality and inclusion mapping, if $\mathcal T \subseteq \mathcal T'$, it is certainly true that $| \mathcal T | \le | \mathcal T' |$. But, on the contrary, $| \mathcal T | \le |\mathcal T'|$ does not implies $\mathcal T \subseteq \mathcal T'$. It is easy to find counter-example about this.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	By Definition \ref{definition: comparison of topologies}, for any set $X$, if a family $\mathcal U$ of open sets is given, then we can find the coarsest topology on $X$ containing $\mathcal U$ by
+	$$
+	\mathcal T = \left\{ \bigcup \mathcal I, \bigcap \mathcal I, X : \mathcal I \subseteq \mathcal U \right\}.
+	$$
+	
+	For example, let $X = \{1,2,3,4,5\}$, and let
+	$$
+	\mathcal U = \{\{1,2\}, \{2,3\}, \{4\}\}.
+	$$
+	Then a topology on $X$ contains at least these sets:
+	$$
+	\begin{matrix}
+		\{1,2,3, 4\}, \{\}, \\
+		\{1,2\}, \{2,3\}, \{4\}, \\
+		\{1,2,3\}, \{1,2,4\}, \{2,3,4\}, \\
+		\{2\}.
+	\end{matrix}
+	$$
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{}
+\end{definition}
+%--------------------------------
 
 
 
