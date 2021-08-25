@@ -179,12 +179,11 @@
 %--------------------------------
 
 
+% Shared on Proof Wiki
+% https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki
 %--------------------------------
 \begin{theorem}
 	\label{theorem: set is open iff union of open balls}
-	\footnote{
-		Shared on \href{https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki}.
-	}
 	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is open in $M$ iff it is a union of open balls.
 	
 	\begin{proof}
@@ -219,13 +218,11 @@
 %--------------------------------
 
 
+% Shared on ProofWiki
+% https://proofwiki.org/wiki/Metric_Space_is_Hausdorff
 %--------------------------------
 \begin{theorem}
 	\label{theorem: metric space is hausdorff}
-	
-	\footnote{
-		Shared on \href{https://proofwiki.org/wiki/Metric_Space_is_Hausdorff}{ProofWiki}.
-	}
 	Let $M = (X, d)$ be any metric space. $M$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
 	$$
 	B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset.
@@ -244,7 +241,7 @@
 		d(x, z) + d(y, z) < 2r = d(x,y).
 		$$
 		
-		By M3 in metric axioms (Definition \ref{definition: metric axioms}), this is impossible.
+		This contradicts the metric axioms M3 (Definition \ref{definition: metric axioms}).
 		
 		\qed
 	\end{proof}
@@ -280,6 +277,8 @@
 %--------------------------------
 
 
+% Shared on ProofWiki
+% https://proofwiki.org/wiki/Finite_Intersection_of_Open_Sets_of_Metric_Space_is_Open
 %--------------------------------
 \begin{theorem}
 	Let $M = (X, d)$ be a metric space, denote $\mathcal T$ for the family of open subsets of $X$. Then $\mathcal T$ satisfies the following conditions:
@@ -314,9 +313,6 @@
 				\qedlemma
 				
 			\item
-				\footnote{
-					Shared on \href{https://proofwiki.org/wiki/Finite_Intersection_of_Open_Sets_of_Metric_Space_is_Open}{ProofWiki}.
-				}
 				Let $\mathcal V$ be a finite subset of $\mathcal T$.
 				
 				Aiming for a contradiction, suppose $\bigcap \mathcal V$ is not open.
@@ -479,6 +475,31 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 %--------------------------------
 
 
+%--------------------------------
+\begin{theorem}
+	Let $M = (X, \mathcal T)$ be a topological space, and denote $\mathcal C$ for the family of all closed sets in $M$. Then $\mathcal C$ satisfies the following condition
+	\begin{enumerate}[\bf C1.]
+		\item $X, \emptyset \in \mathcal C$;
+		\item For any $\mathcal A \subseteq \mathcal C$, $\bigcap \mathcal A \in \mathcal C$;
+		\item For any finite $\mathcal B \subseteq \mathcal C$, $\bigcup \mathcal B \in \mathcal C$.
+	\end{enumerate}
+	
+	\begin{proof}
+		\begin{enumerate}[\bf C1.]
+			\item
+				As $\emptyset \in \mathcal T$ and $X = X \setminus \emptyset$, by Definition \ref{definition: closed set}, $X$ is closed.
+				
+				Similarly, as $X \in \mathcal T$ and $\emptyset = X \setminus X$, $\emptyset$ is closed.
+				
+				\qedlemma
+			
+			% todo: finish this
+		\end{enumerate}
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
 %================================
 \section{Some Important Topologies}
 %================================
@@ -553,9 +574,9 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %--------------------------------
-\begin{definition}
-	\label{}
-\end{definition}
+\begin{example}
+	The discrete topology is the finest topology on any $X$, while the indiscrete topology is the coarsest.
+\end{example}
 %--------------------------------
 
 

@@ -39,15 +39,62 @@
 \newcommand{\qedlemma}{\hfill \ensuremath{\Box}}
 \renewcommand{\qed}{\hfill \ensuremath{\blacksquare}}
 
-%\newenvironment{proof}[]{}{}
-
-%\setlength{\parindent}{4em}
-%\setlength{\parskip}{0.5em}
 \renewcommand{\baselinestretch}{1.25}
 
-%\newcommand{\qedlemma}{\square}
-%\renewcommand{\qed}{\blacksquare}
-
 \newcommand{\Int}{\mathrm{Int}}
-\newcommand{\Cl}{\mathrm{Cl}}
-%\newcommand{\qed}{}
+\newcommand{\Cl}{\mathrm{Cl}}{}
+
+
+% Title Formatting
+%================================================
+
+\usepackage{titlesec}
+
+%------------------------------------------------
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape} % format
+{Chapter \ \thechapter.} % label
+{-1ex} % sep
+{
+    \rule{\textwidth}{1pt}\vspace{1ex}
+    \vspace{0ex}
+    \centering
+} % before-code
+[
+\vspace{-0.3ex}%
+\rule{\textwidth}{0.2pt}
+] % after-code
+%------------------------------------------------
+
+\titleformat
+{\section}
+[display]
+{\bfseries\large}
+{} % label
+{0ex} % sep
+{
+	\S \thesection \ \
+} % before-code
+[
+\vspace{-0.5ex}%
+\rule{\textwidth}{0.2pt}\vspace{2ex}
+] % after-code
+%================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
