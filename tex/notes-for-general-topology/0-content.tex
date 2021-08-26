@@ -16,8 +16,10 @@
 
 %--------------------------------
 \begin{definition}
-	\label{definition: metric axioms}
-	Let $X$ be any set. A function $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric function}, or, simply, \textit{metric on $X$} iff it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
+	\label{def: metric axioms}
+	Let $X$ be any set.
+	
+	A function $d: X \times X \to \mathbb R_{\ge 0}$ is \textit{metric function}, or, simply, \textit{metric on $X$} iff it satisfies the \textit{metric axioms}. That is, for any $x, y, z \in X$:
 	\begin{enumerate}[\bf M1. ]
 		\item $d(x,y) = 0$ iff $x = y$;
 		\item $d(x,y) = d(y,x)$;
@@ -29,16 +31,20 @@
 
 %--------------------------------
 \begin{definition}
-	\label{definition: metric space}
-	Let $X$ be any set and let $d$ be a structure on $X$. The pair $(X, d)$ is called a \textit{metric space} iff $d$ is a metric on $X$.
+	\label{def: metric space}
+	Let $X$ be any set and let $d$ be a structure on $X$.
+	
+	The pair $(X, d)$ is called a \textit{metric space} iff $d$ is a metric on $X$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	\label{definition: ball}
-	A $M = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$. An \textit{open $\varepsilon$-ball}, or just $\varepsilon$-ball, about $x$ is defined to be the set
+	\label{def: ball}
+	A $\mathbb X = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$.
+	
+	An \textit{open $\varepsilon$-ball}, or just $\varepsilon$-ball, about $x$ is defined to be the set
 	$$
 	B_\varepsilon (x; d) := \{ y \in X : d(x,y) < \varepsilon \}.
 	$$
@@ -55,7 +61,7 @@
 \begin{note}
 	As
 	$$
-	M = (X, d), \ M' = (X, d'), \ M'' = (X, d''), \ \ldots
+	\mathbb X = (X, d), \ \mathbb X' = (X, d'), \ \mathbb X'' = (X, d''), \ \ldots
 	$$
 	are different although they share the same set $X$, for any $x \in X$ and any $\varepsilon \in \mathbb R_{> 0}$,
 	$$
@@ -68,7 +74,7 @@
 
 %--------------------------------
 \begin{example}
-	The \textit{Euclidean metric space} $M = (X, d)$ is an $n$-dimensional set $X$ equipped with the \textit{Euclidean metric} $d$ defined as
+	The \textit{Euclidean metric space} $\mathbb X = (X, d)$ is an $n$-dimensional set $X$ equipped with the \textit{Euclidean metric} $d$ defined as
 	$$
 	d(x,y) := \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac{1}{2}.
 	$$
@@ -88,7 +94,7 @@
 
 %--------------------------------
 \begin{example}
-	A \textit{discrete metric space} $M = (X, d)$ is a set $X$ equiped with the \textit{discrete metric} $d$ defined as
+	A \textit{discrete metric space} $\mathbb X = (X, d)$ is a set $X$ equiped with the \textit{discrete metric} $d$ defined as
 	$$
 	d(x,y) :=
 	\begin{cases}
@@ -111,9 +117,9 @@
 	\footnote{
 		See \href{https://en.wikipedia.org/wiki/Minkowski_inequality}{Minkowski inequality}.
 	}
-	Denote $C[a,b]$ for the set of all continuous mapping $\mathbb R_{[a,b]} \to \mathbb R$. On $C[a,b]$, we can define a metric $d$ as
+	Let $\mathbb I = (C{[a,b]}, d_p)$ be a metric space where $C{[a,b]}$ denotes the set of all continuous mapping $\mathbb R_{[a,b]} \to \mathbb R$, and $p > 0$, and the metric $d_p$ is defined as
 	$$
-	d_p(f, g) := \left( \int_{a}^{b} |f(t) - g(t)|^p \mathrm{d} t \right)^\frac{1}{p}, \quad p \ge 1.
+	d_p(f, g) := \left( \int_{a}^{b} |f(t) - g(t)|^p \mathrm{d} t \right)^\frac{1}{p}.
 	$$
 	
 	In particular,
@@ -128,8 +134,8 @@
 \begin{example}
 	\footnote{
 		See \href{https://en.wikipedia.org/wiki/Hausdorff_distance}{Hausdorff distance}.
-	}
-	Let $M = (X, d)$ be a metric space. The \textit{Hausdorff metric} $d_H$ on $2^X \setminus \{\emptyset\}$ is defined as
+	}	
+	Let $\mathbb X = (X, d)$ be a metric space. The \textit{Hausdorff metric} $d_H$ on $2^X \setminus \{\emptyset\}$ is defined as
 	$$
 	d_H := \max \left\{ \sup_{x \in X}d(x,Y), \sup_{y \in Y} d(y, X)\right\},
 	$$
@@ -144,36 +150,40 @@
 
 
 %================================
-\section{Open sets in Metric Spaces}
+\section{Open Sets in Metric Spaces}
 %================================
 
 
 %--------------------------------
 \begin{definition}
-	\label{definition: open set in metric space}
-	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is said to be \textit{open in $M$}, iff for any $y \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$, such that $B_\varepsilon(y) \subseteq U$.
+	\label{def: open set in metric space}
+	Let $\mathbb X = (X, d)$ be a metric space, and let $U \subseteq X$.
+	
+	$U$ is said to be \textit{open in $\mathbb X$}, iff for any $y \in U$, there exists $\varepsilon \in \mathbb R_{> 0}$, such that $B_\varepsilon(y) \subseteq U$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{lemma}
-	\label{lemma: open balls of point inside open ball}
-	Let $M = (X, d)$ be a metric space, let $x \in A$ and let $\varepsilon \in \mathbb R_{> 0}$. For any $y \in B_\varepsilon (x)$, there is a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_\varepsilon(x)$.
+	\label{lm: open balls of point inside open ball}
+	Let $\mathbb X = (X, d)$ be a metric space, let $x \in A$ and let $\varepsilon \in \mathbb R_{> 0}$.
+	
+	For any $y \in B_\varepsilon (x)$, there is a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_\varepsilon(x)$.
 	
 	\begin{proof}
-		For any $y \in B_\varepsilon (x)$, by the definition of open balls (Definition \ref{definition: ball}), we have $d(x,y) < \varepsilon$.
+		For any $y \in B_\varepsilon (x)$, by the definition of open balls (Definition \ref{def: ball}), we have $d(x,y) < \varepsilon$.
 		
 		Let $\delta \in \mathbb R_{> 0}$ such that $\delta + d(x,y) = \varepsilon$.
 		
-		By M3 in metric axioms (Definition \ref{definition: metric axioms}), for any $z \in A$ with $d(y,z) < \delta$, we have
+		By M3 in metric axioms (Definition \ref{def: metric axioms}), for any $z \in A$ with $d(y,z) < \delta$, we have
 		$$
 		d(x, z) \le d(y, z) + d(x, y) < \varepsilon.
 		$$
 		
 		Thus, again, by the definition of open balls, we have $B_\delta(y) \subseteq B_\varepsilon(x)$.
 		
-		\qedlemma
+		\qedlm
 	\end{proof}
 \end{lemma}
 %--------------------------------
@@ -183,8 +193,10 @@
 % https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki
 %--------------------------------
 \begin{theorem}
-	\label{theorem: set is open iff union of open balls}
-	Let $M = (X, d)$ be a metric space, and let $U \subseteq X$. $U$ is open in $M$ iff it is a union of open balls.
+	\label{thm: set is open iff union of open balls}
+	Let $\mathbb X = (X, d)$ be a metric space, and let $U \subseteq X$.
+	
+	$U$ is open in $\mathbb X$ iff it is a union of open balls.
 	
 	\begin{proof}
 		First, prove $\Rightarrow$.
@@ -196,7 +208,7 @@
 		U = \bigcup_{y \in U} B_{\varepsilon_y} (y).
 		$$
 		
-		$\qedlemma$
+		$\qedlm$
 		
 		Now, prove $\Leftarrow$.
 		
@@ -206,7 +218,7 @@
 		
 		As $U$ is a union of open balls, there is an $x \in U$ and $r \in \mathbb R_{> 0}$ such that $y \in B_r (x)$.
 		
-		By Lemma \ref{lemma: open balls of point inside open ball}, there exists a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_r (x)$.
+		By Lemma \ref{lm: open balls of point inside open ball}, there exists a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_r (x)$.
 		
 		This is a contradiction by the assumption.
 		
@@ -222,8 +234,10 @@
 % https://proofwiki.org/wiki/Metric_Space_is_Hausdorff
 %--------------------------------
 \begin{theorem}
-	\label{theorem: metric space is hausdorff}
-	Let $M = (X, d)$ be any metric space. $M$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
+	\label{thm: metric space is hausdorff}
+	Let $\mathbb X = (X, d)$ be any metric space.
+	
+	$\mathbb X$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
 	$$
 	B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset.
 	$$
@@ -236,12 +250,14 @@
 		
 		Let $r = d(x,y)/2$, and let $z \in B_r(x) \cap B_r(y)$.
 		
-		As $z \in B_r(x)$, by the definition of open balls (Definition \ref{definition: ball}), $d(x,z) < r$; as $z \in B_r(y)$, similarly, $d(y,z)< r$. Then we have
+		As $z \in B_r(x)$, by the definition of open balls (Definition \ref{def: ball}), $d(x,z) < r$; as $z \in B_r(y)$, similarly, $d(y,z)< r$. Then we have
 		$$
 		d(x, z) + d(y, z) < 2r = d(x,y).
 		$$
 		
-		This contradicts the metric axioms M3 (Definition \ref{definition: metric axioms}).
+		This contradicts the metric axioms M3 (Definition \ref{def: metric axioms}).
+		
+		Thus $\mathbb X$ is Hausdorff.
 		
 		\qed
 	\end{proof}
@@ -251,27 +267,29 @@
 
 %--------------------------------
 \begin{definition}
-	\label{definition: closed set in metric space}
-	Let $M = (X, d)$ be any metric space, and let $V \subseteq X$. $V$ is said to be \textit{closed} in $M$, iff there is an open set $U$ satisfies $X \setminus U = V$.
+	\label{def: closed set in metric space}
+	Let $\mathbb X = (X, d)$ be any metric space, and let $V \subseteq X$.
+	
+	$V$ is said to be \textit{closed} in $\mathbb X$, iff there is an open set $U$ satisfies $X \setminus U = V$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{lemma}
-	\label{lemma: singleton in metric space is closed}
+	\label{lm: singleton in metric space is closed}
 	In a metric space, any singleton is closed.
 	
 	\begin{proof}
-		Let $M=(X, d)$ be a metric space, let $x \in X$, and let $y \in X \setminus \{x\}$.
+		Let $\mathbb X =(X, d)$ be a metric space, let $x \in X$, and let $y \in X \setminus \{x\}$.
 		
-		As $M$ is Hausdorff (Theorem \ref{theorem: metric space is hausdorff}), there is an $\varepsilon \in \mathbb R_{> 0}$ such that
+		As $M$ is Hausdorff (Theorem \ref{thm: metric space is hausdorff}), there is an $\varepsilon \in \mathbb R_{> 0}$ such that
 		$$
 		0 < \varepsilon < d(x,y),
 		$$
-		thus $X \setminus \{x\}$ is open, hence, by Definition \ref{definition: metric axioms}, its complement $\{x\}$ is open.
+		thus $X \setminus \{x\}$ is open, hence, by Definition \ref{def: metric axioms}, its complement $\{x\}$ is open.
 		
-		\qedlemma
+		\qedlm
 	\end{proof}
 \end{lemma}
 %--------------------------------
@@ -281,7 +299,9 @@
 % https://proofwiki.org/wiki/Finite_Intersection_of_Open_Sets_of_Metric_Space_is_Open
 %--------------------------------
 \begin{theorem}
-	Let $M = (X, d)$ be a metric space, denote $\mathcal T$ for the family of open subsets of $X$. Then $\mathcal T$ satisfies the following conditions:
+	Let $\mathbb X = (X, d)$ be a metric space, denote $\mathcal T$ for the family of open subsets of $X$.
+	
+	Then $\mathcal T$ satisfies the following conditions:
 	
 	\begin{enumerate}[\bf O1.]
 		\item $X, \emptyset \in \mathcal T$;
@@ -294,9 +314,9 @@
 			\item
 				As $\emptyset$ is the subset of any set, $\emptyset \in \mathcal T$. $\bigcup \emptyset = \emptyset \in \mathcal T$.
 			
-				By Definition \ref{definition: closed set in metric space}, $X = X \setminus \emptyset$.
+				By Definition \ref{def: closed set in metric space}, $X = X \setminus \emptyset$.
 				
-				\qedlemma
+				\qedlm
 				
 			\item 
 				Let $\mathcal U \subseteq \mathcal T$, and denote $\mathcal O$ for the open balls in $M$.
@@ -308,16 +328,16 @@
 				\bigcup \mathcal U = \bigcup_{U \in \mathcal U} \left( \bigcup \mathcal O_U \right) = \bigcup_{U \in \mathcal U} \mathcal O_U.
 				$$
 				
-				By Theorem \ref{theorem: set is open iff union of open balls}, $\bigcup \mathcal U$ is open.
+				By Theorem \ref{thm: set is open iff union of open balls}, $\bigcup \mathcal U$ is open.
 				
-				\qedlemma
+				\qedlm
 				
 			\item
 				Let $\mathcal V$ be a finite subset of $\mathcal T$.
 				
 				Aiming for a contradiction, suppose $\bigcap \mathcal V$ is not open.
 				
-				By Definition \ref{definition: open set in metric space}, there exists a $y \in \bigcap \mathcal V$ such that for any $\varepsilon \in \mathbb R_{> 0}$, $B_\varepsilon(y) \setminus \bigcap \mathcal V \ne \emptyset$.
+				By Definition \ref{def: open set in metric space}, there exists a $y \in \bigcap \mathcal V$ such that for any $\varepsilon \in \mathbb R_{> 0}$, $B_\varepsilon(y) \setminus \bigcap \mathcal V \ne \emptyset$.
 				
 				By De Morgan's law, we have
 				$$
@@ -326,11 +346,11 @@
 				
 				Thus, there exists $V \in \mathcal V$ such that $B_\varepsilon (y) \setminus V \ne \emptyset$.
 				
-				As $V \in \mathcal T$ and $\varepsilon$ is arbitrarily given, by Lemma \ref{lemma: open balls of point inside open ball}, $y \notin V$. This is a contradiction.
+				As $V \in \mathcal T$ and $\varepsilon$ is arbitrarily given, by Lemma \ref{lm: open balls of point inside open ball}, $y \notin V$. This is a contradiction.
 				
 				Thus, $\bigcap \mathcal V$ is open.
 				
-				\qedlemma
+				\qedlm
 		\end{enumerate}
 		
 		Thus, the theorem is proved.
@@ -382,8 +402,10 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: subspace metric}
-	Let $M = (X, d)$ be a metric space, and let $A \subseteq X$. The \textit{metric on $A$ induced by $d$}, or the \textit{subspace metric of $d$ with respect to $A$} is defined to be
+	\label{def: subspace metric}
+	Let $\mathbb X = (X, d)$ be a metric space, and let $A \subseteq X$.
+	
+	The \textit{metric on $A$ induced by $d$}, or the \textit{subspace metric of $d$ with respect to $A$} is defined to be
 	$$
 	d_A := d\restriction_{A \times A}.
 	$$
@@ -393,12 +415,14 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{theorem}
-	Let $M = (X, d)$ be a metric space, and let $A \subseteq X$ and let $d_A := d\restriction_{A \times A}$. Then $(A, d_A)$ is a metric space.
+	Let $\mathbb X = (X, d)$ be a metric space, and let $A \subseteq X$ and let $d_A := d\restriction_{A \times A}$.
+	
+	Then $\mathbb A = (A, d_A)$ is a metric space.
 	
 	\begin{proof}		
-		As metric axioms (Definition \ref{definition: metric axioms}) holds for any $x,y \in X$, and $A \subseteq X$, they also holds for any $a, b \in A$. As $d_A$ is the subspace metric of $d$ with respect to $A$, $d_A$ is a metric on $A$.
+		As metric axioms (Definition \ref{def: metric axioms}) holds for any $x,y \in X$, and $A \subseteq X$, they also holds for any $a, b \in A$. As $d_A$ is the subspace metric of $d$ with respect to $A$, $d_A$ is a metric on $A$.
 		
-		Thus, $(A, d_A)$ is a metric space.
+		Thus, $\mathbb A$ is a metric space.
 	\end{proof}
 \end{theorem}
 %--------------------------------
@@ -406,8 +430,10 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: metric subspace}
-	Let $M = (X, d)$ be a metric space, and let $A \subseteq X$. $(A, d_A)$ is a \textit{metric subspace} of $M$ iff $d_A$ is a subspace metric of $d$ with respect to $A$.
+	\label{def: metric subspace}
+	Let $\mathbb X = (X, d)$ be a metric space, and let $A \subseteq X$. 
+	
+	$\mathbb A = (A, d_A)$ is a \textit{metric subspace} of $\mathbb X$ iff $d_A$ is a subspace metric of $d$ with respect to $A$.
 \end{definition}
 %--------------------------------
 
@@ -427,8 +453,10 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: open set axioms}
-	Let $X$ be any set, and let $\mathcal T \subseteq 2^X$. We call $\mathcal T$ a \textit{topology on $X$} iff it satisfies the \textit{open set axioms}. That is,
+	\label{def: open set axioms}
+	Let $X$ be any set, and let $\mathcal T \subseteq 2^X$.
+	
+	$\mathcal T$ is a \textit{topology on $X$} iff it satisfies the \textit{open set axioms}. That is,
 	\begin{enumerate}[\bfseries O1.]
 		\item $X \in \mathcal T$;
 		\item For any $\mathcal U \subseteq \mathcal T$, $\bigcup \mathcal U \in \mathcal T$; in words, $\mathcal T$ is closed under arbitrary union.
@@ -442,16 +470,20 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: topological space}
-	Let $X$ be any set, and let $\mathcal T$ be a structure on $X$. The pair $(X, \mathcal T)$ is called a \textit{topological space} iff $\mathcal T$ is a topology on $X$.
+	\label{def: topological space}
+	Let $X$ be any set, and let $\mathcal T$ be a structure on $X$.
+	
+	The pair $(X, \mathcal T)$ is called a \textit{topological space} iff $\mathcal T$ is a topology on $X$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{theorem}
-	\label{theorem: empty set is an element of topology}
-	Let $M = (X, \mathcal T)$ be a topological space. Then $\emptyset \in \mathcal T$.
+	\label{thm: empty set is an element of topology}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	
+	Then $\emptyset \in \mathcal T$.
 	
 	\begin{proof}
 		As empty set is an element of any set, it also an element of $\mathcal T$.
@@ -469,15 +501,19 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: closed set}
-	Let $M = (X, \mathcal T)$ be a topological space. A subset $A \subseteq X$ is said to be \textit{closed in $M$} iff there exists a $U \in \mathcal T$ such that $A = X \setminus U$.
+	\label{def: closed set}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	
+	A subset $A \subseteq X$ is said to be \textit{closed in $\mathbb X$} iff there exists a $U \in \mathcal T$ such that $A = X \setminus U$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{theorem}
-	Let $M = (X, \mathcal T)$ be a topological space, and denote $\mathcal C$ for the family of all closed sets in $M$. Then $\mathcal C$ satisfies the following condition
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and denote $\mathcal C$ for the family of all closed sets in $M$.
+	
+	Then $\mathcal C$ satisfies the following conditions:
 	\begin{enumerate}[\bf C1.]
 		\item $X, \emptyset \in \mathcal C$;
 		\item For any $\mathcal A \subseteq \mathcal C$, $\bigcap \mathcal A \in \mathcal C$;
@@ -487,14 +523,52 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 	\begin{proof}
 		\begin{enumerate}[\bf C1.]
 			\item
-				As $\emptyset \in \mathcal T$ and $X = X \setminus \emptyset$, by Definition \ref{definition: closed set}, $X$ is closed.
-				
-				Similarly, as $X \in \mathcal T$ and $\emptyset = X \setminus X$, $\emptyset$ is closed.
-				
-				\qedlemma
+			As $\emptyset \in \mathcal T$ and $X = X \setminus \emptyset$, by Definition \ref{def: closed set}, $X$ is closed.
 			
-			% todo: finish this
+			Similarly, as $X \in \mathcal T$ and $\emptyset = X \setminus X$, $\emptyset$ is closed.
+			
+			\qedlm
+			
+			\item
+			For any $\mathcal A \subseteq \mathcal C$, there exists a $\mathcal U \subseteq \mathcal T$ such that 
+			$$
+			\forall A \in \mathcal A: \exists U \in \mathcal U : A = X \setminus U. \quad
+			\text{(Definition \ref{def: closed set}.)}
+			$$
+			Then we have
+			$$
+			\begin{aligned}
+				\mathcal A = \left\{ X \setminus U : U \in \mathcal U \right\} &\iff \bigcap \mathcal A = \bigcap_{U \in \mathcal U} X \setminus U \\
+				&\iff \bigcap \mathcal A = X \setminus \bigcup \mathcal U.
+			\end{aligned}
+			$$
+			
+			As $\bigcup \mathcal U \in \mathcal T$ by Definition \ref{def: open set axioms} O2, its complement $\bigcap \mathcal A \in \mathcal C$ by Definition \ref{def: closed set}.
+				
+				\qedlm
+				
+			\item
+			For any finite $\mathcal B \subseteq \mathcal C$, there exists a finite $\mathcal U \subseteq \mathcal T$ such that
+			$$
+			\forall B \in \mathcal B: \exists U \in \mathcal U: A = X \setminus U. \quad
+			(\text{Definition \ref{def: closed set}}.)
+			$$
+			Then we have
+			$$
+			\begin{aligned}
+				\mathcal B = \{X \setminus U : U \in \mathcal U \} &\iff \bigcup \mathcal B =  \bigcup_{U \in \mathcal U} X \setminus U \\
+				&\iff \bigcup \mathcal B = X \setminus \bigcap \mathcal U.
+			\end{aligned}
+			$$
+			
+			As $\bigcap \mathcal U \in \mathcal T$ by Definition \ref{def: open set axioms} O3, its complement $\bigcup \mathcal A \in \mathcal C$ by Definition \ref{def: closed set}.
+			
+			\qedlm
 		\end{enumerate}
+		
+		Thus, the proof is done.
+		
+		\qed
 	\end{proof}
 \end{theorem}
 %--------------------------------
@@ -507,24 +581,30 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: discrete topology}
-	Let $X$ be any set. A family $\mathcal T \subseteq 2^X$ is a \textit{discrete topology on $X$} iff $\mathcal T = 2^X$.
+	\label{def: discrete topology}
+	Let $X$ be any set.
+	
+	A family $\mathcal T \subseteq 2^X$ is a \textit{discrete topology on $X$} iff $\mathcal T = 2^X$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	\label{definition: indiscrete topology}
-	Let $X$ be any set. A family $\mathcal T \subseteq 2^X$ is an \textit{indiscrete topology on $X$} iff $\mathcal T = \{X, \emptyset\}$.
+	\label{def: indiscrete topology}
+	Let $X$ be any set.
+	
+	A family $\mathcal T \subseteq 2^X$ is an \textit{indiscrete topology on $X$} iff $\mathcal T = \{X, \emptyset\}$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	\label{definition: induced topology}
-	Let $M = (X, d)$ be a metric space. A family $\mathcal T \subseteq 2^X$ is a \textit{topology induced by $d$} iff $\mathcal T$ is the set of all open sets in $M$.
+	\label{def: induced topology}
+	Let $\mathbb X = (X, d)$ be a metric space.
+	
+	A family $\mathcal T \subseteq 2^X$ is a \textit{topology induced by $d$} iff $\mathcal T$ is the set of all open sets in $\mathbb X$.
 \end{definition}
 %--------------------------------
 
@@ -536,8 +616,10 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{definition}
-	\label{definition: comparison of topologies}
-	Let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be topologies on $X$. We say that $\mathcal T$ is \textit{coarser} than $\mathcal T'$, or $\mathcal T'$ is \textit{finer} than $\mathcal T$, iff $\mathcal T \subseteq \mathcal T'$.
+	\label{def: comparison of topologies}
+	Let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be topologies on $X$.
+	
+	We say that $\mathcal T$ is \textit{coarser} than $\mathcal T'$, or $\mathcal T'$ is \textit{finer} than $\mathcal T$, iff $\mathcal T \subseteq \mathcal T'$.
 \end{definition}
 %--------------------------------
 
@@ -551,7 +633,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{example}
-	By Definition \ref{definition: comparison of topologies}, for any set $X$, if a family $\mathcal U$ of open sets is given, then we can find the coarsest topology on $X$ containing $\mathcal U$ by
+	By Definition \ref{def: comparison of topologies}, for any set $X$, if a family $\mathcal U$ of open sets is given, then we can find the coarsest topology on $X$ containing $\mathcal U$ by
 	$$
 	\mathcal T = \left\{ \bigcup \mathcal I, \bigcap \mathcal I, X : \mathcal I \subseteq \mathcal U \right\}.
 	$$
@@ -578,6 +660,117 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 	The discrete topology is the finest topology on any $X$, while the indiscrete topology is the coarsest.
 \end{example}
 %--------------------------------
+
+
+%================================
+\section{Interiors}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: interior}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	The \textit{interior} of $A$ is defined as
+	$$
+	\Int_{\mathcal T}(A) := \bigcup \left(\mathcal T \cap 2^A \right).
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Let $\mathbb X = (X, \mathcal T)$, $\mathbb X' = (X, \mathcal T')$, and $A \subseteq X$. Then $\mathcal T \ne \mathcal T'$ iff $\Int_{\mathcal T}(A) \ne \Int_{\mathcal T'}(A)$. In this case, the subscript for ``$\Int$'' is necessary.
+	
+	But, if the confusion is unlikely, we can also simply write $\Int (A)$ for $\Int_\mathcal T A$. In this case, it is also common to write $A^\circ$ for $\Int(A)$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	$A \in \mathcal T$ iff $A = A^\circ$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		If $A \in \mathcal T$, then we have
+		$$
+		\mathcal T \cap 2^A = \mathcal T \cap \{A\} \cap 2^A = \{A\} \cap 2^A = \{A\}.
+		$$
+		
+		By Definition \ref{def: interior},
+		$$
+		A^\circ = \bigcup(\mathcal T \cap 2^A) = \bigcup\{A\} = A.
+		$$
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		By Definition \ref{def: interior}, we have
+		$$
+		A = \bigcup(\mathcal T \cap 2^A).
+		$$
+		
+		As $\mathcal T \cap 2^A \subseteq \mathcal T$, thus, by open set axioms O2 (Definition \ref{def: open set axioms} O2), $A \in \mathcal T$.
+		
+		\qedlm
+		
+		Thus, the proof is done.
+		
+		\qed
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
+\begin{corollary}
+	Let $B \subseteq X$.
+	
+	Then $(A \cap B)^\circ = A^\circ \cap B^\circ$.
+\end{corollary}
+%--------------------------------
+
+
+%================================
+%::::::::::::::::::::::::::::::::
+\chapter{Countable Axioms}
+%::::::::::::::::::::::::::::::::
+%================================
+
+
+%================================
+\section{Covers and Basis}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	Let $X$ be any set, and let $A \subseteq X$.
+	
+	A family $\mathcal C \subseteq 2^X$ is a \textit{cover for $A$} iff $A \subseteq \bigcup \mathcal C$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A family $\mathcal C \subseteq 2^X$ is an open cover for $A$ iff $\mathcal C$ covers $A$ and $\mathcal C \subseteq \mathcal T$.
+\end{definition}
+%--------------------------------
+
+
+
+
+
 
 
 
