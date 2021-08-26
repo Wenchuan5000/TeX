@@ -1,6 +1,8 @@
 \tableofcontents
 
-
+%todo: thm = theorem;
+%todo: lm = lemma;
+%todo: def = definition;
 
 %================================
 %::::::::::::::::::::::::::::::::
@@ -729,13 +731,70 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 %--------------------------------
 
 
-%--------------------------------
-\begin{corollary}
-	Let $B \subseteq X$.
+%todo: >>>prove this<<<
+%%--------------------------------
+\begin{lemma}
+	\label{lm: union of intersection of family of families}
+	Let $X$ be any set, let $I$ be an index set, and let $\mathcal A_i \subseteq 2^X$ for any $i \in I$.
 	
-	Then $(A \cap B)^\circ = A^\circ \cap B^\circ$.
-\end{corollary}
+	Then we have
+	$$
+	\bigcup \left( \bigcap_{i \in I} \mathcal A_i \right) \subseteq \bigcap_{i \in I} \left( \bigcup \mathcal A_i \right).
+	$$
+\end{lemma}
+%%--------------------------------
+
+
+% Todo: Share on ProofWiki
+% https://proofwiki.org/wiki/Intersection_of_Interiors_contains_Interior_of_Intersection
 %--------------------------------
+\begin{theorem}
+	\label{thm}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal A \subseteq 2^X$.
+	
+	Then we have
+	$$
+	\left( \bigcap \mathcal A \right)^\circ \subseteq \bigcap_{A \in \mathcal A} A^\circ.
+	$$
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			% line 1
+			\left(\bigcap \mathcal A \right)^\circ &= \bigcup \left( \mathcal T \cap 2^{\bigcap \mathcal A} \right)
+				% by
+				&\text{(Definition \ref{def: interior})}
+			\\
+			% line 2
+			&= \bigcup \left( \mathcal T \cap \bigcap_{A \in \mathcal A} 2^A \right)
+				% by
+				&\text{(\href{https://proofwiki.org/wiki/Intersection_of_Power_Sets}{intersection of power sets})}
+			\\
+			% line 3
+			&= \bigcup \left( \bigcap_{A \in \mathcal A} \left(\mathcal T \cap 2^A \right) \right)
+				% by
+				&\text{(intersection is \href{https://proofwiki.org/wiki/Intersection_is_Idempotent}{idempotent}} \\
+				&&\text{and \href{https://proofwiki.org/wiki/Intersection_is_Associative}{associative})}
+			\\
+			% line 4
+			&\subseteq \bigcap_{A \in \mathcal A} \left( \bigcup \left( \mathcal T \cap 2^A \right) \right)
+				% by
+				&\text{(Lemma \ref{lm: union of intersection of family of families})}
+			\\
+			% line 5
+			&= \bigcap_{A \in \mathcal A} A^\circ.
+				% by
+				&\text{(Definition \ref{def: interior})}
+		\end{aligned}
+		$$
+		
+		\qed
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%todo: find a example
 
 
 %================================
