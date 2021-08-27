@@ -1,8 +1,9 @@
 \tableofcontents
 
-%todo: thm = theorem;
-%todo: lm = lemma;
-%todo: def = definition;
+%todo: thm = theorem
+%todo: lm = lemma
+%todo: def = definition
+%todo: col = corollary
 
 %================================
 %::::::::::::::::::::::::::::::::
@@ -63,11 +64,11 @@
 \begin{note}
 	As
 	$$
-	\mathbb X = (X, d), \ \mathbb X' = (X, d'), \ \mathbb X'' = (X, d''), \ \ldots
+	\mathbb X_0 = (X, d_0), \ \mathbb X_1 = (X, d_1), \ \mathbb X_2 = (X, d_2), \ \ldots
 	$$
 	are different although they share the same set $X$, for any $x \in X$ and any $\varepsilon \in \mathbb R_{> 0}$,
 	$$
-	B_\varepsilon(x; d),\ B_\varepsilon (x; d'), \ B(x; d''), \ \ldots
+	B_\varepsilon(x; d_1),\ B_\varepsilon (x; d_2), \ B(x; d_3), \ \ldots
 	$$
 	are also different. However, if confusion is unlikely, we simply write ``$B_\varepsilon(x)$'' for ``$B_\varepsilon(x; d)$''.
 \end{note}
@@ -96,9 +97,9 @@
 
 %--------------------------------
 \begin{example}
-	A \textit{discrete metric space} $\mathbb X = (X, d)$ is a set $X$ equiped with the \textit{discrete metric} $d$ defined as
+	A \textit{discrete metric space} $\mathbb X = (X, d)$ is a set $X$ equiped with the \textit{discrete metric} $d_\mathrm{dsic}$ defined as
 	$$
-	d(x,y) :=
+	d_\mathrm{disc}(x,y) :=
 	\begin{cases}
 		0, & \text{if $x = y$}; \\
 		1, & \text{else}.
@@ -107,9 +108,9 @@
 	
 	This is an equivalent definition of the discrete metric:
 	$$
-	d(x, y) := (\mathrm{sgn}(d'(x,y)))^2,
+	d_\mathrm{disc}(x, y) := (\mathrm{sgn}(d(x,y)))^2,
 	$$
-	where $\mathrm{sgn}(\cdot)$ is a \href{https://en.wikipedia.org/wiki/Sign_function}{sign function}, and $d'$ is any metric on $X$.
+	where $\mathrm{sgn}(\cdot)$ is a \href{https://en.wikipedia.org/wiki/Sign_function}{sign function}, and $d$ is any metric on $X$.
 \end{example}
 %--------------------------------
 
@@ -619,16 +620,16 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 %--------------------------------
 \begin{definition}
 	\label{def: comparison of topologies}
-	Let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be topologies on $X$.
+	Let $X$ be any set and let $\mathcal T_1$ and $\mathcal T_2$ be topologies on $X$.
 	
-	We say that $\mathcal T$ is \textit{coarser} than $\mathcal T'$, or $\mathcal T'$ is \textit{finer} than $\mathcal T$, iff $\mathcal T \subseteq \mathcal T'$.
+	We say that $\mathcal T$ is \textit{coarser} than $\mathcal T_1$, or $\mathcal T_2$ is \textit{finer} than $\mathcal T_1$, iff $\mathcal T_1 \subseteq \mathcal T_2$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{note}
-	By the definition of cardinality and inclusion mapping, if $\mathcal T \subseteq \mathcal T'$, it is certainly true that $| \mathcal T | \le | \mathcal T' |$. But, on the contrary, $| \mathcal T | \le |\mathcal T'|$ does not implies $\mathcal T \subseteq \mathcal T'$. It is easy to find counter-example about this.
+	By the definition of cardinality and inclusion mapping, if $\mathcal T_1 \subseteq \mathcal T_2$, it is certainly true that $| \mathcal T_1 | \le | \mathcal T_2 |$. But, on the contrary, $| \mathcal T_1 | \le |\mathcal T_2|$ does not implies $\mathcal T_1 \subseteq \mathcal T_2$. It is easy to find counter-example about this.
 \end{note}
 %--------------------------------
 
@@ -684,7 +685,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{note}
-	Let $\mathbb X = (X, \mathcal T)$, $\mathbb X' = (X, \mathcal T')$, and $A \subseteq X$. Then $\mathcal T \ne \mathcal T'$ iff $\Int_{\mathcal T}(A) \ne \Int_{\mathcal T'}(A)$. In this case, the subscript for ``$\Int$'' is necessary.
+	Let $\mathbb X_1 = (X, \mathcal T_1)$, $\mathbb X_2 = (X, \mathcal T_2)$, and $A \subseteq X$. Then $\mathcal T_1 \ne \mathcal T_2$ iff $\Int_{\mathcal T_1}(A) \ne \Int_{\mathcal T_2}(A)$. In this case, the subscript for ``$\Int$'' is necessary.
 	
 	But, if the confusion is unlikely, we can also simply write $\Int (A)$ for $\Int_\mathcal T A$. In this case, it is also common to write $A^\circ$ for $\Int(A)$.
 \end{note}
@@ -693,6 +694,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{theorem}
+	\label{thm: open set is its own interior}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	$A \in \mathcal T$ iff $A = A^\circ$.
@@ -731,6 +733,33 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 %--------------------------------
 
 
+%--------------------------------
+\begin{corollary}
+	\label{col: point in open set}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \in \mathcal T$. For any $x \in A$, there is a $U \in \mathcal T \cap 2^A$ such that $x \in U$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			% line 1
+			x \in A &\iff x \in A^\circ
+				% by
+				&\text{(Theorem \ref{thm: open set is its own interior})} \\
+			% line 2
+			&\iff x \in \bigcup\left( \mathcal T \cap 2^A \right)
+				% by
+				&\text{(Definition \ref{def: interior})} \\
+			% line 3
+			&\iff \exists U \in \mathcal T \cap 2^A: x \in U.
+		\end{aligned}
+		$$
+		
+		\qed
+	\end{proof}
+\end{corollary}
+%--------------------------------
+
+
 %todo: >>>prove this<<<
 %%--------------------------------
 \begin{lemma}
@@ -749,7 +778,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 % https://proofwiki.org/wiki/Intersection_of_Interiors_contains_Interior_of_Intersection
 %--------------------------------
 \begin{theorem}
-	\label{thm}
+	\label{thm: interior of intersection is a subset of intersection of interior}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal A \subseteq 2^X$.
 	
 	Then we have
@@ -794,7 +823,229 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 %--------------------------------
 
 
-%todo: find a example
+%--------------------------------
+\begin{example}
+	The equality in Theorem \ref{thm: interior of intersection is a subset of intersection of interior} may not hold.
+
+	Let $\mathbb T = (\mathbb R, \mathcal T)$ be a topological space with
+	$$
+	\mathcal T = \{ X, (0,2), (1, 3), \emptyset \}.
+	$$
+	
+	Then we have
+	$$
+	((0,2) \cap (1,3))^\circ = \emptyset \quad \subsetneq \quad (0,2)^\circ \cap (1,3) = (1,2).
+	$$
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	
+	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			% line 1
+			A \subseteq B &\implies 2^A \subseteq 2^B
+				% by
+				&\text{(\href{https://proofwiki.org/wiki/Power_Set_of_Subset}{power set of subset})}\\
+			% line 2
+			& \implies \mathcal T \cap 2^A \subseteq \mathcal T \cap 2^B
+				% todo: by what?
+				& \\
+			% line 3
+			&\implies \bigcup(\mathcal T \cap 2^A) \subseteq \bigcup (\mathcal T \cap 2^B)
+				% todo: by what?
+				& \\
+			% line 4
+			&\implies A^\circ \subseteq B^\circ
+				% by
+				&\text{(Definition \ref{def: interior})}
+		\end{aligned}
+		$$
+		
+		\qed
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Note that, $A^\circ \subseteq B^\circ$ does not implies $A \subseteq B$. Consider $\mathbb R$ as a Euclidean metric space, and let
+	$$
+	\begin{aligned}
+		A = \{0\}, \quad B \subseteq \mathbb R \setminus \{0\}.
+	\end{aligned}
+	$$
+	As $A^\circ = \emptyset$, $A^\circ \subseteq B^\circ$, but $A \setminus B = \{0\}$, so $A \not \subseteq B$.
+\end{note}
+%--------------------------------
+
+
+%================================
+\section{Limit Points and Isolated Points}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: limit point}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A point $x \in X$ is a \textit{limit point of $A$} iff for any neighbourhood $N$ of $x$,
+	$$
+	A \cap N \setminus \{x\} \ne \emptyset.
+	$$
+	
+	The \textit{derived set of $A$} is the set of all limit points of $X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: isolated point}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A point $x \in A$ is said to be \textit{isolated} iff there is a neighbourhood $N$ of $x$,
+	$$
+	A \cap N \setminus \{x\} = \emptyset.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\paragraph{Notations.}
+The Derived set of $A$ is usually denoted $A'$.\footnote{See \href{https://proofwiki.org/wiki/Definition:Derived_Set}{ProofWiki} and \href{https://en.wikipedia.org/wiki/Derived_set_(mathematics)}{Wikipedia}.}
+But sometime it is also necessary to know in which space (with its topology) the derived set of $A$ is. For example, for topological spaces $\mathbb X_1 = (X, \mathcal T_1)$ and $\mathbb X_2 = (X, \mathcal T_2)$, if $\mathcal T_1 \ne \mathcal T_2$, the derived sets of a set $A$ in $\mathbb X_1$ and $\mathbb X_2$ may be different. So, below, the notation $A'$ is used only if the confusions are unlikely; else, we denote $\L_\mathcal T A$ for $A'$ with respect to the topology $\mathcal T$.
+
+Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding confusions, we denote $\I_\mathcal T(A)$ for $A^i$ with respect to the topology $\mathcal T$.
+%--------------------------------
+
+
+%--------------------------------
+\begin{corollary}
+	\label{col: disjoint union of isolated set and derived set}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$. 
+	
+	Then,
+	$$
+	A \subseteq \L (A) \sqcup \I (A).
+	$$
+	
+	\begin{proof}
+		By Definition \ref{def: limit point}, $x \notin \L(A)$ iff there exists a neighbourhood $N$ of $x$ such that $A \cap N \setminus \{x\} = \emptyset$. This precisely satisfies Definition \ref{def: isolated point}. Thus
+		$$
+		A \subseteq \L(A) \cup \I(A).
+		$$
+		
+		As Definition \ref{def: limit point} and \ref{def: isolated point} are precisely logical complement for each other, $x \in \I (A) \cap \L(A)$ always fails, i.e., $\I(A) \cap \L(A) = \emptyset$. Thus
+		$$
+		A \subseteq \L (A) \sqcup \I (A).
+		$$
+	\end{proof}
+\end{corollary}
+%--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	$A$ is closed iff $\L(A) \subseteq A$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		Aiming for a contradiction, suppose $A$ is closed but there exists a $y \in \L(A) \setminus A$.
+		
+		By Definition \ref{def: closed set}, as $A$ is closed, then $A^\complement$ is open.
+		
+		As $y \in A^\complement$ and $A^\complement$ is open, then, by Corollary \ref{col: point in open set}, there exists a $U \in \mathcal T$ with $y \in U$, such that $U \subseteq A^\complement$.
+		
+		As $U$ is a neighbourhood of $y$ and $A \cap U \setminus \{y\} = \emptyset$, then $y \notin \L(A)$. This contradicts the assumption.
+		
+		Thus $\L(A) \subseteq A$.
+		
+		\qed
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%================================
+\section{Closures}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: closure}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	The \textit{closure of $A$} is defined as
+	$$
+	\Cl_\mathcal T(A) := A \cup \L(A).
+	$$
+	
+	When the confusions are unlikely, we simply write $\Cl(A)$, $\overline A$ or $A^-$ for $\Cl_\mathcal T(A)$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{corollary}
+	\label{col: closed iff closure}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	$A$ is closed iff $A = \Cl(A)$
+\end{corollary}
+%--------------------------------
+
+
+%--------------------------------
+\begin{corollary}
+	\label{col: closure is disjoint union of derived and isolated set}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	$A$ is closed iff
+	$$
+	A = \I(A) \sqcup \L(A).
+	$$
+	
+	\begin{proof}
+		As $A$ is closed, we have
+		$$
+		\begin{aligned}
+			% line 1
+			A &= \Cl (A) 
+				% by
+				&\text{(Corollary \ref{col: closed iff closure})} \\
+			% line 2
+			&= A \cup \L(A)
+				% by
+				&\text{(Definition \ref{def: closure})} \\
+			% line 3
+			&= A \setminus \L(A) \sqcup \L(A)
+				% by
+				\\
+			% line 4
+			& = \I (A) \sqcup \L(A).
+				% by
+				&\text{(Corollary \ref{col: disjoint union of isolated set and derived set})}
+		\end{aligned}
+		$$
+		
+		\qed
+	\end{proof}
+\end{corollary}
+%--------------------------------
 
 
 %================================
