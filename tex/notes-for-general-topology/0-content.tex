@@ -514,6 +514,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{theorem}
+	\label{thm: closed set axioms}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and denote $\mathcal C$ for the family of all closed sets in $M$.
 	
 	Then $\mathcal C$ satisfies the following conditions:
@@ -1082,6 +1083,26 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{theorem}
+	[Some Alternative Definitions of Closures]
+	\label{thm: some alternative definitions of closures}
+	\
+	
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then, The closure of $A$ is
+	\begin{enumerate}[(i)]
+		\item $A^- =  A^i \sqcup A'$;
+		\item $A^- = \bigcap \{K \supseteq A : K \text{ closed in $\mathbb X$}\}$;
+		\item For any closed sets $K$ containing $A$, $A^- \subseteq K$
+	\end{enumerate}
+\end{theorem}
+%--------------------------------
+% todo: >>> Start <<<
+% Arrange the upper into alternative definitions
+
+
+%--------------------------------
+\begin{lemma}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	Then we have
@@ -1090,14 +1111,26 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	$$
 	
 	\begin{proof}
+		First, we have
 		$$
 		\begin{aligned}
-			X \setminus A^\circ &= X \setminus \bigcup \left(\mathcal T \cap 2^A \right) \\
+			% line 1
+			X \setminus A^\circ &= X \setminus \bigcup \left(\mathcal T \cap 2^A \right) 
+				% by
+				& \text{(Definition \ref{def: interior}) }\\
+			% line 2
 			&= \bigcap_{K \in \mathcal T \cap 2^A} (X \setminus K)
+				% by
+				& \text{(De Morgan's Law)}\\
+			% line 3
 		\end{aligned}
 		$$
+		
+		For any $K$, $X \setminus K$ is a closed superset of $X \setminus A$.
+		
+		As closed sets are closed under arbitrary intersection (Theorem \ref{thm: closed set axioms}), and $X \setminus A^\circ$ is the intersection of all closed superset of $X \setminus A$, Thus $X \setminus A^\circ = (X \setminus A)^-$.
 	\end{proof}
-\end{theorem}
+\end{lemma}
 %--------------------------------
 
 
@@ -1112,18 +1145,21 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 		$$
 		\begin{aligned}
 			% line 1
-			A \subseteq B &\iff A^\complement \supseteq B^\complement
+			A \subseteq B &\iff X \setminus A \supseteq X \setminus B
 				% by
 				& \\
 			% line 2
-			&\textcolor{red}{\implies} \left(A^\complement \right)^\circ \supseteq \left( B^\complement \right)^\circ
+			&\textcolor{red}{\implies} \left(X \setminus A \right)^\circ \supseteq \left( X \setminus B \right)^\circ
 				% by
 				&\text{(Theorem \ref{thm: inclusion implies interior inclusion})} \\
 			% line 3
-			& \iff \left( \left( A^\complement \right)^\circ \right)^\complement \subseteq \left( \left(B^\complement \right)^\circ \right)^\complement
+			&\iff X \setminus (X \setminus A)^\circ  \subseteq X \setminus (X \setminus B)^\circ
 				% by
-				\\
-			& \iff  
+				& \\
+			% line 4
+			&\iff (X \setminus (X \setminus A))^- \subseteq (X \setminus (X \setminus B))^-
+				% by
+				& \text{()} \\
 		\end{aligned}
 		$$
 	\end{proof}
