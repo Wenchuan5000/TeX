@@ -851,6 +851,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 %--------------------------------
 \begin{theorem}
+	\label{thm: inclusion implies interior inclusion}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 	
 	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
@@ -965,6 +966,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{theorem}
+	\label{thm: closed iff contain all limit point}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	$A$ is closed iff $\L(A) \subseteq A$.
@@ -1014,6 +1016,27 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	$A$ is closed iff $A = \Cl(A)$
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			% \line 1
+			A \text{ is closed} &\iff A \supseteq \L(A)
+				% by
+				&\text{(Corollary \ref{thm: closed iff contain all limit point})}\\
+			% \line 2
+			&\iff A = A \cup \L(A)
+				% by
+				\\
+			% \line 3
+			&\iff A = \Cl(A).
+				% by
+				&\text{(Definition \ref{def: closure})} \\
+		\end{aligned}
+		$$
+	
+		\qed
+	\end{proof}
 \end{corollary}
 %--------------------------------
 
@@ -1055,6 +1078,58 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	\end{proof}
 \end{corollary}
 %--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then we have
+	$$
+	X \setminus A^\circ = (X \setminus A)^-.
+	$$
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			X \setminus A^\circ &= X \setminus \bigcup \left(\mathcal T \cap 2^A \right) \\
+			&= \bigcap_{K \in \mathcal T \cap 2^A} (X \setminus K)
+		\end{aligned}
+		$$
+	\end{proof}
+\end{theorem}
+%--------------------------------
+
+
+%--------------------------------
+\begin{theorem}
+	\label{thm: inclusion implies closure inclusion}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	
+	If $A \subseteq B$, then $A^- \subseteq B^-$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			% line 1
+			A \subseteq B &\iff A^\complement \supseteq B^\complement
+				% by
+				& \\
+			% line 2
+			&\textcolor{red}{\implies} \left(A^\complement \right)^\circ \supseteq \left( B^\complement \right)^\circ
+				% by
+				&\text{(Theorem \ref{thm: inclusion implies interior inclusion})} \\
+			% line 3
+			& \iff \left( \left( A^\complement \right)^\circ \right)^\complement \subseteq \left( \left(B^\complement \right)^\circ \right)^\complement
+				% by
+				\\
+			& \iff  
+		\end{aligned}
+		$$
+	\end{proof}
+\end{theorem}
+%--------------------------------
+% todo: !!!!! Start !!!!!!
 
 
 %================================
