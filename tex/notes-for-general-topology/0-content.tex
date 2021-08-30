@@ -1282,8 +1282,9 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 \end{definition}
 %--------------------------------
 
-
-%todo: Share on ProofWiki!!!!!!!
+% todo: this is wrong!!!!!
+% see: https://proofwiki.org/wiki/Definition:Convergent_Sequence/Topology
+% todo: Share on ProofWiki!!!!!!!
 % this is just a proof hint, rewrite it!
 %--------------------------------
 \begin{proposition}
@@ -1344,9 +1345,9 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 \begin{definition}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $u: \mathbb N \to X$.
 	
-	A point $x \in X$ is an \textit{accumulation point} of $u$ iff for any neighbourhood $N$ of $x$, $N$ contains infinitely many terms of $u$; i.e.,
+	A point $x \in X$ is an \textit{accumulation point} of $u$ iff for any $U \in \mathcal T$ with $x \in U$, $U$ contains infinitely many terms of $u$; i.e.,
 	$$
-	\exists k \in \mathbb N: u[\mathbb N_{> k}].
+	\forall U \in \mathcal T : x \in U \implies (\exists I \subseteq \mathbb N : |I| = \aleph_0 \implies u[I] \subseteq U).
 	$$
 \end{definition}
 %--------------------------------
@@ -1373,7 +1374,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	Then $x$ is an accumulation point of $u$.
 	
 	\begin{proof}
-		
+		As $x$ is a limit of $u$, by Definition \ref{def: convergent sequence}, for any $U \in \mathcal T$ with $x \in U$, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$
 	\end{proof}
 \end{proposition}
 %--------------------------------
