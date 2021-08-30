@@ -168,8 +168,8 @@
 
 
 %--------------------------------
-\begin{lemma}
-	\label{lm: open balls of point inside open ball}
+\begin{proposition}
+	\label{prop: open balls of point inside open ball}
 	Let $\mathbb X = (X, d)$ be a metric space, let $x \in A$ and let $\varepsilon \in \mathbb R_{> 0}$.
 	
 	For any $y \in B_\varepsilon (x)$, there is a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_\varepsilon(x)$.
@@ -186,17 +186,17 @@
 		
 		Thus, again, by the definition of open balls, we have $B_\delta(y) \subseteq B_\varepsilon(x)$.
 		
-		\qedlm
+		\qed
 	\end{proof}
-\end{lemma}
+\end{proposition}
 %--------------------------------
 
 
 % Shared on Proof Wiki
 % https://proofwiki.org/wiki/Set_is_Open_iff_Union_of_Open_Balls}{ProofWiki
 %--------------------------------
-\begin{theorem}
-	\label{thm: set is open iff union of open balls}
+\begin{proposition}
+	\label{prop: set is open iff union of open balls}
 	Let $\mathbb X = (X, d)$ be a metric space, and let $U \subseteq X$.
 	
 	$U$ is open in $\mathbb X$ iff it is a union of open balls.
@@ -221,7 +221,7 @@
 		
 		As $U$ is a union of open balls, there is an $x \in U$ and $r \in \mathbb R_{> 0}$ such that $y \in B_r (x)$.
 		
-		By Lemma \ref{lm: open balls of point inside open ball}, there exists a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_r (x)$.
+		By Proposition \ref{prop: open balls of point inside open ball}, there exists a $\delta \in \mathbb R_{> 0}$ such that $B_\delta (y) \subseteq B_r (x)$.
 		
 		This is a contradiction by the assumption.
 		
@@ -229,15 +229,15 @@
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
 % Shared on ProofWiki
 % https://proofwiki.org/wiki/Metric_Space_is_Hausdorff
 %--------------------------------
-\begin{theorem}
-	\label{thm: metric space is hausdorff}
+\begin{proposition}
+	\label{prop: metric space is hausdorff}
 	Let $\mathbb X = (X, d)$ be any metric space.
 	
 	$\mathbb X$ is \textit{Hausdorff}. That is, For any distinct points $x,y \in X$, we can always find an $\varepsilon \in \mathbb R_{> 0}$ such that
@@ -264,7 +264,7 @@
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -279,29 +279,29 @@
 
 
 %--------------------------------
-\begin{lemma}
-	\label{lm: singleton in metric space is closed}
+\begin{proposition}
+	\label{prop: singleton in metric space is closed}
 	In a metric space, any singleton is closed.
 	
 	\begin{proof}
 		Let $\mathbb X =(X, d)$ be a metric space, let $x \in X$, and let $y \in X \setminus \{x\}$.
 		
-		As $M$ is Hausdorff (Theorem \ref{thm: metric space is hausdorff}), there is an $\varepsilon \in \mathbb R_{> 0}$ such that
+		As $M$ is Hausdorff (Proposition \ref{prop: metric space is hausdorff}), there is an $\varepsilon \in \mathbb R_{> 0}$ such that
 		$$
 		0 < \varepsilon < d(x,y),
 		$$
 		thus $X \setminus \{x\}$ is open, hence, by Definition \ref{def: metric axioms}, its complement $\{x\}$ is open.
 		
-		\qedlm
+		\qed
 	\end{proof}
-\end{lemma}
+\end{proposition}
 %--------------------------------
 
 
 % Shared on ProofWiki
 % https://proofwiki.org/wiki/Finite_Intersection_of_Open_Sets_of_Metric_Space_is_Open
 %--------------------------------
-\begin{theorem}
+\begin{proposition}
 	Let $\mathbb X = (X, d)$ be a metric space, denote $\mathcal T$ for the family of open subsets of $X$.
 	
 	Then $\mathcal T$ satisfies the following conditions:
@@ -331,7 +331,7 @@
 				\bigcup \mathcal U = \bigcup_{U \in \mathcal U} \left( \bigcup \mathcal O_U \right) = \bigcup_{U \in \mathcal U} \mathcal O_U.
 				$$
 				
-				By Theorem \ref{thm: set is open iff union of open balls}, $\bigcup \mathcal U$ is open.
+				By Proposition \ref{prop: set is open iff union of open balls}, $\bigcup \mathcal U$ is open.
 				
 				\qedlm
 				
@@ -349,7 +349,7 @@
 				
 				Thus, there exists $V \in \mathcal V$ such that $B_\varepsilon (y) \setminus V \ne \emptyset$.
 				
-				As $V \in \mathcal T$ and $\varepsilon$ is arbitrarily given, by Lemma \ref{lm: open balls of point inside open ball}, $y \notin V$. This is a contradiction.
+				As $V \in \mathcal T$ and $\varepsilon$ is arbitrarily given, by Proposition \ref{prop: open balls of point inside open ball}, $y \notin V$. This is a contradiction.
 				
 				Thus, $\bigcap \mathcal V$ is open.
 				
@@ -360,12 +360,12 @@
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{theorem}
+\begin{proposition}
 	Infinite intersections of open sets in some metric spaces are not necessarily open.
 	
 	\begin{proof}
@@ -380,7 +380,7 @@
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -417,7 +417,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %--------------------------------
-\begin{theorem}
+\begin{proposition}
 	Let $\mathbb X = (X, d)$ be a metric space, and let $A \subseteq X$ and let $d_A := d\restriction_{A \times A}$.
 	
 	Then $\mathbb A = (A, d_A)$ is a metric space.
@@ -427,7 +427,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		Thus, $\mathbb A$ is a metric space.
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -482,8 +482,8 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %--------------------------------
-\begin{theorem}
-	\label{thm: empty set is an element of topology}
+\begin{proposition}
+	\label{prop: empty set is an element of topology}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
 	
 	Then $\emptyset \in \mathcal T$.
@@ -498,7 +498,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -513,8 +513,8 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %--------------------------------
-\begin{theorem}
-	\label{thm: closed set axioms}
+\begin{proposition}
+	\label{prop: closed set axioms}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and denote $\mathcal C$ for the family of all closed sets in $M$.
 	
 	Then $\mathcal C$ satisfies the following conditions:
@@ -574,7 +574,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -694,8 +694,8 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %--------------------------------
-\begin{theorem}
-	\label{thm: open set is its own interior}
+\begin{proposition}
+	\label{prop: open iff interior}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	$A \in \mathcal T$ iff $A = A^\circ$.
@@ -730,13 +730,13 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{corollary}
-	\label{col: point in open set}
+\begin{proposition}
+	\label{prop: point in open set}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \in \mathcal T$. For any $x \in A$, there is a $U \in \mathcal T \cap 2^A$ such that $x \in U$.
 	
 	\begin{proof}
@@ -745,7 +745,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 			% line 1
 			x \in A &\iff x \in A^\circ
 				% by
-				&\text{(Theorem \ref{thm: open set is its own interior})} \\
+				&\text{(Proposition \ref{prop: open iff interior})} \\
 			% line 2
 			&\iff x \in \bigcup\left( \mathcal T \cap 2^A \right)
 				% by
@@ -757,28 +757,28 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		\qed
 	\end{proof}
-\end{corollary}
+\end{proposition}
 %--------------------------------
 
 
 %todo: >>>prove this<<<
 %%--------------------------------
-\begin{lemma}
-	\label{lm: union of intersection of family of families}
+\begin{proposition}
+	\label{prop: union of intersection of family of families}
 	Let $X$ be any set, let $I$ be an index set, and let $\mathcal A_i \subseteq 2^X$ for any $i \in I$.
 	
 	Then we have
 	$$
 	\bigcup \left( \bigcap_{i \in I} \mathcal A_i \right) \subseteq \bigcap_{i \in I} \left( \bigcup \mathcal A_i \right).
 	$$
-\end{lemma}
+\end{proposition}
 %%--------------------------------
 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[width=345pt]{notes-for-general-topology/media/intersection-of-family-of-families}
-    \caption{Diagram of the relation in Lemma \ref{lm: union of intersection of family of families}.}
+    \caption{Diagram of the relation in Proposition \ref{prop: union of intersection of family of families}.}
 \end{figure}
 
 
@@ -787,8 +787,8 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 % Todo: Share on ProofWiki
 % https://proofwiki.org/wiki/Intersection_of_Interiors_contains_Interior_of_Intersection
 %--------------------------------
-\begin{theorem}
-	\label{thm: interior of intersection is a subset of intersection of interior}
+\begin{proposition}
+	\label{prop: interior of intersection is a subset of intersection of interior}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal A \subseteq 2^X$.
 	
 	Then we have
@@ -818,7 +818,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 			% line 4
 			&\subseteq \bigcap_{A \in \mathcal A} \left( \bigcup \left( \mathcal T \cap 2^A \right) \right)
 				% by
-				&\text{(Lemma \ref{lm: union of intersection of family of families})}
+				&\text{(Proposition \ref{prop: union of intersection of family of families})}
 			\\
 			% line 5
 			&= \bigcap_{A \in \mathcal A} A^\circ.
@@ -829,13 +829,13 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{example}
-	The equality in Theorem \ref{thm: interior of intersection is a subset of intersection of interior} may not hold.
+	The equality in Proposition \ref{prop: interior of intersection is a subset of intersection of interior} may not hold.
 
 	Let $\mathbb T = (\mathbb R, \mathcal T)$ be a topological space with
 	$$
@@ -851,8 +851,8 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %--------------------------------
-\begin{theorem}
-	\label{thm: inclusion implies interior inclusion}
+\begin{proposition}
+	\label{prop: inclusion implies interior inclusion}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 	
 	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
@@ -881,7 +881,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -908,9 +908,9 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 	\label{def: limit point}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
-	A point $x \in X$ is a \textit{limit point of $A$} iff for any neighbourhood $N$ of $x$,
+	A point $x \in X$ is a \textit{limit point of $A$} iff for any $U \in \mathcal T$ with $x \in U$
 	$$
-	A \cap N \setminus \{x\} \ne \emptyset.
+	A \cap U \setminus \{x\} \ne \emptyset.
 	$$
 	
 	The \textit{derived set of $A$} is the set of all limit points of $X$.
@@ -923,9 +923,9 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 	\label{def: isolated point}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
-	A point $x \in A$ is said to be \textit{isolated} iff there is a neighbourhood $N$ of $x$,
+	A point $x \in A$ is said to be \textit{isolated} iff there is $U \in \mathcal T$ with $x \in U$, such that
 	$$
-	A \cap N \setminus \{x\} = \emptyset.
+	A \cap U \setminus \{x\} = \emptyset.
 	$$
 \end{definition}
 %--------------------------------
@@ -934,60 +934,62 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 %--------------------------------
 \paragraph{Notations.}
 The Derived set of $A$ is usually denoted $A'$.\footnote{See \href{https://proofwiki.org/wiki/Definition:Derived_Set}{ProofWiki} and \href{https://en.wikipedia.org/wiki/Derived_set_(mathematics)}{Wikipedia}.}
-But sometime it is also necessary to know in which space (with its topology) the derived set of $A$ is. For example, for topological spaces $\mathbb X_1 = (X, \mathcal T_1)$ and $\mathbb X_2 = (X, \mathcal T_2)$, if $\mathcal T_1 \ne \mathcal T_2$, the derived sets of a set $A$ in $\mathbb X_1$ and $\mathbb X_2$ may be different. So, below, the notation $A'$ is used only if the confusions are unlikely; else, we denote $\L_\mathcal T A$ for $A'$ with respect to the topology $\mathcal T$.
+But sometime it is also necessary to know in which space (with its topology) the derived set of $A$ is. For example, for topological spaces $\mathbb X_1 = (X, \mathcal T_1)$ and $\mathbb X_2 = (X, \mathcal T_2)$, if $\mathcal T_1 \ne \mathcal T_2$, the derived sets of a set $A$ in $\mathbb X_1$ and $\mathbb X_2$ may be different. So, below, the notation $A'$ is used only if the confusions are unlikely; else, we denote $\Li_\mathcal T A$ for $A'$ with respect to the topology $\mathcal T$.
 
 Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding confusions, we denote $\I_\mathcal T(A)$ for $A^i$ with respect to the topology $\mathcal T$.
 %--------------------------------
 
 
 %--------------------------------
-\begin{corollary}
-	\label{col: disjoint union of isolated set and derived set}
+\begin{proposition}
+	\label{prop: disjoint union of isolated set and derived set}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$. 
 	
 	Then,
 	$$
-	A \subseteq \L (A) \sqcup \I (A).
+	A \subseteq \Li (A) \sqcup \I (A).
 	$$
 	
 	\begin{proof}
-		By Definition \ref{def: limit point}, $x \notin \L(A)$ iff there exists a neighbourhood $N$ of $x$ such that $A \cap N \setminus \{x\} = \emptyset$. This precisely satisfies Definition \ref{def: isolated point}. Thus
+		By Definition \ref{def: limit point}, $x \notin \Li(A)$ iff there exists a $U \in \mathcal T$ of $x \in U$ such that $A \cap N \setminus \{x\} = \emptyset$. This precisely satisfies Definition \ref{def: isolated point}. Thus
 		$$
-		A \subseteq \L(A) \cup \I(A).
+		A \subseteq \Li(A) \cup \I(A).
 		$$
 		
-		As Definition \ref{def: limit point} and \ref{def: isolated point} are precisely logical complement for each other, $x \in \I (A) \cap \L(A)$ always fails, i.e., $\I(A) \cap \L(A) = \emptyset$. Thus
+		As Definition \ref{def: limit point} and \ref{def: isolated point} are precisely logical complement for each other, $x \in \I (A) \cap \Li(A)$ always fails, i.e., $\I(A) \cap \Li(A) = \emptyset$. Thus
 		$$
-		A \subseteq \L (A) \sqcup \I (A).
+		A \subseteq \Li (A) \sqcup \I (A).
 		$$
+		
+		\qed
 	\end{proof}
-\end{corollary}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{theorem}
-	\label{thm: closed iff contain all limit point}
+\begin{proposition}
+	\label{prop: closed iff contain all limit point}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
-	$A$ is closed iff $\L(A) \subseteq A$.
+	$A$ is closed iff $\Li(A) \subseteq A$.
 	
 	\begin{proof}
 		First, prove $\Rightarrow$.
 		
-		Aiming for a contradiction, suppose $A$ is closed but there exists a $y \in \L(A) \setminus A$.
+		Aiming for a contradiction, suppose $A$ is closed but there exists a $y \in \Li(A) \setminus A$.
 		
 		By Definition \ref{def: closed set}, as $A$ is closed, then $A^\complement$ is open.
 		
-		As $y \in A^\complement$ and $A^\complement$ is open, then, by Corollary \ref{col: point in open set}, there exists a $U \in \mathcal T$ with $y \in U$, such that $U \subseteq A^\complement$.
+		As $y \in A^\complement$ and $A^\complement$ is open, then, by Proposition \ref{prop: point in open set}, there exists a $U \in \mathcal T$ with $y \in U$, such that $U \subseteq A^\complement$.
 		
-		As $U$ is a neighbourhood of $y$ and $A \cap U \setminus \{y\} = \emptyset$, then $y \notin \L(A)$. This contradicts the assumption.
+		As $U$ is an open set containing $y$ and $A \cap U \setminus \{y\} = \emptyset$, then $y \notin \Li(A)$. This contradicts the assumption.
 		
-		Thus $\L(A) \subseteq A$.
+		Thus $\Li(A) \subseteq A$.
 		
 		\qed
 	\end{proof}
-\end{theorem}
+\end{proposition}
 %--------------------------------
 
 
@@ -1003,7 +1005,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	
 	The \textit{closure of $A$} is defined as
 	$$
-	\Cl_\mathcal T(A) := A \cup \L(A).
+	\Cl_\mathcal T(A) := A \cup \Li(A).
 	$$
 	
 	When the confusions are unlikely, we simply write $\Cl(A)$, $\overline A$ or $A^-$ for $\Cl_\mathcal T(A)$.
@@ -1012,25 +1014,25 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %--------------------------------
-\begin{corollary}
-	\label{col: closed iff closure}
+\begin{proposition}
+	\label{prop: closed iff closure}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
-	$A$ is closed iff $A = \Cl(A)$
+	$A$ is closed iff $A = A^-$
 	
 	\begin{proof}
 		$$
 		\begin{aligned}
 			% \line 1
-			A \text{ is closed} &\iff A \supseteq \L(A)
+			A \text{ is closed} &\iff A \supseteq \Li(A)
 				% by
-				&\text{(Corollary \ref{thm: closed iff contain all limit point})}\\
+				&\text{(Proposition \ref{prop: closed iff contain all limit point})}\\
 			% \line 2
-			&\iff A = A \cup \L(A)
+			&\iff A = A \cup \Li(A)
 				% by
 				\\
 			% \line 3
-			&\iff A = \Cl(A).
+			&\iff A = A^-.
 				% by
 				&\text{(Definition \ref{def: closure})} \\
 		\end{aligned}
@@ -1038,18 +1040,18 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	
 		\qed
 	\end{proof}
-\end{corollary}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{corollary}
-	\label{col: closure is disjoint union of derived and isolated set}
+\begin{proposition}
+	\label{prop: closure is disjoint union of derived and isolated set}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	$A$ is closed iff
 	$$
-	A = \I(A) \sqcup \L(A).
+	A = \I(A) \sqcup \Li(A).
 	$$
 	
 	\begin{proof}
@@ -1059,50 +1061,72 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 			% line 1
 			A &= \Cl (A) 
 				% by
-				&\text{(Corollary \ref{col: closed iff closure})} \\
+				&\text{(Proposition \ref{prop: closed iff closure})} \\
 			% line 2
-			&= A \cup \L(A)
+			&= A \cup \Li(A)
 				% by
 				&\text{(Definition \ref{def: closure})} \\
 			% line 3
-			&= A \setminus \L(A) \sqcup \L(A)
+			&= A \setminus \Li(A) \sqcup \Li(A)
 				% by
 				\\
 			% line 4
-			& = \I (A) \sqcup \L(A).
+			& = \I (A) \sqcup \Li(A).
 				% by
-				&\text{(Corollary \ref{col: disjoint union of isolated set and derived set})}
+				&\text{(Proposition \ref{prop: disjoint union of isolated set and derived set})}
 		\end{aligned}
 		$$
 		
 		\qed
 	\end{proof}
-\end{corollary}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{theorem}
-	[Some Alternative Definitions of Closures]
-	\label{thm: some alternative definitions of closures}
-	\
-	
+\begin{proposition}
+	\label{prop: closure are the intersection of closure supsersets}	
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	$$
+	A^- = \bigcap \{K \supseteq A : K \text{ closed in $\mathbb X$}\}.
+	$$
 	
-	Then, The closure of $A$ is
-	\begin{enumerate}[(i)]
-		\item $A^- =  A^i \sqcup A'$;
-		\item $A^- = \bigcap \{K \supseteq A : K \text{ closed in $\mathbb X$}\}$;
-		\item For any closed sets $K$ containing $A$, $A^- \subseteq K$
-	\end{enumerate}
-\end{theorem}
+	\begin{proof}
+		By Proposition \ref{prop: closed iff closure}, $A^-$ is closed. Thus, by Definition \ref{def: closed set}, $X \setminus A^{-}$ is open. Then we ahve
+		$$
+		\begin{aligned}
+			% line 1
+			X \setminus (X \setminus A^-) &= X \setminus (X \setminus A^-)^\circ
+				% by
+				&\text{(Proposition: \ref{prop: open iff interior})}\\
+			% line 2
+			&= X \setminus \bigcup \left(\mathcal T \cap 2^{X \setminus A^-} \right)
+				% by
+				&\text{(Definition: \ref{def: interior})} \\
+			% line 3
+			&= X \setminus \bigcup \{ U \subseteq A : U \text{ open in $\mathbb X$} \}
+				% by
+				&\text{}\\
+			% line 4
+			&= \bigcap \left\{ X \setminus U \supseteq A : U \text{ open in $\mathbb X$} \right\}
+				% by
+				&\text{(De Morgan's Law)}\\
+			% line 5
+			&= \bigcap \{ K \supseteq A : K \text{ closed in $\mathbb X$} \}.
+				% by
+				&\text{(Definition: \ref{def: closed set})}\\
+		\end{aligned}
+		$$
+		
+		\qed
+	\end{proof}
+\end{proposition}
 %--------------------------------
-% todo: >>> Start <<<
-% Arrange the upper into alternative definitions
 
 
 %--------------------------------
-\begin{lemma}
+\begin{proposition}
+	\label{prop: complement of interior}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
 	Then we have
@@ -1128,15 +1152,17 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 		
 		For any $K$, $X \setminus K$ is a closed superset of $X \setminus A$.
 		
-		As closed sets are closed under arbitrary intersection (Theorem \ref{thm: closed set axioms}), and $X \setminus A^\circ$ is the intersection of all closed superset of $X \setminus A$, Thus $X \setminus A^\circ = (X \setminus A)^-$.
+		As closed sets are closed under arbitrary intersection (Proposition \ref{prop: closed set axioms}), and $X \setminus A^\circ$ is the intersection of all closed superset of $X \setminus A$, by Proposition \ref{prop: closure are the intersection of closure supsersets}, $X \setminus A^\circ = (X \setminus A)^-$.
+		
+		\qed
 	\end{proof}
-\end{lemma}
+\end{proposition}
 %--------------------------------
 
 
 %--------------------------------
-\begin{theorem}
-	\label{thm: inclusion implies closure inclusion}
+\begin{proposition}
+	\label{prop: inclusion implies closure inclusion}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
 	
 	If $A \subseteq B$, then $A^- \subseteq B^-$.
@@ -1151,21 +1177,232 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 			% line 2
 			&\textcolor{red}{\implies} \left(X \setminus A \right)^\circ \supseteq \left( X \setminus B \right)^\circ
 				% by
-				&\text{(Theorem \ref{thm: inclusion implies interior inclusion})} \\
+				&\text{(Proposition \ref{prop: inclusion implies interior inclusion})} \\
 			% line 3
 			&\iff X \setminus (X \setminus A)^\circ  \subseteq X \setminus (X \setminus B)^\circ
 				% by
 				& \\
 			% line 4
-			&\iff (X \setminus (X \setminus A))^- \subseteq (X \setminus (X \setminus B))^-
+			&\iff (X \setminus (X \setminus A))^- \subseteq (X \setminus (X \setminus B))^-.
 				% by
-				& \text{()} \\
+				& \text{(Proposition \ref{prop: complement of interior})} \\
+			% line 5
+			&\iff A^- \subseteq B^-.
 		\end{aligned}
 		$$
 	\end{proof}
-\end{theorem}
+	
+	\qed
+\end{proposition}
 %--------------------------------
-% todo: !!!!! Start !!!!!!
+
+
+%================================
+\section{Neighbourhood Systems}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: neighbourhood}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A subset $N \subseteq X$ is a \textit{neighbourhood of $A$} iff
+	$$
+	\exists U \in \mathcal T : A \subseteq U \subseteq N.
+	$$
+	
+	If $A = \{x\}$, we simply call $N$ a \textit{neighbourhood of $x$}.
+	
+	If $N \in \mathcal T$ also, then $N$ is an \textit{open neighbourhood of $A$}; and if $N$ is closed, then $N$ is a \textit{closed neighbourhood of $A$}.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	$A \in \mathcal T$ iff for any $x \in A$, $A$ is a neighbourhood of $x$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		If $A \in \mathcal T$, then, by Definition \ref{def: neighbourhood}, for any $x \in A$, we have
+		$$
+		x \in A \subseteq A.
+		$$
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		Aiming for a contradiction, suppose for any $x \in A$, $A$ is a neighbourhood of $x$, but $A\notin \mathcal T$.
+		
+		As $X \setminus A$ is not closed, (otherwise, by Definition \ref{def: closed set}, $A = X \setminus (X \setminus A)$ is open) by Proposition \ref{prop: closed iff contain all limit point}, there exists $x \in \Li(X \setminus A) \setminus (X \setminus A)$.
+		
+		Then, for such an $x \in A$ (for $x \notin X \setminus A$), for any $U \in \mathcal T$ with $x \in U$,
+		$$
+		U \cap (X \setminus A) \ne \emptyset. \qquad \text{(Definition \ref{def: limit point})}
+		$$
+		
+		By Definition \ref{def: neighbourhood}, $A$ fails to be a neighbourhood of $x$. This contradicts the assumption.
+		
+		Thus $A$ has to be open.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+% Share on ProofWiki
+% https://proofwiki.org/wiki/Set_is_Open_iff_Neighborhood_of_all_its_Points
+
+
+%================================
+%::::::::::::::::::::::::::::::::
+\chapter{Sequences}
+%::::::::::::::::::::::::::::::::
+%================================
+
+
+%================================
+\section{Convergent Sequences}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: convergent sequence}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $u: \mathbb N \to X$.
+	
+	$u$ \textit{converges to a limit $x \in X$} iff for any $U \in \mathcal T$ with $x \in U$,
+	$$
+	\exists k \in \mathbb N : u[\mathbb N_{> k}] \subseteq U.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%todo: Share on ProofWiki!!!!!!!
+% this is just a proof hint, rewrite it!
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $u: \mathbb N \to X$.
+	
+	$u$ converges to a limit $x \in X$ iff for any $U \in \mathcal T$ with $x \in U$, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		As $u$ converges to $x$, then, for any $U \in \mathcal T$ with $x \in U$,
+		$$
+		\exists k \in \mathbb N : u[\mathbb N_{> k}] \subseteq U. \qquad \text{(Definition \ref{def: convergent sequence})}
+		$$
+		
+		As $\mathbb N_{> k}$ is a cofinite subset of $\mathbb N$, $u[\mathbb N_{> k}]$ is a cofinite subset of $u[\mathbb N]$.
+		
+		Also, we have
+		$$
+		u[\mathbb N] \setminus U \subseteq u[\mathbb N \setminus \mathbb N_{> k}].
+		$$
+		
+		As $|u[\mathbb N \setminus \mathbb N_{> k}]|$ is finite, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$.
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		Aiming for a contradiction, suppose $u$ does not converges to $x$.
+		
+		By Definition \ref{def: convergent sequence}, there exists $U \in \mathcal T$ with $x \in U$, such that
+		$$
+		\forall k \in \mathbb N: u[\mathbb N_{> k}] \setminus U \ne \emptyset.
+		$$
+		
+		Suppose $u[\mathbb N_{> k}] \setminus U$ is finite, then there exists $m \in \mathbb N_{> k}$ such that $u[\mathbb N_{> m}] \subseteq U$. But this implies that $u[\mathbb N_{> m}] \setminus U = \emptyset$, contradicting to the assumption, thus $u[\mathbb N_{> k}] \setminus U$ has to be infinite.
+		
+		Therefore, there exists $U \in \mathcal T$ with $x \in U$, such that $u[\mathbb N_{> k}] \setminus U$ is infinite. This contradicts that for any $U \in \mathcal T$ with $x \in U$, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$.
+		
+		Thus $u$ has to converge to $x$.
+		
+		\qedlm
+		
+		Thus, the proof is done.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%================================
+\section{Accumulation Points of Sequences}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $u: \mathbb N \to X$.
+	
+	A point $x \in X$ is an \textit{accumulation point} of $u$ iff for any neighbourhood $N$ of $x$, $N$ contains infinitely many terms of $u$; i.e.,
+	$$
+	\exists k \in \mathbb N: u[\mathbb N_{> k}].
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Sometime, an accumulation point of a sequence is also a limit of the range of the sequence. But this not always holds.
+	
+	Consider $\mathbb R$ as a Euclidean, and let $u: \mathbb N \to \mathbb R$ be defined as
+	$$
+	u(n) := \left| \sin \left( \frac{\pi n}{2} \right) \right|.
+	$$
+	
+	Then $1$ is an accumulation point of $u[\mathbb N]$, but $u[\mathbb N] = (u[\mathbb N])^i = \{0,1\}$, so it has no limit point at all.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, let $u: \mathbb N \to X$, and let $x \in X$ be a limit of $u[\mathbb N]$.
+	
+	Then $x$ is an accumulation point of $u$.
+	
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: omega-accumulation point}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A point $x \in X$ is an \textit{$\omega$-accumulation point} of $A$ iff for any $U \in \mathcal T$ with $x \in U$,
+	$$
+	|U \cap A| \ge \aleph_0.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, let $u: \mathbb N \to X$ be an injection, and let $x \in X$ be an accumulation point of $u$.
+	
+	Then $x$ is an $\omega$-accumulation point of $u[\mathbb N]$.
+	
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
 
 %================================
@@ -1182,6 +1419,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{definition}
+	\label{def: accumulation point}
 	Let $X$ be any set, and let $A \subseteq X$.
 	
 	A family $\mathcal C \subseteq 2^X$ is a \textit{cover for $A$} iff $A \subseteq \bigcup \mathcal C$.
@@ -1196,6 +1434,9 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	A family $\mathcal C \subseteq 2^X$ is an open cover for $A$ iff $\mathcal C$ covers $A$ and $\mathcal C \subseteq \mathcal T$.
 \end{definition}
 %--------------------------------
+
+
+
 
 
 
