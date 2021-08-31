@@ -17,6 +17,7 @@
 %================================
 
 
+
 %--------------------------------
 \begin{definition}
 	\label{def: metric axioms}
@@ -1209,7 +1210,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	
 	A subset $N \subseteq X$ is a \textit{neighbourhood of $A$} iff
 	$$
-	\exists U \in \mathcal T : A \subseteq U \subseteq N.
+	(\exists U \in \mathcal T) \quad A \subseteq U \subseteq N.
 	$$
 	
 	If $A = \{x\}$, we simply call $N$ a \textit{neighbourhood of $x$}.
@@ -1277,58 +1278,61 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	
 	$u$ \textit{converges to a limit $x \in X$} iff for any $U \in \mathcal T$ with $x \in U$,
 	$$
-	\exists k \in \mathbb N : u[\mathbb N_{> k}] \subseteq U.
+	(\exists k \in \mathbb R_{> 0}) \quad u[\mathbb N_{> k}] \subseteq U.
 	$$
 \end{definition}
 %--------------------------------
 
-% todo: this is wrong!!!!!
-% see: https://proofwiki.org/wiki/Definition:Convergent_Sequence/Topology
-% todo: Share on ProofWiki!!!!!!!
-% this is just a proof hint, rewrite it!
+
 %--------------------------------
 \begin{proposition}
+	\label{prop: alternative definition of accumulation point}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $u: \mathbb N \to X$.
 	
-	$u$ converges to a limit $x \in X$ iff for any $U \in \mathcal T$ with $x \in U$, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$.
+	$u$ converges to a limit $x \in X$ iff for any $U \in \mathcal T$ with $x \in U$,
+	$$
+	\mathbb N \setminus u^{-1}[U] \text{ is finite}.
+	$$
 	
 	\begin{proof}
 		First, prove $\Rightarrow$.
 		
-		As $u$ converges to $x$, then, for any $U \in \mathcal T$ with $x \in U$,
+		By Definition \ref{def: convergent sequence}, as $u$ converges to $x$, let $U \in \mathcal T$ with $x \in U$, then there exists a $k \in \mathbb R_{> 0}$ such that $u[\mathbb N_{> k}] \subseteq U$.
+		
+		Then we have
 		$$
-		\exists k \in \mathbb N : u[\mathbb N_{> k}] \subseteq U. \qquad \text{(Definition \ref{def: convergent sequence})}
+		\begin{aligned}
+			u[\mathbb N_{> k}] \subseteq U &\implies u^{-1}[u[\mathbb N_{> k}]] \subseteq u^{-1}[U] \\
+			&\implies \mathbb N_{> k} \subseteq u^{-1}[U]
+				% by
+				&\text{(\href{https://proofwiki.org/wiki/Image_of_Inverse_Image}{image of inverse image})} \\
+				&\implies \mathbb N \setminus \mathbb N_{> k} \supseteq \mathbb N \setminus u^{-1}[U]. \\
+		\end{aligned}
 		$$
 		
-		As $\mathbb N_{> k}$ is a cofinite subset of $\mathbb N$, $u[\mathbb N_{> k}]$ is a cofinite subset of $u[\mathbb N]$.
-		
-		Also, we have
-		$$
-		u[\mathbb N] \setminus U \subseteq u[\mathbb N \setminus \mathbb N_{> k}].
-		$$
-		
-		As $|u[\mathbb N \setminus \mathbb N_{> k}]|$ is finite, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$.
+		As $\mathbb N \setminus \mathbb N_{> k}$ is finite, its subset $\mathbb N \setminus u^{-1}[U]$ is finite.
 		
 		\qedlm
 		
 		Now, prove $\Leftarrow$.
 		
-		Aiming for a contradiction, suppose $u$ does not converges to $x$.
-		
-		By Definition \ref{def: convergent sequence}, there exists $U \in \mathcal T$ with $x \in U$, such that
+		By \href{https://proofwiki.org/wiki/Image_of_Inverse_Image}{image of inverse image}, we have
 		$$
-		\forall k \in \mathbb N: u[\mathbb N_{> k}] \setminus U \ne \emptyset.
+		\begin{aligned}
+			u[u^{-1}[U]] \subseteq U.
+		\end{aligned}
 		$$
 		
-		Suppose $u[\mathbb N_{> k}] \setminus U$ is finite, then there exists $m \in \mathbb N_{> k}$ such that $u[\mathbb N_{> m}] \subseteq U$. But this implies that $u[\mathbb N_{> m}] \setminus U = \emptyset$, contradicting to the assumption, thus $u[\mathbb N_{> k}] \setminus U$ has to be infinite.
+		As $u^{-1}[U]$ is a cofinite subset of $\mathbb N$, there exists a $k \in \mathbb N$ such that $I \supseteq \mathbb N_{> k}$. Then we have
+		$$
+		U \supseteq u[\mathbb N_{> k}].
+		$$
 		
-		Therefore, there exists $U \in \mathcal T$ with $x \in U$, such that $u[\mathbb N_{> k}] \setminus U$ is infinite. This contradicts that for any $U \in \mathcal T$ with $x \in U$, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$.
-		
-		Thus $u$ has to converge to $x$.
+		This precisely satisfies Definition \ref{def: convergent sequence}.
 		
 		\qedlm
 		
-		Thus, the proof is done.
+		Therefore the proof is done.
 		
 		\qed
 	\end{proof}
@@ -1343,6 +1347,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{definition}
+	\label{def: accumulation point}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $u: \mathbb N \to X$.
 	
 	A point $x \in X$ is an \textit{accumulation point} of $u$ iff for any $U \in \mathcal T$ with $x \in U$, $U$ contains infinitely many terms of $u$; i.e.,
@@ -1374,7 +1379,16 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	Then $x$ is an accumulation point of $u$.
 	
 	\begin{proof}
-		As $x$ is a limit of $u$, by Definition \ref{def: convergent sequence}, for any $U \in \mathcal T$ with $x \in U$, $U \cap u[\mathbb N]$ is a cofinite subset of $u[\mathbb N]$
+		Let $U \in \mathcal T$ with $x \in U$, then we have		
+		$$
+		u [u^{-1}[U]] \subseteq U.
+		$$
+		
+		By Proposition \ref{prop: alternative definition of accumulation point}, as $u$ converges to $x$, $u^{-1}[U]$ is a cofinite subset of $\mathbb N$. Thus $u^{-1}[U]$ is infinite.
+		
+		As $u^{-1}[U]$ is infinite and $x \in U \in \mathcal T$, by Definition \ref{def: accumulation point}, $x$ is an accumulation point of $u$.
+		
+		\qed
 	\end{proof}
 \end{proposition}
 %--------------------------------
@@ -1400,7 +1414,13 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	Then $x$ is an $\omega$-accumulation point of $u[\mathbb N]$.
 	
 	\begin{proof}
+		By Definition \ref{def: accumulation point}, as $x$ is an accumulation point of $u$, let $U \in \mathcal T$ with $x \in U$, there exists an infinite $I \subseteq \mathbb N$ such that $u[I] \subseteq U$.
 		
+		As $u$ is injective and $I$ is infinite, $u[I]$ is also infinite.
+		
+		As $u[I] \subseteq U$ and $U \in \mathcal T$ with $x \in U$ is arbitrarily given, by Definition \ref{def: omega-accumulation point}, $x$ is an $\omega$-accumulation point of $u[\mathbb N]$.
+		
+		\qed
 	\end{proof}
 \end{proposition}
 %--------------------------------
@@ -1414,27 +1434,204 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %================================
-\section{Covers and Basis}
+\section{Covers and Bases}
 %================================
 
 
 %--------------------------------
 \begin{definition}
-	\label{def: accumulation point}
+	\label{def: cover}
 	Let $X$ be any set, and let $A \subseteq X$.
 	
 	A family $\mathcal C \subseteq 2^X$ is a \textit{cover for $A$} iff $A \subseteq \bigcup \mathcal C$.
+	
+	$\mathcal C$ is an \textit{open cover} iff $\mathcal C \subseteq \mathcal T$.
 \end{definition}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	\label{def: analytic basis}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
 	
-	A family $\mathcal C \subseteq 2^X$ is an open cover for $A$ iff $\mathcal C$ covers $A$ and $\mathcal C \subseteq \mathcal T$.
+	A family $\mathcal B \subseteq 2^X$ is an \textit{analytic basis for $\mathcal T$} iff
+	\begin{enumerate}[(i)]
+		\item $\mathcal B \subseteq \mathcal T$;
+		\item For any $U \in \mathcal T$, there is an $\mathcal A \subseteq \mathcal B$, such that $U = \bigcup \mathcal A$.
+	\end{enumerate}
 \end{definition}
 %--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: synthetic basis}
+	Let $X$ be any set.
+	
+	A family $\mathcal B \subseteq 2^X$ is a \textit{synthetic basis on $X$} iff
+	\begin{enumerate}[(i)]
+		\item $\mathcal B$ is a cover fir $X$;
+		\item For any $U, V \in \mathcal B$, there exists $\mathcal A \subseteq \mathcal B$, such that $U \cap V = \bigcup \mathcal A$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: local basis}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $x \in X$.
+	
+	A family $\mathcal B \subseteq 2^X$ is a \textit{local basis at $x$} iff
+	\begin{enumerate}[(i)]
+		\item $\mathcal B \in \mathcal T$;
+		\item For any $B \in \mathcal B$, $x \in B$;
+		\item For any $U \in \mathcal T$ with $x \in U$, there exists a $B \in \mathcal B$ such that $B \subseteq U$.
+	\end{enumerate}
+\end{definition}
+%--------------------------------
+
+
+%================================
+\section{First-Countable Spaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: first-countable}
+	A topological space $\mathbb X = (X, \mathcal T)$ is said to be \textit{first-countable} iff any $x \in X$ has a countable basis.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Metric spaces are first-countable.
+	
+	\begin{proof}
+		Let $\mathbb X = (X, d)$ be a metric space.
+		
+		For any $x \in X$, let $\mathcal B_x: \mathbb N \to \mathcal T$ be defined as
+		$$
+		\mathcal B_x(n) := B_{1/n} (x).
+		$$
+		
+		Clearly, the image $\mathcal B_x[\mathbb N]$ is countable.
+		
+		Let $U \in \mathcal T$. As $U$ is open, and as $x \in U$, then there exists $\varepsilon \in \mathbb R_{> 0}$ such that $B_\varepsilon(x) \subseteq U$.
+		
+		By Archimedean Principle, there exists an $n \in \mathbb N$ such that $n > \frac{1}{\varepsilon}$. Then we have
+		$$
+		\mathcal B_x(n) = B_{1/n}(x) \subseteq B_\varepsilon(x) \subseteq U.
+		$$
+		
+		As $U$ is arbitrarily given, for any $x \in X$, $\mathcal B_x[\mathbb N]$ is a countable local basis at $x$.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%todo: need details.
+%https://proofwiki.org/wiki/Accumulation_Point_of_Infinite_Sequence_in_First-Countable_Space_is_Subsequential_Limit
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a first-countable topological space, let $u: \mathbb N \to X$, and let $x \in X$ be an accumulation point of $u$.
+	
+	Then $x$ is a \textit{subsequential limit} of $u$. That is, there exists an infinite $I \subseteq \mathbb N$, such that $u\restriction_I$ converges to $x$ (as a limit).
+	
+	\begin{proof}\footnote{
+			The detail of this proof is incomplete.
+		}
+		By Definition \ref{def: first-countable}, as $\mathbb X$ is first-countable, there exists a countable local basis $\mathcal B$ at $x$.
+		
+		Let $\mathcal B_x: \mathbb N \to \mathcal T$ such that $\mathcal B_x[\mathbb N]$ is a local base at $x$ and for any $n \in \mathbb N$,
+		$$
+		\mathcal B_x(n) \supseteq \bigcup \mathcal B_x[\mathbb N_{> n}].
+		$$
+		
+		Let $w: I \to u[\mathbb N]$ ($I$ infinite) such that for any $i \in I$, $w(i) \in \mathcal B_x(i)$.
+		
+		Then, for any $k \in \mathbb N$, we have $w[I_{> k}] \subseteq \mathcal B_x(k)$. Thus, by Definition \ref{def: convergent sequence}, $w$ is a subsequence of $u$ converging to $x$.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%================================
+\section{Second-Countable Spaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: second-countable}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	
+	$\mathbb X$ is said to be \textit{second countable} iff $\mathcal T$ has a countable (analytic) basis.
+\end{definition}
+%--------------------------------
+
+
+%todo: need details.
+%https://proofwiki.org/wiki/Second-Countable_Space_is_First-Countable
+%--------------------------------
+\begin{proposition}
+	Second-countable spaces are first-countable.
+	
+	\begin{proof}
+		Let $\mathbb X = (X, \mathcal T)$ be a second-countable space.
+	
+		By Definition \ref{def: second-countable}, $\mathcal T$ has a countable analytic basis.
+		
+		Let $x \in X$ and let $U \in \mathcal T$ with $x \in U$. By Definition \ref{def: analytic basis} there exists a countable $\mathcal B \subseteq \mathcal T$, such that for any $U \in \mathcal T$, there is an $\mathcal A \subseteq \mathcal B$, such that $U = \bigcup \mathcal A$. 
+		
+		As $U \in \mathcal T$ and $U = \bigcup \mathcal A$, by Proposition \ref{prop: point in open set}, there exists a $A \in \mathcal A$ such that $x \in A \subseteq U$.
+		
+		Let $\mathcal C \subseteq \mathcal B$ be the family of all such $A$ containing $x$, then, by Definition \ref{def: local basis}, $\mathcal C$ is a local basis at $x$. And as $\mathcal B$ is countable, as a subset, $\mathcal C$ is also countable.
+		
+		Therefore $\mathcal C$ is a countable local basis at $x$.
+		
+		As $x$ is arbitrarily given, $\mathbb X$ is first-countable.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+%todo: Share on ProofWiki
+%https://proofwiki.org/wiki/Real_Number_Line_is_Second-Countable
+%--------------------------------
+\begin{proposition}
+	Consider $\mathbb R$ as a Euclidean metric space.
+	
+	$\mathbb R$ is second-countable.
+	
+	\begin{proof}
+		For any $x \in \mathbb Q$, let $\mathcal O_x: \mathbb N \to \mathcal T$ be defined as
+		$$
+		\mathcal O_x(n) := B_{1/n}(x).
+		$$
+		
+		For any $r \in \mathbb R \setminus \mathbb Q$ and for any open set $U \ni r$, there exists $\delta \in \mathbb R_{> 0}$ such that $B_\delta(r) \subseteq U$.
+		
+		There exists some $q \in \mathbb Q$ such that $q \in B_\delta(r)$. As $B_\delta(r)$ is open, by Definition \ref{def: open set in metric space}, there exists $\varepsilon \in \mathbb R_{> 0}$ such that $B_\varepsilon(q) \subseteq B_\delta(r)$.
+		
+		By Archimedean property, there exists $k \in \mathbb N$ such that $k > \frac{1}{\varepsilon}$. Then we have
+		$$
+		\mathcal O_x(k) = B_{1/k}(q) \subseteq B_\varepsilon(q) \subseteq B_\delta(r).
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
 
 
 
