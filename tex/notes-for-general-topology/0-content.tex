@@ -1199,6 +1199,109 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %================================
+\section{Density}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: dense}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then $A$ is said to be \textit{everywhere dense}, or simply \textit{dense}, in $\mathbb X$ iff
+	$$
+	A^- = X.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: alternative definition of dense}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then $A$ is dense in $\mathbb X$ iff for any $U \in \mathcal T$, $A \cap U \ne \emptyset$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		Assume $A$ is dense in $\mathbb X$, then, by Definition \ref{def: dense}, $A^- = X$.
+		
+		By Definition \ref{def: isolated point}, for any $x \in \I(A)$, $x \in A$.
+		
+		By Definition \ref{def: limit point}, for any $x \in \Li(A)$ and for any $U \in \mathcal T$ with $x \in U$, $U \cap A \ne \emptyset$.
+		
+		As $A^- = X$, then, by Proposition \ref{prop: closure is disjoint union of derived and isolated set}, $X = \I(A) \sqcup \Li (A)$.
+		
+		Thus for any $U \in \mathcal T$, $A \cap U \ne \emptyset$.
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		Aiming for a contradiction, suppose for any $U \in \mathcal T$, $A \cap U \ne \emptyset$, but $A$ is not dense in $\mathbb X$.
+		
+		As, $A \subseteq X$, by Proposition \ref{prop: inclusion implies closure inclusion}, $A^- \subseteq X^-$. And, as $X$ is closed in $\mathbb X$, by Proposition \ref{prop: closed iff closure}, $X = X^-$. Therefore, $A^- \subseteq X$.
+		
+		As $A$ is not dense in $X$, by Definition \ref{def: dense}, $A^- \ne X$. Therefore, $A^- \subsetneq X$. This implies that $X \setminus A^-$ is non-empty. And, by Definition \ref{def: closure}, $X \setminus A^- \in \mathcal T$.
+		
+		By Proposition \ref{prop: point in open set}, for any $x \in X \setminus A^-$, there exists a $U \in \mathcal T$ with $x \in U$, such that $U \in X \setminus A^-$. Then $U \cap A = \emptyset$. This contradicts the assumption we have.
+		
+		Therefore, $A$ has to be dense in $\mathbb X$.
+		
+		\qedlm
+		
+		Thus, the proof is done.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: nowhere dense}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then $A$ is said to be \textit{nowhere dense in $\mathbb X$} iff
+	$$
+	\left( A^- \right)^\circ = \emptyset.
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then $A$ is nowhere dense in $\mathbb X$ iff for any $U \in \mathcal T \setminus \{\emptyset\}$,
+	$$
+	U \setminus A^- \ne \emptyset.
+	$$
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			& \text{$A$ is nowhere dense in $\mathbb X$} \\
+			\iff & (A^-)^\circ = \emptyset 
+				& \text{(Definition \ref{def: nowhere dense})}\\
+			\iff & (A^-)^\circ = \bigcup \left( \mathcal T \cap 2^A \right) = \emptyset 
+				& \text{(Definition \ref{def: interior})} \\
+			\iff & (\forall U \in \mathcal T: U \subseteq A^-) \quad U = \emptyset.
+		\end{aligned}
+		$$
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
+%================================
 \section{Neighbourhood Systems}
 %================================
 
