@@ -1597,7 +1597,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{proposition}
-	\label{prop: analytic basis}
+	\label{prop: alternative definition of analytic basis}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal B \subseteq \mathcal T$.
 	
 	Then $\mathcal B$ is an analytic basis for $\mathcal T$ iff for any $U \in \mathcal T$ and for any $x \in U$, there exists a $B \in \mathcal B$ such that $x \in B \subseteq U$.
@@ -1904,9 +1904,31 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 		$$
 		\mathcal B(n, a) := B_{1/n}(a).
 		$$
+		
+		Let $\varepsilon \in \mathbb R_{> 0}$ and let $x \in X$. Then $B_\varepsilon(x)$ defines an open ball in $\mathbb X$.
+		
+		As $A^- = X$ and $x \in X$, $x \in A^-$ also. Thus, there exists an $a \in A \cap B_\varepsilon (x)$.
+		
+		By Proposition \ref{prop: open balls of point inside open ball}, as $a \in B_\varepsilon(x)$, there exists a $\delta \in \mathbb R_{> 0}$ such that $B_\delta(a) \subseteq B_\varepsilon (x)$.
+		
+		By Archimedean property, let $k \in \mathbb N$ such that $k > \frac{1}{\delta}$, then we have
+		$$
+		\mathcal B(k, a) = B_{1/k}(a) \subseteq B_\delta (a) \subseteq B_\varepsilon (x).
+		$$
+		
+		By Proposition \ref{prop: alternative definition of analytic basis}, $\mathcal B[\mathbb N \times A]$ is an analytic basis for $\mathcal T$. As $\mathbb N \times A$ is countable, the image $\mathcal B[\mathbb N \times A]$ is also countable.
+		
+		Therefore, $\mathcal B[\mathbb N \times A]$ is a countable analytic basis for $\mathcal T$. By Definition \ref{def: second-countable}, $\mathbb X$ is second-countable.
+		
+		\qed
 	\end{proof}
 \end{proposition}
 %--------------------------------
+
+
+%================================
+\section{Lindel\"of Space}
+%================================
 
 
 
