@@ -763,7 +763,7 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %todo: >>>prove this<<<
-%%--------------------------------
+%--------------------------------
 \begin{proposition}
 	\label{prop: union of intersection of family of families}
 	Let $X$ be any set, let $I$ be an index set, and let $\mathcal A_i \subseteq 2^X$ for any $i \in I$.
@@ -1198,6 +1198,34 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 %--------------------------------
 
 
+%--------------------------------
+\begin{proposition}
+	\label{prop: point in open set (only if)}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \in \mathcal T$ such that for any $x \in A$, there exists a $U \in \mathcal T$ such that $x \in U \subseteq A$.
+	
+	Then $A$ is open in $\mathbb X$.
+
+	\begin{proof}
+		Aiming for a contradiction, suppose for any $x \in A$, there exists a $U \in \mathcal T$ such that $x \in U \subseteq A$, but $A$ is not open.
+		
+		By Definition \ref{def: closed set}, as $A$ is not open, $X \setminus A$ is not closed.
+		
+		By Proposition \ref{prop: closed iff contain all limit point}, there exists $x \in \Li(A) \setminus (X \setminus A)$. Fix $x$.
+		
+		As $x \notin X \setminus A$, $x \in A$.
+		
+		By Definition \ref{def: limit point}, for $U \in \mathcal T$ with $x \in U$, $U \cap (X \setminus A) \ne \emptyset$, i.e., $U \setminus A \ne \emptyset$. This implies that $U \not \subseteq A$.
+		
+		This contradicts the assumption we have.
+		
+		Thus $A$ has to be open.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
 %================================
 \section{Density}
 %================================
@@ -1568,6 +1596,38 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %--------------------------------
+\begin{proposition}
+	\label{prop: analytic basis}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal B \subseteq \mathcal T$.
+	
+	Then $\mathcal B$ is an analytic basis for $\mathcal T$ iff for any $U \in \mathcal T$ and for any $x \in U$, there exists a $B \in \mathcal B$ such that $x \in B \subseteq U$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		By Definition \ref{def: analytic basis}, as $\mathcal B$ is an analytic basis for $\mathcal T$, let $U \in \mathcal T$, then there is an $\mathcal A \subseteq \mathcal B$ such that $U = \bigcup \mathcal A$.
+		
+		Then, for any $x \in U$, there exists at least one $A \in \mathcal A$ such that $x \in A$. As $U = \bigcup\mathcal A$, $A \subseteq U$.
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		By Proposition \ref{prop: point in open set (only if)}, as for any $U \in \mathcal T$ and for any $x \in U$, there exists a $B \in \mathcal B$ such that $x \in B \subseteq U$, then there exists an $\mathcal A \subseteq \mathcal B$ such that $\bigcup \mathcal A = U$.
+		
+		By Definition \ref{def: analytic basis}, $\mathcal B$ is an analytic basis for $\mathcal T$.
+		
+		\qedlm
+		
+		Thus, the proof is done.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
 \begin{definition}
 	\label{def: synthetic basis}
 	Let $X$ be any set.
@@ -1611,6 +1671,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{proposition}
+	\label{prop: metric spaces are first-countable}
 	Metric spaces are first-countable.
 	
 	\begin{proof}
@@ -1710,31 +1771,142 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 %todo: Share on ProofWiki
 %https://proofwiki.org/wiki/Real_Number_Line_is_Second-Countable
 %--------------------------------
-\begin{proposition}
+\begin{example}
 	Consider $\mathbb R$ as a Euclidean metric space.
 	
 	$\mathbb R$ is second-countable.
 	
 	\begin{proof}
+		By Proposition \ref{prop: metric spaces are first-countable}, $\mathbb R$ is first-countable.
+		
 		For any $x \in \mathbb Q$, let $\mathcal O_x: \mathbb N \to \mathcal T$ be defined as
 		$$
 		\mathcal O_x(n) := B_{1/n}(x).
 		$$
 		
-		For any $r \in \mathbb R \setminus \mathbb Q$ and for any open set $U \ni r$, there exists $\delta \in \mathbb R_{> 0}$ such that $B_\delta(r) \subseteq U$.
+		For any $r \in \mathbb R$ and for any open set $U \ni r$, there exists $\delta \in \mathbb R_{> 0}$ such that $B_\delta(r) \subseteq U$.
 		
 		There exists some $q \in \mathbb Q$ such that $q \in B_\delta(r)$. As $B_\delta(r)$ is open, by Definition \ref{def: open set in metric space}, there exists $\varepsilon \in \mathbb R_{> 0}$ such that $B_\varepsilon(q) \subseteq B_\delta(r)$.
 		
 		By Archimedean property, there exists $k \in \mathbb N$ such that $k > \frac{1}{\varepsilon}$. Then we have
 		$$
-		\mathcal O_x(k) = B_{1/k}(q) \subseteq B_\varepsilon(q) \subseteq B_\delta(r).
+		\mathcal O_q(k) = B_{1/k}(q) \subseteq B_\varepsilon(q) \subseteq B_\delta(r).
 		$$
+		
+		[This proof is incomplete]
+		% incomplete proof
+	\end{proof}
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $\mathbb X = (\mathbb R, \mathcal T)$ be a discrete topological space.
+	
+	$\mathbb X$ is first-countable but not second-countable.
+\end{example}
+%--------------------------------
+
+
+%================================
+\section{Separable Spaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: separable}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	
+	$\mathbb X$ is said to be \textit{separable} iff there exists a countable subset $A \subseteq X$ such that $A$ is dense in $\mathbb X$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Second-countable spaces are separable.
+	
+	\begin{proof}
+		Let $\mathbb X = (X, \mathcal T)$ be a second-countable topological space.
+		
+		As $\mathbb X$ is second-countable, by Definition \ref{def: second-countable}, there is a countable base $\mathcal B$ for $\mathcal T$.
+		
+		Let $f: \mathcal B \to X$ such that for any $B \in \mathcal B$,
+		$$
+		f(B) = \text{a random } x \in B.
+		$$
+		
+		As $\mathcal B$ is countable, then $f[\mathcal B]$ is countable.
+		
+		Now, it suffices to show that $f[\mathcal B]$ is dense in $\mathbb X$.
+		
+		Aiming for a contradiction, suppose $f[\mathcal B]$ is not dense in $\mathbb X$, then, there exists some $x \in X \setminus (f[\mathcal B])^-$.
+		
+		By Definition \ref{def: closed set}, $X \setminus (f[\mathcal B])^- \in \mathcal T$; by Definition \ref{prop: point in open set}, there exists $U \in \mathcal T$ with $U \ni x$ such that $U \subseteq X \setminus (f[\mathcal B])^-$. That is, for any $B \in \mathcal B$, $f(B) \notin U$; i.e., $f[\mathcal B] \cap U = \emptyset$.
+		
+		As $U \in \mathcal T$ and $\mathcal B$ is a base for $\mathcal T$, by Definition \ref{def: analytic basis}, there exists $\mathcal A \subseteq \mathcal B$ such that $\bigcup \mathcal A = U$. Thus, $f[\mathcal A]$ must be a non-empty subset of $U$. This contradicts $f[\mathcal B] \cap U = \emptyset$.
+		
+		Thus, $f[\mathcal B]$ has to be dense in $\mathbb X$. As $f[\mathcal B]$ is countable, therefore, $\mathbb X$ is second-countable.
+		
+		\qed
 	\end{proof}
 \end{proposition}
 %--------------------------------
 
 
+%--------------------------------
+\begin{example}
+	Niemytzki plane is separable but not second-countable.\footnote{
+		See \href{https://proofwiki.org/wiki/Definition:Niemytzki_Plane}{ProofWiki}.
+	}
+\end{example}
+%--------------------------------
 
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a discrete topological space which is separable.
+	
+	Then $X$ is countable.
+	
+	\begin{proof}
+		Aiming for a contradiction, suppose $X$ is uncountable.
+		
+		As $\mathbb X$ is separable, by Definition \ref{def: separable}, there exists a countable subset $A \subseteq X$ being dense in $\mathbb X$.
+		
+		By Definition \ref{def: dense}, $A^- = X$.
+		
+		As $\mathbb X$ is discrete, $A^- = A$.
+		
+		Now, we have $A = X$. As $A$ is countable but $X$ is not, this is impossible.
+		
+		This contradiction shows that $X$ has to be countable.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+% https://proofwiki.org/wiki/Separable_Metric_Space_is_Second-Countable
+%--------------------------------
+\begin{proposition}
+	Separable metric spaces are second-countable.
+	
+	\begin{proof}
+		Let $\mathbb X = (X, d)$ be a metric space which is separable. Denote $\mathcal T$ for the topology on $X$ induced by $d$.
+		
+		By Definition \ref{def: separable}, let $A \subseteq X$ be a countable set with $A^- = X$ (by Definition \ref{def: dense}, $A$ dense in $\mathbb X$).
+		
+		Let $\mathcal B: \mathbb N \times A \to \mathcal T$ be defined as
+		$$
+		\mathcal B(n, a) := B_{1/n}(a).
+		$$
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
 
 
