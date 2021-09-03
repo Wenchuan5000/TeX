@@ -2011,7 +2011,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	\label{def: continuous mapping}
 	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$, let $f: \mathbb X \to \mathbb Y$, and let $A \subseteq X$ be a mapping.
 	
-	Then $f$ is said to be \textit{continuous on $A$} iff for any $U_X \in \mathcal T_X$ with $A \subseteq U_X$,
+	Then $f$ is said to be \textit{continuous on $A$} iff there exists a $U_X \in \mathcal T_X$ with $A \subseteq U_X$, such that for any $U_Y \in \mathcal T_Y$,
 	$$
 	f^{-1}[U_Y] \cap U_X \in \mathcal T_X.
 	$$
@@ -2023,15 +2023,46 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{note}
+	By Definition \ref{def: continuous mapping}, $f$ is \textit{continuous at a point $x \in X$}, iff it is continuous on some $U_X \in \mathcal T$ with $x \in U_X$, as $x$ here can be considered as a singleton $\{x\}$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
 	There is a common error: if for any $U_X \in \mathcal T_X$, its image $f[U_X] \in \mathcal T_Y$ also, then $f$ is continuous. But, this condition also holds for some discontinuous mappings.
 	
-	For example, let $\mathbb X = (\mathbb R, \mathcal T_X)$ be a topological space where $\mathcal T$ induced by Euclidean metric, and let $\mathbb Y = (\mathbb R, \mathcal T_Y)$ be a discrete topological space. Let $\imath: \mathbb X \to \mathbb Y$ be an inclusion mapping; i.e., it is defined as
+	For example, let $\mathbb X = (\mathbb R, \mathcal T_X)$ be a topological space where $\mathcal T$ induced by Euclidean metric, and let $\mathbb Y = (\mathbb R, \mathcal T_Y)$ be a discrete topological space. Let $\imath: \mathbb X \to \mathbb Y$ be an identity mapping; i.e., it is defined as
 	$$
 	\imath: \mathbb X \to \mathbb Y : x \mapsto x.
 	$$
 	
-	For any $A \subseteq \mathbb R$, clearly, $\imath[A] \in \mathcal T_Y$ holds. But for some (or for all) $B \in \mathcal T_Y \setminus \mathcal T_X$, $\imath^{-1}[B] \notin \mathcal T$. Thus, $\imath$ is not a continuous mapping.
+	For any $A \subseteq \mathbb R$, clearly, $\imath[A] \in \mathcal T_Y$ holds. But for some (or for all) $B \in \mathcal T_Y \setminus \mathcal T_X$, $\imath^{-1}[B] \notin \mathcal T$. Thus, $\imath$ is not a identity mapping.
+	
+	Indeed, for any identity mapping $\imath: (X, \mathcal T_X) \to (Y, \mathcal T_Y)$, $\imath$ is continuous iff $\mathcal T_X \supseteq \mathcal T_Y$.
 \end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	\label{prop: alternative definition of continuous mapping}
+	Let $\mathbb X = (X, \mathcal T_X)$ be a topological space, where $\mathcal T_X$ is the discrete topology on $X$. Let $\mathbb Y = (X, \mathcal T_Y)$ be any topological space. Then for any $f: \mathbb X \to \mathbb Y$, $f$ is continuous.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: alternative definition of continuous mapping}
+	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$, let $f: \mathbb X \to \mathbb Y$, and let $A \subseteq X$ be a mapping.
+	
+	$f$ is continuous iff for any $U_Y \in \mathcal T$ with $f[A] \subseteq U_Y$, there exists a $U_X$ with $A \subseteq U_X$, such that $f[U_X] \subseteq U_Y$.
+	
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
 %--------------------------------
 
 
