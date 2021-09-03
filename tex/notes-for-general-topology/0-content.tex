@@ -2009,7 +2009,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 %--------------------------------
 \begin{definition}
 	\label{def: continuous mapping}
-	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$, let $f: \mathbb X \to \mathbb Y$, and let $A \subseteq X$ be a mapping.
+	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$ be topological spaces, let $f: \mathbb X \to \mathbb Y$, and let $A \subseteq X$ be a mapping.
 	
 	Then $f$ is said to be \textit{continuous on $A$} iff there exists a $U_X \in \mathcal T_X$ with $A \subseteq U_X$, such that for any $U_Y \in \mathcal T_Y$,
 	$$
@@ -2055,21 +2055,74 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 %--------------------------------
 \begin{proposition}
 	\label{prop: alternative definition of continuous mapping}
-	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$, let $f: \mathbb X \to \mathbb Y$, and let $A \subseteq X$ be a mapping.
+	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$ be topological spaces, let $f: \mathbb X \to \mathbb Y$, and let $A \subseteq X$ be a mapping.
 	
-	$f$ is continuous iff for any $U_Y \in \mathcal T$ with $f[A] \subseteq U_Y$, there exists a $U_X$ with $A \subseteq U_X$, such that $f[U_X] \subseteq U_Y$.
+	$f$ is continuous on $A$ iff for any $U_Y \in \mathcal T$ with $f[A] \subseteq U_Y$, there exists a $U_X$ with $A \subseteq U_X$, such that $f[U_X] \subseteq U_Y$.
 	
 	\begin{proof}
+		First, prove $\Rightarrow$.
 		
+		Assume $f$ is continuous on $A$, then, by Definition \ref{def: continuous mapping}, let $U_Y \in \mathcal T$ with $f[A] \subseteq U_Y$, then there exists $U_X \in \mathcal T$ with $A \subseteq U_X$, such that
+		$$
+		f^{-1}[U_Y] \cap U_X \in \mathcal T.
+		$$
+		
+		Then we have
+		$$
+		\begin{aligned}
+			& U_X \subseteq f^{-1}[U_Y] \cap U_X \\
+			\implies & f[U_X] \subseteq f[f^{-1}[U_Y] \cap U_X] \\
+			\implies & f[U_X] \subseteq f[f^{-1}[U_Y]] \cap f[U_X] \\
+				&\text{(\href{https://proofwiki.org/wiki/Image_of_Intersection_under_Mapping}{Image of Intersection under Mapping})} \\
+			\implies & f[U_X] \subseteq U_Y \cap f[U_X]. \\
+				&\text{(\href{https://proofwiki.org/wiki/Image_of_Inverse_Image}{Image of Inverse Image})} \\
+			\implies & f[U_X] \subseteq U_Y.
+		\end{aligned}
+		$$
+		
+		\qed
 	\end{proof}
 \end{proposition}
 %--------------------------------
 
 
+%================================
+\section{Homeomorphisms}
+%================================
 
 
+%--------------------------------
+\begin{definition}
+	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$ be topological spaces, and let $f: \mathbb X \to \mathbb Y$ be a mapping.
+	
+	$f$ is a \textit{homeomorphism} iff
+	\begin{enumerate}[\bf H1.]
+		\item $f$ is bijective (injective and surjective);
+		\item $f$ is continuous;
+		\item $f^{-1}$ is continuous;
+	\end{enumerate}
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{definition}
+	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$ be topological spaces.
+	
+	$\mathbb X$ and $\mathbb Y$ are said to be \textit{homeomorphic}, denoted $\mathbb X \cong \mathbb Y$, iff there exists a homeomorphism between $\mathbb X$ and $\mathbb Y$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Homeomorphism is an equivalent relation.
+	
+	\begin{proof}
+
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
 
 
