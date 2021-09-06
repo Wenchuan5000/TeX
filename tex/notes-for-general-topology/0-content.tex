@@ -2086,6 +2086,24 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 %--------------------------------
 
 
+%--------------------------------
+\begin{proposition}
+	\label{prop: composite of continuous mapping is continuous}
+	Let $\mathbb X = (X, \mathcal T_Y)$, $\mathbb Y = (X, \mathcal T_Y)$ and $\mathbb Z = (X, \mathcal T_Z)$ be topological spaces, let $f: \mathbb X \to \mathbb Y$ and $g: \mathbb Y \to \mathbb Z$ be continuous mapping.
+	
+	Then $f \circ g$ is continuous.
+	
+	\begin{proof}
+		By Definition \ref{def: continuous mapping}, as $g$ is continuous, for any $U_Z \in \mathcal T_Z$, $g^{-1}[U_Z] \in \mathcal T_Y$. Similarly, $f^{-1}[g^{-1}[U_Z]] \in \mathcal T_X$.
+		
+		As $U_Z \in \mathcal T_Z$ is arbitrarily given, $f \circ g$ is continuous.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
 %================================
 \section{Homeomorphisms}
 %================================
@@ -2093,6 +2111,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{definition}
+	\label{def: homeomorphism}
 	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$ be topological spaces, and let $f: \mathbb X \to \mathbb Y$ be a mapping.
 	
 	$f$ is a \textit{homeomorphism} iff
@@ -2107,6 +2126,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{definition}
+	\label{def: homeomorphic}
 	Let $\mathbb X = (X, \mathcal T_X)$ and $\mathbb Y = (X, \mathcal T_Y)$ be topological spaces.
 	
 	$\mathbb X$ and $\mathbb Y$ are said to be \textit{homeomorphic}, denoted $\mathbb X \cong \mathbb Y$, iff there exists a homeomorphism between $\mathbb X$ and $\mathbb Y$.
@@ -2116,12 +2136,99 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{proposition}
-	Homeomorphism is an equivalent relation.
+	Being homeomorphic is an equivalent relation.
 	
 	\begin{proof}
+		Let $\mathbb X = (X, \mathcal T_Y)$, $\mathbb Y = (X, \mathcal T_Y)$ and $\mathbb Z = (X, \mathcal T_Z)$ be topological spaces.
 
+		Let $\imath: \mathbb X \to \mathbb X$ be an identity mapping.
+		
+		For any $x_1, x_2 \in X$ with $x_1 \ne x_2$, $\imath(x_1) = x_2$ and $\imath (x_2) = x_2$, so $\imath (x_1) \ne \imath(x_2)$. Thus $\imath$ is injective.
+		
+		For any $x \in X$, there exists $\imath^{-1}(x) = x \in X$. Thus $\imath$ is surjective.
+		
+		As $\imath$ is injective and surjective, it is bijective.
+	
+		For any $U \in \mathcal T_X$, $\imath^{-1}[U] = U \in \mathcal T_X$. Thus, by Definition \ref{def: continuous mapping}, $\imath$ is continuous. Similarly, $\imath^{-1}$ is continuous.
+		
+		Therefore, by Definition \ref{def: homeomorphism}, $\imath$ is an homeomorphism between $\mathbb X$ and $\mathbb X$. By Definition \ref{def: homeomorphic}, $\mathbb X$ is homeomorphic to itself, i.e., $\mathbb X \cong \mathbb X$.
+		
+		Thus, being homeomorphic is reflexive.
+		
+		\qedlm
+				
+		Assume $\mathbb X \cong \mathbb Y$.
+		
+		By Definition \ref{def: homeomorphic}, there exists a homeomorphism $f: \mathbb X \to \mathbb Y$.
+		
+		As $f$ is bijective, then $f^{-1}$ is also bijective.
+		
+		By Definition \ref{def: homeomorphism}, $f$ and $f^{-1}$ are both continuous.
+		
+		As $f^{-1}$ is bijective, continuous, and $(f^{-1})^{-1} = f$ is also continuous, then $f^{-1}: \mathbb Y \to \mathbb X$ is also a homeomorphism. By Definition \ref{def: homeomorphic}, we have $\mathbb Y \cong \mathbb X$.
+		
+		Thus, being homeomorphic is symmetric.
+		
+		\qedlm
+		
+		Assume $\mathbb X \cong \mathbb Y$ and $\mathbb Y \cong \mathbb Z$.
+		
+		By Definition \ref{def: homeomorphic}, we have $f: \mathbb X \to \mathbb Y$ and $g: \mathbb Y \to \mathbb Z$ as homeomorphisms.
+		
+		By Definition \ref{def: homeomorphism} H1, $f$ and $g$ are bijective. Thus, $f \circ g$ is bijective.
+		
+		By Definition \ref{def: homeomorphism} H2, $f$ and $g$ are continuous, so, by Proposition \ref{prop: composite of continuous mapping is continuous}, $f\circ g$ is continuous. Similarly, $g^{-1} \circ f^{-1}$ is continuous. As $g^{-1} \circ f^{-1} = (f \circ g)^{-1}$ (see \href{https://proofwiki.org/wiki/Inverse_of_Composite_Relation}{inverse of composite relation}), $(f \circ g)^{-1}$ is also continuous.
+		
+		As $f\circ g$ is bijective, $f\circ g$ is continuous and $(f\circ g)^{-1}$ is also continuous, $f \circ g : \mathbb X \to \mathbb Z$ is a homeomorphism. By Definition \ref{def: homeomorphic}, $\mathbb X \cong \mathbb Z$.
+		
+		Thus, being homeomorphic is transitive.
+		
+		\qedlm
+		
+		As being homeomorphic is reflexive, symmetric, and transitive, it is an equivalence relation.
+		
+		\qed
 	\end{proof}
 \end{proposition}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{example}
+	In Euclidean metric space $\mathbb R$, let $a, b, c, d \in \mathbb R$ with $a < b$ and $c < d$, then we have:
+	\begin{itemize}
+		\item $[a, b] \cong [c, d]$;
+		\item $[a, b) \cong [c, d)$;
+		\item $[a, b) \cong (c, d]$;
+		\item $(a, b) \cong (c,d)$.
+	\end{itemize}
+\end{example}
+%--------------------------------
+
+
+
+%--------------------------------
+\begin{example}
+	A donut is homeomorphic to a cup, because they both have a hole.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Consider $\mathbb R_{[0,1]}$ and $\mathbb R^n$ as Euclidean metric spaces. For any $\alpha$, let $f_\alpha : I \to X$ be a continuous and piece-wise smooth injection.
+	
+	Then, for any $\alpha, \beta$, $f_\alpha [I] \cong f_\beta[I]$.
+	
+	\begin{figure}[h]
+	\centering
+%    \includegraphics[width=345pt]{notes-for-general-topology/media/intersection-of-family-of-families}
+	\includegraphics[width=345pt]{notes-for-general-topology/media/curves-and-knots}	
+    \caption{Homeomorphic curves in $\mathbb R^3$.}
+	\end{figure}
+
+\end{example}
 %--------------------------------
 
 
