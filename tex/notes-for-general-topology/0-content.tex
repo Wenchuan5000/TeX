@@ -668,6 +668,98 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 
 
 %================================
+\section{Subspaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: subspace}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	The \textit{subspace topology on $A$} is defines as
+	$$
+	\mathcal T_A := \left\{ A \cap U : U \in \mathcal T \right\}.
+	$$
+	
+	In this case, $(A, \mathcal T_A)$ is called a \textit{subspace of $\mathbb X$}.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	Note that $(A, \mathcal T_A)$ is a subspace of $\mathbb X$ does not implies that $\mathcal T_A \subseteq \mathcal T$. Consider $(\mathbb R, \mathcal T)$ as a standard topological space. Let $\mathcal T'$ be a standard topological space on $\mathbb R_{\ge 0}$, then $(\mathbb R_{\ge 0}, \mathcal T')$ is a subspace of $(\mathbb R, \mathcal T)$. For any $a \in \mathbb R_{> 0}$, real interval $[0, a) \in \mathcal T'$, but it is not an element in $\mathcal T$.
+	
+	Here is another extreme example. Let $\mathbb X = (X, \mathcal T)$ be an indiscrete topological space, and let $A \subseteq X$. Then, if $(A, \mathcal T_A)$ is a subspace of $\mathbb X$, then $\mathcal T_A \subseteq \mathcal T$ iff $A \in \{\emptyset, X \}$.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{note}
+	As $\emptyset$ is the subset of any set, by Definition \ref{def: subspace}, for any topological space $(X, \mathcal T)$,
+	$$
+	\mathcal T_\emptyset = \{\emptyset \cap U : U \in \mathcal T\} = \{\emptyset\}
+	$$
+	
+	Thus, $(\emptyset, \{\emptyset\})$ is the subspace of any topological space.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathbb A = (A, \mathcal T_A)$ be a subspace of $\mathbb X$.
+	
+	$$
+	\mathcal T_A \subseteq \mathcal T \iff A \in \mathcal T.
+	$$
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		$S \in \mathcal T$. By Definition \ref{def: open set axioms} O1, $A \in \mathcal T_A$. As $\mathcal T_A \subseteq \mathcal T$, $A \in \mathcal T$.
+		
+		\qedlm
+	
+		Now, prove $\Leftarrow$.
+		
+		As $A \in \mathcal T$, by Definition \ref{def: subspace}, for any $S \in \mathcal T_A$,
+		$$
+		S = A \cap U, \quad U \in \mathcal T.
+		$$
+		
+		By Definition \ref{def: open set axioms} O3, $S \in \mathcal T$.
+		
+		As $S \in \mathcal T_A$ is arbitrarily given, all $S \in \mathcal T_A$ is also an element in $\mathcal T$. Thus $\mathcal T_A \subseteq \mathcal T$.
+		
+		\qedlm
+		
+		Thus, the proof is done.
+		
+		\qed
+		
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+% todo: !!!!!!Start
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, let $\mathbb A = (A, \mathcal T_A)$ be a subspace of $\mathbb X$, and let $V \subseteq A$ be a closed set in $\mathbb X$.
+	
+	$V$ is closed in $\mathbb A$ iff there exists a $W \subseteq X$ closed in $\mathbb X$ such that $V = A \cap W$.
+	
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%================================
 \section{Interiors}
 %================================
 
@@ -2135,6 +2227,15 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %--------------------------------
+\begin{note}
+	Rigorously speaking, if we say that two subsets $A, B \subseteq X$ are homeomorphic, i.e., $A \cong B$, $A$ and $B$ are considered as subspaces of $\mathbb X = (X, \mathcal T)$, and these two subspaces are homeomorphic.
+	
+	Indeed, being homeomorphic is a relation between topological spaces but not sets without considering their togopolgies.
+\end{note}
+%--------------------------------
+
+
+%--------------------------------
 \begin{proposition}
 	Being homeomorphic is an equivalent relation.
 	
@@ -2217,17 +2318,58 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{example}
-	Consider $\mathbb R_{[0,1]}$ and $\mathbb R^n$ as Euclidean metric spaces. For any $\alpha$, let $f_\alpha : I \to X$ be a continuous and piece-wise smooth injection.
+	Consider $\mathbb R_{[0,1]}$ and $\mathbb R^n$ as Euclidean metric spaces. Let $A$ be an index set. For any $\alpha \in A$, let $f_\alpha : I \to X$ be a continuous and piece-wise smooth injection.
 	
-	Then, for any $\alpha, \beta$, $f_\alpha [I] \cong f_\beta[I]$.
-	
-	\begin{figure}[h]
+	Then, for any $\alpha, \beta \in A$, $f_\alpha [I] \cong f_\beta[I]$. (See, Figure \ref{fig: homeomorphic curves}.)
+\end{example}
+%--------------------------------
+
+
+\begin{figure}[h]
 	\centering
-%    \includegraphics[width=345pt]{notes-for-general-topology/media/intersection-of-family-of-families}
 	\includegraphics[width=345pt]{notes-for-general-topology/media/curves-and-knots}	
     \caption{Homeomorphic curves in $\mathbb R^3$.}
-	\end{figure}
+    \label{fig: homeomorphic curves}
+\end{figure}
 
+
+%--------------------------------
+\begin{example}
+	Consider $\mathbb R^n$ as a Euclidean metric space, let $S^{n-1} \subseteq \mathbb R^n$ be a $n-1$-sphere, i.e., let $o \in \mathbb R^n$ and $r \in \mathbb R$,
+	$$
+	S^{n-1} := \left\{ x \in \mathbb R^n : d(o,x) = r \right\},
+	$$
+	where $d$ is the Euclidean metric on $\mathbb R^n$.
+	
+	Let $y \in S^{n - 1}$, and let
+	$$
+	U \in \left\{ S^{n - 1} \setminus \overline B_\varepsilon (x), S^{n-1} \setminus \{x\} \right\},
+	$$
+	where $\varepsilon \in \mathbb R$ suffices
+	$$
+	0 < \varepsilon < \max_{a,b \in S^{n-1}} d(a,b).
+	$$
+	
+	Then we have $U \cong \mathbb R^{n - 1}$.
+\end{example}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space with $\mathcal T$ discrete. For any $U,V \in X$ with $|U| = |V| = |X|$, $U \cong V$.
+	
+	\begin{proof}
+		As $\mathcal T = 2^X$, for any $U, V \in X$, $(U, 2^U )$ and $( V, 2^V )$ are subspace of $\mathbb X$.
+		
+		By the definition of comparison of cardinality, if $|U| = |V|$, there exists a bijection $f: U \to V$.
+		
+		For any $A \in 2^V$, $f[A] \in 2^U$, thus, by Definition \ref{def: continuous mapping}, $f$ is continuous. Similarly, $f^{-1}$ is also continuous.
+		
+		As $f$ is bijective, and bi-continuous, by Definition \ref{def: homeomorphism}, $f$ is a homeomorphism between $(U, 2^U)$ and $(V, 2^V)$. By Definition \ref{def: homeomorphic}, $U \cong V$.
+		
+		\qed
+	\end{proof}
 \end{example}
 %--------------------------------
 
