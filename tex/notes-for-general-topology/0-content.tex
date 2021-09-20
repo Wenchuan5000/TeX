@@ -712,6 +712,8 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 \begin{proposition}
 	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathbb A = (A, \mathcal T_A)$ be a subspace of $\mathbb X$.
 	
+	Then,
+	
 	$$
 	\mathcal T_A \subseteq \mathcal T \iff A \in \mathcal T.
 	$$
@@ -739,20 +741,6 @@ If $B = Y$, customarily, we simply write $R \restriction_{A}$ for $R \restrictio
 		Thus, the proof is done.
 		
 		\qed
-		
-	\end{proof}
-\end{proposition}
-%--------------------------------
-
-
-% todo: !!!!!!Start
-%--------------------------------
-\begin{proposition}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, let $\mathbb A = (A, \mathcal T_A)$ be a subspace of $\mathbb X$, and let $V \subseteq A$ be a closed set in $\mathbb X$.
-	
-	$V$ is closed in $\mathbb A$ iff there exists a $W \subseteq X$ closed in $\mathbb X$ such that $V = A \cap W$.
-	
-	\begin{proof}
 		
 	\end{proof}
 \end{proposition}
@@ -1418,68 +1406,6 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 	\end{proof}
 \end{proposition}
 %--------------------------------
-
-
-
-%================================
-\section{Neighbourhood Systems}
-%================================
-
-
-%--------------------------------
-\begin{definition}
-	\label{def: neighbourhood}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
-	
-	A subset $N \subseteq X$ is a \textit{neighbourhood of $A$} iff
-	$$
-	(\exists U \in \mathcal T) \quad A \subseteq U \subseteq N.
-	$$
-	
-	If $A = \{x\}$, we simply call $N$ a \textit{neighbourhood of $x$}.
-	
-	If $N \in \mathcal T$ also, then $N$ is an \textit{open neighbourhood of $A$}; and if $N$ is closed, then $N$ is a \textit{closed neighbourhood of $A$}.
-\end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{proposition}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
-	
-	$A \in \mathcal T$ iff for any $x \in A$, $A$ is a neighbourhood of $x$.
-	
-	\begin{proof}
-		First, prove $\Rightarrow$.
-		
-		If $A \in \mathcal T$, then, by Definition \ref{def: neighbourhood}, for any $x \in A$, we have
-		$$
-		x \in A \subseteq A.
-		$$
-		
-		\qedlm
-		
-		Now, prove $\Leftarrow$.
-		
-		Aiming for a contradiction, suppose for any $x \in A$, $A$ is a neighbourhood of $x$, but $A\notin \mathcal T$.
-		
-		As $X \setminus A$ is not closed, (otherwise, by Definition \ref{def: closed set}, $A = X \setminus (X \setminus A)$ is open) by Proposition \ref{prop: closed iff contain all limit point}, there exists $x \in \Li(X \setminus A) \setminus (X \setminus A)$.
-		
-		Then, for such an $x \in A$ (for $x \notin X \setminus A$), for any $U \in \mathcal T$ with $x \in U$,
-		$$
-		U \cap (X \setminus A) \ne \emptyset. \qquad \text{(Definition \ref{def: limit point})}
-		$$
-		
-		By Definition \ref{def: neighbourhood}, $A$ fails to be a neighbourhood of $x$. This contradicts the assumption.
-		
-		Thus $A$ has to be open.
-		
-		\qed
-	\end{proof}
-\end{proposition}
-%--------------------------------
-% Share on ProofWiki
-% https://proofwiki.org/wiki/Set_is_Open_iff_Neighborhood_of_all_its_Points
 
 
 %================================
@@ -2374,14 +2300,129 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 %--------------------------------
 
 
+%================================
+%::::::::::::::::::::::::::::::::
+\chapter{Separation Axioms}
+%::::::::::::::::::::::::::::::::
+%================================
+
+
+%================================
+\section{Neighbourhood Systems}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: neighbourhood}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A subset $N \subseteq X$ is a \textit{neighbourhood of $A$} iff
+	$$
+	(\exists U \in \mathcal T) \quad A \subseteq U \subseteq N.
+	$$
+	
+	If $A = \{x\}$, we simply call $N$ a \textit{neighbourhood of $x$}.
+	
+	If $N \in \mathcal T$ also, then $N$ is an \textit{open neighbourhood of $A$}; and if $N$ is closed, then $N$ is a \textit{closed neighbourhood of $A$}.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	$A \in \mathcal T$ iff for any $x \in A$, $A$ is a neighbourhood of $x$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		If $A \in \mathcal T$, then, by Definition \ref{def: neighbourhood}, for any $x \in A$, we have
+		$$
+		x \in A \subseteq A.
+		$$
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		Aiming for a contradiction, suppose for any $x \in A$, $A$ is a neighbourhood of $x$, but $A\notin \mathcal T$.
+		
+		As $X \setminus A$ is not closed, (otherwise, by Definition \ref{def: closed set}, $A = X \setminus (X \setminus A)$ is open) by Proposition \ref{prop: closed iff contain all limit point}, there exists $x \in \Li(X \setminus A) \setminus (X \setminus A)$.
+		
+		Then, for such an $x \in A$ (for $x \notin X \setminus A$), for any $U \in \mathcal T$ with $x \in U$,
+		$$
+		U \cap (X \setminus A) \ne \emptyset. \qquad \text{(Definition \ref{def: limit point})}
+		$$
+		
+		By Definition \ref{def: neighbourhood}, $A$ fails to be a neighbourhood of $x$. This contradicts the assumption.
+		
+		Thus $A$ has to be open.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+% Share on ProofWiki
+% https://proofwiki.org/wiki/Set_is_Open_iff_Neighborhood_of_all_its_Points
 
 
 
+%================================
+\section{$T_0$ Spaces}
+%================================
 
 
+%--------------------------------
+\begin{definition}
+	\label{def: t_0 spaces}
+	A topological space $\mathbb X = (X, \mathcal T)$ is said to be $T_0$, or \textit{Kolmogorov}, iff for any distinct $x, y \in X$ are \textit{topologically distinguishable}. That is, if we let $\mathcal N_x$ be the set of all neighbourhoods of $x$ and let $\mathcal N_y$ be the set of all neighbourhoods of $y$, we have
+	$$
+	\mathcal N_x \ne \mathcal N_y.
+	$$
+\end{definition}
+%--------------------------------
 
 
+%--------------------------------
+\begin{example}
+	Not all topological spaces are $T_0$. For example, if $\mathcal T$ is a indiscrete topology on $X$, then $\mathbb X$ is a $T_0$ space iff $|X| \in \{1, 0\}$.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$. Aiming for a contradiction, suppose $\mathbb X$ is $T_0$ but $|X| > 1$.
+		
+		As $|X| > 1$ and $\mathcal T$ is an indiscrete topology on $X$, for any $x, y \in X$ with $x \ne y$, they share their neighbourhoods. Thus, by Definition \ref{def: t_0 spaces}, they are not topological distinguishable, hence $\mathbb X$ is not $T_0$, contradicting to the condition we have.
+		
+		Now, prove $\Leftarrow$. If $X \in \{1, 0\}$, $X$ is a monotone or empty set. In this case ``for any distinct $x, y \in X$'' is alway false, thus the whole statement is vacuously true.
+	\end{proof}
+\end{example}
+%--------------------------------
 
+
+%================================
+\section{$R_0$ Spaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: R_0 spaces}
+	A topological space $\mathbb X = (X, \mathcal T)$ is said to be $R_0$ or \textit{symmetric}, iff any topological distinguishable $x, y \in X$ are \textit{separated}. That is, there exists closed sets $V_x \ni x$ and $V_y \ni y$ such that $y \notin V_x$ and $x \notin V_y$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{example}
+	Let $\mathbb X = (\mathbb R, \mathcal T)$ be a topological space where $\mathcal T$ is generated by base
+	$$
+	\mathcal B = \{ [n, n + 1) : n \in \mathbb Z \}.
+	$$
+	
+	Then $\mathbb X$ is not $T_0$.
+\end{example}
+%--------------------------------
 
 
 
