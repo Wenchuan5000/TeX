@@ -2376,7 +2376,7 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 %--------------------------------
 \begin{definition}
-	\label{def: t_0 spaces}
+	\label{def: T_0 spaces}
 	A topological space $\mathbb X = (X, \mathcal T)$ is said to be $T_0$, or \textit{Kolmogorov}, iff for any distinct $x, y \in X$ are \textit{topologically distinguishable}. That is, if we let $\mathcal N_x$ be the set of all neighbourhoods of $x$ and let $\mathcal N_y$ be the set of all neighbourhoods of $y$, we have
 	$$
 	\mathcal N_x \ne \mathcal N_y.
@@ -2424,6 +2424,81 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 \end{example}
 %--------------------------------
 
+
+%================================
+\section{$T_1$ Spaces}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: T_1 spaces}
+	A topological space $\mathbb X = (X, \mathcal T)$ is said to be $T_1$, or \textit{Fr\'echet space} iff it is $T_0$ and $R_0$. By Definition \ref{def: T_0 spaces} and \ref{def: R_0 spaces}, that is, for any $x,y \in X$ with $x \ne y$, there exists closed sets $V_x \ni x$ and $V_y \ni y$ such that $y \notin V_x$ and $x \notin V_y$.
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	\label{prop: monotone in T_1 is closed}
+	A topological space $\mathbb X = (X, \mathcal T)$ is $T_1$ iff any monotone in $X$ is closed.
+	
+	\begin{proof}
+		First, prove $\Rightarrow$.
+		
+		By, Definition \ref{def: T_1 spaces}, as $\mathbb X$ is $T_1$, let $x \in X$, then for any $y \in X$ with $x \ne y$, we can find closed $V_x \ni x$ such that $y \notin V_x$.
+		
+		By De Morgan's law, that is, there exists an open $U = X \setminus V_x$ such that $y \in U$ and $x \notin U$.
+		
+		By Proposition \ref{prop: point in open set}, we have $X \setminus \{x\}$ open.
+		
+		By Definition \ref{def: closed set}, $\{x\}$ is closed.
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		Assume any monotone in $X$ is closed. Thus, let $x, y \in X$ with $x \ne y$. Then $\{x\}$ and $\{y\}$ are closed.
+		
+		Clearly, $x \notin \{y\}$ and $y \notin \{x\}$, thus, by Definition \ref{def: T_1 spaces}, $\mathbb X$ is $T_1$.
+		
+		\qedlm
+		
+		Thus the proposition is proved.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	A topological space $\mathbb X = (X, \mathcal T)$ is $T_1$ iff any cofinite subset of $X$ is open.
+	
+	\begin{proof}
+		By Proposition \ref{prop: monotone in T_1 is closed}, $\mathbb X$ is $T_1$ iff any monotone in $X$ is closed.
+		
+		First, prove $\Rightarrow$.
+		
+		By Proposition \ref{prop: closed set axioms}, the family of closed sets of $\mathbb X$ is closed under finite union, thus any finite subset $F \subseteq X$ is closed.
+		
+		By Definition \ref{def: closed set}, any cofinite subset $X \setminus F \subseteq X$ is open.
+		
+		\qedlm
+		
+		Now, prove $\Leftarrow$.
+		
+		As any cofinite subset $S \subseteq X$ is open, by Definition \ref{def: closed set}, any finite subset $X \setminus S \subseteq X$ is closed. Naturally, any monotone is finite, thus any monotone in $X$ is closed. By Proposition \ref{prop: monotone in T_1 is closed}, $\mathbb X$ is $T_1$.
+		
+		\qedlm
+		
+		Thus the proof is done.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
 
 
 
