@@ -78,6 +78,7 @@
 
 %--------------------------------
 \begin{example}
+	\label{eg: Euclidean metric space}
 	The \textit{Euclidean metric space} $\mathbb X = (X, d)$ is an $n$-dimensional set $X$ equipped with the \textit{Euclidean metric} $d$ defined as
 	$$
 	d(x,y) := \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac{1}{2}.
@@ -2314,8 +2315,85 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %================================
+\section{Topological Equivalent Metrics}
+%================================
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: topologically equivalent metric space}
+	Let $\mathbb X_1 = (X, d_1)$ and $\mathbb X_2 = (X, d_2)$ be metric spaces.
+	
+	$d_1$ and $d_2$ are said to be \textit{topologically equivalent} iff they induce the same topology. Explicitly, for any $U \subseteq A$,
+	$$
+	(\exists \varepsilon_1 \in \mathbb R_{> 0}) \quad U = \bigcup_{x \in U} B_{\varepsilon_1}(x; d_1) \iff (\exists \varepsilon_2 \in \mathbb R_{> 0}) \quad U = \bigcup_{x \in U} B_{\varepsilon_2} (x; d_2).
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{definition}
+	\label{def: Lipschitz equivalent}
+	Let $\mathbb X_1 = (X, d_1)$ and $\mathbb X_2 = (X, d_2)$ be metric spaces.
+	
+	$d_1$ and $d_2$ are said to be \textit{Lipschitz equivalent} iff there exists $c, k \in \mathbb R_{> 0}$ such that for any $x,y \in X$,
+	$$
+	c d_1(x,y) \le d_2(x,y) \le kd_1 (x, y).
+	$$
+\end{definition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	Let $\mathbb X_1 = (X, d_1)$ and $\mathbb X_2 = (X, d_2)$ be metric spaces.
+	
+	If $d_1$ and $d_2$ are Lipschitz equivalent, then $d_1$ and $d_2$ are topologically equivalent.
+	
+	\begin{proof}
+		As $d_1$ and $d_2$ are Lipschitz equivalent, there exists $k \in \mathbb R_{> 0}$ such that for any $x,y \in X$,
+		$$
+		d_2 (x,y) \le k d_1 (x,y).
+		$$
+		
+		Then, for any $\varepsilon \in \mathbb R_{> 0}$, we have
+		$$
+		\begin{aligned}
+			B_\varepsilon (x; d_2) \supseteq B_{\varepsilon} (x; kd_2)
+			\iff B_\varepsilon (x; d_2) \supseteq B_{\varepsilon / k} (x; d_2).
+		\end{aligned}
+		$$
+		
+		Then, for any open $\varepsilon$-ball $B_\varepsilon (x, d_1)$ (open in $\mathbb X_1$), there exists $k \in \mathbb R_{> 0}$ such that $B_{\varepsilon/k} (x; d_2) \subseteq B_\varepsilon (x;d_1)$. Thus $B_\varepsilon (x, d_1)$ is also open in $\mathbb X_1$.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+%--------------------------------
+\begin{proposition}
+	There exists homeomorphic metric spaces whose metrics are not Lipschitz equivalent
+	
+	\begin{proof}
+		Let $\mathbb X = (\mathbb Z, d)$ be a metric space where $d$ is a standard metric on $\mathbb Z$. Let $\mathbb X' = (\mathbb Z, d')$ where $d'$ is a discrete metric space.
+		
+		$d$ and $d'$ induce the same topology, but they are not Lipschitz equivalent.
+		
+		\qed
+	\end{proof}
+\end{proposition}
+%--------------------------------
+
+
+
+
+
+%================================
 %::::::::::::::::::::::::::::::::
-\chapter{Separation Axioms}
+\chapter{Separation Axioms (Kolmogorov to Hausdorff)}
 %::::::::::::::::::::::::::::::::
 %================================
 
@@ -2591,48 +2669,35 @@ Sometime, the set of isolated points of $A$ is denoted by $A^i$. For avoiding co
 
 
 %================================
-\section{Semiregular Spaces}
+\section{Product Spaces}
 %================================
 
 
 %--------------------------------
 \begin{definition}
-	\label{def: regular open set}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	\label{def: projection}
+	Let $\{X_i\}_{i \in I}$ be an indexed family, and let $\displaystyle x \in \prod_{i \in I}X_i$.
 	
-	$A$ is \textit{regular open in $\mathbb X$} iff
+	For any $i \in I$, the \textit{projection of $x$ on $X_i$} is the mapping $\pr_i: X \to X_i$ defined by
 	$$
-	A = \Int(\Cl(A)).
+	\pr_i(x) = x_i
 	$$
+	where $x_i$ is the coordinate of $x$ on $X_i$.
 \end{definition}
-%--------------------------------
-
-
-%--------------------------------
-\begin{example}
-	Consider $\mathbb R$ as a Euclidean metric space. Any cofinite subset of $\mathbb R$ (as $\mathbb R \setminus \{0\}$) is open but not regular open in $\mathbb R$.
-\end{example}
 %--------------------------------
 
 
 %--------------------------------
 \begin{definition}
-	\label{def: semiregular space}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	\label{def: product space}
+	Let $\{(X_i, \mathcal T_i)\}_{i \in I}$ be an indexed family of topological spaces.
 	
-	$\mathbb X$ is said to be \textit{semiregular} iff
-	\begin{enumerate}
-		\item $\mathbb X$ is Hausdorff;
-		\item let $\mathcal B$ be the family of all regular open sets of $\mathbb X$, then $\mathcal B$ is a basis for $\mathcal T$.
-	\end{enumerate}
+	The \textit{product topology} of $\{(X_i, \mathcal T_i)\}_{i \in I}$ is defined as
+	$$
+	\mathcal T := \left\{ U = \bigcap_{i \in I} \pr_i^{-1}[U_i] \;|\; U_i \in \mathcal T \right\}.
+	$$
 \end{definition}
 %--------------------------------
-
-
-
-
-
-
 
 
 
