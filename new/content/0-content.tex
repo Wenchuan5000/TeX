@@ -1,3 +1,54 @@
 %================================================
-\chapter{aa}
+%::::::::::::::::::::::::::::::::::::::::::::::::
+\chapter{Topological Spaces}
+
+
+%================================================
+\section{Basic Definitions}
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: topological space}
+
+	Let $X$ be any set, and let $\mathcal T \subseteq 2^X$.
+	
+	Then $\mathcal T$ is called a \textbf{topology on $X$} iff it satisfies the \textbf{open set axioms}. That is,
+	\begin{enumerate}[O1.]
+		\item $\emptyset, X \in \mathcal T$
+		\item For any $\mathcal U \subseteq \mathcal T$, $\bigcup \mathcal U \in \mathcal T$; i.e., $\mathcal T$ is closed under arbitrary union.
+		\item For any finite $\mathcal V \subseteq \mathcal T$, $\bigcap \mathcal V \in \mathcal T$; i.e., $\mathcal T$ is closed under finite intersection.
+	\end{enumerate}
+	
+	The ordered pair $\mathbb X = (X, \mathcal T)$ is called a \textbf{topological space}.
+	
+	A subset $U \subseteq X$ is said to be \textbf{open} iff it is an element of $\mathcal T$.
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+%\begin{note}
+	Rigorously, $\emptyset \in \mathcal T$ is not necessary for O1 in Definition \ref{def: topological space}, because it can be proved in a simple way.
+	
+	As empty set is an element of any set, it is also an element of $\mathcal T$. Therefore,
+	$$
+	\emptyset = \bigcup \emptyset \in \mathcal T.
+	$$
+%\end{note}
+%------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+%================================================
+
+
+%::::::::::::::::::::::::::::::::::::::::::::::::
 %================================================
