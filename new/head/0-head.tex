@@ -16,10 +16,22 @@
 
 \usepackage{layouts}
 %textwidth in cm: \printinunitsof{pt}\prntlen{\textwidth}
-%345 pt
 
 
-\theoremstyle{definition}
+\newtheoremstyle{wenchuan}
+	{1.25em} % Space above
+	{1.25em} % Space below
+	{} % Body font
+	{} % Indent amount
+	{\bfseries} % Theorem head font
+	{.} % Punctuation after theorem head
+	{0.5em} % Space after theorem head
+	{} % Theorem head spec (can be left empty, meaning `normal')
+
+
+%\theoremstyle{definition}
+
+\theoremstyle{wenchuan}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{proposition}{Proposition}[section]
 
@@ -31,7 +43,7 @@
 \newtheorem{note}{Note}[section]
 
 
-\renewenvironment{proof}{{\bfseries Proof.}}{}
+%\renewenvironment{proof}{{\bfseries Proof.}}{}
 
 
 \newcommand{\qedlm}{\hfill \ensuremath{\Box}}

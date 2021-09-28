@@ -4,6 +4,7 @@
 
 
 %================================================
+%················································
 \section{Basic Definitions}
 
 
@@ -11,7 +12,7 @@
 \begin{definition}
 	\label{def: topological space}
 
-	Let $X$ be any set, and let $\mathcal T \subseteq 2^X$.
+	Let $X$ be any set, and let $\mathcal T \subseteq 2^X$, where $2^X$ denotes the power set of $X$.
 	
 	Then $\mathcal T$ is called a \textbf{topology on $X$} iff it satisfies the \textbf{open set axioms}. That is,
 	\begin{enumerate}[O1.]
@@ -28,26 +29,290 @@
 
 
 %------------------------------------------------
-%\begin{note}
+\begin{note}
 	Rigorously, $\emptyset \in \mathcal T$ is not necessary for O1 in Definition \ref{def: topological space}, because it can be proved in a simple way.
 	
 	As empty set is an element of any set, it is also an element of $\mathcal T$. Therefore,
 	$$
 	\emptyset = \bigcup \emptyset \in \mathcal T.
 	$$
-%\end{note}
+\end{note}
 %------------------------------------------------
 
 
+%------------------------------------------------
+	The most intuitive example of topological space is no doubt the \textbf{Euclidean topological space}, it is a topological space $\mathbb X = (X, \mathcal T)$ with $X$ is the cartesian product of a sequence of sets $(X_i)_{i = 1}^n$ and the \textbf{Euclidean topology} $\mathcal T$ on $X$. That is, for any $U$ open in $\mathbb X$ (i.e., $U \in \mathcal T$), for any $A \subseteq U$ and for any $x \in A$, there exists $\varepsilon_x \in \mathbb R_{> 0}$, such that $U$ can be represented as the union of all $\varepsilon_x$-balls around $x$; i.e.,
+	$$
+	U = \bigcup_{x \in A} B_d(x, \varepsilon_x),
+	$$
+	where $d$ is the \textbf{Euclidean metric} on $X$; i.e., $d: X \times X \to \mathbb R_{> 0}$ is a function defined by the Pythagoras theorem,
+	$$
+	d(x,y) := \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac12,
+	$$
+	where $a_i$ denotes the $i$-th projection of $a \in X$ on $X$.
+	
+	In this case, the topology $\mathcal T$ is said to be induce by metric $d$. As a general consequence, any metric space can induce a unique topology. This will be proved later.
+	% todo: link to interior
+%------------------------------------------------
 
 
+%------------------------------------------------
+	In Euclidean spaces, the idea of ``open'' represents intuitively, but it doesn't mean that every topological space should be induce in such a natural way. Here is an easy example.
+%------------------------------------------------
 
 
+%------------------------------------------------
+\begin{example}
+	Let $X = \{1,2,3,4\}$ and let $\mathcal T$ be the smallest topology on $X$ containing $\{1,2\}$ and $\{2,3\}$, i.e., for topology $\mathcal T'$ on $X$ containing these two sets is a superset of $\mathcal T$.
+	
+	By Open Set Axiom O1, $\emptyset, X \in \mathcal T$.
+	
+	By Open Set Axiom O2, $\{1,2,3\} = \{1,2\} \cup \{2,3\} \in \mathcal T$.
+	
+	By Open Set Axiom O3, $\{2\} = \{1,2\} \cap \{2,3\} \in \mathcal T$.
+	
+	Therefore
+	$$
+	\mathcal T = \left\{
+		\emptyset, X, \{1,2,3\}, \{1,2\}, \{2,3\}, \{2\}
+	\right\}.
+	$$
+\end{example}
+%------------------------------------------------
 
 
+%------------------------------------------------
+\begin{definition}
+	\label{def: comparison of topologies}
+
+	Let $X$ be any set and let $\mathcal T_1$ and $\mathcal T_2$ be topologies on $X$.
+	
+	Then $\mathcal T_1$ is said to be \textbf{coarser} than $\mathcal T_2$, or $\mathcal T_2$ is said to be \textbf{finer} thatn $\mathcal T_1$, iff $\mathcal T_1 \subseteq \mathcal T_2$.
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{example}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	
+	Then $\mathbb X$ is a \textbf{discrete topological space}, namely, $\mathcal T$ is a \textbf{discrete topology} on $X$ iff $\mathcal T = 2^X$.
+	
+	It is the finest topology on $X$.
+\end{example}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{example}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space.
+	
+	Then $\mathbb X$ is a \textbf{indiscrete topological space}, namely, $\mathcal T$ is a \textbf{indiscrete topology} on $X$ iff $\mathcal T = \{\emptyset, X\}$.
+	
+	It is the coarsest topology on $X$.
+\end{example}
+%------------------------------------------------
+
+
+%················································
+%================================================
 
 
 %================================================
+%················································
+\section{Interiors}
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: interior}
+	
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	A point $x \in A$ is said to be \textbf{interior to $A$} iff there is a $U \in \mathcal T$ with $x \in U$, such that $U \subseteq A$.
+	
+	The \textbf{interior of $A$}, denoted $\Int_\mathcal T(A)$, is defined as the set of all interior points of $A$.
+	
+	Sometime, we write $A^\circ$ for $\Int_{\mathcal T}(A)$, if the confusion of topology is unlikely in the context.
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: interior: alt-def}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then we have
+	$$
+	A^\circ = \bigcup (\mathcal T \cap 2^A).
+	$$
+	
+	\begin{proof}
+		Let $\mathcal U = \mathcal T \cap 2^A$.
+		$$
+		\begin{aligned}
+			x \in \bigcup(\mathcal T \cap 2^A) &\iff x \in \bigcup_{U \in \mathcal U} U \\
+			&\iff (\exists U \in \mathcal U ) \; x \in  U.
+		\end{aligned}
+		$$
+		
+		By assumption, $\mathcal U \subseteq \mathcal T$, thus for any $U \in \mathcal U$, $U \in \mathcal T$. Also, $\mathcal U \subseteq 2^A$ implies that for any $U \in \mathcal U$, $U \subseteq A$.
+		
+		Now, we have $x \in \bigcup (\mathcal T \cap 2^A)$ iff
+		$$
+		(\exists U \in \mathcal T \;|\; U \subseteq A) \quad x \in U.
+		$$
+		
+		By the definition of existential quantifier and the associativity of logical conjunction, we have
+		$$
+		\begin{aligned}
+			(U \in \mathcal T \land U \subseteq A) \land x \in U
+			&\iff (U \in \mathcal T \land x \in U) \; U \subseteq A \\
+			&\iff (\exists U \in \mathcal T \;|\; x \in U) \; U \subseteq A.
+		\end{aligned}
+		$$
+		
+		This is precisely the statement of Definition \ref{def: interior}
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: interior: subset}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	
+	Then $A^\circ \subseteq B^\circ$ if $A \subseteq B$.
+	
+	\begin{proof}
+		As $A \subseteq B$, we have
+		$$
+		\begin{aligned}
+			2^A \subseteq 2^B &\implies \mathcal T \cap 2^A \subseteq \mathcal T \cap 2^B \\
+			&\implies \bigcup (\mathcal T \cap 2^A) \subseteq \bigcup (\mathcal T \cap 2^B)
+		\end{aligned}
+		$$
+		
+		By Definition \ref{def: interior}, $A^\circ \subseteq B^\circ$.
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+Note that $A^\circ \subseteq B^\circ$ does not imply $A \subseteq B$. For example, let $\mathbb X = (X, \mathcal T)$ with $X = \{1, 2\}$ and $\mathcal T = \{\emptyset, X, \{2\}\}$, and let
+$$
+A = \{1\}, \; B = \{2\}.
+$$
+Then, $A^\circ = \emptyset$ and $B^\circ = \{2\}$. In this case, $A^\circ \subseteq B^\circ$, but $A \not \subseteq B$.
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: interior: open}
+	
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then $A \in \mathcal T$ iff $A = A^\circ$.
+	
+	\begin{proof}
+		Assume $A \in \mathcal T$.
+		
+		As $A \in 2^A$ also, then $A \in \mathcal T \cap 2^A$. In the term of family, we have
+		$$
+		\begin{aligned}
+			\{A\} \subseteq \mathcal T \cap 2^A 
+			&\implies \bigcup \{A\} \subseteq \bigcup (\mathcal T \cap 2^A) \\
+			&\implies A \subseteq A^\circ.
+		\end{aligned}
+		$$
+		
+		By Definition \ref{def: interior}, $A^\circ \subseteq A$ is clear, therefore $A = A^\circ$. \qedlm
+		
+		Conversely, Assume $A = A^\circ$.
+		
+		By Proposition \ref{prop: interior: alt-def} that is
+		$$
+		A = \bigcup (\mathcal T \cap 2^A).
+		$$
+		
+		Clearly, $\mathcal T \cap 2^A \subseteq \mathcal T$, thus, by O2, Definition \ref{def: topological space}, $A \in \mathcal T$.
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: interior: intersection of family}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal A \subseteq 2^X$.
+	
+	Then we have
+	$$
+	\left( \bigcap \mathcal A \right)^\circ \subseteq \bigcap_{A \in \mathcal A} A^\circ.
+	$$
+\end{proposition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proof}
+	By Definition \ref{def: interior}, for any $x \in (\bigcap \mathcal A)^\circ$, there exists $U \in \mathcal T$ with $x \in U$ such that $U \subseteq \bigcap \mathcal A$. Thus, for any $A \in \mathcal A$, $U \subseteq A$.
+	
+	As $U \in \mathcal T$ and $U \subseteq A$, $U \subseteq A^\circ$.
+	
+	As $x \in U$ and $U \subseteq A^\circ$ for any $A \in \mathcal A$, we have
+	$$
+	x \in \bigcap_{A \in \mathcal A} A^\circ.
+	$$
+\end{proof}
+%------------------------------------------------
+
+
+Note that the relation $\subseteq$ in Proposition \ref{prop: interior: intersection of family} cannot be reversed.
+
+
+
+
+
+%················································
+%================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %::::::::::::::::::::::::::::::::::::::::::::::::
