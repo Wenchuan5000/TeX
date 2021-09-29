@@ -3,9 +3,11 @@
 \chapter{Topological Spaces}
 
 
+
+\section{Open Sets}
 %================================================
 %················································
-\section{Basic Definitions}
+
 
 
 %------------------------------------------------
@@ -118,9 +120,40 @@
 %================================================
 
 
+\section{Closed Sets}
 %================================================
 %················································
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: closed set}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	Then $A$ is said to be \textbf{closed in $\mathbb X$} iff there is a $U \in \mathcal T$ such that
+	$$
+	A = X \setminus U.
+	$$
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: closed set: axioms}
+	
+	Closed set axioms...
+\end{proposition}
+%------------------------------------------------
+
+
+%················································
+%================================================
+
+
 \section{Interiors}
+%================================================
+%················································
 
 
 %------------------------------------------------
@@ -251,12 +284,8 @@ Then, $A^\circ = \emptyset$ and $B^\circ = \{2\}$. In this case, $A^\circ \subse
 	$$
 	\left( \bigcap \mathcal A \right)^\circ \subseteq \bigcap_{A \in \mathcal A} A^\circ.
 	$$
-\end{proposition}
-%------------------------------------------------
-
-
-%------------------------------------------------
-\begin{proof}
+	
+	\begin{proof}
 	By Definition \ref{def: interior}, for any $x \in (\bigcap \mathcal A)^\circ$, there exists $U \in \mathcal T$ with $x \in U$ such that $U \subseteq \bigcap \mathcal A$. Thus, for any $A \in \mathcal A$, $U \subseteq A$.
 	
 	As $U \in \mathcal T$ and $U \subseteq A$, $U \subseteq A^\circ$.
@@ -266,13 +295,65 @@ Then, $A^\circ = \emptyset$ and $B^\circ = \{2\}$. In this case, $A^\circ \subse
 	x \in \bigcap_{A \in \mathcal A} A^\circ.
 	$$
 \end{proof}
+\end{proposition}
 %------------------------------------------------
 
 
-Note that the relation $\subseteq$ in Proposition \ref{prop: interior: intersection of family} cannot be reversed.
+Note that the relation $\subseteq$ in Proposition \ref{prop: interior: intersection of family} cannot be reversed. Consider $X = \{ 1,2,3 \}$ and $\mathcal T = \{ \emptyset, X, \{ 1,2 \}, \{2,3\} \}$, then
+$$
+(\{1,2\} \cap \{2,3\})^\circ = \emptyset,
+$$
+
+but,
+$$
+\{ 1,2 \}^\circ \cap \{2,3\}^\circ = \{2\}.
+$$
 
 
 
+%················································
+%================================================
+
+
+\section{Limit Points and Isolated Points}
+%================================================
+%················································
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: limit points}
+	\label{def: derived set}
+	
+	Limit point and derived set...
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: isolated points}
+	Isolated points and the set of isolated points
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: limit points and isolated points: disjoint union}
+	$$
+	A \subseteq \Li(A) \sqcup \I(A)
+	$$
+\end{proposition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: limit points and isolated points: closed sets}
+	$A$ is closed iff $\Li(A) \subseteq A$.
+\end{proposition}
+%------------------------------------------------
 
 
 %················································
@@ -282,6 +363,178 @@ Note that the relation $\subseteq$ in Proposition \ref{prop: interior: intersect
 
 
 
+\chapter{Metric Spaces}
+%================================================
+%::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+\section{Review of the Metric Spaces}
+%================================================
+%················································
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: metric space}
+	Let $X$ be any set, and let $d: X \times X \to \mathbb R_{> 0}$.
+	
+	Then $d$ is a \textbf{metric on $X$} iff it satisfies the \textbf{metric axioms}. That is, for any $x, y, z \in X$:
+	
+	\begin{enumerate}[M1.]
+		\item $d(x,y) = 0$ iff $x = y$;
+		\item $d(x,y) = d(y,x)$;
+		\item $d(x,z) \le d(x,y) + d(y, z)$.
+	\end{enumerate}
+	
+	The ordered pair $\mathbb X = (X, d)$ is called \textbf{metric space}.
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{definition}
+	\label{def: ball}
+	Let $\mathbb X = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$.
+	
+	An \textbf{open $\varepsilon$-ball}, or just \textbf{$\varepsilon$-ball}, about $x$ is defined to be the set
+	$$
+	B_d (x, \varepsilon) := \{y \in X: d(x,y) < \varepsilon \}.
+	$$
+	
+	A \textbf{closed ball} is defined to be the set
+	$$
+	\overline B_d (x, \varepsilon) := \{y \in X: d(x,y) \le \varepsilon \}.
+	$$
+\end{definition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: metric space: point in open ball}
+	Let $\mathbb X = (X, d)$ be a metric space, let $x \in X$ and let $\varepsilon \in \mathbb R_{> 0}$.
+	
+	Then, for any $y \in B_d (x, \varepsilon)$, there exists $\delta \in \mathbb R_{> 0}$, such that
+	$$
+	B_d (y, \delta) \subseteq B_d (x, \varepsilon).
+	$$
+	
+	\begin{proof}
+		Aiming for a contradiction, suppose there exists a $y \in B_d(x, \varepsilon)$, for any $\delta \in \mathbb R_{> 0}$,
+		$$
+		\exists z \in B_d (y, \delta) \setminus B_d (x, \varepsilon).
+		$$
+		
+		By Definition \ref{def: ball}, we have
+		$$
+		\begin{aligned}
+			z \notin B_d (x, \varepsilon) &\implies d(x, z) > \varepsilon, \\
+			y \in B_d (z, \varepsilon) &\implies d(x, y) < \varepsilon, \\
+			z \in B_d (y, \delta) &\implies d(y, z) < \delta.
+		\end{aligned}
+		$$
+		
+		By metric axioms O3, we have
+		$$
+		\begin{aligned}
+			\delta > d(y, z) \ge d(x,z) - d(x,y).
+		\end{aligned}
+		$$
+		
+		This implies that there exists an $r = d(x,y) \in \mathbb R_{(0, \varepsilon)}$, such that for any $\delta \in \mathbb R_{> 0}$,
+		$$
+		\delta > \varepsilon - r,
+		$$
+		which is impossible. Thus, such a $y$ can not exist.
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, d)$ be a metric space, and let $\mathcal O$ be a family of open balls in $\mathbb X$.
+	
+	Then, for any $y \in \bigcup \mathcal O$, there is a $\delta \in \mathbb R_{> 0}$, such that
+	$$
+	B_d(y, \delta) \subseteq \bigcup \mathcal O.
+	$$
+	
+	\begin{proof}
+		As $y \in \bigcup \mathcal O$, there is an $O \in \mathcal O$ such that $y \in O$. As $\mathcal O$ is a family of open balls, that is, there is an $x \in \bigcup \mathcal O$ an $\varepsilon \in \mathbb R_{> 0}$, such that $y \in B_d (x, \varepsilon)$.
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+%················································
+%================================================
+
+
+
+\section{Metrizability}
+%================================================
+%················································
+
+
+%------------------------------------------------
+\begin{proposition}
+	Let $\mathbb X = (X, d)$, let $x \in X$, and let $\varepsilon \in \mathbb R_{> 0}$.
+	
+	Then for any $y \in B_d (x, \varepsilon)$, there is a $\delta \in \mathbb R_{> 0}$, such that
+	$$
+	B_d(y, \delta) \subseteq B_d (x, \varepsilon).
+	$$
+	
+	\begin{proof}
+		
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+\begin{proposition}
+	\label{prop: metrizability: metric induces topologies}
+	
+	Let $\mathbb X = (X, d)$ be a metric space, and let $\mathcal T \subseteq 2^X$ such that for any $U \in \mathcal T$ and for any $x \in U$, there exists an $\varepsilon_x \in \mathbb R_{> 0}$ such that
+	$$
+	B_d (x, \varepsilon_x) \subseteq U.
+	$$
+	
+	Then $\mathcal T$ is a topology on $X$.
+	
+	\begin{proof}
+		$\mathcal T$ is a topology on $X$ iff it satisfies the open set axioms (Definition \ref{def: topological space}.
+		
+		Proof for O1. By the definition of $\mathcal T$ here, for any $x \in X$, there exists an $\varepsilon \in\mathbb R$ such that $B_d (x, \varepsilon) \subseteq U$.
+		
+		For any $x \in \emptyset$, the statement is vacuously true.
+		\qedlm
+		
+		Proof for O2. Let $\mathcal U \subseteq \mathcal T$, then for any $U \in \mathcal U$ and for any $x \in U$, there exists an $\varepsilon_x \in \mathbb R_{> 0}$ such that $B_d(x, \varepsilon_x) \subseteq U$. Thus, for any $x \in U$, there exists $\varepsilon_x \in \mathbb R_{> 0}$, such that
+		$$
+		U = \bigcup_{x \in U} B_d (x, \varepsilon_x).
+		$$
+		
+		Now, we need to show that $\bigcup \mathcal U \in \mathcal T$.
+		
+		...
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+
+
+
+%················································
+%================================================
+
+
+%::::::::::::::::::::::::::::::::::::::::::::::::
+%================================================
 
 
 
