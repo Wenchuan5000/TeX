@@ -6,26 +6,26 @@
 
 \section{Basic Definitions}
 %================================================
-%················································
+%------------------------------------------------
 
 
 %------------------------------------------------
 \begin{definition}
-	Let $f: U \to \mathbb R^n$, where $U$ is an open set in $\mathbb R^m$, and let $x \in U$.
+	Let $X \subseteq \mathbb R^n$, $Y \subseteq \mathbb R^m$, and let $f: X \to Y$.
 	
-	The \textit{$i$th partial derived function of $f$} is a function $\frac{\partial f}{\partial x_i}: U \to \mathbb R^n$
+	The \textit{$i$-th partial derived function of $f$} is the function $\nabla_{x_i} f : X \to Y$ defined as
 	$$
-	\frac{\partial f}{\partial x_i}(x) :=
+	\nabla_{x_i} f(x) :=
 	\begin{cases}
-		\displaystyle \lim_{\delta \to 0} \frac{f(x + \delta \hat e_i) - f(x)}{\delta} & \text{if the limit exists in $\mathbb R^n$}, \\
-		0 & \text{otherwise}.
+		\displaystyle \lim_{h \to 0} \frac{ f(x + h \hat e_i) - f(x) }{h} & \text{, if the limit exists;} \\
+		0 & \text{, else.}
 	\end{cases}
 	$$
 \end{definition}
 %------------------------------------------------
 
 
-%::::::::::::::::::::::::::::::::::::::::::::::::
+%------------------------------------------------
 %================================================
 
 
