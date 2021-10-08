@@ -11,18 +11,84 @@
 
 %------------------------------------------------
 \begin{definition}
-	Let $X \subseteq \mathbb R^n$, $Y \subseteq \mathbb R^m$, and let $f: X \to Y$.
+	\label{def: directional derived function}
+	Let $U$ be an open set in $\mathbb R^m$, and let $f: U \to \mathbb R^n$.
+
+	Let $\vec u \in U$, then the \textit{$\vec u$-directional derived function of $f$} is defined to be
+	$$
+	\begin{aligned}
+		\nabla_{\vec u} f : U \to \mathbb R^n
+		&: \vec x \mapsto
+		\begin{cases}
+			\displaystyle \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec u)}{t} & \text{, if the limit exists;} \\
+			0 & \text{, otherwise.}
+		\end{cases}
+	\end{aligned}
+	$$
 	
-	The \textit{$i$-th partial derived function of $f$} is the function $\nabla_{x_i} f : X \to Y$ defined as
-	$$
-	\nabla_{x_i} f(x) :=
-	\begin{cases}
-		\displaystyle \lim_{h \to 0} \frac{ f(x + h \hat e_i) - f(x) }{h} & \text{, if the limit exists;} \\
-		0 & \text{, else.}
-	\end{cases}
-	$$
+	The value $\nabla_{\vec u} f(\vec p)$ is called \textit{$\vec u$-directional derivative of $f$ at a point $\vec p \in U$}.
 \end{definition}
 %------------------------------------------------
+
+
+%------------------------------------------------
+\begin{lemma}
+	\label{lm: directional derivad function}
+	$$
+	\nabla_{\vec u} f = \frac{\mathrm d g}{\mathrm d t}
+	$$
+	
+	\begin{proof}
+		By Definition \ref{def: directional derived function}, we have
+		$$
+		\nabla
+		$$
+	\end{proof}
+\end{lemma}
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+\begin{proposition}
+	$$
+	\nabla_{s \vec u} f = s \nabla_{\vec u} f.
+	$$
+	
+	\begin{proof}
+		By Definition \ref{def: directional derived function}, we have
+		$$
+		\nabla_{s\vec u} f(\vec x) = \lim_{t \to 0} \frac{f(\vec x + t s \vec u) - f(\vec x)}{t}.
+		$$
+		
+		Now, fix $\vec x$, and define
+		$$
+		g(t) := f(\vec x + t \vec u),
+		$$
+		then we have
+		$$
+		\begin{aligned}
+			\nabla_{s \vec u} f(\vec x) &= \lim_{t \to 0} \frac{g(s t) - g(0)}{t} \\
+			&= \left. \frac{\mathrm d g(st)}{\mathrm d t} \right|_{t = 0} \\
+			&= \left. \frac{\mathrm d g(st)}{\mathrm d st} \cdot \frac{\mathrm dst}{\mathrm d t} \right|_{t = 0} \\
+			&= s \cdot \left. \frac{\mathrm d g(t)}{\mathrm d t} \right|_{t = 0} \\
+			&= s \cdot \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec x)}{t} \\
+			&= s \nabla_{\vec u} f(\vec x).
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
+%------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 %------------------------------------------------
