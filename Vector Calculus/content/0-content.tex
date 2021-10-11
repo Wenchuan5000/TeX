@@ -1,93 +1,227 @@
+
 %================================================
 %::::::::::::::::::::::::::::::::::::::::::::::::
 \chapter{Directional and Partial Derivatives}
 
 
 
-\section{Basic Definitions}
+\section{Directional Derivatives}
 %================================================
 %------------------------------------------------
 
 
-%------------------------------------------------
 \begin{definition}
-	\label{def: directional derived function}
-	Let $U$ be an open set in $\mathbb R^m$, and let $f: U \to \mathbb R^n$.
-
-	Let $\vec u \in U$, then the \textit{$\vec u$-directional derived function of $f$} is defined to be
-	$$
-	\begin{aligned}
-		\nabla_{\vec u} f : U \to \mathbb R^n
-		&: \vec x \mapsto
-		\begin{cases}
-			\displaystyle \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec u)}{t} & \text{, if the limit exists;} \\
-			0 & \text{, otherwise.}
-		\end{cases}
-	\end{aligned}
-	$$
+	\label{def: directional derivatives}
+	Let $U$ be an open set of $\mathbb R^n$, and let $f: U \to \mathbb R^m$. Let $\vec u \in U \setminus \{\vec 0\}$ and $\vec x \in U$.
 	
-	The value $\nabla_{\vec u} f(\vec p)$ is called \textit{$\vec u$-directional derivative of $f$ at a point $\vec p \in U$}.
+	Then, the \textit{$\vec u$-directional derivative of $f$ at $\vec x$} is defined as
+	$$
+	\nabla_{\vec u} f(\vec x) := \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec x)}{t},
+	$$
+	if the limit exists in $\mathbb R^m$.
 \end{definition}
-%------------------------------------------------
 
 
-%------------------------------------------------
-\begin{lemma}
-	\label{lm: directional derivad function}
+
+\begin{note}
+	By Definition \ref{def: directional derivatives}, if we consider $\nabla_{\vec u} f$ as a function, the mapping between elements is
 	$$
-	\nabla_{\vec u} f = \frac{\mathrm d g}{\mathrm d t}
+	\vec x \in U \mapsto \vec y \in \mathbb R^m.
 	$$
 	
-	\begin{proof}
-		By Definition \ref{def: directional derived function}, we have
-		$$
-		\nabla
-		$$
-	\end{proof}
-\end{lemma}
-%------------------------------------------------
+	Thus, $\nabla_{\vec u} f: U \to \mathbb R^m$, and it can considered as the \textit{$\vec u$-directional derived function of $f$} defined as
+	$$
+	\nabla_{\vec u} f(\vec x) :=
+	\begin{cases}
+		\displaystyle \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec x)}{t} & \text{, if the limit exists in $\mathbb R^m$}; \\
+		0 & \text{, otherwise}.
+	\end{cases}
+	$$
+\end{note}
 
 
 
-%------------------------------------------------
 \begin{proposition}
+	\label{prop: directional derivatives: dg/dt}
+	With the condition above, let $g: \mathbb R^1 \to \mathbb R^m$ be defined as
 	$$
-	\nabla_{s \vec u} f = s \nabla_{\vec u} f.
+	g(t) := f(\vec x + t\vec u),
+	$$
+	then,
+	$$
+	\nabla f_{\vec u} = \frac{\mathrm d g}{\mathrm d t}.
 	$$
 	
 	\begin{proof}
-		By Definition \ref{def: directional derived function}, we have
 		$$
-		\nabla_{s\vec u} f(\vec x) = \lim_{t \to 0} \frac{f(\vec x + t s \vec u) - f(\vec x)}{t}.
+		\begin{aligned}
+			\nabla_{\vec u} f (\vec x) &= \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec x)}{t} &\text{(by Definition \ref{def: directional derivatives})} \\
+			&= \lim_{t \to 0} \frac{g(t) - g(0)}{t} &\text{(by assumption)} \\
+			&= \frac{\mathrm d g(t)}{\mathrm dt}.
+		\end{aligned}
 		$$
 		
-		Now, fix $\vec x$, and define
+		Generalized it, we have
+		$$
+		\nabla_{\vec u} f = \frac{\mathrm d g}{\mathrm dt}.
+		$$
+	\end{proof}
+\end{proposition}
+
+
+
+\begin{note}
+	As $\vec x + t\vec u$ defines a subset of $\mathbb R^n$, $g(t)$ can be considered as a function defined on a new one-dimensional axis with $\vec x$ as the new origin $0'$ and $\vec u$ as the new unit $1'$.
+
+	Let
+	$$
+	L : =  \{ \vec x + t \vec u \in \mathbb R^n : t \in \mathbb R \},
+	$$
+	then we have
+	$$
+	g[\mathbb R] = f[L] \in \mathbb R^m.
+	$$
+\end{note}
+
+
+
+\begin{proposition}
+	\label{prop: directional derivatives: su}
+	With the condition above, let $s \in \mathbb R^1 \setminus \{0\}$, we have
+	$$
+	s\nabla_{\vec u} f = \nabla_{s\vec u} f.
+	$$
+	
+	\begin{proof}
+		Let $g: \mathbb R^1 \to \mathbb R^m$ be defined as
 		$$
 		g(t) := f(\vec x + t \vec u),
 		$$
 		then we have
 		$$
 		\begin{aligned}
-			\nabla_{s \vec u} f(\vec x) &= \lim_{t \to 0} \frac{g(s t) - g(0)}{t} \\
-			&= \left. \frac{\mathrm d g(st)}{\mathrm d t} \right|_{t = 0} \\
-			&= \left. \frac{\mathrm d g(st)}{\mathrm d st} \cdot \frac{\mathrm dst}{\mathrm d t} \right|_{t = 0} \\
-			&= s \cdot \left. \frac{\mathrm d g(t)}{\mathrm d t} \right|_{t = 0} \\
-			&= s \cdot \lim_{t \to 0} \frac{f(\vec x + t \vec u) - f(\vec x)}{t} \\
-			&= s \nabla_{\vec u} f(\vec x).
+			s \nabla_{\vec u} f(\vec x) &= s \frac{\mathrm d g(t)}{\mathrm d t} &\text{(by Proposition \ref{prop: directional derivatives: dg/dt})} \\
+			&= \frac{\mathrm d g(t)}{\mathrm dt} \cdot \frac{\mathrm d st}{\mathrm d t} \\
+			&= \frac{\mathrm d g(st)}{\mathrm d(t)} &\text{(by chain rule)} \\
+			&= \lim_{t \to 0} \frac{g(st) - g(t)}{t} \\
+			&= \lim_{t \to 0} \frac{f(\vec x + t s \vec u) - f(\vec x)}{t} &\text{(by assumption)} \\
+			&= \nabla_{s \vec u} f(\vec x). & \text{(by Definition \ref{def: directional derivatives})}
 		\end{aligned}
+		$$
+		
+		Generalized it, we have
+		$$
+		s\nabla_{\vec u} f = \nabla_{s\vec u} f.
 		$$
 	\end{proof}
 \end{proposition}
+
+
+
+%------------------------------------------------
+%================================================
+
+
+\section{Partial Derivatives}
+%================================================
 %------------------------------------------------
 
 
 
+\begin{definition}
+	\label{def: partial derivatives}
+
+	Let $U$ be an open set of $\mathbb R^n$, and let $f: U \to \mathbb R^m$. Let $\vec x \in U$.
+	
+	The \textit{$i$-th partial derivative of $f$ at $\vec x$} is defined to be the $\hat e_i$-directional derivative of $f$ at $\vec x$.
+\end{definition}
 
 
 
+\begin{note}
+	Explicitly, by Definition \ref{def: directional derivatives}, that is,
+	$$
+	\nabla_{i} f(\vec x) = \lim_{t \to 0}\frac{f(\vec x + t \hat e_i) - f(\vec x)}{t},
+	$$
+	if the limit exists in $\mathbb R^m$. Here, we write $\nabla_i$ for $\nabla_{\hat e_i}$ for convince.
+	
+	As $\hat e_i$ is the $i$-th basis of $\mathbb R^n$, we can let $\delta = t \hat e_i \in \mathbb R_i$, then we have
+	$$
+	\nabla_i f(\vec x) = \lim_{\delta \to 0 \in \mathbb R_i} \frac{f(x_1, \ldots, x_i + \delta, \ldots , x_n) - f(x_1, \ldots, x_i, \ldots, x_n)}{\delta}.
+	$$
+	
+	Now, let $g: \mathbb R_i \to \mathbb R^m$ be defined as
+	$$
+	g(x_i) := f(x_1, \ldots, x_i, \ldots, x_n),
+	$$
+	then we have
+	$$
+	\nabla_i f(\vec x) = \lim_{\delta \to 0} \frac{g(x_i + \delta) - g(x_i)}{\delta} = \frac{\mathrm d g(x_i)}{\mathrm d x_i}.
+	$$
+	
+	In classical notation, we write
+	$$
+	\frac{\partial f(\vec x)}{\partial x_i} \text{ for } \frac{\mathrm d g(x_i)}{\mathrm d x_i} \text{, and } \frac{\partial f}{\partial x_i} \text{ for } \frac{\mathrm d g}{\mathrm d x_i}.
+	$$
+\end{note}
 
 
 
+%------------------------------------------------
+%================================================
+
+
+
+\section{Gradient}
+%================================================
+%------------------------------------------------
+
+
+
+\begin{definition}
+	\label{def: gradient}
+	Let $U$ be an open set of $\mathbb R^n$, and let $f: U \to \mathbb R^m$. Let $\vec x \in U$.
+	
+	The \textit{gradient of $f$ at $\vec x$} is defined as
+	$$
+	\nabla f(\vec x) := (\nabla_1 f(\vec x), \ldots, \nabla_n f(\vec x)).
+	$$
+\end{definition}
+
+
+\begin{note}
+	$$
+	\nabla f: U \to \mathbb R^m \times \cdots \times \mathbb R^m \text{ ($n$ times)}
+	$$
+	(Note the $m$ and $n$ here.)
+\end{note}
+
+
+
+\begin{proposition}
+	$$
+	\nabla_{\vec u} f = \nabla f \cdot \vec u.
+	$$
+	
+	\begin{proof}
+		Let $g: \mathbb R \to \mathbb R^m$ be defined as
+		$$
+		l(t) := \vec x + t \vec u.
+		$$
+		
+		For any $i \in \{1, \ldots, n\}$, let
+		$$
+		l_i (t) := x_i + t u_i.
+		$$
+		
+		Then we have
+		$$
+		\begin{aligned}
+			\nabla_{\vec u} f(\vec x) &= 1
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
 
 
 
@@ -97,19 +231,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://math.okstate.edu/people/binegar/4013-U98/4013-l08.pdf
 
 
 
