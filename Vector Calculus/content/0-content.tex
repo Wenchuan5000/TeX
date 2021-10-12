@@ -1,7 +1,7 @@
 
+\chapter{Directional and Partial Derivatives}
 %================================================
 %::::::::::::::::::::::::::::::::::::::::::::::::
-\chapter{Directional and Partial Derivatives}
 
 
 
@@ -41,8 +41,8 @@
 
 
 
-\begin{proposition}
-	\label{prop: directional derivatives: dg/dt}
+\begin{lemma}
+	\label{lemma: directional derivatives: dg/dt}
 	With the condition above, let $g: \mathbb R^1 \to \mathbb R^m$ be defined as
 	$$
 	g(t) := f(\vec x + t\vec u),
@@ -66,7 +66,7 @@
 		\nabla_{\vec u} f = \frac{\mathrm d g}{\mathrm dt}.
 		$$
 	\end{proof}
-\end{proposition}
+\end{lemma}
 
 
 
@@ -85,8 +85,8 @@
 
 
 
-\begin{proposition}
-	\label{prop: directional derivatives: su}
+\begin{lemma}
+	\label{lemma: directional derivatives: su}
 	With the condition above, let $s \in \mathbb R^1 \setminus \{0\}$, we have
 	$$
 	s\nabla_{\vec u} f = \nabla_{s\vec u} f.
@@ -100,7 +100,7 @@
 		then we have
 		$$
 		\begin{aligned}
-			s \nabla_{\vec u} f(\vec x) &= s \frac{\mathrm d g(t)}{\mathrm d t} &\text{(by Proposition \ref{prop: directional derivatives: dg/dt})} \\
+			s \nabla_{\vec u} f(\vec x) &= s \frac{\mathrm d g(t)}{\mathrm d t} &\text{(by lemma \ref{lemma: directional derivatives: dg/dt})} \\
 			&= \frac{\mathrm d g(t)}{\mathrm dt} \cdot \frac{\mathrm d st}{\mathrm d t} \\
 			&= \frac{\mathrm d g(st)}{\mathrm d(t)} &\text{(by chain rule)} \\
 			&= \lim_{t \to 0} \frac{g(st) - g(t)}{t} \\
@@ -114,7 +114,7 @@
 		s\nabla_{\vec u} f = \nabla_{s\vec u} f.
 		$$
 	\end{proof}
-\end{proposition}
+\end{lemma}
 
 
 
@@ -198,40 +198,97 @@
 
 
 
-\begin{proposition}
+\begin{lemma}
+	Following the conditions in Definition \ref{def: gradient}, we have
+	$$
+	\nabla f = \frac{\partial f}{\partial \vec x},
+	$$
+	where, in classical notation, $\frac{\partial f}{\partial \vec x} = \frac{\mathrm d f}{\mathrm d \vec x}$.
+	
+	\begin{proof}
+		For any $i \in \{1, \ldots, n\}$, let $g_i : U_i \to \mathbb R^m$ be defined as
+		$$
+		g_i(x_i) := f(x_1, \ldots, x_i, \ldots, x_n).
+		$$
+	
+		Then we have
+		$$
+		\begin{aligned}
+			\nabla f(\vec x) &= \left( \frac{\mathrm d g_1 (x_1)}{\mathrm d x_1}
+			\ldots , \frac{\mathrm d g_n(x_n)}{\mathrm d x_n} \right) \\
+			&= \left( \mathrm d g_1 (x_1), \ldots, \mathrm d g_n (x_n) \right) \cdot \left(\frac{1}{\mathrm d x_1}, \ldots, \frac{1}{\mathrm d x_n} \right) \\
+			&= \frac{\mathrm d f(\vec x)}{\mathrm d \vec x}
+		\end{aligned}
+		$$
+		
+		(Missing Details.)
+	\end{proof}
+\end{lemma}
+
+
+
+\begin{definition}
+	$$
+	\mathrm d f := \nabla f \cdot \mathrm d\vec x.
+	$$
+\end{definition}
+
+
+
+\begin{lemma}
+	Following the condition in Definition \ref{def: gradient}, let $g: T \to U$, where $T$ is an open subset of $\mathbb R$. Then we have
+	$$
+	\frac{\mathrm d f \circ g}{\mathrm d t} = \nabla f \cdot \frac{\mathrm d g}{\mathrm dt}.
+	$$
+
+	\begin{proof}
+		$$
+		\begin{aligned}
+			\frac{\mathrm d f(r(t))}{\mathrm dt} &= \frac{\mathrm d f(r(t))}{\mathrm dr(t)} \cdot \frac{\mathrm dr(t)}{\mathrm d t} \\
+			&= \nabla f(\vec x) \cdot \frac{\mathrm dr(t)}{\mathrm dt}.
+		\end{aligned}
+		$$
+		
+		Generalize it, we have
+		$$
+		\frac{\mathrm d f \circ g}{\mathrm d t} = \nabla f \cdot \frac{\mathrm d g}{\mathrm dt}.
+		$$
+	\end{proof}
+\end{lemma}
+
+
+
+\begin{lemma}
 	$$
 	\nabla_{\vec u} f = \nabla f \cdot \vec u.
 	$$
 	
 	\begin{proof}
-		Let $g: \mathbb R \to \mathbb R^m$ be defined as
+		By Definition \ref{def: directional derivatives},
 		$$
-		l(t) := \vec x + t \vec u.
-		$$
-		
-		For any $i \in \{1, \ldots, n\}$, let
-		$$
-		l_i (t) := x_i + t u_i.
+		\nabla_{\vec u} f(\vec x) = \lim_{t \to 0} \frac{f(\vec x + t\vec u) - f(\vec x)}{t}.
 		$$
 		
-		Then we have
+		Let
+		$$
+		g(t) := \vec x + t\vec u,
+		$$
+		then we have
 		$$
 		\begin{aligned}
-			\nabla_{\vec u} f(\vec x) &= 1
+			\nabla_{\vec u} f(\vec x) &= \lim_{t \to 0} \frac{f(g(t)) - f(g(0))}{t} \\
+			&= \left. \frac{\mathrm d f(g(t))}{\mathrm dt} \right|_{t = 0} \\
+			&= \nabla f(\vec x) \cdot \vec u.
 		\end{aligned}
 		$$
 	\end{proof}
-\end{proposition}
+\end{lemma}
 
 
 
 %------------------------------------------------
 %================================================
 
-
-
-
-https://math.okstate.edu/people/binegar/4013-U98/4013-l08.pdf
 
 
 
