@@ -35,7 +35,7 @@ The \textit{velocity}, or \textit{instantaneous velocity}, $\mathbf v(t)$ at a c
 The \textit{distance traveled} $s$ of the particle from time $t_0$ to $t_1$ is defined to be the total variation of $\mathbf r(t)$ over $[t_0, t_1]$; as (\ref{eq: velocity}) is given, we have
 \begin{equation}
 	\label{eq: distance traveled}
-	s = \int_{t_0}^{t_1} \| \mathrm d\mathbf r(t) \| = \int_{t_0}^{t_1} \| \mathbf v(t) \| \mathrm d(t) \quad \mathrm{m}.
+	s = \int_{t_0}^{t_1} | \mathrm d\mathbf r(t) | = \int_{t_0}^{t_1} | \mathbf v(t) | \mathrm d(t) \quad \mathrm{m}.
 \end{equation}
 
 The acceleration $\mathbf a(t)$ at a certain time $t$ is defined to be the rate of velocity change over a very small interval between $t$ and $t + \Delta t$:
@@ -49,9 +49,80 @@ The acceleration $\mathbf a(t)$ at a certain time $t$ is defined to be the rate 
 %================================================
 
 
-\section{Components of Velocity}
+\section{Angular Velocity}
+%================================================
+%------------------------------------------------
 
-ssss
+
+Following the condition in Section \ref{sec: particle motion}.
+
+The \textit{direction of velocity} of the particle at time $t$ is given by the unit vector of velocity $\mathbf v(t)$:
+\begin{equation}
+	\label{eq: direction of velocity}
+	\mathbf{\hat v}(t) = \frac{\mathbf v(t)}{| \mathbf v(t) |}.
+\end{equation}
+
+As the unit $\mathrm{m/sec}$ is canceled by the quotient between $\mathbf v(t)$ and $| \mathbf v(t) |$, $\mathbf{\hat v}(t)$ only remains the direction of $\mathbf v(t)$, with length $1$.
+
+The \textit{angular velocity} $\boldsymbol{\omega}(t)$ at time $t$ of the particle is defined to be the angular change of the particle during a very small time interval. That is,
+\begin{equation}
+	\label{eq: angular velocity}
+	\boldsymbol{\omega}(t) = \lim_{\Delta t \to 0} \frac{\mathbf{\hat v}(t + \Delta t) - \mathbf{\hat v}(t)}{\Delta t} = \frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm dt} \quad \mathrm{sec^{-1}}.
+\end{equation}
+
+
+\begin{problem}
+	Explain circular motion and uniform circular motion.
+\end{problem}
+
+
+%------------------------------------------------
+%================================================
+
+
+\section{Curvature}
+%================================================
+%------------------------------------------------
+Following the condition in Section \ref{sec: particle motion}.
+
+The \textit{curvature} $\kappa(t)$ of the particle at time $t$ is defined to be
+\begin{equation}
+	\label{eq: curvature}
+	\kappa(t) = \left| \frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm d s(t)} \right| \quad \mathrm{sec^{-1}},
+\end{equation}
+where $\mathrm d s(t)$ is the differential of distance traveled at $t$.
+
+By (\ref{eq: distance traveled}), we have
+$$
+\begin{aligned}
+	\mathrm d s(t) &= \frac{\mathrm d s(t)}{\mathrm dt} \mathrm dt \\
+	&= \frac{\mathrm d}{\mathrm d t} \int_{t_0}^t | \mathbf v(\tilde t) | \mathrm d \tilde t \cdot \mathrm dt \\
+	&= | \mathbf v(t) | \mathrm dt.
+\end{aligned}
+$$
+
+As $\mathrm d \mathbf{\hat v}(t) = \boldsymbol{\omega}(t) \mathrm d t$, we have
+\begin{equation}
+	\label{eq: curvature 2}
+	\tag{\ref{eq: curvature}'}
+	\kappa(t) = \frac{| \boldsymbol{\omega}(t) |}{| \mathbf v(t) |} \quad \mathrm{sec^{-1}}.
+\end{equation}
+
+
+\begin{problem}
+	Prove that
+	\begin{equation}
+		\label{eq: curvature 3}
+		\tag{\ref{eq: curvature}''}
+		\kappa(t) = \frac{|\mathbf v(t) \times \mathbf a(t)|}{|\mathbf v(t)|^3} \quad \mathrm{sec^{-1}}.
+	\end{equation}
+\end{problem}
+
+
+%------------------------------------------------
+%================================================
+
+
 
 
 \section{Components of Acceleration}
@@ -66,13 +137,65 @@ The \textit{tangential acceleration} $\mathbf a_\mathrm{T}(t)$ at a certain time
 	\mathbf a_\mathrm{T}(t) = \mathbf a(t) \cdot \mathbf{\hat v}(t) \cdot \mathbf{\hat v}(t) \quad \mathrm{m/sec^2}.
 \end{equation}
 
-Then \textit{centripetal acceleration} $\mathbf a_\mathrm{C}(t)$ at $t$ is defined to be the projection of $\mathbf a(t)$ at any right vector of the motion curve at $t$. As the right vector is orthogonal to the tangent vector, hence it is orthogonal to $\mathbf a(t)$. By the sum of vectors, we have
+Then \textit{centripetal acceleration} $\mathbf a_\mathrm{C}(t)$ at $t$ is defined to be the projection of $\mathbf a(t)$ at any normal vector of the motion curve at $t$. That is,
+\begin{equation}
+	\mathbf a_{\mathrm C}(t) = \mathbf a(t) \cdot \mathbf{\hat n}(t) \cdot \mathbf{\hat n}(t) \quad \mathrm{m / sec^2},
+\end{equation}
+where $\mathbf{\hat n}(t)$ is the unit normal vector given by
+$$
+\mathbf{\hat n}(t) = \frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm d t} \cdot \left|\frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm d t} \right|^{-1}.
+$$
+
+As the normal vector is orthogonal to the tangent vector, hence it is orthogonal to $\mathbf a(t)$. By the sum of vectors, we have
 \begin{equation}
 	\label{eq: centripetal acceleration}
 	\mathbf a_{\mathrm C}(t) = \mathbf a(t) - \mathbf a_\mathrm{T}(t) \quad \mathrm{m / sec^2}.
 \end{equation}
 
-As any right vector at $t$ can be defined by the.........
+
+
+
+%------------------------------------------------
+%================================================
+
+
+
+%::::::::::::::::::::::::::::::::::::::::::::::::
+%================================================
+
+
+
+
+\chapter{Force}
+%================================================
+%::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+\section{Newton's Laws of Motion}
+%================================================
+%------------------------------------------------
+
+
+\paragraph{First Law.}
+
+\begin{quote}
+	An object at rest remains at rest, and an object in motion remains in motion at constant speed and in a straight line unless acted on by an unbalanced force.
+\end{quote}
+
+
+\paragraph{Second Law}
+
+\begin{quote}
+	The acceleration of an object depends on the mass of the object and the amount of force applied.
+\end{quote}
+
+
+\paragraph{Third Law}
+
+\begin{quote}
+	Whenever one object exerts a force on another object, the second object exerts an equal and opposite on the first.
+\end{quote}
 
 
 %------------------------------------------------
@@ -81,24 +204,95 @@ As any right vector at $t$ can be defined by the.........
 
 
 
+\section{Explanation for the Laws}
+%================================================
+%------------------------------------------------
+
+
+% todo: missing conditions
+
+
+The Second Law can be expressed as the equation
+\begin{equation}
+	\label{eq: Newton's Second Law}
+	\mathbf F(t) = m \mathbf a(t) \quad \mathrm{N},
+\end{equation}
+where $m$ is the mass of the object and the unit Newton is defined as
+$$
+\rm N = kg \cdot m/sec.
+$$
+
+In the First Law, the force is $\mathbf 0$, thus it is the case as $\mathbf a(t) = \mathbf 0$. In this case,
+$$
+\mathbf v(t) = \left. \int \mathbf a(t) \mathrm d t \right|_{\mathbf a(t) = \mathbf 0} = \mathbf v_0 \quad \mathrm{m/s},
+$$
+where $\mathbf v_0$ is the initial velocity. Thus, the First Law can be considered as
+\begin{equation}
+	\label{eq: Newton's First Law}
+	\mathbf a(t) = \mathbf 0 \iff \mathbf F(t) = \mathbf 0.
+\end{equation}
+
+Denote $\mathbf F_{\mathbf a}(t)$ for the force exerted on the object, then the object also exerts a force
+\begin{equation}
+	\mathbf F_{- \mathbf a}(t) = - \mathbf F_{\mathbf a}(t) \quad \mathrm{N}.
+\end{equation}
+
+
+%------------------------------------------------
+%================================================
 
 
 
+\section{Inertial Reference System}
+%================================================
+%------------------------------------------------
+
+
+The Newton's laws of motion only works on inertial reference system. Intuitively, if a reference observer feels no force on the reference system, then the reference system is an inertial reference system.
 
 
 
-
-
-
-
-
-
-
-
-
-
+%------------------------------------------------
+%================================================
 
 
 
 %::::::::::::::::::::::::::::::::::::::::::::::::
 %================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
