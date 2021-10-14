@@ -243,12 +243,52 @@ Denote $\mathbf F_{\mathbf a}(t)$ for the force exerted on the object, then the 
 
 
 
-\section{Inertial Reference System}
+\section{Momentum}
 %================================================
 %------------------------------------------------
 
 
-The Newton's laws of motion only works on inertial reference system. Intuitively, if a reference observer feels no force on the reference system, then the reference system is an inertial reference system.
+\begin{definition}
+	\label{def: momentum}
+	Given particle motion $\mathbf r(t)$, the momentum of the particle at a certain time $t$ is defined to be the integral of fors
+	$$
+	\mathbf p(t) := \int \mathbf F(t) \mathrm dt \quad \mathrm{kg \cdot m/s},
+	$$
+	where $\mathbf F(t)$ is the force at $t$, $m$ is the mass of, and $\mathbf v_0$ is the initial velocity of the particle.
+\end{definition}
+
+
+\begin{proposition}
+	\label{prop: momentum: zero}
+	Let $\mathbf a(t)$ describe the acceleration of a particle motion with respect to time $t$, and let $\mathbf p(t)$ describe the momentum of the particle motion. $\mathbf p(t) = \mathbf 0$ iff
+	$$
+	\mathbf 0 = \int_{0}^{t} \mathbf a(t) \mathrm d t + m \mathbf v_0 \quad \mathrm{m/s},
+	$$
+	where $\mathbf v_0$ is the initial velocity of the particle.
+	
+	\begin{proof}
+		By Definition \ref{def: momentum},
+		$$
+		\mathbf 0 = m \left. \int \mathbf a(t_*) \mathrm d t_* \right|_{t_* = t} = m \int_{0}^{t} \mathbf a(t_*) \mathrm d t_* + m \mathbf v_0 \quad \mathrm{m/s}.
+		$$
+		That is, the velocity $\mathbf v(t) = \mathbf 0$.
+	\end{proof}
+\end{proposition}
+
+
+\begin{proposition}
+	...
+
+	\begin{proof}
+		$$
+		\begin{aligned}
+			m \left( \mathbf v(t) + \left. \int \mathbf a_2 \mathrm d t_* \right|_{t_* = t} \right) = \mathbf 0 &\iff \mathbf v(t) + \left. \int \mathbf a_2 \mathrm d t_* \right|_{t_* = t} = \mathbf 0 \\
+			&\iff \int \mathbf a(t) \mathrm d t + \int \mathbf a_2 \mathrm d t = \mathbf 0 \\
+			&\iff 
+		\end{aligned}
+		$$
+	\end{proof}
+\end{proposition}
 
 
 
