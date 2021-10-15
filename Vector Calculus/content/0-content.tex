@@ -1,294 +1,105 @@
 
-\chapter{Particle Motion}
+\chapter{Vector Spaces}
 %================================================
 %::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-
-\section{Particle Motion}
-\label{sec: particle motion}
-%================================================
-%------------------------------------------------
-
-
-Assume that we have a particle moving in space $\mathbb R^n$, as the motion of the particle is described by $\mathbf r(t)$ with respect to time $t$.
-
-The \textit{displacement} $\Delta \mathbf r$ between $t_1$ and $t_0$  ($t_0 < t_1$) is defined to be the position change over the period $(t_0, t_1)$:
-\begin{equation}
-	\label{eq: displacement}
-	\Delta \mathbf r = \mathbf r(t_1) - \mathbf r(t_0) \quad \mathrm {m}.
-\end{equation}
-
-The \textit{average velocity} $\mathbf{\bar v}$ is defined to be the average rate of position change during the period:
-\begin{equation}
-	\label{eq: ave velocity}
-	\mathbf{\bar v} = \frac{\Delta \mathbf r}{\Delta t} \quad \mathrm{m / sec},
-\end{equation}
-where $\Delta t = t_1 - t_0$.
-
-The \textit{velocity}, or \textit{instantaneous velocity}, $\mathbf v(t)$ at a certain time $t$ is defined to be the rate of change during a very small period between $t$ and $t + \Delta t$ ($|\Delta t| > 0$). That is, the limit of $\mathbf{\bar v}$ over neighbourhood of $t$ as $\Delta t \to 0$:
-\begin{equation}
-	\label{eq: velocity}
-	\mathbf v(t) = \lim_{\Delta t \to 0} \frac{\mathbf r(t + \Delta t) - \mathbf r(t)}{\Delta t} = \frac{\mathrm d \mathbf r}{\mathrm d t}(t) \quad \mathrm{m/sec}.
-\end{equation}
-
-The \textit{distance traveled} $s$ of the particle from time $t_0$ to $t_1$ is defined to be the total variation of $\mathbf r(t)$ over $[t_0, t_1]$; as (\ref{eq: velocity}) is given, we have
-\begin{equation}
-	\label{eq: distance traveled}
-	s = \int_{t_0}^{t_1} | \mathrm d\mathbf r(t) | = \int_{t_0}^{t_1} | \mathbf v(t) | \mathrm d(t) \quad \mathrm{m}.
-\end{equation}
-
-The acceleration $\mathbf a(t)$ at a certain time $t$ is defined to be the rate of velocity change over a very small interval between $t$ and $t + \Delta t$:
-\begin{equation}
-	\label{eq: acceleration}
-	\mathbf a(t) = \lim_{\Delta t \to 0} \frac{\mathbf v(t + \Delta t) - \mathbf v(t)}{\Delta t} = \frac{\mathrm d \mathbf v(t)}{\mathrm d t} = \frac{\mathrm d^2 \mathbf r(t)}{\mathrm d t^2} \quad \mathrm{m/sec^2}
-\end{equation}
-
-
-%------------------------------------------------
-%================================================
-
-
-\section{Angular Velocity}
-%================================================
-%------------------------------------------------
-
-
-Following the condition in Section \ref{sec: particle motion}.
-
-The \textit{direction of velocity} of the particle at time $t$ is given by the unit vector of velocity $\mathbf v(t)$:
-\begin{equation}
-	\label{eq: direction of velocity}
-	\mathbf{\hat v}(t) = \frac{\mathbf v(t)}{| \mathbf v(t) |}.
-\end{equation}
-
-As the unit $\mathrm{m/sec}$ is canceled by the quotient between $\mathbf v(t)$ and $| \mathbf v(t) |$, $\mathbf{\hat v}(t)$ only remains the direction of $\mathbf v(t)$, with length $1$.
-
-The \textit{angular velocity} $\boldsymbol{\omega}(t)$ at time $t$ of the particle is defined to be the angular change of the particle during a very small time interval. That is,
-\begin{equation}
-	\label{eq: angular velocity}
-	\boldsymbol{\omega}(t) = \lim_{\Delta t \to 0} \frac{\mathbf{\hat v}(t + \Delta t) - \mathbf{\hat v}(t)}{\Delta t} = \frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm dt} \quad \mathrm{sec^{-1}}.
-\end{equation}
-
-
-\begin{problem}
-	Explain circular motion and uniform circular motion.
-\end{problem}
-
-
-%------------------------------------------------
-%================================================
-
-
-\section{Curvature}
-%================================================
-%------------------------------------------------
-Following the condition in Section \ref{sec: particle motion}.
-
-The \textit{curvature} $\kappa(t)$ of the particle at time $t$ is defined to be
-\begin{equation}
-	\label{eq: curvature}
-	\kappa(t) = \left| \frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm d s(t)} \right| \quad \mathrm{sec^{-1}},
-\end{equation}
-where $\mathrm d s(t)$ is the differential of distance traveled at $t$.
-
-By (\ref{eq: distance traveled}), we have
-$$
-\begin{aligned}
-	\mathrm d s(t) &= \frac{\mathrm d s(t)}{\mathrm dt} \mathrm dt \\
-	&= \frac{\mathrm d}{\mathrm d t} \int_{t_0}^t | \mathbf v(\tilde t) | \mathrm d \tilde t \cdot \mathrm dt \\
-	&= | \mathbf v(t) | \mathrm dt.
-\end{aligned}
-$$
-
-As $\mathrm d \mathbf{\hat v}(t) = \boldsymbol{\omega}(t) \mathrm d t$, we have
-\begin{equation}
-	\label{eq: curvature 2}
-	\tag{\ref{eq: curvature}'}
-	\kappa(t) = \frac{| \boldsymbol{\omega}(t) |}{| \mathbf v(t) |} \quad \mathrm{sec^{-1}}.
-\end{equation}
-
-
-\begin{problem}
-	Prove that
-	\begin{equation}
-		\label{eq: curvature 3}
-		\tag{\ref{eq: curvature}''}
-		\kappa(t) = \frac{|\mathbf v(t) \times \mathbf a(t)|}{|\mathbf v(t)|^3} \quad \mathrm{sec^{-1}}.
-	\end{equation}
-\end{problem}
-
-
-%------------------------------------------------
-%================================================
-
-
-
-
-\section{Components of Acceleration}
-%================================================
-%------------------------------------------------
-
-Following the condition in Section \ref{sec: particle motion}.
-
-The \textit{tangential acceleration} $\mathbf a_\mathrm{T}(t)$ at a certain time $t$ is defined to be the projection of $\mathbf a(t)$ on any tangent vector of the motion curve at $t$. Thus,
-\begin{equation}
-	\label{eq: tangential acceleration}
-	\mathbf a_\mathrm{T}(t) = \mathbf a(t) \cdot \mathbf{\hat v}(t) \cdot \mathbf{\hat v}(t) \quad \mathrm{m/sec^2}.
-\end{equation}
-
-Then \textit{centripetal acceleration} $\mathbf a_\mathrm{C}(t)$ at $t$ is defined to be the projection of $\mathbf a(t)$ at any normal vector of the motion curve at $t$. That is,
-\begin{equation}
-	\mathbf a_{\mathrm C}(t) = \mathbf a(t) \cdot \mathbf{\hat n}(t) \cdot \mathbf{\hat n}(t) \quad \mathrm{m / sec^2},
-\end{equation}
-where $\mathbf{\hat n}(t)$ is the unit normal vector given by
-$$
-\mathbf{\hat n}(t) = \frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm d t} \cdot \left|\frac{\mathrm d \mathbf{\hat v}(t)}{\mathrm d t} \right|^{-1}.
-$$
-
-As the normal vector is orthogonal to the tangent vector, hence it is orthogonal to $\mathbf a(t)$. By the sum of vectors, we have
-\begin{equation}
-	\label{eq: centripetal acceleration}
-	\mathbf a_{\mathrm C}(t) = \mathbf a(t) - \mathbf a_\mathrm{T}(t) \quad \mathrm{m / sec^2}.
-\end{equation}
-
-
-
-
-%------------------------------------------------
-%================================================
-
-
-
-%::::::::::::::::::::::::::::::::::::::::::::::::
-%================================================
-
-
-
-
-\chapter{Force}
-%================================================
-%::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-\section{Newton's Laws of Motion}
-%================================================
-%------------------------------------------------
-
-
-\paragraph{First Law.}
-
-\begin{quote}
-	An object at rest remains at rest, and an object in motion remains in motion at constant speed and in a straight line unless acted on by an unbalanced force.
-\end{quote}
-
-
-\paragraph{Second Law}
-
-\begin{quote}
-	The acceleration of an object depends on the mass of the object and the amount of force applied.
-\end{quote}
-
-
-\paragraph{Third Law}
-
-\begin{quote}
-	Whenever one object exerts a force on another object, the second object exerts an equal and opposite on the first.
-\end{quote}
-
-
-%------------------------------------------------
-%================================================
-
-
-
-
-\section{Explanation for the Laws}
-%================================================
-%------------------------------------------------
-
-
-% todo: missing conditions
-
-
-The Second Law can be expressed as the equation
-\begin{equation}
-	\label{eq: Newton's Second Law}
-	\mathbf F(t) = m \mathbf a(t) \quad \mathrm{N},
-\end{equation}
-where $m$ is the mass of the object and the unit Newton is defined as
-$$
-\rm N = kg \cdot m/sec.
-$$
-
-In the First Law, the force is $\mathbf 0$, thus it is the case as $\mathbf a(t) = \mathbf 0$. In this case,
-$$
-\mathbf v(t) = \left. \int \mathbf a(t) \mathrm d t \right|_{\mathbf a(t) = \mathbf 0} = \mathbf v_0 \quad \mathrm{m/s},
-$$
-where $\mathbf v_0$ is the initial velocity. Thus, the First Law can be considered as
-\begin{equation}
-	\label{eq: Newton's First Law}
-	\mathbf a(t) = \mathbf 0 \iff \mathbf F(t) = \mathbf 0.
-\end{equation}
-
-Denote $\mathbf F_{\mathbf a}(t)$ for the force exerted on the object, then the object also exerts a force
-\begin{equation}
-	\mathbf F_{- \mathbf a}(t) = - \mathbf F_{\mathbf a}(t) \quad \mathrm{N}.
-\end{equation}
-
-
-%------------------------------------------------
-%================================================
-
-
-
-\section{Momentum}
+\section{Linear Combinations}
 %================================================
 %------------------------------------------------
 
 
 \begin{definition}
-	\label{def: momentum}
-	Given particle motion $\mathbf r(t)$, the momentum of the particle at a certain time $t$ is defined to be the integral of fors
+	\label{def: span and linear combination}
+	Let $\langle\mathbf v_i\rangle_{i = 1}^n$ be a sequence such that for any $i \in \{1, \ldots, n\}$, $\mathbf v_i \in \mathbb R^n$.
+	
+	The \textit{linear span of $\langle \mathbf v_i\rangle$}, denoted $\mathrm{span}\langle \mathbf v_i\rangle$ is a subset of $\mathbb R^n$ defined as
 	$$
-	\mathbf p(t) := \int \mathbf F(t) \mathrm dt \quad \mathrm{kg \cdot m/s},
+	\mathrm{span}\langle \mathbf v_i\rangle := \left\{ \mathbf a \cdot \langle \mathbf v_i \rangle : \mathbf a \in \mathbb R^n \right\}.
 	$$
-	where $\mathbf F(t)$ is the force at $t$, $m$ is the mass of, and $\mathbf v_0$ is the initial velocity of the particle.
+	
+	An element $\mathbf u \in \mathbb R^n$ is a \textit{linear combination of $\langle \mathbf v_i \rangle$} iff
+	$$
+	\mathbf u \in \mathrm{span} \langle \mathbf v_i \rangle.
+	$$
 \end{definition}
 
 
-\begin{proposition}
-	\label{prop: momentum: zero}
-	Let $\mathbf a(t)$ describe the acceleration of a particle motion with respect to time $t$, and let $\mathbf p(t)$ describe the momentum of the particle motion. $\mathbf p(t) = \mathbf 0$ iff
+\begin{definition}
+	\label{def: linear dependency}
+	With the conditions above, for any $i,j \in \{1, \ldots, n\}$, $\mathbf v_i$ and $\mathbf v_j$ are said to be \textit{linearly dependent} iff there exists $t \in \mathbb R$, such that
 	$$
-	\mathbf 0 = \int_{0}^{t} \mathbf a(t) \mathrm d t + m \mathbf v_0 \quad \mathrm{m/s},
+	\mathbf v_i = t \mathbf v_j.
 	$$
-	where $\mathbf v_0$ is the initial velocity of the particle.
 	
-	\begin{proof}
-		By Definition \ref{def: momentum},
-		$$
-		\mathbf 0 = m \left. \int \mathbf a(t_*) \mathrm d t_* \right|_{t_* = t} = m \int_{0}^{t} \mathbf a(t_*) \mathrm d t_* + m \mathbf v_0 \quad \mathrm{m/s}.
-		$$
-		That is, the velocity $\mathbf v(t) = \mathbf 0$.
-	\end{proof}
-\end{proposition}
+	$\mathbf v_i$ and $\mathbf v_j$ are \textit{linearly independent} iff they are not linearly dependent.
+\end{definition}
 
 
-\begin{proposition}
-	...
+\begin{note}
+	By definition of inner product, that is
+	$$
+	\mathbf u = \sum_{i = 1}^n a_i \mathbf v_i.
+	$$
+\end{note}
 
-	\begin{proof}
-		$$
-		\begin{aligned}
-			m \left( \mathbf v(t) + \left. \int \mathbf a_2 \mathrm d t_* \right|_{t_* = t} \right) = \mathbf 0 &\iff \mathbf v(t) + \left. \int \mathbf a_2 \mathrm d t_* \right|_{t_* = t} = \mathbf 0 \\
-			&\iff \int \mathbf a(t) \mathrm d t + \int \mathbf a_2 \mathrm d t = \mathbf 0 \\
-			&\iff 
-		\end{aligned}
-		$$
-	\end{proof}
-\end{proposition}
+
+
+\begin{note}
+	Let $\langle \mathbf{\hat e}_i \rangle_{i = 1}^n$ be a sequence, and for any $i \in \{1, \ldots, n\}$,
+	$$
+	\mathbf{\hat e}_i := \langle \underset{1}{0}, \ldots, \underset{i}{1}, \ldots, \underset{n}{0} \rangle.
+	$$
+	
+	Then, for any $\mathbf u \in \mathbb R^n$, the linear combination form of $\mathbf u$ is
+	$$
+	\mathbf u = \sum_{i = 1}^n u_i \mathbf{\hat e}_i.
+	$$
+\end{note}
+
+
+
+%------------------------------------------------
+%================================================
+
+
+
+\section{Line and Plane}
+%================================================
+%------------------------------------------------
+
+
+\begin{definition}
+	\label{def: line}
+	Let $\mathbf a, \mathbf b \in \mathbb R^n$, where $\mathbf a \ne \mathbf b$. Let $L_{\bf ab}: \mathbb R \to \mathbb R^n$ be a mapping defined as
+	$$
+	L_{\bf ab}(t) := \mathbf a + t(\mathbf b - \mathbf a).
+	$$
+	
+	The \textit{line $\overline{\bf ab}$ through $\mathbf a$ and $\mathbf b$} is defined as the image of $\mathbb R$ under $L$; i.e.,
+	$$
+	\overline{\bf ab} := L_{\bf ab}[\mathbb R].
+	$$
+	
+	With $\mathbf a$ and $\mathbf b$ as \textit{end points}, we define
+	\begin{enumerate}[(i)]
+		\item $L_{\bf ab}[[0,1]]$ as \textit{closed segment},
+		\item $L_{\bf ab}[(0,1)]$ as \textit{open segment},
+		\item $L_{\bf ab}[(0,1]]$ as \textit{half-open segment},
+		\item $L_{\bf ab}[[0,1]]$ as \textit{half-closed segment}.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{definition}
+	\label{def: plane}
+	Let $\mathbf a \in \mathbb R^n$ and $\mathbf u \in \mathbb R^n \setminus \{\mathbf 0\}$.
+	
+	The \textit{plane through $\mathbf a$ and orthogonal to $\mathbf u$} is defined as
+	$$
+	P:= \left\{ \mathbf x \in \mathbb R^n : \mathbf u \cdot (\mathbf x - \mathbf a) = \mathbf 0 \right\}.
+	$$
+\end{definition}
 
 
 
