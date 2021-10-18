@@ -27,12 +27,12 @@
 
 \begin{definition}
 	\label{def: linear dependency}
-	With the conditions above, for any $i,j \in \{1, \ldots, n\}$, $\mathbf v_i$ and $\mathbf v_j$ are said to be \textit{linearly dependent} iff there exists $t \in \mathbb R$, such that
+	With the conditions above, $\langle \mathbf v_i \rangle$ is said to be \textit{linearly independent} iff for any $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$,
 	$$
-	\mathbf v_i = t \mathbf v_j.
+	\mathbf a \cdot \langle \mathbf v_i \rangle \ne \mathbf 0. 
 	$$
 	
-	$\mathbf v_i$ and $\mathbf v_j$ are \textit{linearly independent} iff they are not linearly dependent.
+	$\langle \mathbf v_i \rangle$ is said to be linearly dependent iff it is not linearly independent.
 \end{definition}
 
 
@@ -56,6 +56,13 @@
 	\mathbf u = \sum_{i = 1}^n u_i \mathbf{\hat e}_i.
 	$$
 \end{note}
+
+
+
+\begin{lemma}
+	With the condition above, $\langle \mathbf v_i \rangle$ is linearly dependent iff ...
+\end{lemma}
+
 
 
 %------------------------------------------------
