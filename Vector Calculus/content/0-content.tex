@@ -4,114 +4,111 @@
 %::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-\section{Linear Combinations}
+\section{Linear Maps}
+%================================================
+%------------------------------------------------
+
+
+
+\begin{definition}
+	\label{def: linear map}
+	Let $X$ and $Y$ be vector spaces over the same scalar field $F$.
+	
+	A map $f: X \to Y$ is said to be \textit{linear}, iff for any $\mathbf u, \mathbf v \in X$, and $a, b \in \mathbb F$,
+	$$
+	f(a\mathbf u + b\mathbf v) = a f(\mathbf u) + b f(\mathbf v).
+	$$
+\end{definition}
+
+
+
+\begin{note}
+	Assume $b = 0$, then we have
+	$$
+	f(a\mathbf u) = a f(\mathbf u).
+	$$
+
+	Assume $a = b = 1$, then Definition \ref{def: linear map} gives
+	$$
+	f(\mathbf u + \mathbf v) = f(\mathbf u) + f(\mathbf v).
+	$$	
+\end{note}
+
+
+%------------------------------------------------
+%================================================
+
+
+
+\section{Linear Spans and Combinations}
 %================================================
 %------------------------------------------------
 
 
 \begin{definition}
-	\label{def: span and linear combination}
-	Let $\langle\mathbf v_i\rangle_{i = 1}^n$ be a sequence such that for any $i \in \{1, \ldots, n\}$, $\mathbf v_i \in \mathbb R^n$.
+	\label{def: span and combination}
+	Let $X$ be a vector space over the scalar field $F$, and let $(\mathbf v_i)_{i = 1}^n$ be a tuple of vectors in $X$.
 	
-	The \textit{linear span of $\langle \mathbf v_i\rangle$}, denoted $\mathrm{span}\langle \mathbf v_i\rangle$ is a subset of $\mathbb R^n$ defined as
+	The \textit{span} of $(\mathbf v_i)$ is a subset of $X$ defined as
 	$$
-	\mathrm{span}\langle \mathbf v_i\rangle := \left\{ \mathbf a \cdot \langle \mathbf v_i \rangle : \mathbf a \in \mathbb R^n \right\}.
-	$$
-	
-	An element $\mathbf u \in \mathbb R^n$ is a \textit{linear combination of $\langle \mathbf v_i \rangle$} iff
-	$$
-	\mathbf u \in \mathrm{span} \langle \mathbf v_i \rangle.
-	$$
-\end{definition}
-
-
-\begin{definition}
-	\label{def: linear dependency}
-	With the conditions above, $\langle \mathbf v_i \rangle$ is said to be \textit{linearly independent} iff for any $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$,
-	$$
-	\mathbf a \cdot \langle \mathbf v_i \rangle \ne \mathbf 0. 
+	\mathrm{span}((\mathbf v_i)) := \left\{ \mathbf a \cdot (\mathbf v_i) : \mathbf a \in F^n \right\}.
 	$$
 	
-	$\langle \mathbf v_i \rangle$ is said to be linearly dependent iff it is not linearly independent.
+	An element $\mathbf u \in X$ is a \textit{linear combination} of $(\mathbf v_i)$ iff $\mathbf u \in \mathrm{span}((\mathbf v_i))$.
 \end{definition}
 
 
 \begin{note}
-	By definition of inner product, that is
+	By dot product,
 	$$
 	\mathbf u = \sum_{i = 1}^n a_i \mathbf v_i.
 	$$
 \end{note}
 
 
-
 \begin{note}
-	Let $\langle \mathbf{\hat e}_i \rangle_{i = 1}^n$ be a sequence, and for any $i \in \{1, \ldots, n\}$,
+	For any vector $\mathbf a \in \mathbb R^n$, the linear combination form of $\mathbf a$ is
 	$$
-	\mathbf{\hat e}_i := \langle \underset{1}{0}, \ldots, \underset{i}{1}, \ldots, \underset{n}{0} \rangle.
+	\mathbf a = \sum_{i = 1}^n a_i \hat e_i,
 	$$
-	
-	Then, for any $\mathbf u \in \mathbb R^n$, the linear combination form of $\mathbf u$ is
+	where $\hat e_i$ denotes the $i$-th basis of $\mathbb R^n$; i.e., for any $\mathbf u \in \mathbb R^n$ satisfies that $u_i \ne 0$ and for any $j \in \{1, \ldots, n\} \setminus \{i\}$, $u_j = 0$,
 	$$
-	\mathbf u = \sum_{i = 1}^n u_i \mathbf{\hat e}_i.
+	\hat e_i = \frac{\mathbf u}{|\mathbf u|}.
 	$$
 \end{note}
 
 
-
-\begin{lemma}
-	With the condition above, $\langle \mathbf v_i \rangle$ is linearly dependent iff ...
-\end{lemma}
-
-
-
 %------------------------------------------------
 %================================================
 
 
 
-\section{Line and Plane}
+\section{Linear Dependency}
 %================================================
 %------------------------------------------------
 
 
-\begin{definition}
-	\label{def: line}
-	Let $\mathbf a, \mathbf b \in \mathbb R^n$, where $\mathbf a \ne \mathbf b$. Let $L_{\bf ab}: \mathbb R \to \mathbb R^n$ be a mapping defined as
-	$$
-	L_{\bf ab}(t) := \mathbf a + t(\mathbf b - \mathbf a).
-	$$
-	
-	The \textit{line $\overline{\bf ab}$ through $\mathbf a$ and $\mathbf b$} is defined as the image of $\mathbb R$ under $L$; i.e.,
-	$$
-	\overline{\bf ab} := L_{\bf ab}[\mathbb R].
-	$$
-	
-	With $\mathbf a$ and $\mathbf b$ as \textit{end points}, we define
-	\begin{enumerate}[(i)]
-		\item $L_{\bf ab}[[0,1]]$ as \textit{closed segment},
-		\item $L_{\bf ab}[(0,1)]$ as \textit{open segment},
-		\item $L_{\bf ab}[(0,1]]$ as \textit{half-open segment},
-		\item $L_{\bf ab}[[0,1]]$ as \textit{half-closed segment}.
-	\end{enumerate}
-\end{definition}
-
 
 \begin{definition}
-	\label{def: plane}
-	Let $\mathbf a \in \mathbb R^n$ and $\mathbf u \in \mathbb R^n \setminus \{\mathbf 0\}$.
+	\label{def: linear dependency}
+	Let $X$ be a vector field over the scalar field $F$.
 	
-	The \textit{plane through $\mathbf a$ and orthogonal to $\mathbf u$} is defined as
+	A tuple $(\mathbf v_i)_{i = 1}^n$ of vectors in $X$ is said to be \textit{linearly independent} iff for any $\mathbf a \in F^n \setminus \{\mathbf 0\}$,
 	$$
-	P:= \left\{ \mathbf x \in \mathbb R^n : \mathbf u \cdot (\mathbf x - \mathbf a) = \mathbf 0 \right\}.
+	\mathbf a \cdot (\mathbf v_i) \ne \mathbf 0.
 	$$
+	
+	$(\mathbf v_i)$ is \textit{linearly dependent} iff it is not linearly independent.
 \end{definition}
 
 
 
+
+
+
+
 %------------------------------------------------
 %================================================
-
 
 
 %::::::::::::::::::::::::::::::::::::::::::::::::
