@@ -56,6 +56,7 @@
 \end{definition}
 
 
+
 \begin{note}
 	By dot product,
 	$$
@@ -85,10 +86,8 @@
 
 
 \begin{definition}
-	\label{def: linear dependency}
-	Let $X$ be a vector field over the scalar field $F$.
-	
-	A tuple $(\mathbf v_i)_{i = 1}^n$ of vectors in $X$ is said to be \textit{linearly independent} iff for any $\mathbf a \in F^n \setminus \{\mathbf 0\}$,
+	\label{def: linear dependency}	
+	A tuple $(\mathbf v_i)_{i = 1}^{n}$ of vectors in $\mathbb R^m$ is said to be \textit{linearly independent} iff for any $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$,
 	$$
 	\mathbf a \cdot (\mathbf v_i) \ne \mathbf 0.
 	$$
@@ -98,7 +97,14 @@
 
 
 
-
+\begin{lemma}
+	Let $(\mathbf v_i)_{i = 1}^n$ be a tuple of vectors in $\mathbb R^n$ (notice the $n$ here).
+	
+	Then $(\mathbf v_i)$ is linearly independent iff
+	$$
+	\mathrm{span}((\mathbf v_i)) = \mathbb R^n.
+	$$
+\end{lemma}
 
 
 
@@ -108,6 +114,12 @@
 
 %::::::::::::::::::::::::::::::::::::::::::::::::
 %================================================
+
+
+
+
+
+
 
 
 
