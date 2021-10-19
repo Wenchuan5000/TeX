@@ -11,10 +11,8 @@
 
 
 \begin{definition}
-	\label{def: linear map}
-	Let $X$ and $Y$ be vector spaces over the same scalar field $F$.
-	
-	A map $f: X \to Y$ is said to be \textit{linear}, iff for any $\mathbf u, \mathbf v \in X$, and $a, b \in \mathbb F$,
+	\label{def: linear map}	
+	A map $f: \mathbb R^n \to \mathbb R^m$ is said to be \textit{linear}, iff for any $\mathbf u, \mathbf v \in \mathbb R^n$, and $a, b \in \mathbb R$,
 	$$
 	f(a\mathbf u + b\mathbf v) = a f(\mathbf u) + b f(\mathbf v).
 	$$
@@ -46,15 +44,15 @@
 
 
 \begin{definition}
-	\label{def: span and combination}
-	Let $X$ be a vector space over the scalar field $F$, and let $(\mathbf v_i)_{i = 1}^n$ be a tuple of vectors in $X$.
+	\label{def: span and combination}	
+	Let $(\mathbf v_i)_{i = 1}^n$ be a tuple of vectors in $\mathbb R^m$.
 	
-	The \textit{span} of $(\mathbf v_i)$ is a subset of $X$ defined as
+	The \textit{span} of $(\mathbf v_i)$ is a subset of $\mathbb R^m$ defined as
 	$$
-	\mathrm{span}((\mathbf v_i)) := \left\{ \mathbf a \cdot (\mathbf v_i) : \mathbf a \in F^n \right\}.
+	\mathrm{span}((\mathbf v_i)) := \left\{ \mathbf a \cdot (\mathbf v_i) : \mathbf a \in \mathbb R^n \right\}.
 	$$
 	
-	An element $\mathbf u \in X$ is a \textit{linear combination} of $(\mathbf v_i)$ iff $\mathbf u \in \mathrm{span}((\mathbf v_i))$.
+	An element $\mathbf u \in \mathbb R^m$ is a \textit{linear combination} of $(\mathbf v_i)$ iff $\mathbf u \in \mathrm{span}((\mathbf v_i))$.
 \end{definition}
 
 
@@ -67,14 +65,11 @@
 
 
 \begin{note}
-	For any vector $\mathbf a \in \mathbb R^n$, the linear combination form of $\mathbf a$ is
+	For any vector $\mathbf p \in \mathbb R^m$, the linear combination form of $\mathbf p$ is
 	$$
-	\mathbf a = \sum_{i = 1}^n a_i \hat e_i,
+	\mathbf p = \sum_{i = 1}^n p_i \hat e_i,
 	$$
-	where $\hat e_i$ denotes the $i$-th basis of $\mathbb R^n$; i.e., for any $\mathbf u \in \mathbb R^n$ satisfies that $u_i \ne 0$ and for any $j \in \{1, \ldots, n\} \setminus \{i\}$, $u_j = 0$,
-	$$
-	\hat e_i = \frac{\mathbf u}{|\mathbf u|}.
-	$$
+	where $\hat e_i$ denotes the $i$-th basis of $\mathbb R^n$; i.e., all terms but the $i$-th term of $\hat e_i$ are $0$.
 \end{note}
 
 
