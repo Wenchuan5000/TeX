@@ -19,7 +19,6 @@
 \end{definition}
 
 
-
 \begin{note}
 	Assume $b = 0$, then we have
 	$$
@@ -33,6 +32,75 @@
 \end{note}
 
 
+\begin{lemma}
+	\label{lm: linear map: 0 is 0}
+	With the condition above, $f(\mathbf x) = \mathbf 0_{\in \mathbb R^m}$ iff $\mathbf x = \mathbf 0_{\in \mathbb R^n}$.
+	\begin{proof}
+		$$
+		\begin{aligned}
+			f(\mathbf x) = \mathbf 0_{\in \mathbb R^m}
+			&\iff f(\mathbf x + 0\mathbf x) = \mathbf 0_{\in \mathbb R^m} \\
+			&\iff f(\mathbf x) + 0 f(\mathbf x) = \mathbf 0_{\in \mathbb R^m} \\
+			&\iff f(\mathbf x) = \mathbf 0_{\in \mathbb R^m}. 
+		\end{aligned}
+		$$
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	\label{lm: linear map: is injective}
+	With the condition above, $f$ is injective.
+	\begin{proof}
+		For any $\mathbf y \in \mathbb R^m$, there is an $\mathbf x \in \mathbb R^n$ such that
+		$$
+		\mathbf y = f(\mathbf x).
+		$$
+		
+		Assume there is an $\mathbf x' \in \mathbb R^n$ such that
+		$$
+		\mathbf y = f(\mathbf x').
+		$$
+		
+		Then we have
+		$$
+		\begin{aligned}
+			f(\mathbf x) - f(\mathbf x') = \mathbf 0
+			&\iff f(\mathbf x - \mathbf x') = \mathbf 0.
+		\end{aligned}
+		$$
+		
+		By Lemma \ref{lm: linear map: 0 is 0}, we have
+		$$
+		\mathbf x = \mathbf x'.
+		$$
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	\label{lm: linear map: is continuous}
+	With the condition above, $f$ is continuous.
+	
+	\begin{proof}
+		Let $\varepsilon \in \mathbb R$, and let $\mathbf p \in \mathbb R^n$. For any $\mathbf q \in \mathbb R^n$ such that $f(\mathbf q) \in B (f(\mathbf p), \varepsilon) \setminus \{f(\mathbf p)\}$,
+		$$
+		\|f(\mathbf p) - f(\mathbf q) \| = \sqrt{\sum_{i=1}^m (q_i - y_i)^2} < \varepsilon.
+		$$
+		
+		As $f(\mathbf q) \ne f(\mathbf p)$, $\mathbf p \ne \mathbf q$, thus
+		$$
+		\| \mathbf p - \mathbf q \| > 0.
+		$$
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	With the condition above, $f^{-1}$ is linear.
+\end{lemma}
+
+
 %------------------------------------------------
 %================================================
 
@@ -44,15 +112,15 @@
 
 
 \begin{definition}
-	\label{def: span and combination}	
-	Let $(\mathbf v_i)_{i = 1}^n$ be a tuple of vectors in $\mathbb R^m$.
+	\label{def: span}	
+	Let $\langle\mathbf v_i\rangle_{i = 1}^n$ be a sequence of vectors in $\mathbb R^m$.
 	
-	The \textit{span} of $(\mathbf v_i)$ is a subset of $\mathbb R^m$ defined as
+	The \textit{span} of $\langle\mathbf v_i\rangle$ is a subset of $\mathbb R^m$ defined as
 	$$
-	\mathrm{span}((\mathbf v_i)) := \left\{ \mathbf a \cdot (\mathbf v_i) : \mathbf a \in \mathbb R^n \right\}.
+	\mathrm{span}\langle\mathbf v_i\rangle := \left\{ \mathbf a \cdot \langle\mathbf v_i\rangle : \mathbf a \in \mathbb R^n \right\}.
 	$$
 	
-	An element $\mathbf u \in \mathbb R^m$ is a \textit{linear combination} of $(\mathbf v_i)$ iff $\mathbf u \in \mathrm{span}((\mathbf v_i))$.
+	An element $\mathbf u \in \mathbb R^m$ is a \textit{linear combination} of $\langle\mathbf v_i\rangle$ iff $\mathbf u \in \mathrm{span}\langle \mathbf v_i\rangle$.
 \end{definition}
 
 
@@ -74,6 +142,40 @@
 \end{note}
 
 
+\begin{lemma}
+	\label{lm: span: is linear map}
+	With the condition above, let $f: \mathbb R^n \to \mathbb R^m$ be defined as
+	$$
+	f(\mathbf x) := \mathbf x \cdot \langle \mathbf v_i \rangle.
+	$$
+	
+	Then $f$ is a linear map.
+	
+	\begin{proof}
+		Let $a \in \mathbb R$, and let $\mathbf u, \mathbf v \in \mathbb R^n$ Then we have
+		$$
+		\begin{aligned}
+			f(\mathbf u + \mathbf v) &= (\mathbf u + \mathbf v) \cdot \langle \mathbf v_i \rangle \\
+			&= \sum_{i = 1}^n (u_i + v_i) \mathbf v_i \\
+			&= \sum_{i = 1}^n u_i \mathbf v_i + \sum_{i = 1}^n v_i \mathbf v_i \\
+			&= f(\mathbf u) + f(\mathbf v).
+		\end{aligned}
+		$$
+		
+		And
+		$$
+		\begin{aligned}
+			f(a\mathbf u) &= (a \mathbf u) \cdot \langle \mathbf v_i \rangle \\
+			&= a (\mathbf u \cdot \langle \mathbf v_i \rangle) \\
+			&= af(\mathbf u).
+		\end{aligned}
+		$$
+		
+		By Definition \ref{def: linear map}, $f$ is linear.
+	\end{proof}
+\end{lemma}
+
+
 %------------------------------------------------
 %================================================
 
@@ -87,24 +189,95 @@
 
 \begin{definition}
 	\label{def: linear dependency}	
-	A tuple $(\mathbf v_i)_{i = 1}^{n}$ of vectors in $\mathbb R^m$ is said to be \textit{linearly independent} iff for any $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$,
+	A sequence $\langle\mathbf v_i\rangle_{i = 1}^{n}$ of vectors in $\mathbb R^m$ is said to be \textit{linearly independent} iff for any $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$,
 	$$
-	\mathbf a \cdot (\mathbf v_i) \ne \mathbf 0.
+	\mathbf a \cdot \langle\mathbf v_i\rangle \ne \mathbf 0.
 	$$
 	
-	$(\mathbf v_i)$ is \textit{linearly dependent} iff it is not linearly independent.
+	$\langle\mathbf v_i\rangle$ is \textit{linearly dependent} iff it is not linearly independent.
 \end{definition}
 
 
 
 \begin{lemma}
-	Let $(\mathbf v_i)_{i = 1}^n$ be a tuple of vectors in $\mathbb R^n$ (notice the $n$ here).
+	\label{lm: linear dependency: alt def}
+	With the condition above, $\langle\mathbf v_i\rangle_{i = 1}^n$ is linearly dependent iff there exists $k \in \{1, \ldots, n\}$ such that there exists $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$ with $a_k = 0$, such that
+	$$
+	\mathbf v_k = \mathbf a \cdot \langle \mathbf v_i \rangle.
+	$$
 	
-	Then $(\mathbf v_i)$ is linearly independent iff
-	$$
-	\mathrm{span}((\mathbf v_i)) = \mathbb R^n.
-	$$
+	\begin{proof}
+		$$
+		\begin{aligned}
+			\mathbf v_k = \mathbf a \cdot \langle \mathbf v_i \rangle &\iff \mathbf 0 = \mathbf a \cdot \langle \mathbf v_i \rangle - \mathbf v_k \\
+			&\iff \mathbf 0 = (a_1 \mathbf v_1 + \cdots + 0 \mathbf v_k + \cdots + a_n \mathbf v_n) - \mathbf v_k \\
+			&\iff \mathbf 0 = (a_1 \mathbf v_1 + \cdots + (-1) \mathbf v_k + \cdots + a_n \mathbf v_n) \\
+			&\iff \mathbf 0 = (a_1, \ldots, a_{k - 1}, -1, a_{k + 1}, \ldots, a_n) \cdot \langle \mathbf v_i \rangle.
+		\end{aligned}
+		$$
+	\end{proof}
 \end{lemma}
+
+
+\begin{note}
+	Lemma \ref{lm: linear dependency: alt def} can define Definition \ref{def: linear dependency} in a more geometric way.
+\end{note}
+
+
+\begin{lemma}
+	Let $\langle \mathbf v_i \rangle_{i = 1}^n$ be a sequence of vectors in $\mathbb R^m$, where $n < m$.
+	
+	Then $\mathrm{span}\langle \mathbf v_i \rangle$ is homeomorphic to $\mathbb R^n$.
+	
+	\begin{proof}
+		Let $f: \mathbb R^n \to \mathrm{span}\langle \mathbf v_i \rangle$ be defined as
+		$$
+		f(\mathbf x) := \mathbf x \cdot \langle \mathbf v_i \rangle.
+		$$
+		
+		By Lemma \ref{lm: span: is linear map}, as $\mathrm{span}\langle \mathbf v_i \rangle \subseteq \mathbb R^m$, $f$ is linear. By Lemma \ref{lm: linear map: is injective}, $f$ is injective.
+		
+		By Definition \ref{def: span}, for any $\mathbf u \in \mathrm{span} \langle \mathbf v_i \rangle$, there is an $\mathbf a \in \mathbb R^n$, such that
+		$$
+		\mathbf u = \mathbf a \cdot \langle \mathbf v_i \rangle,
+		$$
+		Thus $f$ is surjective.
+		
+		Now, it is proved that $f$ is bijective.
+		
+		...
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	Let $\langle \mathbf v_i \rangle_{i = 1}^n$ be a sequence of vectors in $\mathbb R^n$ (notice the $n$ here).
+	
+	Then $\langle \mathbf v_i \rangle$ is linearly independent iff
+	$$
+	\mathrm{span} \langle \mathbf v_i \rangle = \mathbb R^n.
+	$$
+	
+	\begin{proof}
+		Assume $\langle \mathbf v_i \rangle$ is linearly independent.
+		
+		By Definition \ref{def: span}, for any $\mathbf a \in \mathbb R^n$,
+		$$
+		\mathbf a \cdot \langle \mathbf v_i \rangle \in \mathrm{span}\langle \mathbf v_i \rangle.
+		$$
+		So $\mathbb R^n \subseteq \mathrm{span} \langle \mathbf v_i \rangle$. As $\mathrm{span} \langle \mathbf v_i \rangle \subseteq \mathbb R^n$ also, we have
+		$$
+		\mathrm{span} \langle \mathbf v_i \rangle = \mathbb R^n.
+		$$
+		
+		\qedlm
+		
+		Conversely, assume $\mathrm{span} \langle \mathbf v_i \rangle = \mathbb R^n$, but $\mathrm{span}\langle \mathbf v_i \rangle$ is not linearly independent.
+		
+		Let $\langle \mathbf v_{i_k} \rangle_{i = 1}^{n - 1}$ be a subsequence of $\langle \mathbf v_i \rangle$, and assume $\langle \mathbf v_{i_k} \rangle$ is linearly independent. 
+	\end{proof}
+\end{lemma}
+
 
 
 
