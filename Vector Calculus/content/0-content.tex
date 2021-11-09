@@ -1,177 +1,57 @@
 
-\chapter{Vector Spaces}
+\chapter{Differentiation}
 %================================================
 %::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-\section{Linear Maps}
-%================================================
-%------------------------------------------------
-
-
-
-\begin{definition}
-	\label{def: linear map}	
-	A map $f: \mathbb R^n \to \mathbb R^m$ is said to be \textit{linear}, iff for any $\mathbf u, \mathbf v \in \mathbb R^n$, and $a, b \in \mathbb R$,
-	$$
-	f(a\mathbf u + b\mathbf v) = a f(\mathbf u) + b f(\mathbf v).
-	$$
-\end{definition}
-
-
-\begin{note}
-	Assume $b = 0$, then we have
-	$$
-	f(a\mathbf u) = a f(\mathbf u).
-	$$
-
-	Assume $a = b = 1$, then Definition \ref{def: linear map} gives
-	$$
-	f(\mathbf u + \mathbf v) = f(\mathbf u) + f(\mathbf v).
-	$$	
-\end{note}
-
-
-\begin{lemma}
-	\label{lm: linear map: 0 is 0}
-	With the condition above, $f(\mathbf x) = \mathbf 0_{\in \mathbb R^m}$ iff $\mathbf x = \mathbf 0_{\in \mathbb R^n}$.
-	\begin{proof}
-		$$
-		\begin{aligned}
-			f(\mathbf x) = \mathbf 0_{\in \mathbb R^m}
-			&\iff f(\mathbf x + 0\mathbf x) = \mathbf 0_{\in \mathbb R^m} \\
-			&\iff f(\mathbf x) + 0 f(\mathbf x) = \mathbf 0_{\in \mathbb R^m} \\
-			&\iff f(\mathbf x) = \mathbf 0_{\in \mathbb R^m}. 
-		\end{aligned}
-		$$
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	\label{lm: linear map: is injective}
-	With the condition above, $f$ is injective.
-	\begin{proof}
-		For any $\mathbf y \in \mathbb R^m$, there is an $\mathbf x \in \mathbb R^n$ such that
-		$$
-		\mathbf y = f(\mathbf x).
-		$$
-		
-		Assume there is an $\mathbf x' \in \mathbb R^n$ such that
-		$$
-		\mathbf y = f(\mathbf x').
-		$$
-		
-		Then we have
-		$$
-		\begin{aligned}
-			f(\mathbf x) - f(\mathbf x') = \mathbf 0
-			&\iff f(\mathbf x - \mathbf x') = \mathbf 0.
-		\end{aligned}
-		$$
-		
-		By Lemma \ref{lm: linear map: 0 is 0}, we have
-		$$
-		\mathbf x = \mathbf x'.
-		$$
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	\label{lm: linear map: is continuous}
-	With the condition above, $f$ is continuous.
-	
-	\begin{proof}
-		Let $\varepsilon \in \mathbb R$, and let $\mathbf p \in \mathbb R^n$. For any $\mathbf q \in \mathbb R^n$ such that $f(\mathbf q) \in B (f(\mathbf p), \varepsilon) \setminus \{f(\mathbf p)\}$,
-		$$
-		\|f(\mathbf p) - f(\mathbf q) \| = \sqrt{\sum_{i=1}^m (q_i - y_i)^2} < \varepsilon.
-		$$
-		
-		As $f(\mathbf q) \ne f(\mathbf p)$, $\mathbf p \ne \mathbf q$, thus
-		$$
-		\| \mathbf p - \mathbf q \| > 0.
-		$$
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	With the condition above, $f^{-1}$ is linear.
-\end{lemma}
-
-
-%------------------------------------------------
-%================================================
-
-
-
-\section{Linear Spans and Combinations}
+\section{Infintesimal}
 %================================================
 %------------------------------------------------
 
 
 \begin{definition}
-	\label{def: span}	
-	Let $\langle\mathbf v_i\rangle_{i = 1}^n$ be a sequence of vectors in $\mathbb R^m$.
+	\label{def: little-o}
+	Let $f, g: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$.
 	
-	The \textit{span} of $\langle\mathbf v_i\rangle$ is a subset of $\mathbb R^m$ defined as
+	Then $f$ is a \textit{little-o} of $g$ as $\mathbf x \to \mathbf p$, i.e.,
 	$$
-	\mathrm{span}\langle\mathbf v_i\rangle := \left\{ \mathbf a \cdot \langle\mathbf v_i\rangle : \mathbf a \in \mathbb R^n \right\}.
+	f(\mathbf x) = o(g(\mathbf x)) \text{ as } \mathbf x \to \mathbf p,
 	$$
-	
-	An element $\mathbf u \in \mathbb R^m$ is a \textit{linear combination} of $\langle\mathbf v_i\rangle$ iff $\mathbf u \in \mathrm{span}\langle \mathbf v_i\rangle$.
+	iff for any $\varepsilon \in \mathbb R_{> 0}$, there exists a neighbourhood of $U$ of $\mathbf p$ such that for any $\mathbf x \in U$, $\| f(\mathbf x) \| \le \varepsilon \| g(\mathbf x) \|$. Equivalently, that is,
+	$$
+	\lim_{\mathbf x \to \mathbf p} \frac{f(\mathbf x)}{\| g(\mathbf x) \|_{\mathbb R^n}} = \mathbf 0_{\mathbb R^n}.
+	$$
 \end{definition}
 
 
-
 \begin{note}
-	By dot product,
-	$$
-	\mathbf u = \sum_{i = 1}^n a_i \mathbf v_i.
-	$$
-\end{note}
-
-
-\begin{note}
-	For any vector $\mathbf p \in \mathbb R^m$, the linear combination form of $\mathbf p$ is
-	$$
-	\mathbf p = \sum_{i = 1}^n p_i \hat e_i,
-	$$
-	where $\hat e_i$ denotes the $i$-th basis of $\mathbb R^n$; i.e., all terms but the $i$-th term of $\hat e_i$ are $0$.
+	In the case that $f(\mathbf x) = o(g(\mathbf x))$ as $\mathbf x \to \mathbf 0_{\mathbb R^m}$, I will simply write $f(\mathbf x) = o(g(\mathbf x))$.
 \end{note}
 
 
 \begin{lemma}
-	\label{lm: span: is linear map}
-	With the condition above, let $f: \mathbb R^n \to \mathbb R^m$ be defined as
 	$$
-	f(\mathbf x) := \mathbf x \cdot \langle \mathbf v_i \rangle.
+	o(f(\mathbf x)) + o(g(\mathbf x)) = o(\| f(\mathbf x) \|_{\mathbb R^n} + \| g(\mathbf x) \|_{\mathbb R^n}).
 	$$
-	
-	Then $f$ is a linear map.
 	
 	\begin{proof}
-		Let $a \in \mathbb R$, and let $\mathbf u, \mathbf v \in \mathbb R^n$ Then we have
+		By Definition \ref{def: little-o}, for any $\varepsilon \in \mathbb R_{> 0}$, there exists a neighbourhood of $U$ of $\mathbf p$ such that for any $\mathbf x \in U$,
 		$$
-		\begin{aligned}
-			f(\mathbf u + \mathbf v) &= (\mathbf u + \mathbf v) \cdot \langle \mathbf v_i \rangle \\
-			&= \sum_{i = 1}^n (u_i + v_i) \mathbf v_i \\
-			&= \sum_{i = 1}^n u_i \mathbf v_i + \sum_{i = 1}^n v_i \mathbf v_i \\
-			&= f(\mathbf u) + f(\mathbf v).
-		\end{aligned}
+		\| o(f(\mathbf x)) \|_{\mathbb R^n} \le \varepsilon \| f(\mathbf x) \|.
 		$$
 		
-		And
+		Then, there exists some $\mathbf u, \mathbf v \in \mathbb R^n$ such that
 		$$
-		\begin{aligned}
-			f(a\mathbf u) &= (a \mathbf u) \cdot \langle \mathbf v_i \rangle \\
-			&= a (\mathbf u \cdot \langle \mathbf v_i \rangle) \\
-			&= af(\mathbf u).
-		\end{aligned}
+		o(f(\mathbf x)) = \varepsilon\| f(\mathbf x) \| \mathbf u \text{ and } o(g(\mathbf x)) = \varepsilon\| g(\mathbf x) \| \mathbf v.
 		$$
 		
-		By Definition \ref{def: linear map}, $f$ is linear.
+
+		....
+		
+		By Definition \ref{def: little-o}, now we have
+		$$
+		o(f(\mathbf x)) + o(g(\mathbf x))
+		$$
 	\end{proof}
 \end{lemma}
 
@@ -181,104 +61,102 @@
 
 
 
-\section{Linear Dependency}
+\section{Differentiable Mapping}
 %================================================
 %------------------------------------------------
-
 
 
 \begin{definition}
-	\label{def: linear dependency}	
-	A sequence $\langle\mathbf v_i\rangle_{i = 1}^{n}$ of vectors in $\mathbb R^m$ is said to be \textit{linearly independent} iff for any $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$,
-	$$
-	\mathbf a \cdot \langle\mathbf v_i\rangle \ne \mathbf 0.
-	$$
+	\label{def: differentiable}
+	Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$.
 	
-	$\langle\mathbf v_i\rangle$ is \textit{linearly dependent} iff it is not linearly independent.
+	Then, $f$ is said to be \textit{differentiable} at $\mathbf p$,  iff there exists a linear map $\phi: \mathbb R^m \to \mathbb R^n$ and an open subset $U \subseteq \mathbb R^m$, such that for any $\mathbf h \in \mathbb R^m \setminus \{\mathbf 0_{\mathbb R^m}\}$ with $\mathbf p + \mathbf h \in U$,
+	$$
+	f(\mathbf p + \mathbf h) = f(\mathbf p) + \phi(\mathbf h) + o(\phi(\mathbf h)).
+	$$
 \end{definition}
 
 
-
 \begin{lemma}
-	\label{lm: linear dependency: alt def}
-	With the condition above, $\langle\mathbf v_i\rangle_{i = 1}^n$ is linearly dependent iff there exists $k \in \{1, \ldots, n\}$ such that there exists $\mathbf a \in \mathbb R^n \setminus \{\mathbf 0\}$ with $a_k = 0$, such that
-	$$
-	\mathbf v_k = \mathbf a \cdot \langle \mathbf v_i \rangle.
-	$$
-	
+	The relation in Definition \ref{def: differentiable} holds for a unique $\phi$.
+
 	\begin{proof}
+		Aiming for a contradiction, suppose there is another linear map $\lambda: \mathbb R^m \to \mathbb R^n$ such that
 		$$
-		\begin{aligned}
-			\mathbf v_k = \mathbf a \cdot \langle \mathbf v_i \rangle &\iff \mathbf 0 = \mathbf a \cdot \langle \mathbf v_i \rangle - \mathbf v_k \\
-			&\iff \mathbf 0 = (a_1 \mathbf v_1 + \cdots + 0 \mathbf v_k + \cdots + a_n \mathbf v_n) - \mathbf v_k \\
-			&\iff \mathbf 0 = (a_1 \mathbf v_1 + \cdots + (-1) \mathbf v_k + \cdots + a_n \mathbf v_n) \\
-			&\iff \mathbf 0 = (a_1, \ldots, a_{k - 1}, -1, a_{k + 1}, \ldots, a_n) \cdot \langle \mathbf v_i \rangle.
-		\end{aligned}
+		f(\mathbf p + \mathbf h) = f(\mathbf p) + \lambda(\mathbf h) + o(\lambda(\mathbf h)),
 		$$
+		then we have
+		$$
+		\phi(\mathbf h) - \lambda(\mathbf h) = o(\phi(\mathbf h)) - o(\lambda(\mathbf h)).
+		$$
+		
+		Let $g: \mathbb R \to \mathbb R^n$ be defined as $g(t) := \phi(t\mathbf u)$, then
 	\end{proof}
 \end{lemma}
 
 
-\begin{note}
-	Lemma \ref{lm: linear dependency: alt def} can define Definition \ref{def: linear dependency} in a more geometric way.
-\end{note}
+%------------------------------------------------
+%================================================
+
+
+
+\section{Derivatives}
+%================================================
+%------------------------------------------------
+
+
+\begin{definition}
+	\label{def: directional derivatives}
+	Let $f: \mathbb R^m \to \mathbb R^n$, let $\mathbf u \in \mathbb R^m \setminus \{\mathbf 0_{\mathbb R^m}\}$, and let $\mathbf p \in \mathbb R^m$.
+	
+	The \textit{directional derivative} of $f$ along $\mathbf u$ at $\mathbf p$ is defined as
+	$$
+	\nabla_{\mathbf u} f(\mathbf p) := \lim_{h \to 0} \frac{f(\mathbf p + h\mathbf u) - f(\mathbf p)}{h},
+	$$
+	if the limit exists in $\mathbb R^n$.
+\end{definition}
 
 
 \begin{lemma}
-	Let $\langle \mathbf v_i \rangle_{i = 1}^n$ be a sequence of vectors in $\mathbb R^m$, where $n < m$.
-	
-	Then $\mathrm{span}\langle \mathbf v_i \rangle$ is homeomorphic to $\mathbb R^n$.
+	\label{lm: direction derivative exists implies relative continuous}
+	With the conditions in Definition \ref{def: directional derivatives}, if $\nabla_{\mathbf u}f(\mathbf p)$ exists at $\mathbf p$, then there exists open subset $U \subseteq \mathbb R^m$ such that $f$ is relative continuous on $U \cap \{\mathbf p + h \mathbf u : h\in \mathbb R\}$ for some $U$.
 	
 	\begin{proof}
-		Let $f: \mathbb R^n \to \mathrm{span}\langle \mathbf v_i \rangle$ be defined as
+		
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	With the conditions in Definition \ref{def: directional derivatives}, let $s \in \mathbb R \setminus \{0\}$, then
+	$$
+	\nabla_{s\mathbf u}f(\mathbf p) = s \nabla_{\mathbf u} f(\mathbf p)
+	$$
+	if $\nabla_{\mathbf u}f(\mathbf p)$ exists in $\mathbb R^n$.
+	
+	\begin{proof}
+		Let $g: \mathbb R \to \mathbb R^n$ be defined as
 		$$
-		f(\mathbf x) := \mathbf x \cdot \langle \mathbf v_i \rangle.
+		g(h) := f(\mathbf p + h\mathbf u).
+		$$
+		Then, we have
+		$$
+		\begin{aligned}
+			\nabla_{s\mathbf u} f(\mathbf p) &= \lim_{h \to 0} \frac{f(\mathbf p + hs\mathbf u) - f(\mathbf p)}{h} \\
+			&= \lim_{h \to 0} \frac{g(sh) - g(0)}{h}.
+		\end{aligned}
 		$$
 		
-		By Lemma \ref{lm: span: is linear map}, as $\mathrm{span}\langle \mathbf v_i \rangle \subseteq \mathbb R^m$, $f$ is linear. By Lemma \ref{lm: linear map: is injective}, $f$ is injective.
-		
-		By Definition \ref{def: span}, for any $\mathbf u \in \mathrm{span} \langle \mathbf v_i \rangle$, there is an $\mathbf a \in \mathbb R^n$, such that
+		As this is a $0/0$ limit, thus, by L'H\'opital's rule, we have
 		$$
-		\mathbf u = \mathbf a \cdot \langle \mathbf v_i \rangle,
+		\begin{aligned}
+			\nabla_{s \mathbf u} f(\mathbf p) &= \lim_{h \to 0} \frac{\mathrm dg(hs)}{\mathrm dh}. \\
+		\end{aligned}
 		$$
-		Thus $f$ is surjective.
-		
-		Now, it is proved that $f$ is bijective.
 		
 		...
 	\end{proof}
 \end{lemma}
-
-
-\begin{lemma}
-	Let $\langle \mathbf v_i \rangle_{i = 1}^n$ be a sequence of vectors in $\mathbb R^n$ (notice the $n$ here).
-	
-	Then $\langle \mathbf v_i \rangle$ is linearly independent iff
-	$$
-	\mathrm{span} \langle \mathbf v_i \rangle = \mathbb R^n.
-	$$
-	
-	\begin{proof}
-		Assume $\langle \mathbf v_i \rangle$ is linearly independent.
-		
-		By Definition \ref{def: span}, for any $\mathbf a \in \mathbb R^n$,
-		$$
-		\mathbf a \cdot \langle \mathbf v_i \rangle \in \mathrm{span}\langle \mathbf v_i \rangle.
-		$$
-		So $\mathbb R^n \subseteq \mathrm{span} \langle \mathbf v_i \rangle$. As $\mathrm{span} \langle \mathbf v_i \rangle \subseteq \mathbb R^n$ also, we have
-		$$
-		\mathrm{span} \langle \mathbf v_i \rangle = \mathbb R^n.
-		$$
-		
-		\qedlm
-		
-		Conversely, assume $\mathrm{span} \langle \mathbf v_i \rangle = \mathbb R^n$, but $\mathrm{span}\langle \mathbf v_i \rangle$ is not linearly independent.
-		
-		Let $\langle \mathbf v_{i_k} \rangle_{i = 1}^{n - 1}$ be a subsequence of $\langle \mathbf v_i \rangle$, and assume $\langle \mathbf v_{i_k} \rangle$ is linearly independent. 
-	\end{proof}
-\end{lemma}
-
-
 
 
 %------------------------------------------------
