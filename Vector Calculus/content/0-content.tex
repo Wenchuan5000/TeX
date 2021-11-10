@@ -4,63 +4,6 @@
 %::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-\section{Infintesimal}
-%================================================
-%------------------------------------------------
-
-
-\begin{definition}
-	\label{def: little-o}
-	Let $f, g: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$.
-	
-	Then $f$ is a \textit{little-o} of $g$ as $\mathbf x \to \mathbf p$, i.e.,
-	$$
-	f(\mathbf x) = o(g(\mathbf x)) \text{ as } \mathbf x \to \mathbf p,
-	$$
-	iff for any $\varepsilon \in \mathbb R_{> 0}$, there exists a neighbourhood of $U$ of $\mathbf p$ such that for any $\mathbf x \in U$, $\| f(\mathbf x) \| \le \varepsilon \| g(\mathbf x) \|$. Equivalently, that is,
-	$$
-	\lim_{\mathbf x \to \mathbf p} \frac{f(\mathbf x)}{\| g(\mathbf x) \|_{\mathbb R^n}} = \mathbf 0_{\mathbb R^n}.
-	$$
-\end{definition}
-
-
-\begin{note}
-	In the case that $f(\mathbf x) = o(g(\mathbf x))$ as $\mathbf x \to \mathbf 0_{\mathbb R^m}$, I will simply write $f(\mathbf x) = o(g(\mathbf x))$.
-\end{note}
-
-
-\begin{lemma}
-	$$
-	o(f(\mathbf x)) + o(g(\mathbf x)) = o(\| f(\mathbf x) \|_{\mathbb R^n} + \| g(\mathbf x) \|_{\mathbb R^n}).
-	$$
-	
-	\begin{proof}
-		By Definition \ref{def: little-o}, for any $\varepsilon \in \mathbb R_{> 0}$, there exists a neighbourhood of $U$ of $\mathbf p$ such that for any $\mathbf x \in U$,
-		$$
-		\| o(f(\mathbf x)) \|_{\mathbb R^n} \le \varepsilon \| f(\mathbf x) \|.
-		$$
-		
-		Then, there exists some $\mathbf u, \mathbf v \in \mathbb R^n$ such that
-		$$
-		o(f(\mathbf x)) = \varepsilon\| f(\mathbf x) \| \mathbf u \text{ and } o(g(\mathbf x)) = \varepsilon\| g(\mathbf x) \| \mathbf v.
-		$$
-		
-
-		....
-		
-		By Definition \ref{def: little-o}, now we have
-		$$
-		o(f(\mathbf x)) + o(g(\mathbf x))
-		$$
-	\end{proof}
-\end{lemma}
-
-
-%------------------------------------------------
-%================================================
-
-
-
 \section{Differentiable Mapping}
 %================================================
 %------------------------------------------------
