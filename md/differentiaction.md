@@ -1,3 +1,5 @@
+<div id="mainPage">
+
 ## Differentiable Mappings
 
 #### <span id="def_differentiable">Definition</span>
@@ -39,3 +41,20 @@ Assume [REF](#def_differentiable) holds for another linear mapping $\lambda$ als
 $$
 \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \lambda(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \beta(\mathbf t).
 $$
+Let $\gamma = \phi - \lambda$. As $\phi$ and $-\lambda$ are both linear, then
+$$
+\begin{aligned}
+& \ \frac{\gamma(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t) - \beta(\mathbf t) \\
+\iff & \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \gamma(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (\alpha(\mathbf t) - \beta(\mathbf t)) \\
+\iff& \ \gamma(\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}.
+\end{aligned}
+$$
+As $\mathbf t$ is arbitrarily picked from $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$ as $U$ and $U'$ are open, the set
+$$
+\left\{ \mathbf{\hat t} : \mathbf t \in U \cap U' - \mathbf p \right\}
+$$
+gives all possible directions in $\mathbb R^m$. And as $\gamma(s \mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$, for any $s \in \mathbb R$, $\gamma(\mathbf t) = \mathbf 0_{\mathbb R^n}$ constantly. Thus, $\phi = \lambda$.
+
+$\blacksquare$
+
+</div>
