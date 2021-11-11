@@ -88,7 +88,23 @@ if the limit exists in $\mathbb R^n$.
 
 ---
 
-#### <a id="lm_directionalDerivatives-existsImpliesRelativeContinuous" name="Directional Derivatives">Lemma</a>
+#### <a id="lm_directionalDerivatives-scalaMultiplication">Lemma</a>
+
+With the conditions in <a class="ref" href="#def_directionalDerivatives">ref</a>, for any $s \in \mathbb R \setminus \{0\}$,
+$$
+\nabla_{s \mathbf u} f(\mathbf p) = s\nabla_{\mathbf u} f(\mathbf p)
+$$
+if $\nabla_{\mathbf u} f(\mathbf p)$ exists in $\mathbb R^n$.
+
+**Proof.** By <a class="ref" href="#def_directionalDerivatives">ref</a>,
+$$
+\nabla_{s \mathbf u} f(\mathbf p) = s\lim_{ts \to 0} \frac{f(\mathbf p + ts\mathbf u) - f(\mathbf p)}{ts} = s \nabla_{\mathbf u} f(\mathbf p).
+$$
+$\blacksquare$
+
+---
+
+#### <a id="lm_directionalDerivatives-existsImpliesRelativeContinuous">Lemma</a>
 
 With the condition in <a class="ref" href="#def_directionalDerivatives">ref</a>, if $\nabla_{\mathbf u}f(\mathbf p)$ exists, then there exits an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on the line defined by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
 
@@ -115,7 +131,7 @@ $$
 $$
 Thus, $h$ is continuous at $0$.
 
-It is easy to find that $g$ is bijective, thus $g^{-1}$ is also bijective. Thus, $g \circ g^{-1}$ is an identity mapping on $g[\mathbb R] \subseteq \mathbb R^m$. As composition of mappings is associative, we have
+It is easy to find that $g$ is bijective, thus $g^{-1}$ is also bijective. Thus, $g \circ g^{-1}$ is an identity mapping on $g[\mathbb R] \subseteq \mathbb R^m$. As composition of mappings is associative, we have
 $$
 \begin{aligned}
 h = f \circ g &\iff h \circ g^{-1} = f \circ g \circ g^{-1} \\
@@ -129,19 +145,89 @@ $\blacksquare$
 
 ---
 
-#### <a id="lm_directionalDerivatives-scalaMultiplication" name="Directional Derivatives">Lemma</a>
+#### <a id="lm_meanValueTheorem" name="Mean Value Theorem">Lemma</a> 这个很简单重新写一遍
 
-With the conditions in <a class="ref" href="#def_directionalDerivatives">ref</a>, for any $s \in \mathbb R \setminus \{0\}$,
+Let $\mathbf p \in \mathbb R^m$ and let $\mathbf u \in \mathbb R^m \setminus \{ \mathbf 0_{\mathbb R^m} \}$. Let $g: \mathbb R \to \mathbb R^m$ be defined as
 $$
-\nabla_{s \mathbf u} f(\mathbf p) = s\nabla_{\mathbf u} f(\mathbf p)
+g(t) := \mathbf p + t\mathbf u.
 $$
-if $\nabla_{\mathbf u} f(\mathbf p)$ exists in $\mathbb R^n$.
-
-**Proof.** By <a class="ref" href="#def_directionalDerivatives">ref</a>,
+Let $f: \mathbb R^m \to \mathbb R^n$. If there exists some closed interval $[a,b] \subseteq \mathbb R$, such that $f$ is continuous on $g[(a,b)]$ and differentiable on $g[[a,b]]$.
 $$
-\nabla_{s \mathbf u} f(\mathbf p) = s\lim_{ts \to 0} \frac{f(\mathbf p + ts\mathbf u) - f(\mathbf p)}{ts} = s \nabla_{\mathbf u} f(\mathbf p).
+\| f(\mathbf q) - f(\mathbf p) \|_{\mathbb R^n} \le \sup_{\mathbf x \in g[(a,b)]} \| \nabla_{\mathbf u} f(\mathbf x) \|_{\mathbb R^n}.
 $$
-$\blacksquare$
+**Proof.** Let $h = f \circ g$. As $f$ is continuous on $g[(a,b)]$ and $g$ is continuous everywhere, $h$ is continuous on $I^\circ$. As $f$ and $g$ are differentiable on $g[[a,b]]$ and $I$ respectively, thus $h$ is differentiable on $I$.📖 By mean value theorem 📖, there exists an $c \in I^\circ$ such that
+$$
+h'(c) = \frac{h(b) - h(a)}{b - a}.
+$$
+Note that
+$$
+\begin{aligned}
+h'(c) &= \lim_{t \to 0} \frac{h(c + t) - h(c)}{t} \\
+&= \lim_{t \to 0} \frac{f(g(c + t)) - f(c)}{t} \\
+&= \lim_{t \to 0} \frac{f(\mathbf p + c\mathbf u + t\mathbf u) - f(\mathbf p + c \mathbf u)}{t} \\
+&= \left.\lim_{t \to 0} \frac{f(\mathbf v + t\mathbf u) - f(\mathbf v)}{t} \right|_{\mathbf v = \mathbf p + c\mathbf u} \\
+&= \nabla_{\mathbf u} f(\mathbf v).
+\end{aligned}
+$$
+That mean, there exists a $\mathbf v \in \mathbb R^m$ such that
+$$
+\begin{aligned}
+\nabla_{\mathbf u} f(\mathbf v) &= \frac{h(b) - h(a)}{b - a} = \frac{f(\mathbf p + b\mathbf u) - f(\mathbf p + a\mathbf u)}{b - a}.
+\end{aligned}
+$$
+By ...
+$$
+f(\mathbf p + \mathbf u) - f(\mathbf p) = \nabla_{\mathbf u} f(\mathbf v)
+$$
 
 ## <a id="sec_partialDerivatives">Partial Derivatives</a>
+
+#### <a id="def_partialDerivatives" name="Partial Derivatives">Definition</a>
+
+Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \mapsto f(\mathbf x)$, and let $\mathbf p \in \mathbb R^m$. The *$i$-th partial derivative* of $f$ at $\mathbf p$, denoted $\frac{\partial f}{\partial x_i}$, is defined to be the directional derivative of $f$ along $\mathbf{\hat e}_i$ at $\mathbf p$. Explicitly, that is,
+$$
+\frac{\partial f}{\partial x_i}(\mathbf p) := \nabla_{\mathbf{\hat e}_i} f(\mathbf p) = \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf{\hat e}_i) - f(\mathbf p)}{t},
+$$
+if the limit exists in $\mathbb R^n$.
+
+## <a id="sec_gradient">Gradient</a>
+
+#### <a id="def_gradient" name="gradient">Definition</a>
+
+Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$. The *gradient* of $f$ at $\mathbf p$ is defined as
+$$
+\nabla f(\mathbf p) := \left( \frac{\partial f}{\partial x_1}, \ldots , \frac{\partial f}{\partial x_m} \right),
+$$
+if all partial derivatives of $f$ exist.
+
+---
+
+Consider $\nabla$ as an $m \times 1$ matrix, and $f = (f_1, \ldots, f_n)$ as an $1 \times n$ matrix, then
+$$
+\nabla f =
+\left[
+\begin{matrix}
+\frac{\partial}{\partial x_1} \\
+\vdots \\
+\frac{\partial}{\partial x_m}
+\end{matrix}
+\right]
+\left[
+f_1, \ldots, f_n
+\right] =
+\left[
+\begin{matrix}
+\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_n}{\partial x_1} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial f_1}{\partial x_m} & \cdots & \frac{\partial f_n}{\partial x_m}
+\end{matrix}
+\right].
+$$
+Consider $\frac{\partial f}{\partial x_i}$ as a $1 \times m$ matrix,
+
+https://math.stackexchange.com/questions/1853808/product-of-a-vector-and-its-transpose-projections
+
+
+
+
 
