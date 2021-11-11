@@ -1,0 +1,13 @@
+nav#topNav {
+  position: fixed;
+  height: 48px;
+  width: 100%;
+
+  background-color: var(--color-bg-glass);
+  box-shadow: 0 1px 0 var(--color-border2);
+  top: 0;
+  left: 0;
+
+  backdrop-filter: blur(4px);
+ 	-webkit-backdrop-filter: blur(4px);
+}

@@ -1,0 +1,183 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+#write div, #write span, #write applet, #write object, #write iframe,
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write blockquote, #write pre,
+#write a, #write abbr, #write acronym, #write address, #write big, #write cite, #write code,
+#write del, #write dfn, #write em, #write img, #write ins, #write kbd, #write q, #write s, #write samp,
+#write small, #write strike, #write strong, #write sub, #write sup, #write tt, #write var,
+#write b, #write u, #write i, #write center,
+#write dl, #write dt, #write dd, #write ol, #write ul, #write li,
+#write fieldset, #write form, #write label, #write legend,
+#write table, #write caption, #write tbody, #write tfoot, #write thead, #write tr, #write th, #write td,
+#write article, #write aside, #write canvas, #write details, #write embed,
+#write figure, #write figcaption, #write footer, #write header, #write hgroup,
+#write menu, #write nav, #write output, #write ruby, #write section, #write summary,
+#write time, #write mark, #write audio, #write video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+#write article, #write aside, #write details, #write figcaption, #write figure,
+#write footer, #write header, #write hgroup, #write menu, #write nav, #write section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+img {
+  vertical-align: center; }
+
+* {
+  box-sizing: border-box; }
+  *:focus {
+    outline: none; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+img {
+  vertical-align: middle !important; }
+
+* h1::after {
+  border: none; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+img {
+  width: 100%; }
+
+:root {
+  --b-color: #1e81b0;
+  --textColor-main: rgba(0, 0, 0, 0.88);
+  --textColor-secondary: rgba(0, 0, 0, 0.44);
+  --color-bg: white;
+  --color-bg-glass: rgba(250, 250, 250, 0.8);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border2: rgba(0, 0, 0, 0.04);
+  --res-mobile: 600px; }
+
+:root {
+  --font-system: -apple-system, BlinkMacSystemFont, PingFang SC, "Apple Color Emoji", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
+  --font-article: "Times New Roman", Times, serif; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  color: var(--textColor-main);
+  font-family: var(--font-system); }
+
+article, #write {
+  font-family: var(--font-article); }
+
+p a {
+  color: var(--b-color); }
+
+nav#topNav {
+  position: fixed;
+  height: 48px;
+  width: 100%;
+  background-color: var(--color-bg-glass);
+  box-shadow: 0 1px 0 var(--color-border2);
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); }
+
+.typora-export-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  margin-top: 80px; }
+  .typora-export-content #write h1, .typora-export-content #write h2, .typora-export-content #write h3, .typora-export-content #write h4, .typora-export-content #write h5, .typora-export-content #write h6 {
+    font-weight: bold; }
+  .typora-export-content #write h1, .typora-export-content #write h2, .typora-export-content #write h3, .typora-export-content #write h4, .typora-export-content #write h5, .typora-export-content #write h6 {
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em; }
+    .typora-export-content #write h1 a, .typora-export-content #write h2 a, .typora-export-content #write h3 a, .typora-export-content #write h4 a, .typora-export-content #write h5 a, .typora-export-content #write h6 a {
+      padding-top: 5rem;
+      margin-top: -5rem; }
+  .typora-export-content #write h1 {
+    font-size: 2.5rem; }
+  .typora-export-content #write h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5em; }
+  .typora-export-content #write h3 {
+    font-size: 1.5rem; }
+  .typora-export-content #write h4 {
+    font-size: 1.125rem; }
+  .typora-export-content #write h5 {
+    font-size: 1rem; }
+  .typora-export-content #write h6 {
+    font-size: 1rem;
+    color: var(--textColor-secondary); }
+  .typora-export-content #write p {
+    line-height: 1.5;
+    margin-bottom: 0.5em; }
+  .typora-export-content #write hr {
+    border: none;
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 1rem 0; }
+  .typora-export-content #write figure {
+    margin: 1.5rem 0;
+    overflow: hidden; }
+    .typora-export-content #write figure img {
+      margin: 0; }
+    .typora-export-content #write figure figcaption {
+      margin-top: 0.5rem; }
+      .typora-export-content #write figure figcaption > * {
+        text-align: center;
+        font-size: 0.875em;
+        color: var(--textColor-secondary); }
+    .typora-export-content #write figure.mathFigure {
+      border: 1px solid var(--color-border); }
+    .typora-export-content #write figure + blockquote {
+      margin-top: calc(-1.5rem + 0.5rem);
+      margin-bottom: 1.5rem; }
+      .typora-export-content #write figure + blockquote p {
+        font-size: 0.875rem;
+        color: var(--textColor-secondary); }

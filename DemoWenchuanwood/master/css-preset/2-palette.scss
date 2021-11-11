@@ -1,0 +1,17 @@
+:root {
+  --b-color: #1e81b0;
+
+  // 颜色调用走这里
+  --textColor-main: rgba(0, 0, 0, 0.88);
+  --textColor-secondary: rgba(0, 0, 0, 0.44);
+
+  --color-bg: white;
+
+  --color-bg-glass: rgba(250, 250, 250, 0.8);
+
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border2: rgba(0, 0, 0, 0.04);
+
+  // 尺寸走这里
+  --res-mobile: 600px;
+}

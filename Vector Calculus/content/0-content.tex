@@ -18,41 +18,44 @@
 %	f(\mathbf p + \mathbf h) = f(\mathbf p) + \phi(\mathbf h) + o(\phi(\mathbf h)).
 %	$$
 
-	$f$ is \textit{differentiable} at $\mathbf p$ iff there exists a unique linear map $\phi: \mathbb R^m \to \mathbb R^n$, such that for any $\mathbf t \in \mathbb R^m$,
+	$f$ is \textit{differentiable} at $\mathbf p$ iff there exists a unique linear mapping $\phi: \mathbb R^m \to \mathbb R^n$, such that for any $\mathbf t \in \mathbb R^m$,
 	$$
 	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^n}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}
 	$$
 \end{definition}
 
 
-\begin{note}
-	\label{note: differentiable: uniqueness of phi}
-	Rigorously, the uniqueness of $\phi$ is deduced by the reset of the definition.
+\begin{lemma}
+	\label{lm: differentiable: uniqueness of phi}
 	
-	There exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\displaystyle \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \alpha(\mathbf t) = \mathbf 0_{\mathbb R^n}$, such that there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$, such that for those $\mathbf t \in \mathbb R^n$ with $\mathbf p + \mathbf t \in U$,
+	The linear mapping $\phi$ in Definition \ref{def: differentiable} is unique.
+	
+	\begin{proof}
+		As $f$ is differentiable at $\mathbf p$, there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\alpha(\mathbf t) \to \mathbf 0_{\mathbb R^n}$ as $\mathbf t \to \mathbf 0_{\mathbb R^m}$, such that there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$, such that for any $\mathbf t \in \mathbb R^n$ with $\mathbf p + \mathbf t \in U$,
+			$$
+			\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t).
+			$$
+			
+		Assume Definition \ref{def: differentiable} holds for another linear mapping $\lambda$ also, then, similarly, there exists a $\beta: \mathbb R^m \to \mathbb R^n$ with $\beta(\mathbf t) \to \mathbf 0_{\mathbb R^n}$ as $\mathbf t \to \mathbf 0_{\mathbb R^m}$, such that there exists an open subset $U' \subseteq \mathbb R^m$ with $\mathbf p \in U'$, such that for any $\mathbf t \in \mathbb R^n$ with $\mathbf p + \mathbf t \in U'$,
 		$$
-		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t).
+		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \lambda(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \beta(\mathbf t).
 		$$
 		
-	Assume Definition \ref{def: differentiable} holds for a linear mapping $\lambda$ also, then, similarly, there exists a $\beta: \mathbb R^m \to \mathbb R^n$ with $\displaystyle \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \beta(\mathbf t) = \mathbf 0_{\mathbb R^n}$, such that there exists an open subset $U' \subseteq \mathbb R^m$ with $\mathbf p \in U'$, such that for those $\mathbf t \in \mathbb R^n$ with $\mathbf p + \mathbf t \in U'$,
-	$$
-	\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \lambda(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \beta(\mathbf t).
-	$$
-	
-	Let $\gamma = \phi - \lambda$. As $\phi$ and $-\lambda$ are both linear, then
-	$$
-	\begin{aligned}
-		\frac{\gamma(\mathbf t)}{\| \mathbf t \|_{\mathbb R^n}} = \alpha(\mathbf t) - \beta(\mathbf t) &\iff \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \gamma(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (\alpha(\mathbf t) - \beta(\mathbf t)) \\
-		&\iff \gamma(\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}.
-	\end{aligned}
-	$$
-	
-	As $\mathbf t$ is arbitrarily given in $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$, the set
-	$$
-	\left\{ \mathbf{\hat t} = \frac{\mathbf t}{\| \mathbf t \|} : \mathbf t \in U \cap U' - \mathbf p \right\}
-	$$
-	gives the all possible directions in $\mathbb R^m$. And as $\gamma(s\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$, for all $s \in \mathbb R$, $\gamma(\mathbf t) = \mathbf 0_{\mathbb R^n}$ constantly. This implies $\phi = \lambda$.
-\end{note}
+		Let $\gamma = \phi - \lambda$. As $\phi$ and $-\lambda$ are both linear, then
+		$$
+		\begin{aligned}
+			\frac{\gamma(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t) - \beta(\mathbf t) &\iff \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \gamma(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (\alpha(\mathbf t) - \beta(\mathbf t)) \\
+			&\iff \gamma(\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}.
+		\end{aligned}
+		$$
+		
+		As $\mathbf t$ is arbitrarily picked from $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$, the set
+		$$
+		\left\{ \mathbf{\hat t} = \frac{\mathbf t}{\| \mathbf t \|} : \mathbf t \in U \cap U' - \mathbf p \right\}
+		$$
+		gives all possible directions in $\mathbb R^m$. And as $\gamma(s\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$, for all $s \in \mathbb R$, $\gamma(\mathbf t) = \mathbf 0_{\mathbb R^n}$ constantly. Thus $\phi = \lambda$.
+	\end{proof}
+\end{lemma}
 
 
 \begin{lemma}
@@ -63,7 +66,7 @@
 		$$
 		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^n}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}
 		$$
-		for a unique $\phi: \mathbb R^m \to \mathbb R^n$ (Note \ref{note: differentiable: uniqueness of phi}). Then there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\displaystyle \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\alpha(\mathbf t) = \mathbf 0_{\mathbb R^n}$ such that there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in U$,
+		for a unique $\phi: \mathbb R^m \to \mathbb R^n$ (Lemma \ref{lm: differentiable: uniqueness of phi}). Then there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\displaystyle \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\alpha(\mathbf t) = \mathbf 0_{\mathbb R^n}$ such that there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in U$,
 		$$
 		f(\mathbf p + \mathbf t) - \phi(\mathbf t) = \alpha(\mathbf t)\| \mathbf t \|_{\mathbb R^m} + f(\mathbf p).
 		$$
