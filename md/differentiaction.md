@@ -1,8 +1,12 @@
+
+
 # Differentiation
 
-## <a id="sec_differentiableMappings">Differentiable Mappings</a>
+## Differentiable Mappings
 
-#### <a id="def_differentiable" name="Differentiable Mappings">Definition</a>
+#### Definition
+
+> Differentiable Mappings
 
 Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$. $f$ is *differentiable* at $\mathbf p$ iff there exists a linear map $\phi: \mathbb R^m \to \mathbb R^n$, such that for any $\mathbf t \in \mathbb R^m$,
 $$
@@ -27,7 +31,7 @@ is straightly used as equivalent as <a class="ref" href="#def_differentiable">re
 
 ---
 
-#### <a id="lm_differentiable-uniquenessOfPhi">Lemma</a>
+#### Lemma
 
 The linear map $\phi$ in <a class="ref" href="#def_differentiable">ref</a> is unique.
 
@@ -57,7 +61,7 @@ $\blacksquare$
 
 ---
 
-#### <a id="lm_differentiable-impliesContinuous">Lemma</a>
+#### Lemma
 
 With the condition in <a class="ref" href="#def_differentiable">ref</a>, if $f$ is differentiable at $\mathbf p$, then $f$ is continuous at $\mathbf p$.
 
@@ -76,9 +80,9 @@ This, implies $f$ is continuous at $\mathbf p$.
 
 $\blacksquare$
 
-## <a id="sec_directionalDerivatives">Directional Derivatives</a>
+## Directional Derivatives
 
-#### <a id="def_directionalDerivatives" name="Directional Derivatives">Definition</a>
+#### Definition
 
 Let $f: \mathbb R^m \to \mathbb R^n$, let $\mathbf u \in \mathbb R^m \setminus \{ \mathbf 0_{\mathbb R^m} \}$, and let $\mathbf p \in \mathbb R^m$. The *directional derivative* of $f$ along $\mathbf u$ at $\mathbf p$ is defined as
 $$
@@ -88,7 +92,7 @@ if the limit exists in $\mathbb R^n$.
 
 ---
 
-#### <a id="lm_directionalDerivatives-scalaMultiplication">Lemma</a>
+#### Lemma
 
 With the conditions in <a class="ref" href="#def_directionalDerivatives">ref</a>, for any $s \in \mathbb R \setminus \{0\}$,
 $$
@@ -104,7 +108,7 @@ $\blacksquare$
 
 ---
 
-#### <a id="lm_directionalDerivatives-existsImpliesRelativeContinuous">Lemma</a>
+#### Lemma
 
 With the condition in <a class="ref" href="#def_directionalDerivatives">ref</a>, if $\nabla_{\mathbf u}f(\mathbf p)$ exists, then there exits an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on the line defined by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
 
@@ -145,60 +149,63 @@ $\blacksquare$
 
 ---
 
-#### <a id="lm_meanValueTheorem" name="Mean Value Theorem">Lemma</a> 这个很简单重新写一遍
+#### Lemma
 
-Let $\mathbf p \in \mathbb R^m$ and let $\mathbf u \in \mathbb R^m \setminus \{ \mathbf 0_{\mathbb R^m} \}$. Let $g: \mathbb R \to \mathbb R^m$ be defined as
+Let $\mathbf p, \mathbf q \in \mathbb R^m$. For convenience, let $g: \mathbb R \to \mathbb R^m$ be defined as
 $$
-g(t) := \mathbf p + t\mathbf u.
+g(t) := \mathbf p + t(\mathbf q - \mathbf p).
 $$
-Let $f: \mathbb R^m \to \mathbb R^n$. If there exists some closed interval $[a,b] \subseteq \mathbb R$, such that $f$ is continuous on $g[(a,b)]$ and differentiable on $g[[a,b]]$.
+Let $f: \mathbb R^m \to \mathbb R^n$. If $f \restriction_{g[\mathbb R]}$ is continuous on $g[(0,1)]$, and differentiable on $g[[0,1]]$, then
 $$
 \| f(\mathbf q) - f(\mathbf p) \|_{\mathbb R^n} \le \sup_{\mathbf x \in g[(a,b)]} \| \nabla_{\mathbf u} f(\mathbf x) \|_{\mathbb R^n}.
 $$
-**Proof.** Let $h = f \circ g$. As $f$ is continuous on $g[(a,b)]$ and $g$ is continuous everywhere, $h$ is continuous on $I^\circ$. As $f$ and $g$ are differentiable on $g[[a,b]]$ and $I$ respectively, thus $h$ is differentiable on $I$.📖 By mean value theorem 📖, there exists an $c \in I^\circ$ such that
+**Proof.** Let $h = f \circ g$. As $f$ is continuous on $g[(0,1)]$ and $g$ is continuous everywhere on $\mathbb R$, $h$ is continuous on $(0,1)$. As $f$ is differentiable on $g[[0,1]]$ and $g$ is differentiable on $[0,1]$, then $h$ is differentiable on $[0,1]$ 📖. By mean value theorem :book:, there exists a $c \in (0,1)$ such that
 $$
-h'(c) = \frac{h(b) - h(a)}{b - a}.
+h'(c) = \frac{h(1) - h(0)}{1 - 0}.
 $$
-Note that
+By the formal definition of derivatives, we have
 $$
 \begin{aligned}
 h'(c) &= \lim_{t \to 0} \frac{h(c + t) - h(c)}{t} \\
 &= \lim_{t \to 0} \frac{f(g(c + t)) - f(c)}{t} \\
-&= \lim_{t \to 0} \frac{f(\mathbf p + c\mathbf u + t\mathbf u) - f(\mathbf p + c \mathbf u)}{t} \\
-&= \left.\lim_{t \to 0} \frac{f(\mathbf v + t\mathbf u) - f(\mathbf v)}{t} \right|_{\mathbf v = \mathbf p + c\mathbf u} \\
-&= \nabla_{\mathbf u} f(\mathbf v).
+&= \left.\lim_{t \to 0} \frac{f(\mathbf p + c\mathbf u + t\mathbf u) - f(\mathbf p + c\mathbf u)}{t}\right|_{\mathbf u = \mathbf q - \mathbf p} \\
+&= \left. \lim_{t \to 0} \frac{f(\mathbf c + t\mathbf u) - f(\mathbf c)}{t} \right|_{\mathbf c = \mathbf p + c \mathbf u} \\
+&= \nabla_{\mathbf u}f(\mathbf c).
 \end{aligned}
 $$
-That mean, there exists a $\mathbf v \in \mathbb R^m$ such that
+Thus, there exists a $\mathbf c \in g[(0,1)]$ such that
 $$
-\begin{aligned}
-\nabla_{\mathbf u} f(\mathbf v) &= \frac{h(b) - h(a)}{b - a} = \frac{f(\mathbf p + b\mathbf u) - f(\mathbf p + a\mathbf u)}{b - a}.
-\end{aligned}
+\nabla_{\mathbf u} f(\mathbf c) = h(1) - h(0) =f(\mathbf q) - f(\mathbf p).
 $$
-By ...
+This implies that there exists some $\mathbf x \in g[(0,1)]$ such that
 $$
-f(\mathbf p + \mathbf u) - f(\mathbf p) = \nabla_{\mathbf u} f(\mathbf v)
+\| \nabla_{\mathbf u}f(\mathbf x) \| \ge \| \nabla_{\mathbf u}f(\mathbf c) \|.
 $$
+Thus,
+$$
+\| f(\mathbf q) - f(\mathbf p) \| \le \sup_{\mathbf x \in g[(0,1)]}\| \nabla_{\mathbf u} f(\mathbf x) \|.
+$$
+$\blacksquare$
 
-## <a id="sec_partialDerivatives">Partial Derivatives</a>
+## Partial Derivatives
 
-#### <a id="def_partialDerivatives" name="Partial Derivatives">Definition</a>
+#### Definition
 
-Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \mapsto f(\mathbf x)$, and let $\mathbf p \in \mathbb R^m$. The *$i$-th partial derivative* of $f$ at $\mathbf p$, denoted $\frac{\partial f}{\partial x_i}$, is defined to be the directional derivative of $f$ along $\mathbf{\hat e}_i$ at $\mathbf p$. Explicitly, that is,
+Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \mapsto f(\mathbf x)$, and let $\mathbf p \in \mathbb R^m$. The *$i$-th partial derivative* of $f$ at $\mathbf p$, denoted $\frac{\partial f}{\partial x_i}$, is defined to be the directional derivative of $f$ along $\mathbf{\hat e}_i$ at $\mathbf p$. Explicitly, that is,
 $$
 \frac{\partial f}{\partial x_i}(\mathbf p) := \nabla_{\mathbf{\hat e}_i} f(\mathbf p) = \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf{\hat e}_i) - f(\mathbf p)}{t},
 $$
 if the limit exists in $\mathbb R^n$.
 
-## <a id="sec_gradient">Gradient</a>
+## Gradient
 
-#### <a id="def_gradient" name="gradient">Definition</a>
+#### Definition
 
 Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$. The *gradient* of $f$ at $\mathbf p$ is defined as
 $$
 \nabla f(\mathbf p) := \left( \frac{\partial f}{\partial x_1}, \ldots , \frac{\partial f}{\partial x_m} \right),
 $$
-if all partial derivatives of $f$ exist.
+if all partial derivatives of $f$ exist.
 
 ---
 
@@ -225,7 +232,7 @@ f_1, \ldots, f_n
 $$
 Consider $\frac{\partial f}{\partial x_i}$ as a $1 \times m$ matrix,
 
-https://math.stackexchange.com/questions/1853808/product-of-a-vector-and-its-transpose-projections
+[link](https://math.stackexchange.com/questions/1853808/product-of-a-vector-and-its-transpose-projections)
 
 
 

@@ -1,42 +1,28 @@
-# Chapter Title
+# 微分
 
-## <a id="sec-1">Section Title</a>
+## 可微分映射
 
-#### <a id="def_a">Definition</a>
+#### 定义
 
-Integer venenatis dictum metus, eu dapibus lacus consectetur sed. Vestibulum imperdiet bibendum lorem, vel luctus diam ornare at. Ut aliquam risus ut tellus gravida malesuada. Nam gravida at felis nec efficitur <a class="ref" href="#def_b">REF</a>. Aliquam porttitor consectetur luctus. Integer rutrum lectus eget efficitur hendrerit. Integer non dui a nibh iaculis tempor. Nam eu odio blandit, pellentesque elit ut, varius ante. Nullam vitae volutpat odio, imperdiet semper sapien. Suspendisse et nisl nisi. Sed congue est in scelerisque luctus. Duis interdum eget ipsum vel tristique. In fringilla magna libero, sit amet auctor ipsum tincidunt a.
+> 可微分映射
+
+使 $f: \mathbb R^m \to \mathbb R^n$，并且使 $\mathbf p \in \mathbb R^m$。我们称 $f$ 在 $\mathbf p$ 点处可微分，当且仅当存在一个线性映射 $\phi: \mathbb R^m \to \mathbb R^n$，使得对于任何 $\mathbf t \in \mathbb R^m$，
+$$
+\lim_{\mathbf t \to \mathbf 0_{\mathbb R^n}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}.
+$$
 
 ---
 
-This page highlights the finest images on Wikipedia. The [featured picture criteria](https://en.wikipedia.org/wiki/Wikipedia:Featured_picture_criteria) explain that featured pictures must be [freely licensed](https://en.wikipedia.org/wiki/Free_content) or in the [public domain](https://en.wikipedia.org/wiki/Public_domain), must be of a high technical quality, and must add significantly to at least one article on Wikipedia. There are currently **7,106** featured pictures, and they are categorized below by the topic they represent. All featured pictures are also [available in a category](https://en.wikipedia.org/wiki/Category:Featured_pictures).
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu porta neque, id rutrum turpis. Duis vel ullamcorper ex. Cras sodales elit sem. Mauris laoreet lobortis turpis, sagittis faucibus ante efficitur et. Vivamus aliquam finibus posuere. Nulla eu tristique ligula. Vivamus mattis, elit nec euismod rhoncus, leo sem semper purus, a efficitur libero neque nec orci.
+即然这个定义中提到了极限，那么让我们来回忆一个极限的基本定理。对于任何 $f: \mathbb R^m \to \mathbb R^n$，$f$ 在某一点 $\mathbf p$ 处存在极限 $\mathbf q \in \mathbb R^n$，当且仅当存在一个映射 $\alpha: \mathbb R^m \to \mathbb R^n$，其满足当 $\mathbf t \to \mathbf p$ 时 $\alpha(\mathbf t) \to \mathbf 0_{\mathbb R^n}$，使得存在一个开子集 $U \subseteq \mathbb R^m$ 满足 $\mathbf p \in U$，使得对于任何 $\mathbf t \in U$，
+$$
+f(\mathbf t) = \lim_{\mathbf t \to \mathbf p} f(\mathbf t) + \alpha(\mathbf t).
+$$
+这是一个非常直接的结论，因此，在这本小册子中，有时候，当我提到可微分映射的定义的时候，我会直接引述这个结论。
 
 ---
 
-#### <a id="def_b" name="TestNameB">Definition</a>
+### 引理
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu porta neque, id rutrum turpis. Duis vel ullamcorper ex. Cras sodales elit sem. Mauris laoreet lobortis turpis, sagittis faucibus ante efficitur et. Vivamus aliquam finibus posuere. Nulla eu tristique ligula. Vivamus mattis, elit nec euismod rhoncus, leo sem semper purus, a efficitur libero neque nec orci.
+在上述定义中，线性函数 $\phi$ 是唯一的。
 
-<figure class="mathFigure">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Stereographic_projection_in_3D.svg/2560px-Stereographic_projection_in_3D.svg.png">
-</figure>
-
-> This is the figcaption $x$ and $f=g$.
-
-sssss
-
-> ssssss
-
-
-
-<figure class="mathFigure">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Stereographic_projection_in_3D.svg/2560px-Stereographic_projection_in_3D.svg.png">
-</figure>
-
-
-
-
-
-
-
+**证明.** 当 $f$ 在 $\mathbf p$ 点处可微分时，存在一个映射 $\alpha: \mathbb R^m \to \mathbb R^n$ 满足

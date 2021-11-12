@@ -18,33 +18,9 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline; }
 
-#write div, #write span, #write applet, #write object, #write iframe,
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write blockquote, #write pre,
-#write a, #write abbr, #write acronym, #write address, #write big, #write cite, #write code,
-#write del, #write dfn, #write em, #write img, #write ins, #write kbd, #write q, #write s, #write samp,
-#write small, #write strike, #write strong, #write sub, #write sup, #write tt, #write var,
-#write b, #write u, #write i, #write center,
-#write dl, #write dt, #write dd, #write ol, #write ul, #write li,
-#write fieldset, #write form, #write label, #write legend,
-#write table, #write caption, #write tbody, #write tfoot, #write thead, #write tr, #write th, #write td,
-#write article, #write aside, #write canvas, #write details, #write embed,
-#write figure, #write figcaption, #write footer, #write header, #write hgroup,
-#write menu, #write nav, #write output, #write ruby, #write section, #write summary,
-#write time, #write mark, #write audio, #write video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-#write article, #write aside, #write details, #write figcaption, #write figure,
-#write footer, #write header, #write hgroup, #write menu, #write nav, #write section {
   display: block; }
 
 body {
@@ -95,6 +71,7 @@ img {
   --textColor-main: rgba(0, 0, 0, 0.88);
   --textColor-secondary: rgba(0, 0, 0, 0.44);
   --color-bg: white;
+  --color-bg2: #fafafa;
   --color-bg-glass: rgba(250, 250, 250, 0.8);
   --color-border: rgba(0, 0, 0, 0.08);
   --color-border2: rgba(0, 0, 0, 0.04);
@@ -107,9 +84,10 @@ img {
 html {
   -webkit-font-smoothing: antialiased;
   color: var(--textColor-main);
-  font-family: var(--font-system); }
+  font-family: var(--font-system);
+  font-size: 16px; }
 
-article, #write {
+article {
   font-family: var(--font-article); }
 
 p a {
@@ -119,65 +97,87 @@ nav#topNav {
   position: fixed;
   height: 48px;
   width: 100%;
-  background-color: var(--color-bg-glass);
-  box-shadow: 0 1px 0 var(--color-border2);
+  background-color: var(--color-bg);
+  box-shadow: 0 1px 4px var(--color-border2);
   top: 0;
-  left: 0;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); }
+  left: 0; }
 
-.typora-export-content {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  margin-top: 80px; }
-  .typora-export-content #write h1, .typora-export-content #write h2, .typora-export-content #write h3, .typora-export-content #write h4, .typora-export-content #write h5, .typora-export-content #write h6 {
-    font-weight: bold; }
-  .typora-export-content #write h1, .typora-export-content #write h2, .typora-export-content #write h3, .typora-export-content #write h4, .typora-export-content #write h5, .typora-export-content #write h6 {
-    line-height: 1.5;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em; }
-    .typora-export-content #write h1 a, .typora-export-content #write h2 a, .typora-export-content #write h3 a, .typora-export-content #write h4 a, .typora-export-content #write h5 a, .typora-export-content #write h6 a {
-      padding-top: 5rem;
-      margin-top: -5rem; }
-  .typora-export-content #write h1 {
-    font-size: 2.5rem; }
-  .typora-export-content #write h2 {
-    font-size: 1.75rem;
-    margin-top: 2.5em; }
-  .typora-export-content #write h3 {
-    font-size: 1.5rem; }
-  .typora-export-content #write h4 {
-    font-size: 1.125rem; }
-  .typora-export-content #write h5 {
-    font-size: 1rem; }
-  .typora-export-content #write h6 {
-    font-size: 1rem;
-    color: var(--textColor-secondary); }
-  .typora-export-content #write p {
-    line-height: 1.5;
-    margin-bottom: 0.5em; }
-  .typora-export-content #write hr {
-    border: none;
-    height: 1px;
-    background-color: var(--color-border);
-    margin: 1rem 0; }
-  .typora-export-content #write figure {
-    margin: 1.5rem 0;
-    overflow: hidden; }
-    .typora-export-content #write figure img {
-      margin: 0; }
-    .typora-export-content #write figure figcaption {
-      margin-top: 0.5rem; }
-      .typora-export-content #write figure figcaption > * {
-        text-align: center;
-        font-size: 0.875em;
-        color: var(--textColor-secondary); }
-    .typora-export-content #write figure.mathFigure {
-      border: 1px solid var(--color-border); }
-    .typora-export-content #write figure + blockquote {
-      margin-top: calc(-1.5rem + 0.5rem);
-      margin-bottom: 1.5rem; }
-      .typora-export-content #write figure + blockquote p {
+.fakePDF {
+  background-color: #fafafa; }
+  .fakePDF article#mainArticle {
+    background-color: white;
+    max-width: 50rem;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2.5rem;
+    box-shadow: 1px 1px 4px var(--color-border2), 2px 2px 12px var(--color-border2); }
+    .fakePDF article#mainArticle h1, .fakePDF article#mainArticle h2, .fakePDF article#mainArticle h3, .fakePDF article#mainArticle h4, .fakePDF article#mainArticle h5, .fakePDF article#mainArticle h6 {
+      font-weight: bold; }
+    .fakePDF article#mainArticle h1, .fakePDF article#mainArticle h2, .fakePDF article#mainArticle h3, .fakePDF article#mainArticle h4, .fakePDF article#mainArticle h5, .fakePDF article#mainArticle h6 {
+      line-height: 1.5;
+      margin-bottom: 0.5em;
+      margin-top: 1em; }
+      .fakePDF article#mainArticle h1 a, .fakePDF article#mainArticle h2 a, .fakePDF article#mainArticle h3 a, .fakePDF article#mainArticle h4 a, .fakePDF article#mainArticle h5 a, .fakePDF article#mainArticle h6 a {
+        padding-top: 5rem;
+        margin-top: -5rem; }
+    .fakePDF article#mainArticle h1 {
+      font-size: 2.5rem; }
+    .fakePDF article#mainArticle h2 {
+      font-size: 1.75rem;
+      margin-top: 2.5em; }
+    .fakePDF article#mainArticle h3 {
+      font-size: 1.5rem; }
+    .fakePDF article#mainArticle h4 {
+      font-size: 1.125rem; }
+    .fakePDF article#mainArticle h5 {
+      font-size: 1rem; }
+    .fakePDF article#mainArticle h6 {
+      font-size: 1rem;
+      color: var(--textColor-secondary); }
+    .fakePDF article#mainArticle p {
+      line-height: 1.5;
+      margin: 0.5em 0; }
+    .fakePDF article#mainArticle .mathjax-block {
+      text-align: center;
+      max-width: 100%;
+      overflow: hidden;
+      overflow-x: auto;
+      margin: 1em; }
+    .fakePDF article#mainArticle hr {
+      border: none;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px dashed var(--color-border);
+      margin: 1rem 0; }
+    .fakePDF article#mainArticle h1 {
+      text-align: center;
+      font-style: italic; }
+    .fakePDF article#mainArticle h2 {
+      text-align: center;
+      border-bottom: 1px dashed var(--color-border);
+      padding-bottom: 1rem;
+      font-style: italic;
+      font-weight: normal; }
+    .fakePDF article#mainArticle h4 {
+      margin-top: 1em; }
+      .fakePDF article#mainArticle h4::before {
+        content: "s ";
+        width: 1rem;
+        position: absolute;
+        margin-left: 0;
+        opacity: 0;
+        transition: 0.3s; }
+      .fakePDF article#mainArticle h4:hover::before {
+        transform: translate(-1rem);
+        opacity: 1; }
+    .fakePDF article#mainArticle figure {
+      margin: 1rem 0; }
+      .fakePDF article#mainArticle figure.small {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto; }
+      .fakePDF article#mainArticle figure figcaption {
         font-size: 0.875rem;
-        color: var(--textColor-secondary); }
+        color: var(--textColor-secondary);
+        text-align: center; }
