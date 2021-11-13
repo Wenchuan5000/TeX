@@ -104,6 +104,10 @@ nav#topNav {
 
 .fakePDF {
   background-color: #fafafa; }
+  .fakePDF.zh article#mainArticle h1, .fakePDF.zh article#mainArticle h2, .fakePDF.zh article#mainArticle h3, .fakePDF.zh article#mainArticle h4, .fakePDF.zh article#mainArticle h5, .fakePDF.zh article#mainArticle h6, .fakePDF.zh article#mainArticle strong {
+    font-style: normal;
+    font-family: Kai;
+    font-weight: normal; }
   .fakePDF article#mainArticle {
     background-color: white;
     max-width: 50rem;

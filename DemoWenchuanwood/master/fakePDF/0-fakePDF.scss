@@ -1,6 +1,16 @@
 .fakePDF {
   background-color: #fafafa;
 
+  &.zh {
+    article#mainArticle {
+      h1, h2, h3, h4, h5, h6, strong {
+        font-style: normal;
+        font-family: Kai;
+        font-weight: normal;
+      }
+    }
+  }
+
   article#mainArticle {
     background-color: white;
     max-width: 50rem;

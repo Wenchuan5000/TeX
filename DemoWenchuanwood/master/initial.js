@@ -1,3 +1,17 @@
+// 如果文档语言为中文，则使用中文样式，通过加入 `.cn`
+function f(_input) {
+  var targetEl = document.querySelector("html");
+  var targetAtt = targetEl.getAttribute("lang");
+  var bool = targetAtt == _input;
+  if (bool) {
+    var el = document.querySelector("body");
+    el.classList.add("zh");
+  }
+
+}
+f("zh");
+
+
 // 在 Typora 编辑文档时，我们经常容易出现空白的段落，通过这个方法删除它们
 function deleteEmptyParagraph() {
   var search = document.querySelectorAll("p");
