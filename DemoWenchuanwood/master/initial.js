@@ -1,3 +1,23 @@
+function changeAttribute(_el, _attName, _att) {
+  document.querySelector(_el).setAttribute(_attName, _att);
+}
+
+// 初始设定
+function artInfo(_attName, _att, _outPutFunction, _removeAfterRun) {
+  var target = document.querySelector("#artInfo");
+  var targetAtt = target.getAttribute(_attName);
+  var outputFunction = _outPutFunction;
+
+  if (_removeAfterRun) {
+    target.remove();
+  }
+}
+artInfo("lang", "zh", [
+  changeAttribute("html", "lang", "zh"),
+], true)
+// 注意，只有最后一个才选择 true！
+
+
 // 如果文档语言为中文，则使用中文样式，通过加入 `.cn`
 function f(_input) {
   var targetEl = document.querySelector("html");
@@ -53,13 +73,15 @@ function theoremIndex(_input) {
     var bool = targets[i].innerHTML == _input;
     if (bool) {
       index += 1;
-      targets[i].innerHTML += " " + index + "\.";
+      targets[i].innerHTML += " " + index;
       targets[i].id = _input + "\-" + index;
     }
   }
 }
 theoremIndex("Definition");
+theoremIndex("定义");
 theoremIndex("Lemma");
+theoremIndex("引理");
 
 
 // 在编辑 Typora 文档时，在 figure 后面直接使用 blockquote，在下列方法的编译下，blockquote 会变成 figure 中的 figcaption

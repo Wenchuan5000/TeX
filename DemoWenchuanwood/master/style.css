@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -104,10 +105,22 @@ nav#topNav {
 
 .fakePDF {
   background-color: #fafafa; }
-  .fakePDF.zh article#mainArticle h1, .fakePDF.zh article#mainArticle h2, .fakePDF.zh article#mainArticle h3, .fakePDF.zh article#mainArticle h4, .fakePDF.zh article#mainArticle h5, .fakePDF.zh article#mainArticle h6, .fakePDF.zh article#mainArticle strong {
-    font-style: normal;
-    font-family: Kai;
-    font-weight: normal; }
+  .fakePDF.zh article#mainArticle {
+    font-family: "Songti"; }
+    .fakePDF.zh article#mainArticle h1, .fakePDF.zh article#mainArticle h2, .fakePDF.zh article#mainArticle h3, .fakePDF.zh article#mainArticle h4, .fakePDF.zh article#mainArticle h5, .fakePDF.zh article#mainArticle h6, .fakePDF.zh article#mainArticle strong {
+      font-style: normal;
+      font-family: "Kai";
+      font-weight: normal; }
+    .fakePDF.zh article#mainArticle h4::before {
+      content: "【"; }
+    .fakePDF.zh article#mainArticle h4::after {
+      content: "】"; }
+    .fakePDF.zh article#mainArticle u {
+      text-decoration: none;
+      font-family: Kai;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.24); }
+    .fakePDF.zh article#mainArticle mark {
+      background-color: rgba(255, 255, 0, 0.5); }
   .fakePDF article#mainArticle {
     background-color: white;
     max-width: 50rem;
@@ -165,16 +178,6 @@ nav#topNav {
       font-weight: normal; }
     .fakePDF article#mainArticle h4 {
       margin-top: 1em; }
-      .fakePDF article#mainArticle h4::before {
-        content: "s ";
-        width: 1rem;
-        position: absolute;
-        margin-left: 0;
-        opacity: 0;
-        transition: 0.3s; }
-      .fakePDF article#mainArticle h4:hover::before {
-        transform: translate(-1rem);
-        opacity: 1; }
     .fakePDF article#mainArticle figure {
       margin: 1rem 0; }
       .fakePDF article#mainArticle figure.small {
