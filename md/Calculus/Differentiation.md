@@ -2,11 +2,7 @@
 
 ## Differentiable Mappings
 
-In calculus, everything has its geometric meaning, especially when a mapping is said to be differentiable at a point in its domain. Its rigorous definition is no more than a precise description of the intuition of smoothness.
-
----
-
-Consider we have a mapping $f_1: \mathbb R^m \to \mathbb R$. we assume that there is a point $\mathbf p \in \mathbb R^m$, such that $f_1$ is smooth at $\mathbf p$. As $f_1$ is smooth at $\mathbf p$, intuitively, it means $f_1$ tends to be the tangent plain of $f_1$ at $\mathbf p$ if we magnify the details round $f_1(\mathbf p)$. That is, there exists a neighbourhood $N$ of $\mathbf p$, such that $f_1$ is smooth on $N$.
+Consider we have a mapping $f_1: \mathbb R^m \to \mathbb R$. we assume that there is a point $\mathbf p \in \mathbb R^m$, such that $f_1$ is smooth at $\mathbf p$. As $f_1$ is smooth at $\mathbf p$, intuitively, it means $f_1$ tends to be the tangent plane of $f_1$ at $\mathbf p$ if we magnify the details round $f_1(\mathbf p)$. That is, there exists a neighbourhood $N$ of $\mathbf p$, such that $f_1$ is smooth on $N$.
 
 ---
 
