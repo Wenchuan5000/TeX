@@ -6,12 +6,10 @@ Consider we have a mapping $f_1: \mathbb R^m \to \mathbb R$. we assume that ther
 
 ---
 
-As $\mathbb R^2$ is a metric space, every open balls are open, so there exists a $\delta \in \mathbb R_{> 0}$, such that $f_1$ is smooth on $B(\mathbf p, \delta)$, where $B(\mathbf p , \delta)$ denotes the open ball with center as $\mathbf p$ and $\delta$ as radius. Thus, if $P_1: \mathbb R^m \to \mathbb R$ describes the tengent plain of $f_1$ at $\mathbf p$, then
+As $\mathbb R^2$ is a metric space, every open balls are open, so there exists a $\delta \in \mathbb R_{> 0}$, such that $f_1$ is smooth on $B(\mathbf p, \delta)$. Thus, if $P_1: \mathbb R^m \to \mathbb R$ describes the tangent plane of $f_1$ at $\mathbf p$, then
 $$
 \lim_{\delta \to 0} f_1[B(\mathbf p , \delta)] = \lim_{\delta \to 0} P_1[B(\mathbf p, \delta)].
 $$
----
-
 In the term of elements, that is, for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in B(\mathbf p, \delta)$,
 $$
 \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f_1(\mathbf p + \mathbf t) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} P_1(\mathbf p + \mathbf t).
@@ -23,14 +21,10 @@ $$
 P_1(\mathbf p + \mathbf t) = \phi_1 (\mathbf p + \mathbf t - \mathbf p) + f_1(\mathbf p).
 $$
 
----
-
 Thus, we have
 $$
 \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f_1(\mathbf p + \mathbf t) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \phi_1 (\mathbf t) + f_1(\mathbf p).
 $$
-
----
 
 Move the term $f_1(\mathbf p)$ to the left hand side, we observe this limit,
 $$
