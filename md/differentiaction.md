@@ -1,4 +1,7 @@
-
+<hr
+	id = "artInfo"
+	lang = "en"
+>
 
 # Differentiation
 

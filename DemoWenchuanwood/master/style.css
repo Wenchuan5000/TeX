@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -105,22 +104,6 @@ nav#topNav {
 
 .fakePDF {
   background-color: #fafafa; }
-  .fakePDF.zh article#mainArticle {
-    font-family: "Songti"; }
-    .fakePDF.zh article#mainArticle h1, .fakePDF.zh article#mainArticle h2, .fakePDF.zh article#mainArticle h3, .fakePDF.zh article#mainArticle h4, .fakePDF.zh article#mainArticle h5, .fakePDF.zh article#mainArticle h6, .fakePDF.zh article#mainArticle strong {
-      font-style: normal;
-      font-family: "Kai";
-      font-weight: normal; }
-    .fakePDF.zh article#mainArticle h4::before {
-      content: "【"; }
-    .fakePDF.zh article#mainArticle h4::after {
-      content: "】"; }
-    .fakePDF.zh article#mainArticle u {
-      text-decoration: none;
-      font-family: Kai;
-      border-bottom: 1px dashed rgba(0, 0, 0, 0.24); }
-    .fakePDF.zh article#mainArticle mark {
-      background-color: rgba(255, 255, 0, 0.5); }
   .fakePDF article#mainArticle {
     background-color: white;
     max-width: 50rem;
@@ -128,11 +111,11 @@ nav#topNav {
     margin-left: auto;
     margin-right: auto;
     padding: 2.5rem;
-    box-shadow: 1px 1px 4px var(--color-border2), 2px 2px 12px var(--color-border2); }
+    box-shadow: 1px 1px 4px var(--color-border2), 2px 2px 12px var(--color-border2);
+    line-height: 1.75; }
     .fakePDF article#mainArticle h1, .fakePDF article#mainArticle h2, .fakePDF article#mainArticle h3, .fakePDF article#mainArticle h4, .fakePDF article#mainArticle h5, .fakePDF article#mainArticle h6 {
       font-weight: bold; }
     .fakePDF article#mainArticle h1, .fakePDF article#mainArticle h2, .fakePDF article#mainArticle h3, .fakePDF article#mainArticle h4, .fakePDF article#mainArticle h5, .fakePDF article#mainArticle h6 {
-      line-height: 1.5;
       margin-bottom: 0.5em;
       margin-top: 1em; }
       .fakePDF article#mainArticle h1 a, .fakePDF article#mainArticle h2 a, .fakePDF article#mainArticle h3 a, .fakePDF article#mainArticle h4 a, .fakePDF article#mainArticle h5 a, .fakePDF article#mainArticle h6 a {
@@ -146,27 +129,28 @@ nav#topNav {
     .fakePDF article#mainArticle h3 {
       font-size: 1.5rem; }
     .fakePDF article#mainArticle h4 {
-      font-size: 1.125rem; }
+      font-size: 1.25rem; }
     .fakePDF article#mainArticle h5 {
-      font-size: 1rem; }
+      font-size: 1.125rem; }
     .fakePDF article#mainArticle h6 {
-      font-size: 1rem;
-      color: var(--textColor-secondary); }
-    .fakePDF article#mainArticle p {
-      line-height: 1.5;
-      margin: 0.5em 0; }
+      font-size: 1rem; }
     .fakePDF article#mainArticle .mathjax-block {
       text-align: center;
       max-width: 100%;
       overflow: hidden;
       overflow-x: auto;
       margin: 1em; }
+    .fakePDF article#mainArticle p.proofBegin {
+      text-indent: 0; }
+    .fakePDF article#mainArticle strong {
+      font-weight: bold;
+      margin-right: 0.25em; }
     .fakePDF article#mainArticle hr {
       border: none;
       margin: 0;
-      padding: 0;
-      border-bottom: 1px dashed var(--color-border);
-      margin: 1rem 0; }
+      padding: 0; }
+      .fakePDF article#mainArticle hr + p {
+        text-indent: 1.5em; }
     .fakePDF article#mainArticle h1 {
       text-align: center;
       font-style: italic; }
@@ -177,7 +161,8 @@ nav#topNav {
       font-style: italic;
       font-weight: normal; }
     .fakePDF article#mainArticle h4 {
-      margin-top: 1em; }
+      margin-top: 2em;
+      margin-bottom: 0; }
     .fakePDF article#mainArticle figure {
       margin: 1rem 0; }
       .fakePDF article#mainArticle figure.small {

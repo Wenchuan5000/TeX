@@ -28,12 +28,13 @@ p {
 }
 
 @mixin fontSetArticle {
+  line-height: 1.75;
+
   h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
   }
 
   h1, h2, h3, h4, h5, h6, {
-    line-height: 1.5;
     margin-bottom: 0.5em;
     margin-top: 1em;
 
@@ -57,21 +58,19 @@ p {
   }
 
   h4 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 
   h5 {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   h6 {
     font-size: 1rem;
-    color: var(--textColor-secondary)
   }
 
   p {
-    line-height: 1.5;
-    margin: 0.5em 0;
+    // margin: 0.5em 0;
   }
 
   .mathjax-block {

@@ -1,22 +1,22 @@
-function changeAttribute(_el, _attName, _att) {
-  document.querySelector(_el).setAttribute(_attName, _att);
-}
-
-// 初始设定
-function artInfo(_attName, _att, _outPutFunction, _removeAfterRun) {
-  var target = document.querySelector("#artInfo");
-  var targetAtt = target.getAttribute(_attName);
-  var outputFunction = _outPutFunction;
-
-  if (_removeAfterRun) {
-    target.remove();
+function removeEl(_input) {
+  var target = document.querySelectorAll(_input);
+  for (var i = 0; i < target.length; i++) {
+    target[i].remove()
   }
 }
-artInfo("lang", "zh", [
-  changeAttribute("html", "lang", "zh"),
-], true)
-// 注意，只有最后一个才选择 true！
 
+
+// 语言设定
+function lang() {
+  var target = document.querySelector("#artInfo");
+
+  if (target != null) {
+    var targetAtt = target.getAttribute("lang");
+    document.querySelector("html").setAttribute("lang", targetAtt)
+  }
+}
+lang()
+removeEl("#artInfo");
 
 // 如果文档语言为中文，则使用中文样式，通过加入 `.cn`
 function f(_input) {
@@ -72,16 +72,24 @@ function theoremIndex(_input) {
   for (var i = 0; i < targets.length; i++) {
     var bool = targets[i].innerHTML == _input;
     if (bool) {
+      var targetNext = targets[i].nextElementSibling.querySelector("blockquote p");
+
       index += 1;
       targets[i].innerHTML += " " + index;
       targets[i].id = _input + "\-" + index;
+
+      if (targetNext != null) {
+        targets[i].innerHTML += " \(" + targetNext.innerHTML +")";
+
+        targetNext.remove();
+      }
+
+      targets[i].innerHTML += ".";
     }
   }
 }
 theoremIndex("Definition");
-theoremIndex("定义");
 theoremIndex("Lemma");
-theoremIndex("引理");
 
 
 // 在编辑 Typora 文档时，在 figure 后面直接使用 blockquote，在下列方法的编译下，blockquote 会变成 figure 中的 figcaption
@@ -100,10 +108,47 @@ function enchantFig() {
     }
   }
 }
-
 enchantFig();
 
+
+function findProof() {
+  var targets = document.querySelectorAll("strong");
+
+  for (var i = 0; i < targets.length; i++) {
+    if (targets[i].innerHTML == "Proof.") {
+      targets[i].classList.add("proofBegin");
+      targets[i].parentNode.classList.add("proofBegin");
+    }
+  }
+}
+findProof();
 
 
 // 所有操作结束后删除 `.remainAtInitial`
 document.querySelector("#initializer").remove();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
