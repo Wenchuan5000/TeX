@@ -6,7 +6,7 @@ Consider we have a mapping $f_1: \mathbb R^m \to \mathbb R$. we assume that ther
 
 ---
 
-As $\mathbb R^2$ is a metric space, every open balls are open, so there exists a $\delta \in \mathbb R_{> 0}$, such that $f_1$ is smooth on $B(\mathbf p, \delta)$. Thus, if $P_1: \mathbb R^m \to \mathbb R$ describes the tangent plane of $f_1$ at $\mathbf p$, then
+As $\mathbb R^n$ is considered as a metric space, every open balls are open, so there exists a $\delta \in \mathbb R_{> 0}$, such that $f_1$ is smooth on $B(\mathbf p, \delta)$. Thus, if $P_1: \mathbb R^m \to \mathbb R$ describes the tangent plane of $f_1$ at $\mathbf p$, then
 $$
 \lim_{\delta \to 0} f_1[B(\mathbf p , \delta)] = \lim_{\delta \to 0} P_1[B(\mathbf p, \delta)].
 $$
