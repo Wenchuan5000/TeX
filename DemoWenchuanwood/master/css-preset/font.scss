@@ -1,7 +1,7 @@
 :root {
   --font-system: -apple-system, BlinkMacSystemFont, PingFang SC, "Apple Color Emoji", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
 
-  --font-article: "Times New Roman", Times, serif;
+  --font-article: "PT Serif", 'Times New Roman', Times, serif;
 }
 
 $res-mobile: 800px;
@@ -58,11 +58,11 @@ p {
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   h5 {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   h6 {

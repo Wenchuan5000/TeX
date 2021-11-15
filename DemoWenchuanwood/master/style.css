@@ -79,7 +79,7 @@ img {
 
 :root {
   --font-system: -apple-system, BlinkMacSystemFont, PingFang SC, "Apple Color Emoji", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
-  --font-article: "Times New Roman", Times, serif; }
+  --font-article: "PT Serif", 'Times New Roman', Times, serif; }
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -129,9 +129,9 @@ nav#topNav {
     .fakePDF article#mainArticle h3 {
       font-size: 1.5rem; }
     .fakePDF article#mainArticle h4 {
-      font-size: 1.25rem; }
-    .fakePDF article#mainArticle h5 {
       font-size: 1.125rem; }
+    .fakePDF article#mainArticle h5 {
+      font-size: 1rem; }
     .fakePDF article#mainArticle h6 {
       font-size: 1rem; }
     .fakePDF article#mainArticle .mathjax-block {
@@ -141,7 +141,8 @@ nav#topNav {
       overflow-x: auto;
       margin: 1em; }
     .fakePDF article#mainArticle p.proofBegin {
-      text-indent: 0; }
+      text-indent: 0;
+      margin-top: 0.5em; }
     .fakePDF article#mainArticle strong {
       font-weight: bold;
       margin-right: 0.25em; }
@@ -151,6 +152,8 @@ nav#topNav {
       padding: 0; }
       .fakePDF article#mainArticle hr + p {
         text-indent: 1.5em; }
+      .fakePDF article#mainArticle hr + hr {
+        margin-top: 0.5rem; }
     .fakePDF article#mainArticle h1 {
       text-align: center;
       font-style: italic; }
@@ -161,8 +164,7 @@ nav#topNav {
       font-style: italic;
       font-weight: normal; }
     .fakePDF article#mainArticle h4 {
-      margin-top: 2em;
-      margin-bottom: 0; }
+      margin-top: 2em; }
     .fakePDF article#mainArticle figure {
       margin: 1rem 0; }
       .fakePDF article#mainArticle figure.small {
