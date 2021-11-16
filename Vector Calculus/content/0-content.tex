@@ -9,93 +9,132 @@
 %------------------------------------------------
 
 
-\begin{definition}
-	\label{def: differentiable}
-	Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf p \in \mathbb R^m$.
-	
-%	Then, $f$ is said to be \textit{differentiable} at $\mathbf p$,  iff there exists a linear map $\phi: \mathbb R^m \to \mathbb R^n$ and an open subset $U \subseteq \mathbb R^m$, such that for any $\mathbf h \in \mathbb R^m \setminus \{\mathbf 0_{\mathbb R^m}\}$ with $\mathbf p + \mathbf h \in U$,
-%	$$
-%	f(\mathbf p + \mathbf h) = f(\mathbf p) + \phi(\mathbf h) + o(\phi(\mathbf h)).
-%	$$
+\begin{observation}
+	Let $f : \mathbb R^m \to \mathbb R^n$, and denote $f_i$ for the $i$-th factor of $f$, i.e., $f = \langle f_i \rangle_i^n$. Assume $f_i$ is smooth at a point $\mathbf p \in \mathbb R^m$.
 
-	$f$ is \textit{differentiable} at $\mathbf p$ iff there exists a unique linear mapping $\phi: \mathbb R^m \to \mathbb R^n$, such that for any $\mathbf t \in \mathbb R^m$,
+	Intuitively, $f_i$ is smooth at $\mathbf p$ iff there exists a neighbourhood $N$ of $\mathbf p$ and a plane described by $P_i: \mathbb R^m \to \mathbb R$, such that
 	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^n}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}
+		f_i[N] \approx P_i[N].
+	$$
+	As $\mathbb R^m$ is considered as a metric space, any open ball $B(\mathbf p, \delta) \subseteq N$ is also required neighbourhood of $\mathbf p$. In this sense, the approximation can be considered as,
+	$$
+	\lim_{\delta \to 0} f_i[B(\mathbf p, \delta)] = \lim_{\delta \to 0} P_i[B(\mathbf p, \delta)].
+	$$
+	In the term of elements, that is, there exists $\delta \in \mathbb R_{> 0}$, such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in B(\mathbf p, \delta)$,	
+	$$
+	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f_i(\mathbf p + \mathbf t) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} P_i(\mathbf p + \mathbf t).
+	$$
+	
+	As $P_i$ describes a plane, it can be considered as a translated linear mapping, and as this plane must be a tangent plane of $f_i$ at $\mathbf p$, there exists a linear mapping $\phi_i: \mathbb R^m \to \mathbb R$ such that
+	$$
+	P_i(\mathbf p + \mathbf t) = \phi_i(\mathbf p + \mathbf t - \mathbf p) + f_i(\mathbf p).
+	$$
+	Thus, we have
+	$$
+	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f_i(\mathbf p + \mathbf t) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\phi_i(\mathbf t) + f_i(\mathbf p).
+	$$
+	Rearrange the equation, we have
+	$$
+	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f_i(\mathbf p + \mathbf t) - f_i(\mathbf p)}{\| \mathbf t \|_{\mathbb R^m}} = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{\phi_i(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}}.
+	$$
+	As $\phi_i$ is linear, the right hand side of the equation is a constant in $\mathbb R$. Thus, by rearrange the equation again, we have
+	$$
+	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f_i(\mathbf p + \mathbf t) - f_i(\mathbf p) - \phi_i(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = 0
+	$$
+	
+	The last equation describes the smoothness of $f_i$ at $\mathbf p$, in calculus, $f_i$ is said to be differentiable at $\mathbf p$.
+	
+	Now, assume for any $i \in \{1, \ldots, n\}$, $f_i$ is differentiable at $\mathbf p$. That is, for any $f_i$, there exists a $\phi_i:\mathbb R^m \to \mathbb R$, such that
+	$$
+	\left\langle\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f_i(\mathbf p + \mathbf t) - f_i(\mathbf p) - \phi_i(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} \right\rangle_{i = 1}^n = \langle 0 \rangle_{i = 1}^n.
+	$$
+	By vector sum, we have
+	$$
+	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n},
+	$$
+	where $\phi = \langle \phi_i \rangle_{i = 1}^n$.
+	
+	In this sense, Definition \ref{def: differentiable mappings} is introduced as following.
+\end{observation}
+
+
+\begin{definition}
+	\label{def: differentiable mappings}
+	Let $f:\mathbb R^m \to \mathbb R^n$.
+	
+	$f$ is said to be \textit{differentiable} at a point $\mathbf p \in \mathbb R^m$ iff for any $\mathbf u \in \mathbb R^m \setminus \{0_{\mathbb R^m}\}$, there exists a linear mapping $\phi: \mathbb R^m \to \mathbb R^n$ such that
+	$$
+	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}.
 	$$
 \end{definition}
 
 
 \begin{lemma}
-	\label{lm: differentiable: uniqueness of phi}
-	
-	The linear mapping $\phi$ in Definition \ref{def: differentiable} is unique.
+	\label{lm: differentiable mappings: uniqueness of phi}
+	In Definition \ref{def: differentiable mappings}, $\phi$ is unique.
 	
 	\begin{proof}
-		As $f$ is differentiable at $\mathbf p$, there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\alpha(\mathbf t) \to \mathbf 0_{\mathbb R^n}$ as $\mathbf t \to \mathbf 0_{\mathbb R^m}$, such that there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$, such that for any $\mathbf t \in \mathbb R^n$ with $\mathbf p + \mathbf t \in U$,
-			$$
-			\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t).
-			$$
-			
-		Assume Definition \ref{def: differentiable} holds for another linear mapping $\lambda$ also, then, similarly, there exists a $\beta: \mathbb R^m \to \mathbb R^n$ with $\beta(\mathbf t) \to \mathbf 0_{\mathbb R^n}$ as $\mathbf t \to \mathbf 0_{\mathbb R^m}$, such that there exists an open subset $U' \subseteq \mathbb R^m$ with $\mathbf p \in U'$, such that for any $\mathbf t \in \mathbb R^n$ with $\mathbf p + \mathbf t \in U'$,
+		As Definition holds for $\phi$, there exists an $\alpha: \mathbb R^{m} \to \mathbb R^n$ with
 		$$
-		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \lambda(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \beta(\mathbf t).
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \alpha(\mathbf t) = \alpha(\mathbf 0_{\mathbb R^m}) = \mathbf 0_{\mathbb R^n},
+		$$
+		and a neighbourhood $N$ of $\mathbf p$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in N$,
+		$$
+		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = \alpha(\mathbf t).
+		$$
+	
+		Suppose Definition \ref{def: differentiable mappings} also holds for another $\lambda: \mathbb R^m \to \mathbb R^n$, then
+		there exists an $\beta: \mathbb R^m \to \mathbb R^n$ with
+		$$
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \beta(\mathbf t) = \beta(\mathbf 0_{\mathbb R^m}) = \mathbf 0_{\mathbb R^n},
+		$$
+		and a neighbourhood $N'$ of $\mathbf p$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in N'$,
+		$$
+		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \lambda(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = \beta(\mathbf t).
 		$$
 		
-		Let $\gamma = \phi - \lambda$. As $\phi$ and $-\lambda$ are both linear, then
+		Let $\gamma = \phi - \lambda$. As $\phi$ and $-\lambda$ are both linear, $\gamma$ is also linear. Then, we have
 		$$
 		\begin{aligned}
-			\frac{\gamma(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t) - \beta(\mathbf t) &\iff \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \gamma(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (\alpha(\mathbf t) - \beta(\mathbf t)) \\
-			&\iff \gamma(\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}.
-		\end{aligned}
+		& \ \frac{\gamma(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t) - \beta(\mathbf t) \\
+		\iff & \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \gamma(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (\alpha(\mathbf t) - \beta(\mathbf t)) \\
+		\iff& \ \gamma(\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}.
+		\end{aligned}		
 		$$
 		
-		As $\mathbf t$ is arbitrarily picked from $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$, the set
-		$$
-		\left\{ \mathbf{\hat t} = \frac{\mathbf t}{\| \mathbf t \|} : \mathbf t \in U \cap U' - \mathbf p \right\}
-		$$
-		gives all possible directions in $\mathbb R^m$. And as $\gamma(s\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$, for all $s \in \mathbb R$, $\gamma(\mathbf t) = \mathbf 0_{\mathbb R^n}$ constantly. Thus $\phi = \lambda$.
+		As $\mathbf t$ is arbitrarily picked from $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$ as $U$ and $U'$ are open, the set $\left\{ \mathbf{\hat t} : \mathbf t \in U \cap U' - \mathbf p \right\}$ gives all possible directions in $\mathbb R^m$. And, as $\gamma(s \mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$ for any $\mathbf t \in \mathbb R^m$ and any $s \in \mathbb R$, $\gamma[\mathbb R^m] = \{\mathbf 0_{\mathbb R^m}\}$. Thus, $\phi = \lambda$.
 	\end{proof}
 \end{lemma}
 
 
 \begin{lemma}
-	With the condition in Definition \ref{def: differentiable}, if $f$ is differentiable at $\mathbf p$, then $f$ is continuous at $\mathbf p$.
+	\label{lm: differentiable mappings: implies continuity}
+	With the condition in Definition \ref{def: differentiable mappings}, if $f$ is differentiable at $\mathbf p$, then $f$ is continuous at $\mathbf p$.
 	
 	\begin{proof}
-		As $f$ is differentiable at $\mathbf p$, by Definition \ref{def: differentiable},
+		As $f$ is differentiable at $\mathbf p$, there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with
 		$$
-		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^n}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \alpha(\mathbf t) = \alpha(\mathbf 0_{\mathbb R^m}) = \mathbf 0_{\mathbb R^m},
 		$$
-		for a unique $\phi: \mathbb R^m \to \mathbb R^n$ (Lemma \ref{lm: differentiable: uniqueness of phi}). Then there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\displaystyle \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\alpha(\mathbf t) = \mathbf 0_{\mathbb R^n}$ such that there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in U$,
+		such that
 		$$
-		f(\mathbf p + \mathbf t) - \phi(\mathbf t) = \alpha(\mathbf t)\| \mathbf t \|_{\mathbb R^m} + f(\mathbf p).
+		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t).
 		$$
-		
-		Then, we have
+		By rearranging the equation, we observe
 		$$
 		\begin{aligned}
-			& \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (f(\mathbf p + \mathbf t) - \phi(\mathbf t)) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}( \alpha(\mathbf t)\| \mathbf t \|_{\mathbb R^m} + f(\mathbf p)) \\
-			\iff & \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f(\mathbf p + \mathbf t) = f(\mathbf p).
+		& \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}[f(\mathbf p + \mathbf t) - \phi(\mathbf t)] = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} [\| \mathbf t \|_{\mathbb R^m}\alpha(\mathbf t) + f(\mathbf p)] \\
+		\iff & \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f(\mathbf p + \mathbf t) = f(\mathbf p).
 		\end{aligned}
 		$$
 		
-		This, implies $f$ is continuous at $\mathbf p$.
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	With the condition in Definition \ref{def: differentiable}, $f$ is differentiable at $\mathbf p$, iff for any $g: \mathbb R \to \mathbb R^m$ with $g$ differentiable at $0$ and $g(0) = \mathbf p$, $f \circ g$ is differentiable at $0$.
-	
-	\begin{proof}
-
+		Thus, $f$ is continuous at $\mathbf p$.
 	\end{proof}
 \end{lemma}
 
 
 %------------------------------------------------
 %================================================
-
 
 
 \section{Directional Derivatives}
@@ -103,92 +142,15 @@
 %------------------------------------------------
 
 
-\begin{definition}
-	\label{def: directional derivatives}
-	Let $f: \mathbb R^m \to \mathbb R^n$, let $\mathbf u \in \mathbb R^m \setminus \{\mathbf 0_{\mathbb R^m}\}$, and let $\mathbf p \in \mathbb R^m$.
-	
-	The \textit{directional derivative} of $f$ along $\mathbf u$ at $\mathbf p$ is defined as
+\begin{observation}
+	Let $f: \mathbb R^m \to \mathbb R^n$, and let $g:\mathbb R \to \mathbb R^m$ be defined as
 	$$
-	\nabla_{\mathbf u} f(\mathbf p) := \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{t},
+	g(t) := \mathbf p + t \mathbf u,
 	$$
-	if the limit exists in $\mathbb R^n$.
-\end{definition}
-
-
-\begin{lemma}
-	\label{lm: direction derivative exists implies relative continuous}
-	With the conditions in Definition \ref{def: directional derivatives}, if $\nabla_{\mathbf u}f(\mathbf p)$ exists at $\mathbf p$, then there exists open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on $U \cap \{\mathbf p + t \mathbf u : t\in \mathbb R\}$ .
+	where $\mathbf p , \mathbf u \in \mathbb R^m$ and $\mathbf u \ne \mathbf 0_{\mathbb R^m}$.
 	
-	\begin{proof}	
-		Let $U$ be an open subset of $\mathbb R^m$.
-	
-		Let $g: \mathbb R \to \mathbb R^m$ be defined as
-		$$
-		g(t) = \mathbf p + t \mathbf u.
-		$$
-	
-		Then $f$ is relative continuous on $U \cap \{\mathbf p + t\mathbf u\}$ iff $f\restriction_{g[\mathbb R]}$ is continuous on $U \cap g[\mathbb R]$.
-		
-		Let $h = f \circ g$, then
-		$$
-		\nabla_{\mathbf u} f(\mathbf p) = \lim_{t \to 0} \frac{h(t) - h(0)}{t} = \mathbf v \in \mathbb R^n.
-		$$
-		
-		Then, there exists an $\alpha: \mathbb R \to \mathbb R^n$ with $\displaystyle \lim_{t \to 0}\alpha(t) = \mathbf 0_{\mathbb R^n}$, such that
-		$$
-		h(t) = t\mathbf v +  t\alpha(t) + h(0).
-		$$
-		
-		Then we have
-		$$
-		\begin{aligned}
-			& \ \lim_{t \to 0}h(t) = \lim_{t \to 0} \big( t \mathbf v + t\alpha(t) + h(0) \big) \\
-			\iff & \ \lim_{t \to 0}h(t) = h(0).
-		\end{aligned}
-		$$
-		Thus, $h$ is continuous at $0$.
-		
-		As composition of mappings is associative, we have
-		$$
-		\begin{aligned}
-			h = f\circ g &\iff h \circ g^{-1} = f \circ g \circ g^{-1} \\
-			&\iff h \circ g^{-1} = f \circ (g \circ g^{-1})
-		\end{aligned}
-		$$
-		
-		As $g$ is bijective, $g \circ g^{-1}$ is an identity map on $g[\mathbb R]$. Thus, we have
-		$$
-		h \circ g^{-1} = f \restriction_{g[\mathbb R]}.
-		$$
-		
-		As $h$ and $g^{-1}$ are continuous, so is $f\restriction_{g[\mathbb R]}$. Thus $f$ is relative continuous on $U \cap \{\mathbf p + t \mathbf u: t \in \mathbb R\}$.
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	With the conditions in Definition \ref{def: directional derivatives}, let $s \in \mathbb R \setminus \{0\}$, then
-	$$
-	\nabla_{s\mathbf u}f(\mathbf p) = s \nabla_{\mathbf u} f(\mathbf p)
-	$$
-	if $\nabla_{\mathbf u}f(\mathbf p)$ exists in $\mathbb R^n$.
-	
-	\begin{proof}	
-		By Definition \ref{def: directional derivatives},
-		$$
-		\nabla_{s\mathbf u} f(\mathbf p) = s\lim_{ts \to 0} \frac{f(\mathbf p + ts\mathbf u) - f(\mathbf p)}{ts} = s \nabla f(\mathbf p).
-		$$
-	\end{proof}
-\end{lemma}
-
-
-%------------------------------------------------
-%================================================
-
-
-\section{s}
-%================================================
-%------------------------------------------------
+	Let $h = f \circ g$.
+\end{observation}
 
 
 %------------------------------------------------
