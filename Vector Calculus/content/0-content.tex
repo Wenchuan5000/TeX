@@ -58,7 +58,9 @@
 \end{observation}
 
 
-\begin{definition}
+\begin{definition}[Differentiable Mappings]
+	\
+	
 	\label{def: differentiable mappings}
 	Let $f:\mathbb R^m \to \mathbb R^n$.
 	
@@ -69,8 +71,8 @@
 \end{definition}
 
 
-\begin{lemma}
-	\label{lm: differentiable mappings: uniqueness of phi}
+\begin{theorem}
+	\label{thm: differentiable mappings: uniqueness of phi}
 	In Definition \ref{def: differentiable mappings}, $\phi$ is unique.
 	
 	\begin{proof}
@@ -104,11 +106,11 @@
 		
 		As $\mathbf t$ is arbitrarily picked from $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$ as $U$ and $U'$ are open, the set $\left\{ \mathbf{\hat t} : \mathbf t \in U \cap U' - \mathbf p \right\}$ gives all possible directions in $\mathbb R^m$. And, as $\gamma(s \mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$ for any $\mathbf t \in \mathbb R^m$ and any $s \in \mathbb R$, $\gamma[\mathbb R^m] = \{\mathbf 0_{\mathbb R^m}\}$. Thus, $\phi = \lambda$.
 	\end{proof}
-\end{lemma}
+\end{theorem}
 
 
-\begin{lemma}
-	\label{lm: differentiable mappings: implies continuity}
+\begin{theorem}
+	\label{thm: differentiable mappings: implies continuity}
 	With the condition in Definition \ref{def: differentiable mappings}, if $f$ is differentiable at $\mathbf p$, then $f$ is continuous at $\mathbf p$.
 	
 	\begin{proof}
@@ -130,7 +132,48 @@
 		
 		Thus, $f$ is continuous at $\mathbf p$.
 	\end{proof}
-\end{lemma}
+\end{theorem}
+
+
+\begin{theorem}
+	\label{thm: differentiable mappings: composed}
+	With the condition in Definition \ref{def: differentiable mappings}, let $g: \mathbb R^n \to \mathbb R^k$.
+	
+	If $f$ is differentiable at $\mathbf p$ and $g$ is differentiable at $f(\mathbf p)$, then $g\circ f$ is differentiable at $\mathbf p$.
+	
+	\begin{proof}
+		As $f$ is differentiable at $\mathbf p$, there exists a linear mapping $\phi: \mathbb R^m \to \mathbb R^n$ and a neighbourhood $N$ of $\mathbf p$ such that for any $\mathbf t\in \mathbb R^m$ with $\mathbf p + \mathbf t \in \mathbb R^m$,
+		$$
+		f(\mathbf p) + \phi(\mathbf t) = f(\mathbf p + \mathbf t) - \|\mathbf t\|_{\mathbb R^m} \alpha(\mathbf t).
+		$$
+		
+		As $g$ is differentiable at $f(\mathbf p)$, there exists a linear mapping $\lambda: \mathbb R^m \to \mathbb R^n$ such that
+		$$
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p) + \| \mathbf t \|_{\mathbb R^m}\phi(\mathbf{\hat t})) - f(\mathbf p) - \lambda(\| \mathbf t \|_{\mathbb R^m}\phi(\mathbf{\hat t}))}{\Big\|\|\mathbf t\|_{\mathbb R^m} \phi(\mathbf{\hat t})\Big\|_{\mathbb R^n}} = \mathbf 0_{\mathbb R^k}.
+		$$
+		
+		As $\phi$ is linear, we have
+		$$
+		\| \mathbf t \|_{\mathbb R^m} \phi(\mathbf{\hat t}) = \phi(\mathbf t).
+		$$
+		
+		By scalar multiplication, we have
+		$$
+		\Big\|\|\mathbf t\|_{\mathbb R^m} \phi(\mathbf{\hat t})\Big\|_{\mathbb R^n} = \| \mathbf t \|_{\mathbb R^m} \| \phi (\mathbf{\hat t}) \|_{\mathbb R^n}.
+		$$
+		
+		Now, we have
+		$$
+		\begin{aligned}
+			& \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p) + \phi(\mathbf t)) - g(f(\mathbf p)) - \lambda(\phi(\mathbf t))}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^k} \\
+			\iff & \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p + \mathbf t)) - g(f(\mathbf p)) - (\lambda \circ \phi) (\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^k}.
+		\end{aligned}
+		$$
+		As $\lambda$ and $\phi$ are both linear, $\lambda \circ \phi$ are also linear.
+		
+		By Definition \ref{def: differentiable mappings}, $g \circ f$ is differentiable at $\mathbf p$.
+	\end{proof}
+\end{theorem}
 
 
 %------------------------------------------------
@@ -143,15 +186,245 @@
 
 
 \begin{observation}
+	\label{obs: motivation of directional derivatives}
 	Let $f: \mathbb R^m \to \mathbb R^n$, and let $g:\mathbb R \to \mathbb R^m$ be defined as
 	$$
 	g(t) := \mathbf p + t \mathbf u,
 	$$
 	where $\mathbf p , \mathbf u \in \mathbb R^m$ and $\mathbf u \ne \mathbf 0_{\mathbb R^m}$.
 	
-	Let $h = f \circ g$.
+	Let $h = f \circ g$ and define $h': D_{h'} \subseteq \mathbb R \to \mathbb R^n$ as
+	$$
+	h'(t) :=\lim_{t \to t_0} \frac{h(t) - h(t_0)}{t - t_0},
+	$$
+	where for any $t \in D_{h'}$, the this limit exists in $\mathbb R^n$. Thus,
+	$$
+	h'(0) = \lim_{t \to 0} \frac{f(\mathbf p + t \mathbf u) - f(\mathbf p)}{t}
+	$$
+	describes the instantaneous rate of change of $f$ along the straight line $\{ \mathbf p + t\mathbf u : t \in \mathbb R \}$ with $\|\mathbf u \|_{\mathbb R^m}$ as the unit length. $h'(0)$ is so-called the $\mathbf u$-directional derivative of $f$ at $\mathbf p$ (See Definition \ref{def: directional derivatives}).
 \end{observation}
 
+
+\begin{definition}[Directional Derivatives]
+	\label{def: directional derivatives}
+	\
+	
+	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf u \in \mathbb R^{m} \setminus \{ \mathbf 0_{\mathbb R^m} \}$ and let $\mathbf p \in \mathbb R^m$. The \textit{$\mathbf u$-directional derivative} of $f$ at $\mathbf p$ is defined as
+	$$
+	\nabla_{\mathbf u} f(\mathbf p) := \lim_{t \to 0} \frac{f(\mathbf p + t \mathbf u) - f(\mathbf p)}{t},
+	$$
+	if the limit exists in $\mathbb R^n$.
+\end{definition}
+
+
+\begin{theorem}
+	\label{thm: directional derivatives: scalar multiplication}
+	With the condition in Definition \ref{def: directional derivatives}, for any $s \in \mathbb R \setminus \{ 0 \}$,
+	$$
+	\nabla_{s\mathbf u}f(\mathbf p) = s\nabla_{\mathbf u} f(\mathbf p).
+	$$
+	
+	\begin{proof}
+		Let $\theta = ts^{-1}$, then, by Definition \ref{def: directional derivatives}, we have
+		$$
+		\begin{aligned}
+			s\nabla_{\mathbf u} f(\mathbf p) &= s\lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{t} \\
+			&= \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{ts^{-1}} \\
+			&= \lim_{t \to 0} \frac{f(\mathbf p + \theta (s \mathbf u)) - f(\mathbf p)}{\theta} \\
+			&= \nabla_{s\mathbf u} f(\mathbf p).
+		\end{aligned}
+		$$
+		
+	\end{proof}
+\end{theorem}
+
+
+\begin{theorem}
+	\label{thm: directional derivatives: relative continuous on a straight line}
+	With the condition in Definition \ref{def: directional derivatives}, if $\nabla_{\mathbf u} f(\mathbf p)$ exists, then there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on the line described by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
+	
+	\begin{proof}
+		Let $U$ be an open subset of $\mathbb R^m$, and let $g: \mathbb R \to \mathbb R^m$ be defined as
+		$$
+		g(t) := \mathbf p + t\mathbf u.
+		$$
+		Then $f$ is relative continuous on the line defined by $\mathbf p + t \mathbf u$ for some $t \in \mathbb R$ iff $f \restriction_{g[\mathbb R]}$ is continuous on $U \cap g[\mathbb R]$.
+		
+		Let $h = f \circ g$, then
+		$$
+		\nabla_{\mathbf u} f(\mathbf p) = \lim_{t \to 0} \frac{h(t) - h(0)}{t} = \mathbf v \in \mathbb R^n.
+		$$
+		Then, there exists an $\alpha: \mathbb R \to \mathbb R^n$ with $\alpha(t) \to \mathbf 0_{\mathbb R^n}$ as $t \to 0$, such that there exists an open subset $I \subseteq \mathbb R$ with $0 \in I$, such that for any $t \in I$,
+		$$
+		h(t) = t\mathbf v + t\alpha(t) + h(0).
+		$$
+		Then we have
+		$$
+		\begin{aligned}
+		& \ \lim_{t \to 0} h(t) = \lim_{t \to 0} [t\mathbf v + t\alpha(t) + h(0)] \\
+		\iff & \ \lim_{t \to 0} h(t) = h(0).
+		\end{aligned}
+		$$
+		Thus, $h$ is continuous at $0$.
+		
+		As it is easy to show $g$ is bijective, $g \circ g^{-1}$ is an identity mapping on $g[\mathbb R] \subseteq \mathbb R^m$. As composition of mappings is associative, we have
+		$$
+		\begin{aligned}
+		h = f \circ g &\iff h \circ g^{-1} = f \circ g \circ g^{-1} \\
+		&\iff h \circ g^{-1} = f \circ (g \circ g^{-1}) \\
+		&\iff h \circ g^{-1} = f \restriction_{g[\mathbb R]}.
+		\end{aligned}
+		$$
+		It is also easy to find that $g^{-1}$ is continuous everywhere, thus, as $h$ is continuous at $0$, $f \restriction_{g[\mathbb R]}$ is continuous on $U \cap g[\mathbb R]$. Thus, $f$ is relative continuous on the line defined by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
+	\end{proof}
+\end{theorem}
+
+
+%================================================
+%------------------------------------------------
+
+
+\section{Mean Value Theorem in Vector Valued Functions}
+%================================================
+%------------------------------------------------
+
+
+\begin{theorem}[Mean Value Theorem on $\mathbb R^m \to \mathbb R^n$]
+	\label{thm: directional derivatives: mean value theorem: vector valued function}\
+	
+	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf p, \mathbf q \in \mathbb R^m$, for convenience, let $g: \mathbb R \to \mathbb R^m$ be defined as
+	$$
+	g(t) := \mathbf p + t(\mathbf q - \mathbf p).
+	$$
+	
+	If $f \restriction_{g[\mathbb R]}$ is continuous on $g[(0,1)]$, and differentiable on $g[[0,1]]$, then
+	$$
+	\| f(\mathbf q) - f(\mathbf p) \|_{\mathbb R^n} \le \sup_{\mathbf x \in g[(a,b)]} \| \nabla_{\mathbf u} f(\mathbf x) \|_{\mathbb R^n}.
+	$$
+\end{theorem}
+
+
+
+\begin{lemma}
+	\label{lm: non-zero derivative implies monotonic}
+	Let $f: \mathbb R \to \mathbb R$, and let $a, b \in \mathbb R$ with $a < b$. Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and $0 \notin f[(a,b)]$.
+	
+	Then, $f$ is monotonic.
+\end{lemma}
+
+
+
+\begin{lemma}
+	[Rolle's Theorem] \
+	
+	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf a, \mathbf b \in \mathbb R^m$ with $f(\mathbf a) = f(\mathbf b)$. Suppose $f$ is relative continuous on $\ell[\mathbf a, \mathbf b]$, and relative differentiable on $\ell(\mathbf a, \mathbf b)$. 
+	
+	Then, there exits $\mathbf c \in \ell(\mathbf a, \mathbf b)$ such that $\nabla_{\mathbf u} f(\mathbf c) = \mathbf 0_{\mathbb R^n}$, where $\mathbf u = \mathbf b - \mathbf a$.
+	
+	\begin{proof}
+		First, consider $f = \langle f_i \rangle_{i = 1}^n$.
+		
+		Suppose for any $\mathbf c \in \ell(\mathbf a, \mathbf b)$, $\nabla_{\mathbf u} f(\mathbf c) \ne \mathbf 0_{\mathbb R^n}$, then there exists $i \in \{1, \ldots, n\}$ such that $\nabla_{\mathbf u}f_i(\mathbf c) \ne 0$.
+		
+		Let $g: \mathbb R \to \mathbb R^m$ be defined as
+		$$
+		g(t) = \mathbf b - t\mathbf a,
+		$$
+		and let $h_i = f_i \circ g$. Then, for any $t \in (0, 1)$, $h_i'(t) \ne 0$.
+		
+		As $f_i$ is differentiable on $g[(0,1)]$, and $g$ is differentiable on $(0,1)$, by Theorem \ref{thm: differentiable mappings: composed}, $h_i$ is differentiable on $(0,1)$. In this case, $0 \notin h_i'[(0,1)]$ implies $h_i$ is monotonic (Lemma \ref{lm: non-zero derivative implies monotonic}). This implies
+		$$
+		h_i(0) = f_i(\mathbf a) \ne f_i(\mathbf b) = h_i(1).
+		$$
+		As $f(\mathbf a) = \langle f_i(\mathbf a) \rangle_{i = 1}^n$ and $f(\mathbf b) = \langle f_i(\mathbf b) \rangle_{i = 1}^n$, we have $f(\mathbf a) \ne f(\mathbf b)$. This contradicts the assumption that $f(\mathbf a) = f(\mathbf b)$.
+		
+		Thus, there has to be a $\mathbf c \in \ell(\mathbf a, \mathbf b)$ such that $\nabla_{\mathbf u} f_i(\mathbf c)$.
+	\end{proof}
+\end{lemma}
+
+
+---
+
+---
+
+---
+
+---
+
+
+\begin{lemma}
+	[Cauchy Mean Value Theorem] \
+	
+	Let $f, g: \mathbb R^m \to \mathbb R^n$ where $f$ and $g$ are differentiable on an open subset $U \subseteq \mathbb R^m$, and continuous on $U^-$. Suppose $\mathbf 0_{\mathbb R^n} \notin \nabla_{\mathbf u}g[U]$ for any $\mathbf u \in \mathbb R^m$.
+	
+	Then, for any $\mathbf p, \mathbf q \in U$ with $\mathbf p \ne \mathbf q$, there exits a $\mathbf c$ such that
+	$$
+	\frac{\nabla_{\mathbf u} f(\mathbf c)}{\| \nabla_{\mathbf u} g(\mathbf c) \|_{\mathbb R^n}} = \frac{f(\mathbf b) - f(\mathbf a)}{\| g(\mathbf b) - g(\mathbf a) \|}.
+	$$
+	
+	\begin{proof}
+		
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	\label{lm: directional derivatives: mean value theorem: real valued function}
+	
+	Let $f: \mathbb R \to \mathbb R^n$. Let $I = (a,b)$ be an open interval of $\mathbb R$. If $f$ is continuous on $I$ and differentiable on $I^-$, then there exists a $c \in I$ such that
+	$$
+	f'(c) = \frac{f(b) - f(a)}{b - a}.
+	$$
+	
+	\begin{proof}
+		As $f$ is differentiable on $I$, by Cauchy Mean Value Theorem, there exists a
+	\end{proof}
+\end{lemma}
+
+
+
+\begin{proof}[Proof for Theorem \ref{thm: directional derivatives: mean value theorem: vector valued function}]
+	Let $h = f \circ g$. As $f$ is continuous on $g[(0,1)]$ and $g$ is continuous everywhere, $h$ is continuous on $(0,1)$. By Theorem \ref{thm: differentiable mappings: composed}, as $f$ is differentiable on $g[[0,1]]$ and $g$ is differentiable on $[0,1]$, then, by Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable on $[0,1]$.
+	
+	Let $h': D \subseteq \mathbb R \to \mathbb R^n$ be defined as
+	$$
+	h'(t) := \lim_{t \to 0} \frac{h(c + t) - h(t)}{t},
+	$$
+	where $D$ is the set of all points in $\mathbb R$ such that the limit exists in $\mathbb R^n$.
+	
+	By Lemma \ref{lm: directional derivatives: mean value theorem: real valued function}, there exists a $c \in (0,1)$ such that
+	$$
+	h'(c) = \frac{h(1) - h(0)}{1 - 0}.
+	$$
+	
+	
+\end{proof}
+
+
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 %------------------------------------------------
 %================================================

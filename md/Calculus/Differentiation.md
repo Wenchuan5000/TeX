@@ -140,7 +140,8 @@ Q.E.D.
 
 With the condition above, if $\nabla_{\mathbf u} f(\mathbf p)$ exists, then there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on the line described by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
 
-**Proof.** Let $U$ be an open subset of $\mathbb R^m$, and let $g: \mathbb R \to \mathbb R^m$ be defined as
+**Proof.** 
+Let $U$ be an open subset of $\mathbb R^m$, and let $g: \mathbb R \to \mathbb R^m$ be defined as
 $$
 g(t) := \mathbf p + t\mathbf u.
 $$
