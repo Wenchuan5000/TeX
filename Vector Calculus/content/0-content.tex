@@ -316,6 +316,7 @@
 
 \begin{lemma}
 	[Rolle's Theorem] \
+	\label{lm: rolle's theorem}
 	
 	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf a, \mathbf b \in \mathbb R^m$ with $f(\mathbf a) = f(\mathbf b)$. Suppose $f$ is relative continuous on $\ell[\mathbf a, \mathbf b]$, and relative differentiable on $\ell(\mathbf a, \mathbf b)$. 
 	
@@ -343,52 +344,52 @@
 \end{lemma}
 
 
----
-
----
-
----
-
----
-
-========================================
-
-Change into $f \circ g$ as $g: \mathbb R \to \mathbb R^m$ below.
-
-
-========================================
-
-
-
-\begin{lemma}
-	[Cauchy Mean Value Theorem] \
-	
-	Let $f, g: \mathbb R^m \to \mathbb R^n$ where $f$ and $g$ are differentiable on an open subset $U \subseteq \mathbb R^m$, and continuous on $U^-$. Suppose $\mathbf 0_{\mathbb R^n} \notin \nabla_{\mathbf u}g[U]$ for any $\mathbf u \in \mathbb R^m$.
-	
-	Then, for any $\mathbf p, \mathbf q \in U$ with $\mathbf p \ne \mathbf q$, there exits a $\mathbf c$ such that
-	$$
-	\frac{\nabla_{\mathbf u} f(\mathbf c)}{\| \nabla_{\mathbf u} g(\mathbf c) \|_{\mathbb R^n}} = \frac{f(\mathbf b) - f(\mathbf a)}{\| g(\mathbf b) - g(\mathbf a) \|}.
-	$$
-	
-	\begin{proof}
-		
-	\end{proof}
-\end{lemma}
-
-
 \begin{lemma}
 	\label{lm: directional derivatives: mean value theorem: real valued function}
 	
-	Let $f: \mathbb R \to \mathbb R^n$. Let $I = (a,b)$ be an open interval of $\mathbb R$. If $f$ is continuous on $I$ and differentiable on $I^-$, then there exists a $c \in I$ such that
+	Let $f: \mathbb R \to \mathbb R^n$. If $f$ is differentiable on open subset $(a,b)$, and continuous on closed interval $[a,b]$, then there exists a $c \in I$ such that
 	$$
 	f'(c) = \frac{f(b) - f(a)}{b - a}.
 	$$
 	
 	\begin{proof}
-		As $f$ is differentiable on $I$, by Cauchy Mean Value Theorem, there exists a
+		Let $\phi: \mathbb R \to \mathbb R^n$ be defined as
+		$$
+		\phi(t) := t \frac{f(b)-f(a)}{b-a}.
+		$$
+	
+		Let $h: \mathbb R \to \mathbb R^n$ be defined as
+		$$
+		h(t) := f(t) - \phi(t).
+		$$
+		Then it is easy to find that
+		$$
+		h(a) = h(b).
+		$$
+		
+		As $f$ and $\phi$ are differentiable on $(a,b)$, so is $h$. (Why?)
+		
+		As $f$ and $\phi$ are continuous on $[a,b]$, so is $h$. (Why?)
+		
+		Thus, by Lemma \ref{lm: rolle's theorem}, there exists a $c \in (a,b)$ such that we have
+		$$
+		\begin{aligned}
+			& \ 0 = h'(c) = f'(c) - \frac{f(b) - f(a)}{b - a} \\
+			\iff & \ f'(c) = \frac{f(b) - f(a)}{b - a}.
+		\end{aligned}
+		$$
+		
 	\end{proof}
 \end{lemma}
 
+
+---
+
+---
+
+---
+
+---
 
 
 \begin{proof}[Proof for Theorem \ref{thm: directional derivatives: mean value theorem: vector valued function}]
