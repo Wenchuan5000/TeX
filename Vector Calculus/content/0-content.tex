@@ -207,14 +207,25 @@
 
 \begin{definition}[Directional Derivatives]
 	\label{def: directional derivatives}
-	\
 	
-	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf u \in \mathbb R^{m} \setminus \{ \mathbf 0_{\mathbb R^m} \}$ and let $\mathbf p \in \mathbb R^m$. The \textit{$\mathbf u$-directional derivative} of $f$ at $\mathbf p$ is defined as
+	Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf u \in \mathbb R^{m} \setminus \{ \mathbf 0_{\mathbb R^m} \}$. The \textit{$\mathbf u$-derived function} of $f$, denoted $\nabla_{\mathbf u}f$ is a function $\nabla_{\mathbf u}f: D \subseteq \mathbb R^m \to \mathbb R^n$ defined as
 	$$
-	\nabla_{\mathbf u} f(\mathbf p) := \lim_{t \to 0} \frac{f(\mathbf p + t \mathbf u) - f(\mathbf p)}{t},
+	\nabla_{\mathbf u} f(\mathbf x) := \lim_{t \to 0} \frac{f(\mathbf x + t \mathbf u) - f(\mathbf x)}{t},
 	$$
-	if the limit exists in $\mathbb R^n$.
+	where $D$ is the set of all $\mathbf x \in \mathbb R^m$ such that $\nabla_{\mathbf u}f(\mathbf x)$ exists in $\mathbb R^n$. Let $\mathbf p \in D$, then $\nabla_{\mathbf u} f(\mathbf p)$ is a \textit{$\mathbf u$-directional derivative} of $f$ at $\mathbf p$.
 \end{definition}
+
+
+\begin{note}
+	\label{note: derivative}
+	
+	As $\mathbb R$ is an ordered field, there are only two direction in $\mathbb R$. Thus, for any $u \in \mathbb R \setminus \{0\}$, $u > 0$ or $u < 0$. If $u = 1$, then we write
+	$$
+	\frac{\mathrm df}{\mathrm d t} \text{ or } f' \text{ for } \nabla_u f,
+	$$
+	and simply call $f'$ the \textit{derived function} of $f$. If $f$ is differentiable at a point $p \in \mathbb R$, then $f'(p)$ is called the \textit{derivative} of $f$ at $p$.
+\end{note}
+
 
 
 \begin{theorem}
@@ -280,6 +291,20 @@
 \end{theorem}
 
 
+\begin{theorem}
+	\label{thm: directional derivatives: differentiable implies continuous directioinal derivative}
+	With the condition in Definition \ref{def: directional derivatives}, if $f$ is differentiable at $\mathbf p$, then, for any $\mathbf u \in \mathbb R^m$, $\nabla_{\mathbf u} f$ is continuous at $\mathbf p$.
+	
+	\begin{proof}
+		As $f$ is continuous, it is easy to show that
+		$$
+		\lim_{t \to 0}\nabla_{\mathbf u} f(\mathbf p + t\mathbf u) = \nabla_{\mathbf u} f(\mathbf p) = \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{t}.
+		$$
+	\end{proof}
+\end{theorem}
+
+
+
 %================================================
 %------------------------------------------------
 
@@ -289,33 +314,42 @@
 %------------------------------------------------
 
 
-\begin{theorem}[Mean Value Theorem on $\mathbb R^m \to \mathbb R^n$]
-	\label{thm: directional derivatives: mean value theorem: vector valued function}\
-	
-	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf p, \mathbf q \in \mathbb R^m$, for convenience, let $g: \mathbb R \to \mathbb R^m$ be defined as
-	$$
-	g(t) := \mathbf p + t(\mathbf q - \mathbf p).
-	$$
-	
-	If $f \restriction_{g[\mathbb R]}$ is continuous on $g[(0,1)]$, and differentiable on $g[[0,1]]$, then
-	$$
-	\| f(\mathbf q) - f(\mathbf p) \|_{\mathbb R^n} \le \sup_{\mathbf x \in g[(a,b)]} \| \nabla_{\mathbf u} f(\mathbf x) \|_{\mathbb R^n}.
-	$$
-\end{theorem}
-
-
-
 \begin{lemma}
 	\label{lm: non-zero derivative implies monotonic}
-	Let $f: \mathbb R \to \mathbb R$, and let $a, b \in \mathbb R$ with $a < b$. Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and $0 \notin f[(a,b)]$.
+	Let $f: \mathbb R \to \mathbb R$, and let $a, b \in \mathbb R$ with $a < b$. Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and $0 \notin f'[(a,b)]$.
 	
-	Then, $f$ is monotonic.
+	Then, $f$ is strictly monotonic on $[a,b]$.
+	
+	\begin{proof}
+		As $f$ is differentiable on $(a,b)$, by Theorem \ref{thm: directional derivatives: differentiable implies continuous directioinal derivative}, $f'$ is continuous on $(a,b)$. This implies, if $0 \notin f'[(a,b)]$, then
+		$$
+		f'[(a,b)] \subseteq \mathbb R_{> 0} \text{ or } f'[(a,b)] \subseteq \mathbb R_{< 0}.
+		$$
+	
+	
+		Let $c \in (a,b)$. As $f$ is differentiable at $c$, for any 
+		$$
+		f'(c) = \lim_{t \to 0} \frac{f(c + t) - f(c)}{t}.
+		$$
+		
+		Now, Consider $f'(c) > 0$. Then $f(c + t) - f(c) > 0$ as $t \to 0^+$, and $f(c + t) - f(c) < 0$ as $t \to 0^-$. That is, for any $d, e \in (a,b)$,
+		$$
+		e < c < d \implies f(e) < f(c) < f(d).
+		$$
+		
+		As $f$ is continuous at $a$ and $b$, we have
+		$$
+		\lim_{e \to a} f(e) = f(a) < f(c) < f(b) = \lim_{d \to b} f(d).
+		$$
+		
+		If $f'(c) < 0$, the proof is similar.
+	\end{proof}
 \end{lemma}
 
 
 
 \begin{lemma}
-	[Rolle's Theorem] \
+	[Rolle's Theorem]
 	\label{lm: rolle's theorem}
 	
 	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf a, \mathbf b \in \mathbb R^m$ with $f(\mathbf a) = f(\mathbf b)$. Suppose $f$ is relative continuous on $\ell[\mathbf a, \mathbf b]$, and relative differentiable on $\ell(\mathbf a, \mathbf b)$. 
@@ -333,7 +367,7 @@
 		$$
 		and let $h_i = f_i \circ g$. Then, for any $t \in (0, 1)$, $h_i'(t) \ne 0$.
 		
-		As $f_i$ is differentiable on $g[(0,1)]$, and $g$ is differentiable on $(0,1)$, by Theorem \ref{thm: differentiable mappings: composed}, $h_i$ is differentiable on $(0,1)$. In this case, $0 \notin h_i'[(0,1)]$ implies $h_i$ is monotonic (Lemma \ref{lm: non-zero derivative implies monotonic}). This implies
+		As $f_i$ is differentiable on $g[(0,1)]$, and $g$ is differentiable on $(0,1)$, by Theorem \ref{thm: differentiable mappings: composed}, $h_i$ is differentiable on $(0,1)$. In this case, $0 \notin h_i'[(0,1)]$ implies $h_i$ is strictly monotonic (Lemma \ref{lm: non-zero derivative implies monotonic}). This implies
 		$$
 		h_i(0) = f_i(\mathbf a) \ne f_i(\mathbf b) = h_i(1).
 		$$
@@ -383,60 +417,141 @@
 \end{lemma}
 
 
----
-
----
-
----
-
----
-
-
-\begin{proof}[Proof for Theorem \ref{thm: directional derivatives: mean value theorem: vector valued function}]
-	Let $h = f \circ g$. As $f$ is continuous on $g[(0,1)]$ and $g$ is continuous everywhere, $h$ is continuous on $(0,1)$. By Theorem \ref{thm: differentiable mappings: composed}, as $f$ is differentiable on $g[[0,1]]$ and $g$ is differentiable on $[0,1]$, then, by Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable on $[0,1]$.
+\begin{theorem}[Mean Value Theorem on $\mathbb R^m \to \mathbb R^n$]
+	\label{thm: directional derivatives: mean value theorem: vector valued function}\
 	
-	Let $h': D \subseteq \mathbb R \to \mathbb R^n$ be defined as
+	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf p, \mathbf q \in \mathbb R^m$, for convenience, let $g: \mathbb R \to \mathbb R^m$ be defined as
 	$$
-	h'(t) := \lim_{t \to 0} \frac{h(c + t) - h(t)}{t},
-	$$
-	where $D$ is the set of all points in $\mathbb R$ such that the limit exists in $\mathbb R^n$.
-	
-	By Lemma \ref{lm: directional derivatives: mean value theorem: real valued function}, there exists a $c \in (0,1)$ such that
-	$$
-	h'(c) = \frac{h(1) - h(0)}{1 - 0}.
+	g(t) := \mathbf p + t(\mathbf q - \mathbf p).
 	$$
 	
+	If $f \restriction_{g[\mathbb R]}$ is continuous on $g[(0,1)]$, and differentiable on $g[[0,1]]$, then
+	$$
+	\| f(\mathbf q) - f(\mathbf p) \|_{\mathbb R^n} \le \sup_{\mathbf x \in g[(a,b)]} \| \nabla_{\mathbf u} f(\mathbf x) \|_{\mathbb R^n}.
+	$$
 	
-\end{proof}
+	\begin{proof}Let $h = f \circ g$. As $f$ is continuous on $g[(0,1)]$ and $g$ is continuous everywhere, $h$ is continuous on $(0,1)$. By Theorem \ref{thm: differentiable mappings: composed}, as $f$ is differentiable on $g[[0,1]]$ and $g$ is differentiable on $[0,1]$, then, by Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable on $[0,1]$.
+	
+		Let $h': D \subseteq \mathbb R \to \mathbb R^n$ be defined as
+		$$
+		h'(t) := \lim_{t \to 0} \frac{h(c + t) - h(t)}{t},
+		$$
+		where $D$ is the set of all points in $\mathbb R$ such that the limit exists in $\mathbb R^n$.
+		
+		By Lemma \ref{lm: directional derivatives: mean value theorem: real valued function}, there exists a $c \in (0,1)$ such that
+		$$
+		h'(c) = \frac{h(1) - h(0)}{1 - 0}.
+		$$
+		
+		Now, we have
+		$$
+		\begin{aligned}
+		h'(c) &= \lim_{t \to 0} \frac{h(c + t) - h(c)}{t} \\
+		&= \lim_{t \to 0} \frac{f(g(c + t)) - f(c)}{t} \\
+		&= \left.\lim_{t \to 0} \frac{f(\mathbf p + c\mathbf u + t\mathbf u) - f(\mathbf p + c\mathbf u)}{t}\right|_{\mathbf u = \mathbf q - \mathbf p} \\
+		&= \left. \lim_{t \to 0} \frac{f(\mathbf c + t\mathbf u) - f(\mathbf c)}{t} \right|_{\mathbf c = \mathbf p + c \mathbf u} \\
+		&= \nabla_{\mathbf u}f(\mathbf c).
+		\end{aligned}	
+		$$
+		
+		Thus, there exists a $\mathbf c \in g[(0,1)]$ such that
+		$$
+		\nabla_{\mathbf u} f(\mathbf c) = h(1) - h(0) =f(\mathbf q) - f(\mathbf p).
+		$$
+		This implies that there exists some $\mathbf x \in g[(0,1)]$ such that
+		$$
+		\| \nabla_{\mathbf u}f(\mathbf x) \| \ge \| \nabla_{\mathbf u}f(\mathbf c) \|.
+		$$
+		Thus,
+		$$
+		\| f(\mathbf q) - f(\mathbf p) \| \le \sup_{\mathbf x \in g[(0,1)]}\| \nabla_{\mathbf u} f(\mathbf x) \|.
+		$$
+	\end{proof}
+\end{theorem}
 
-
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
 
 %------------------------------------------------
 %================================================
+
+
+
+\section{Partial Derivatives}
+%================================================
+%------------------------------------------------
+
+
+\begin{definition}
+	[Partial Derivatives]
+	\label{def: partial derivatives}
+	
+	Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \mapsto \mathbf y$. 
+	
+	The \textit{$i$-th partial derived function} of $f$, denoted $\frac{\partial f}{\partial x_i}$, is the $\mathbf{\hat e}_i$-directional derived function of $f$, where $\mathbf{\hat e}_i$ denotes the $i$-th basis of $\mathbb R^m$. If $\frac{\partial f}{\partial x_i}(\mathbf p)$ exists in $\mathbb R^n$ for a $\mathbf p \in \mathbb R^m$, then this value is called \textit{$i$-th partial derivative} of $f$ at $\mathbf p$.
+\end{definition}
+
+
+\begin{definition}
+	[Jacobian Matrices]
+	\label{def: jacobian matrices}
+	
+	With the condition in Definition \ref{def: partial derivatives}, The \textit{Jacobian Matrix} of $f$ is a function $\nabla f: D \subseteq \mathbb R^m \to \mathbb R^{n \times m}$ be defined as
+	$$
+	\nabla f :=
+	\left[
+	\begin{matrix}
+		\displaystyle \frac{\partial f}{\partial x_1} & \cdots & \displaystyle \frac{\partial f}{\partial x_m}
+	\end{matrix}
+	\right],
+	$$
+	where $D$ is the set of all $\mathbf x \in \mathbb R^m$ such that $\frac{\partial f}{\partial x_i}$ exists in $\mathbb R^m$ for any $i \in \{1, \ldots, n\}$
+\end{definition}
+
+
+\begin{note}
+	If we consider $f$ as an $m$
+	$$
+	\nabla f =
+	\left[
+	\begin{matrix}
+		\displaystyle \frac{\partial f_1}{\partial x_1} & \cdots & \displaystyle \frac{\partial f_1}{\partial x_m} \\
+		\vdots & \ddots & \vdots \\
+		\displaystyle \frac{\partial f_n}{\partial x_1} & \cdots & \displaystyle \frac{\partial f_n}{\partial x_m}
+	\end{matrix}
+	\right].
+	$$
+\end{note}
+
+
+%------------------------------------------------
+%================================================
+
+
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+
 
 
 
