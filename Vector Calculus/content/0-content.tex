@@ -475,7 +475,7 @@
 
 
 
-\section{Partial Derivatives}
+\section{Partial Derivatives and Jacobian Matrices}
 %================================================
 %------------------------------------------------
 
@@ -503,23 +503,79 @@
 	\end{matrix}
 	\right],
 	$$
-	where $D$ is the set of all $\mathbf x \in \mathbb R^m$ such that $\frac{\partial f}{\partial x_i}$ exists in $\mathbb R^m$ for any $i \in \{1, \ldots, n\}$
+	where $D$ is the set of all $\mathbf x \in \mathbb R^m$ such that $\frac{\partial f}{\partial x_i}$ exists in $\mathbb R^m$ for any $i \in \{1, \ldots, n\}$.
 \end{definition}
 
 
 \begin{note}
-	If we consider $f$ as an $m$
+	If $f$ is considered as an $1 \times n$ matrix, then $\nabla$ can be considered as a function from $\mathbb F$ to $\mathbb S$ where the domain $\mathbb F$ is a normed space contains all functions from $\mathbb R^m$ to $\mathbb R^n$, and the codomain $\mathbb S$ is another normed space contains all $n \times m$ matrices. It is defined as
 	$$
-	\nabla f =
+	\nabla f :=
 	\left[
 	\begin{matrix}
-		\displaystyle \frac{\partial f_1}{\partial x_1} & \cdots & \displaystyle \frac{\partial f_1}{\partial x_m} \\
-		\vdots & \ddots & \vdots \\
-		\displaystyle \frac{\partial f_n}{\partial x_1} & \cdots & \displaystyle \frac{\partial f_n}{\partial x_m}
+	\displaystyle \frac{\partial}{\partial x_1} \\
+	\vdots \\
+	\displaystyle \frac{\partial}{\partial x_m}
+	\end{matrix}
+	\right]
+	\left[
+	\begin{matrix}
+	f_1 & \cdots & f_n
 	\end{matrix}
 	\right].
 	$$
+	In this sense, it is easy to prove that $\nabla$ is linear by matrices multiplication. Also, the $\mathbf u$-directional derived function of $f$ can be considered as
+	$$
+	\nabla_\mathbf u f =
+	\left[
+	\begin{matrix}
+	u_1 & \cdots & u_m
+	\end{matrix}
+	\right]
+	\left[
+	\begin{matrix}
+	\displaystyle \frac{\partial}{\partial x_1} \\
+	\vdots \\
+	\displaystyle \frac{\partial}{\partial x_m}
+	\end{matrix}
+	\right]
+	\left[
+	\begin{matrix}
+	f_1 & \cdots & f_n
+	\end{matrix}
+	\right]
+	= \mathbf u^\top\nabla f.
+	$$
+	
+	For convenience, we denote
+	$$
+	(\mathbf u^\top \nabla)^k f = \mathbf u^\top \nabla\Big( \cdots \big(\mathbf u^\top \nabla(\mathbf u^\top \nabla f) \big) \cdots \Big) \quad \text{$k$ times}.
+	$$
+	In the case $f: \mathbb R^m \to \mathbb R$, as $f (\mathbf p) \in \mathbb R$ for any $\mathbf p \in \mathbb R^m$, $\nabla f(\mathbf p)$ can be considered as an $m$ dimensional vector ($m \times 1$), which is called \textit{gradient} of $f$ at $\mathbf p$. In this case,
+	$$
+	\mathbf u \cdot \nabla f(\mathbf p) = \nabla f(\mathbf p) \cdot \mathbf u = \nabla_{\mathbf u}f(\mathbf p).
+	$$
+	where $\cdot$ denotes the inner product.
 \end{note}
+
+
+\begin{theorem}
+	[Chain Rule]
+	\label{thm: chain rule}
+	
+	Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \to \mathbf y$, and let $g: \mathbb R^n \to \mathbb R^k: \mathbf t \to \mathbf x$. For convenience, let $h = g \circ f$.
+	
+	If $f$ is differentiable at a point $\mathbf p \in \mathbb R^m$ and $g$ is differentiable at $f(\mathbf p) = \mathbf q \in \mathbb R^n$, then
+	$$
+	\nabla h(\mathbf p) = [\nabla g(f(\mathbf p))]^\top \nabla f(\mathbf p) \in \mathbb R^{k \times m}.
+	$$
+	
+	\begin{proof}
+		By Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable at $\mathbf p$, and there exists $\phi: \mathbb R^m \to \mathbb R^n$ and $\lambda: \mathbb R^n \to \mathbb R^k$
+	\end{proof}
+\end{theorem}
+
+
 
 
 %------------------------------------------------
