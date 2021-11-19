@@ -251,6 +251,23 @@
 
 
 \begin{theorem}
+	% todo: Fuck this
+
+	With the condition in Definition \ref{def: directional derivatives}, if $f$ is differentiable at $\mathbf p \in \mathbb R^m$, then, in Definition \ref{def: differentiable mappings}, the linear map $\phi$ is defined as
+	$$
+	\phi(\mathbf t) := \nabla_{\mathbf t} f.
+	$$
+	
+	\begin{proof}
+		By Definition \ref{def: differentiable mappings}, as $f$ is differentiable at $\mathbf p$, then there exists a neighbourhood $N$ of $\mathbf p$ and an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\alpha(\mathbf t) \to \mathbf 0_{\mathbb R^n}$ as $\mathbf t \to \mathbf 0_{\mathbb R^m}$, such that
+		$$
+		\phi(\mathbf t) =f(\mathbf p + \mathbf t) - f(\mathbf t) - o(\mathbf t)
+		$$
+	\end{proof}
+\end{theorem}
+
+
+\begin{theorem}
 	\label{thm: directional derivatives: relative continuous on a straight line}
 	With the condition in Definition \ref{def: directional derivatives}, if $\nabla_{\mathbf u} f(\mathbf p)$ exists, then there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on the line described by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
 	
@@ -571,7 +588,10 @@
 	$$
 	
 	\begin{proof}
-		By Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable at $\mathbf p$, and there exists $\phi: \mathbb R^m \to \mathbb R^n$ and $\lambda: \mathbb R^n \to \mathbb R^k$
+		By Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable at $\mathbf p$, and there exists $\phi: \mathbb R^m \to \mathbb R^n$ and $\lambda: \mathbb R^n \to \mathbb R^k$, such that for any $\mathbf t \in \mathbb R^m$
+		$$
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p) + \phi(\mathbf t)) - g(f(\mathbf p)) - \lambda(\phi(\mathbf t))}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^k}.
+		$$
 	\end{proof}
 \end{theorem}
 
