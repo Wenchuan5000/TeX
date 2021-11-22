@@ -1,601 +1,327 @@
 
-\chapter{Differentiation}
+\chapter{Set Theory}
 %================================================
 %::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-\section{Differentiable Mapping}
+
+\section{Unused!!!!!!}
 %================================================
 %------------------------------------------------
-
-
-\begin{observation}
-	Let $f : \mathbb R^m \to \mathbb R^n$, and denote $f_i$ for the $i$-th factor of $f$, i.e., $f = \langle f_i \rangle_i^n$. Assume $f_i$ is smooth at a point $\mathbf p \in \mathbb R^m$.
-
-	Intuitively, $f_i$ is smooth at $\mathbf p$ iff there exists a neighbourhood $N$ of $\mathbf p$ and a plane described by $P_i: \mathbb R^m \to \mathbb R$, such that
-	$$
-		f_i[N] \approx P_i[N].
-	$$
-	As $\mathbb R^m$ is considered as a metric space, any open ball $B(\mathbf p, \delta) \subseteq N$ is also required neighbourhood of $\mathbf p$. In this sense, the approximation can be considered as,
-	$$
-	\lim_{\delta \to 0} f_i[B(\mathbf p, \delta)] = \lim_{\delta \to 0} P_i[B(\mathbf p, \delta)].
-	$$
-	In the term of elements, that is, there exists $\delta \in \mathbb R_{> 0}$, such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in B(\mathbf p, \delta)$,	
-	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f_i(\mathbf p + \mathbf t) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} P_i(\mathbf p + \mathbf t).
-	$$
-	
-	As $P_i$ describes a plane, it can be considered as a translated linear mapping, and as this plane must be a tangent plane of $f_i$ at $\mathbf p$, there exists a linear mapping $\phi_i: \mathbb R^m \to \mathbb R$ such that
-	$$
-	P_i(\mathbf p + \mathbf t) = \phi_i(\mathbf p + \mathbf t - \mathbf p) + f_i(\mathbf p).
-	$$
-	Thus, we have
-	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f_i(\mathbf p + \mathbf t) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\phi_i(\mathbf t) + f_i(\mathbf p).
-	$$
-	Rearrange the equation, we have
-	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f_i(\mathbf p + \mathbf t) - f_i(\mathbf p)}{\| \mathbf t \|_{\mathbb R^m}} = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{\phi_i(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}}.
-	$$
-	As $\phi_i$ is linear, the right hand side of the equation is a constant in $\mathbb R$. Thus, by rearrange the equation again, we have
-	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f_i(\mathbf p + \mathbf t) - f_i(\mathbf p) - \phi_i(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = 0
-	$$
-	
-	The last equation describes the smoothness of $f_i$ at $\mathbf p$, in calculus, $f_i$ is said to be differentiable at $\mathbf p$.
-	
-	Now, assume for any $i \in \{1, \ldots, n\}$, $f_i$ is differentiable at $\mathbf p$. That is, for any $f_i$, there exists a $\phi_i:\mathbb R^m \to \mathbb R$, such that
-	$$
-	\left\langle\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f_i(\mathbf p + \mathbf t) - f_i(\mathbf p) - \phi_i(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} \right\rangle_{i = 1}^n = \langle 0 \rangle_{i = 1}^n.
-	$$
-	By vector sum, we have
-	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n},
-	$$
-	where $\phi = \langle \phi_i \rangle_{i = 1}^n$.
-	
-	In this sense, Definition \ref{def: differentiable mappings} is introduced as following.
-\end{observation}
-
-
-\begin{definition}[Differentiable Mappings]
-	\
-	
-	\label{def: differentiable mappings}
-	Let $f:\mathbb R^m \to \mathbb R^n$.
-	
-	$f$ is said to be \textit{differentiable} at a point $\mathbf p \in \mathbb R^m$ iff for any $\mathbf u \in \mathbb R^m \setminus \{0_{\mathbb R^m}\}$, there exists a linear mapping $\phi: \mathbb R^m \to \mathbb R^n$ such that
-	$$
-	\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^n}.
-	$$
-\end{definition}
-
-
-\begin{theorem}
-	\label{thm: differentiable mappings: uniqueness of phi}
-	In Definition \ref{def: differentiable mappings}, $\phi$ is unique.
-	
-	\begin{proof}
-		As Definition holds for $\phi$, there exists an $\alpha: \mathbb R^{m} \to \mathbb R^n$ with
-		$$
-		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \alpha(\mathbf t) = \alpha(\mathbf 0_{\mathbb R^m}) = \mathbf 0_{\mathbb R^n},
-		$$
-		and a neighbourhood $N$ of $\mathbf p$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in N$,
-		$$
-		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = \alpha(\mathbf t).
-		$$
-	
-		Suppose Definition \ref{def: differentiable mappings} also holds for another $\lambda: \mathbb R^m \to \mathbb R^n$, then
-		there exists an $\beta: \mathbb R^m \to \mathbb R^n$ with
-		$$
-		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \beta(\mathbf t) = \beta(\mathbf 0_{\mathbb R^m}) = \mathbf 0_{\mathbb R^n},
-		$$
-		and a neighbourhood $N'$ of $\mathbf p$ such that for any $\mathbf t \in \mathbb R^m$ with $\mathbf p + \mathbf t \in N'$,
-		$$
-		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \lambda(\mathbf t)}{\|\mathbf t\|_{\mathbb R^m}} = \beta(\mathbf t).
-		$$
-		
-		Let $\gamma = \phi - \lambda$. As $\phi$ and $-\lambda$ are both linear, $\gamma$ is also linear. Then, we have
-		$$
-		\begin{aligned}
-		& \ \frac{\gamma(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t) - \beta(\mathbf t) \\
-		\iff & \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \gamma(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} (\alpha(\mathbf t) - \beta(\mathbf t)) \\
-		\iff& \ \gamma(\mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}.
-		\end{aligned}		
-		$$
-		
-		As $\mathbf t$ is arbitrarily picked from $U \cap U'$, and $U \cap U'$ is open in $\mathbb R^m$ as $U$ and $U'$ are open, the set $\left\{ \mathbf{\hat t} : \mathbf t \in U \cap U' - \mathbf p \right\}$ gives all possible directions in $\mathbb R^m$. And, as $\gamma(s \mathbf{\hat t}) = \mathbf 0_{\mathbb R^n}$ for any $\mathbf t \in \mathbb R^m$ and any $s \in \mathbb R$, $\gamma[\mathbb R^m] = \{\mathbf 0_{\mathbb R^m}\}$. Thus, $\phi = \lambda$.
-	\end{proof}
-\end{theorem}
-
-
-\begin{theorem}
-	\label{thm: differentiable mappings: implies continuity}
-	With the condition in Definition \ref{def: differentiable mappings}, if $f$ is differentiable at $\mathbf p$, then $f$ is continuous at $\mathbf p$.
-	
-	\begin{proof}
-		As $f$ is differentiable at $\mathbf p$, there exists an $\alpha: \mathbb R^m \to \mathbb R^n$ with
-		$$
-		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \alpha(\mathbf t) = \alpha(\mathbf 0_{\mathbb R^m}) = \mathbf 0_{\mathbb R^m},
-		$$
-		such that
-		$$
-		\frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \alpha(\mathbf t).
-		$$
-		By rearranging the equation, we observe
-		$$
-		\begin{aligned}
-		& \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}}[f(\mathbf p + \mathbf t) - \phi(\mathbf t)] = \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} [\| \mathbf t \|_{\mathbb R^m}\alpha(\mathbf t) + f(\mathbf p)] \\
-		\iff & \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} f(\mathbf p + \mathbf t) = f(\mathbf p).
-		\end{aligned}
-		$$
-		
-		Thus, $f$ is continuous at $\mathbf p$.
-	\end{proof}
-\end{theorem}
-
-
-\begin{theorem}
-	\label{thm: differentiable mappings: composed}
-	With the condition in Definition \ref{def: differentiable mappings}, let $g: \mathbb R^n \to \mathbb R^k$.
-	
-	If $f$ is differentiable at $\mathbf p$ and $g$ is differentiable at $f(\mathbf p)$, then $g\circ f$ is differentiable at $\mathbf p$.
-	
-	\begin{proof}
-		As $f$ is differentiable at $\mathbf p$, there exists a linear mapping $\phi: \mathbb R^m \to \mathbb R^n$ and a neighbourhood $N$ of $\mathbf p$ such that for any $\mathbf t\in \mathbb R^m$ with $\mathbf p + \mathbf t \in \mathbb R^m$,
-		$$
-		f(\mathbf p) + \phi(\mathbf t) = f(\mathbf p + \mathbf t) - \|\mathbf t\|_{\mathbb R^m} \alpha(\mathbf t).
-		$$
-		
-		As $g$ is differentiable at $f(\mathbf p)$, there exists a linear mapping $\lambda: \mathbb R^m \to \mathbb R^n$ such that
-		$$
-		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p) + \| \mathbf t \|_{\mathbb R^m}\phi(\mathbf{\hat t})) - f(\mathbf p) - \lambda(\| \mathbf t \|_{\mathbb R^m}\phi(\mathbf{\hat t}))}{\Big\|\|\mathbf t\|_{\mathbb R^m} \phi(\mathbf{\hat t})\Big\|_{\mathbb R^n}} = \mathbf 0_{\mathbb R^k}.
-		$$
-		
-		As $\phi$ is linear, we have
-		$$
-		\| \mathbf t \|_{\mathbb R^m} \phi(\mathbf{\hat t}) = \phi(\mathbf t).
-		$$
-		
-		By scalar multiplication, we have
-		$$
-		\Big\|\|\mathbf t\|_{\mathbb R^m} \phi(\mathbf{\hat t})\Big\|_{\mathbb R^n} = \| \mathbf t \|_{\mathbb R^m} \| \phi (\mathbf{\hat t}) \|_{\mathbb R^n}.
-		$$
-		
-		Now, we have
-		$$
-		\begin{aligned}
-			& \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p) + \phi(\mathbf t)) - g(f(\mathbf p)) - \lambda(\phi(\mathbf t))}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^k} \\
-			\iff & \ \lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p + \mathbf t)) - g(f(\mathbf p)) - (\lambda \circ \phi) (\mathbf t)}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^k}.
-		\end{aligned}
-		$$
-		As $\lambda$ and $\phi$ are both linear, $\lambda \circ \phi$ are also linear.
-		
-		By Definition \ref{def: differentiable mappings}, $g \circ f$ is differentiable at $\mathbf p$.
-	\end{proof}
-\end{theorem}
-
-
-%------------------------------------------------
-%================================================
-
-
-\section{Directional Derivatives}
-%================================================
-%------------------------------------------------
-
-
-\begin{observation}
-	\label{obs: motivation of directional derivatives}
-	Let $f: \mathbb R^m \to \mathbb R^n$, and let $g:\mathbb R \to \mathbb R^m$ be defined as
-	$$
-	g(t) := \mathbf p + t \mathbf u,
-	$$
-	where $\mathbf p , \mathbf u \in \mathbb R^m$ and $\mathbf u \ne \mathbf 0_{\mathbb R^m}$.
-	
-	Let $h = f \circ g$ and define $h': D_{h'} \subseteq \mathbb R \to \mathbb R^n$ as
-	$$
-	h'(t) :=\lim_{t \to t_0} \frac{h(t) - h(t_0)}{t - t_0},
-	$$
-	where for any $t \in D_{h'}$, the this limit exists in $\mathbb R^n$. Thus,
-	$$
-	h'(0) = \lim_{t \to 0} \frac{f(\mathbf p + t \mathbf u) - f(\mathbf p)}{t}
-	$$
-	describes the instantaneous rate of change of $f$ along the straight line $\{ \mathbf p + t\mathbf u : t \in \mathbb R \}$ with $\|\mathbf u \|_{\mathbb R^m}$ as the unit length. $h'(0)$ is so-called the $\mathbf u$-directional derivative of $f$ at $\mathbf p$ (See Definition \ref{def: directional derivatives}).
-\end{observation}
-
-
-\begin{definition}[Directional Derivatives]
-	\label{def: directional derivatives}
-	
-	Let $f: \mathbb R^m \to \mathbb R^n$, and let $\mathbf u \in \mathbb R^{m} \setminus \{ \mathbf 0_{\mathbb R^m} \}$. The \textit{$\mathbf u$-derived function} of $f$, denoted $\nabla_{\mathbf u}f$ is a function $\nabla_{\mathbf u}f: D \subseteq \mathbb R^m \to \mathbb R^n$ defined as
-	$$
-	\nabla_{\mathbf u} f(\mathbf x) := \lim_{t \to 0} \frac{f(\mathbf x + t \mathbf u) - f(\mathbf x)}{t},
-	$$
-	where $D$ is the set of all $\mathbf x \in \mathbb R^m$ such that $\nabla_{\mathbf u}f(\mathbf x)$ exists in $\mathbb R^n$. Let $\mathbf p \in D$, then $\nabla_{\mathbf u} f(\mathbf p)$ is a \textit{$\mathbf u$-directional derivative} of $f$ at $\mathbf p$.
-\end{definition}
-
-
-\begin{note}
-	\label{note: derivative}
-	
-	As $\mathbb R$ is an ordered field, there are only two direction in $\mathbb R$. Thus, for any $u \in \mathbb R \setminus \{0\}$, $u > 0$ or $u < 0$. If $u = 1$, then we write
-	$$
-	\frac{\mathrm df}{\mathrm d t} \text{ or } f' \text{ for } \nabla_u f,
-	$$
-	and simply call $f'$ the \textit{derived function} of $f$. If $f$ is differentiable at a point $p \in \mathbb R$, then $f'(p)$ is called the \textit{derivative} of $f$ at $p$.
-\end{note}
-
-
-
-\begin{theorem}
-	\label{thm: directional derivatives: scalar multiplication}
-	With the condition in Definition \ref{def: directional derivatives}, for any $s \in \mathbb R \setminus \{ 0 \}$,
-	$$
-	\nabla_{s\mathbf u}f(\mathbf p) = s\nabla_{\mathbf u} f(\mathbf p).
-	$$
-	
-	\begin{proof}
-		Let $\theta = ts^{-1}$, then, by Definition \ref{def: directional derivatives}, we have
-		$$
-		\begin{aligned}
-			s\nabla_{\mathbf u} f(\mathbf p) &= s\lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{t} \\
-			&= \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{ts^{-1}} \\
-			&= \lim_{t \to 0} \frac{f(\mathbf p + \theta (s \mathbf u)) - f(\mathbf p)}{\theta} \\
-			&= \nabla_{s\mathbf u} f(\mathbf p).
-		\end{aligned}
-		$$
-		
-	\end{proof}
-\end{theorem}
-
-
-\begin{theorem}
-	% todo: Fuck this
-
-	With the condition in Definition \ref{def: directional derivatives}, if $f$ is differentiable at $\mathbf p \in \mathbb R^m$, then, in Definition \ref{def: differentiable mappings}, the linear map $\phi$ is defined as
-	$$
-	\phi(\mathbf t) := \nabla_{\mathbf t} f.
-	$$
-	
-	\begin{proof}
-		By Definition \ref{def: differentiable mappings}, as $f$ is differentiable at $\mathbf p$, then there exists a neighbourhood $N$ of $\mathbf p$ and an $\alpha: \mathbb R^m \to \mathbb R^n$ with $\alpha(\mathbf t) \to \mathbf 0_{\mathbb R^n}$ as $\mathbf t \to \mathbf 0_{\mathbb R^m}$, such that
-		$$
-		\phi(\mathbf t) =f(\mathbf p + \mathbf t) - f(\mathbf t) - o(\mathbf t)
-		$$
-	\end{proof}
-\end{theorem}
-
-
-\begin{theorem}
-	\label{thm: directional derivatives: relative continuous on a straight line}
-	With the condition in Definition \ref{def: directional derivatives}, if $\nabla_{\mathbf u} f(\mathbf p)$ exists, then there exists an open subset $U \subseteq \mathbb R^m$ with $\mathbf p \in U$ such that $f$ is relative continuous on the line described by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
-	
-	\begin{proof}
-		Let $U$ be an open subset of $\mathbb R^m$, and let $g: \mathbb R \to \mathbb R^m$ be defined as
-		$$
-		g(t) := \mathbf p + t\mathbf u.
-		$$
-		Then $f$ is relative continuous on the line defined by $\mathbf p + t \mathbf u$ for some $t \in \mathbb R$ iff $f \restriction_{g[\mathbb R]}$ is continuous on $U \cap g[\mathbb R]$.
-		
-		Let $h = f \circ g$, then
-		$$
-		\nabla_{\mathbf u} f(\mathbf p) = \lim_{t \to 0} \frac{h(t) - h(0)}{t} = \mathbf v \in \mathbb R^n.
-		$$
-		Then, there exists an $\alpha: \mathbb R \to \mathbb R^n$ with $\alpha(t) \to \mathbf 0_{\mathbb R^n}$ as $t \to 0$, such that there exists an open subset $I \subseteq \mathbb R$ with $0 \in I$, such that for any $t \in I$,
-		$$
-		h(t) = t\mathbf v + t\alpha(t) + h(0).
-		$$
-		Then we have
-		$$
-		\begin{aligned}
-		& \ \lim_{t \to 0} h(t) = \lim_{t \to 0} [t\mathbf v + t\alpha(t) + h(0)] \\
-		\iff & \ \lim_{t \to 0} h(t) = h(0).
-		\end{aligned}
-		$$
-		Thus, $h$ is continuous at $0$.
-		
-		As it is easy to show $g$ is bijective, $g \circ g^{-1}$ is an identity mapping on $g[\mathbb R] \subseteq \mathbb R^m$. As composition of mappings is associative, we have
-		$$
-		\begin{aligned}
-		h = f \circ g &\iff h \circ g^{-1} = f \circ g \circ g^{-1} \\
-		&\iff h \circ g^{-1} = f \circ (g \circ g^{-1}) \\
-		&\iff h \circ g^{-1} = f \restriction_{g[\mathbb R]}.
-		\end{aligned}
-		$$
-		It is also easy to find that $g^{-1}$ is continuous everywhere, thus, as $h$ is continuous at $0$, $f \restriction_{g[\mathbb R]}$ is continuous on $U \cap g[\mathbb R]$. Thus, $f$ is relative continuous on the line defined by $\mathbf p + t\mathbf u$ for some $t \in \mathbb R$.
-	\end{proof}
-\end{theorem}
-
-
-\begin{theorem}
-	\label{thm: directional derivatives: differentiable implies continuous directioinal derivative}
-	With the condition in Definition \ref{def: directional derivatives}, if $f$ is differentiable at $\mathbf p$, then, for any $\mathbf u \in \mathbb R^m$, $\nabla_{\mathbf u} f$ is continuous at $\mathbf p$.
-	
-	\begin{proof}
-		As $f$ is continuous, it is easy to show that
-		$$
-		\lim_{t \to 0}\nabla_{\mathbf u} f(\mathbf p + t\mathbf u) = \nabla_{\mathbf u} f(\mathbf p) = \lim_{t \to 0} \frac{f(\mathbf p + t\mathbf u) - f(\mathbf p)}{t}.
-		$$
-	\end{proof}
-\end{theorem}
-
-
-
-%================================================
-%------------------------------------------------
-
-
-\section{Mean Value Theorem in Vector Valued Functions}
-%================================================
-%------------------------------------------------
-
 
 \begin{lemma}
-	\label{lm: non-zero derivative implies monotonic}
-	Let $f: \mathbb R \to \mathbb R$, and let $a, b \in \mathbb R$ with $a < b$. Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and $0 \notin f'[(a,b)]$.
+	\label{lm: subset of the union of a family and powerset}
+
+	Let $X$ be any set, let $A \subseteq X$, and let $\mathcal F \subseteq 2^X$.
 	
-	Then, $f$ is strictly monotonic on $[a,b]$.
+	$\forall B \subseteq \bigcup( \mathcal F \cap 2^A): B \subseteq A$.
 	
 	\begin{proof}
-		As $f$ is differentiable on $(a,b)$, by Theorem \ref{thm: directional derivatives: differentiable implies continuous directioinal derivative}, $f'$ is continuous on $(a,b)$. This implies, if $0 \notin f'[(a,b)]$, then
 		$$
-		f'[(a,b)] \subseteq \mathbb R_{> 0} \text{ or } f'[(a,b)] \subseteq \mathbb R_{< 0}.
+		\forall B \subseteq \bigcup( \mathcal F \cap 2^A) \implies \exists S \in \mathcal F \cap 2^A: B \subseteq S.
 		$$
-	
-	
-		Let $c \in (a,b)$. As $f$ is differentiable at $c$, for any 
-		$$
-		f'(c) = \lim_{t \to 0} \frac{f(c + t) - f(c)}{t}.
-		$$
-		
-		Now, Consider $f'(c) > 0$. Then $f(c + t) - f(c) > 0$ as $t \to 0^+$, and $f(c + t) - f(c) < 0$ as $t \to 0^-$. That is, for any $d, e \in (a,b)$,
-		$$
-		e < c < d \implies f(e) < f(c) < f(d).
-		$$
-		
-		As $f$ is continuous at $a$ and $b$, we have
-		$$
-		\lim_{e \to a} f(e) = f(a) < f(c) < f(b) = \lim_{d \to b} f(d).
-		$$
-		
-		If $f'(c) < 0$, the proof is similar.
-	\end{proof}
-\end{lemma}
-
-
-
-\begin{lemma}
-	[Rolle's Theorem]
-	\label{lm: rolle's theorem}
-	
-	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf a, \mathbf b \in \mathbb R^m$ with $f(\mathbf a) = f(\mathbf b)$. Suppose $f$ is relative continuous on $\ell[\mathbf a, \mathbf b]$, and relative differentiable on $\ell(\mathbf a, \mathbf b)$. 
-	
-	Then, there exits $\mathbf c \in \ell(\mathbf a, \mathbf b)$ such that $\nabla_{\mathbf u} f(\mathbf c) = \mathbf 0_{\mathbb R^n}$, where $\mathbf u = \mathbf b - \mathbf a$.
-	
-	\begin{proof}
-		First, consider $f = \langle f_i \rangle_{i = 1}^n$.
-		
-		Suppose for any $\mathbf c \in \ell(\mathbf a, \mathbf b)$, $\nabla_{\mathbf u} f(\mathbf c) \ne \mathbf 0_{\mathbb R^n}$, then there exists $i \in \{1, \ldots, n\}$ such that $\nabla_{\mathbf u}f_i(\mathbf c) \ne 0$.
-		
-		Let $g: \mathbb R \to \mathbb R^m$ be defined as
-		$$
-		g(t) = \mathbf b - t\mathbf a,
-		$$
-		and let $h_i = f_i \circ g$. Then, for any $t \in (0, 1)$, $h_i'(t) \ne 0$.
-		
-		As $f_i$ is differentiable on $g[(0,1)]$, and $g$ is differentiable on $(0,1)$, by Theorem \ref{thm: differentiable mappings: composed}, $h_i$ is differentiable on $(0,1)$. In this case, $0 \notin h_i'[(0,1)]$ implies $h_i$ is strictly monotonic (Lemma \ref{lm: non-zero derivative implies monotonic}). This implies
-		$$
-		h_i(0) = f_i(\mathbf a) \ne f_i(\mathbf b) = h_i(1).
-		$$
-		As $f(\mathbf a) = \langle f_i(\mathbf a) \rangle_{i = 1}^n$ and $f(\mathbf b) = \langle f_i(\mathbf b) \rangle_{i = 1}^n$, we have $f(\mathbf a) \ne f(\mathbf b)$. This contradicts the assumption that $f(\mathbf a) = f(\mathbf b)$.
-		
-		Thus, there has to be a $\mathbf c \in \ell(\mathbf a, \mathbf b)$ such that $\nabla_{\mathbf u} f_i(\mathbf c)$.
+		$S \in \mathcal F \cap 2^A$ implies $S \in 2^A$, thus $S \subseteq A$. As $B \subseteq S$, we have $B \subseteq A$.
 	\end{proof}
 \end{lemma}
 
 
 \begin{lemma}
-	\label{lm: directional derivatives: mean value theorem: real valued function}
+	\label{lm: intersection of power sets}
 	
-	Let $f: \mathbb R \to \mathbb R^n$. If $f$ is differentiable on open subset $(a,b)$, and continuous on closed interval $[a,b]$, then there exists a $c \in I$ such that
+	Let $X$ be any set, and let $\mathcal A \subseteq 2^X$.
+	
+	Then, we have
 	$$
-	f'(c) = \frac{f(b) - f(a)}{b - a}.
+	\bigcap_{A \in \mathcal A} 2^A = 2^{\bigcap \mathcal A}.
 	$$
 	
 	\begin{proof}
-		Let $\phi: \mathbb R \to \mathbb R^n$ be defined as
-		$$
-		\phi(t) := t \frac{f(b)-f(a)}{b-a}.
-		$$
-	
-		Let $h: \mathbb R \to \mathbb R^n$ be defined as
-		$$
-		h(t) := f(t) - \phi(t).
-		$$
-		Then it is easy to find that
-		$$
-		h(a) = h(b).
-		$$
-		
-		As $f$ and $\phi$ are differentiable on $(a,b)$, so is $h$. (Why?)
-		
-		As $f$ and $\phi$ are continuous on $[a,b]$, so is $h$. (Why?)
-		
-		Thus, by Lemma \ref{lm: rolle's theorem}, there exists a $c \in (a,b)$ such that we have
+		Let $S \in A$, then we have
 		$$
 		\begin{aligned}
-			& \ 0 = h'(c) = f'(c) - \frac{f(b) - f(a)}{b - a} \\
-			\iff & \ f'(c) = \frac{f(b) - f(a)}{b - a}.
+			S \in 2^{\bigcap \mathcal A} &\iff S \subseteq \bigcap \mathcal A \\
+			&\iff \bigwedge_{A \in \mathcal A} S \subseteq A \\
+			&\iff \bigwedge_{A \in \mathcal A} S \in 2^A \\
+			&\iff S \in \bigcap_{A \in \mathcal A} 2^A.
 		\end{aligned}
 		$$
-		
 	\end{proof}
 \end{lemma}
 
 
-\begin{theorem}[Mean Value Theorem on $\mathbb R^m \to \mathbb R^n$]
-	\label{thm: directional derivatives: mean value theorem: vector valued function}\
-	
-	Let $f: \mathbb R^m \to \mathbb R^n$. Let $\mathbf p, \mathbf q \in \mathbb R^m$, for convenience, let $g: \mathbb R \to \mathbb R^m$ be defined as
+\begin{lemma}
+	\label{lm: union of intersections of indexed families}
+	Let $X$ be any set, and let
 	$$
-	g(t) := \mathbf p + t(\mathbf q - \mathbf p).
+	\forall i \in I: \mathcal A_i \subseteq 2^X,
 	$$
+	where $I$ is an indexed set.
 	
-	If $f \restriction_{g[\mathbb R]}$ is continuous on $g[(0,1)]$, and differentiable on $g[[0,1]]$, then
+	Then, we have
 	$$
-	\| f(\mathbf q) - f(\mathbf p) \|_{\mathbb R^n} \le \sup_{\mathbf x \in g[(a,b)]} \| \nabla_{\mathbf u} f(\mathbf x) \|_{\mathbb R^n}.
+	\bigcup \left( \bigcap_{i \in I} \mathcal A_i \right) \subseteq \bigcap_{i \in I} \left( \bigcup \mathcal A_i \right).
 	$$
-	
-	\begin{proof}Let $h = f \circ g$. As $f$ is continuous on $g[(0,1)]$ and $g$ is continuous everywhere, $h$ is continuous on $(0,1)$. By Theorem \ref{thm: differentiable mappings: composed}, as $f$ is differentiable on $g[[0,1]]$ and $g$ is differentiable on $[0,1]$, then, by Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable on $[0,1]$.
-	
-		Let $h': D \subseteq \mathbb R \to \mathbb R^n$ be defined as
-		$$
-		h'(t) := \lim_{t \to 0} \frac{h(c + t) - h(t)}{t},
-		$$
-		where $D$ is the set of all points in $\mathbb R$ such that the limit exists in $\mathbb R^n$.
-		
-		By Lemma \ref{lm: directional derivatives: mean value theorem: real valued function}, there exists a $c \in (0,1)$ such that
-		$$
-		h'(c) = \frac{h(1) - h(0)}{1 - 0}.
-		$$
-		
-		Now, we have
-		$$
-		\begin{aligned}
-		h'(c) &= \lim_{t \to 0} \frac{h(c + t) - h(c)}{t} \\
-		&= \lim_{t \to 0} \frac{f(g(c + t)) - f(c)}{t} \\
-		&= \left.\lim_{t \to 0} \frac{f(\mathbf p + c\mathbf u + t\mathbf u) - f(\mathbf p + c\mathbf u)}{t}\right|_{\mathbf u = \mathbf q - \mathbf p} \\
-		&= \left. \lim_{t \to 0} \frac{f(\mathbf c + t\mathbf u) - f(\mathbf c)}{t} \right|_{\mathbf c = \mathbf p + c \mathbf u} \\
-		&= \nabla_{\mathbf u}f(\mathbf c).
-		\end{aligned}	
-		$$
-		
-		Thus, there exists a $\mathbf c \in g[(0,1)]$ such that
-		$$
-		\nabla_{\mathbf u} f(\mathbf c) = h(1) - h(0) =f(\mathbf q) - f(\mathbf p).
-		$$
-		This implies that there exists some $\mathbf x \in g[(0,1)]$ such that
-		$$
-		\| \nabla_{\mathbf u}f(\mathbf x) \| \ge \| \nabla_{\mathbf u}f(\mathbf c) \|.
-		$$
-		Thus,
-		$$
-		\| f(\mathbf q) - f(\mathbf p) \| \le \sup_{\mathbf x \in g[(0,1)]}\| \nabla_{\mathbf u} f(\mathbf x) \|.
-		$$
-	\end{proof}
-\end{theorem}
+\end{lemma}
 
 
-%------------------------------------------------
+
+\chapter{Topological Spaces}
 %================================================
+%::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-
-\section{Partial Derivatives and Jacobian Matrices}
+\section{Topological Spaces}
 %================================================
 %------------------------------------------------
 
 
 \begin{definition}
-	[Partial Derivatives]
-	\label{def: partial derivatives}
+	\label{def: topological spaces}
+	Let $X$ be any set. A family $\mathcal T \subseteq 2^X$ is a \textit{topology} on $X$, iff it satisfies the \textit{open set axioms}. That is,
+	\begin{enumerate}[O1.]
+		\item $X \in \mathcal T$;
+		\item $\forall \mathcal A \subseteq \mathcal T: \bigcup \mathcal A \in \mathcal T$ ($\mathcal T$ is closed under arbitrary union);
+		\item $\forall \mathcal B \subseteq \mathcal T: \#\mathcal B < \aleph_0: \bigcap \mathcal B \in \mathcal T$ ($\mathcal T$ is closed under finite intersection).
+	\end{enumerate}
 	
-	Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \mapsto \mathbf y$. 
+	The ordered pair $\mathbb X = (X, \mathcal T)$ is called a \textit{topological space}.
 	
-	The \textit{$i$-th partial derived function} of $f$, denoted $\frac{\partial f}{\partial x_i}$, is the $\mathbf{\hat e}_i$-directional derived function of $f$, where $\mathbf{\hat e}_i$ denotes the $i$-th basis of $\mathbb R^m$. If $\frac{\partial f}{\partial x_i}(\mathbf p)$ exists in $\mathbb R^n$ for a $\mathbf p \in \mathbb R^m$, then this value is called \textit{$i$-th partial derivative} of $f$ at $\mathbf p$.
+	A subset $A \subseteq X$ is said to be \textit{open} iff $A \in \mathcal T$.
 \end{definition}
+
+
+\begin{lemma}
+	\label{lm: topological spaces: emptyset in topology}
+
+	For any topology $\mathcal T$, $\emptyset \in \mathcal T$.
+	
+	\begin{proof}
+		As $\emptyset$ is a subset of any set, $\emptyset \subseteq \mathcal T$, and
+		$$
+		\bigcup \emptyset = \emptyset,
+		$$
+		by Open Set Axiom O2, $\emptyset \in \mathcal T$.
+	\end{proof}
+\end{lemma}
 
 
 \begin{definition}
-	[Jacobian Matrices]
-	\label{def: jacobian matrices}
+	Let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be topologies on $X$.
 	
-	With the condition in Definition \ref{def: partial derivatives}, The \textit{Jacobian Matrix} of $f$ is a function $\nabla f: D \subseteq \mathbb R^m \to \mathbb R^{n \times m}$ be defined as
-	$$
-	\nabla f :=
-	\left[
-	\begin{matrix}
-		\displaystyle \frac{\partial f}{\partial x_1} & \cdots & \displaystyle \frac{\partial f}{\partial x_m}
-	\end{matrix}
-	\right],
-	$$
-	where $D$ is the set of all $\mathbf x \in \mathbb R^m$ such that $\frac{\partial f}{\partial x_i}$ exists in $\mathbb R^m$ for any $i \in \{1, \ldots, n\}$.
+	$\mathcal T$ is said to be \textit{coarser} than $\mathcal T'$, or $\mathcal T'$ is said to be \textit{finer} than $\mathcal T$, iff $\mathcal T \subseteq \mathcal T'$.
 \end{definition}
 
 
-\begin{note}
-	If $f$ is considered as an $1 \times n$ matrix, then $\nabla$ can be considered as a function from $\mathbb F$ to $\mathbb S$ where the domain $\mathbb F$ is a normed space contains all functions from $\mathbb R^m$ to $\mathbb R^n$, and the codomain $\mathbb S$ is another normed space contains all $n \times m$ matrices. It is defined as
-	$$
-	\nabla f :=
-	\left[
-	\begin{matrix}
-	\displaystyle \frac{\partial}{\partial x_1} \\
-	\vdots \\
-	\displaystyle \frac{\partial}{\partial x_m}
-	\end{matrix}
-	\right]
-	\left[
-	\begin{matrix}
-	f_1 & \cdots & f_n
-	\end{matrix}
-	\right].
-	$$
-	In this sense, it is easy to prove that $\nabla$ is linear by matrices multiplication. Also, the $\mathbf u$-directional derived function of $f$ can be considered as
-	$$
-	\nabla_\mathbf u f =
-	\left[
-	\begin{matrix}
-	u_1 & \cdots & u_m
-	\end{matrix}
-	\right]
-	\left[
-	\begin{matrix}
-	\displaystyle \frac{\partial}{\partial x_1} \\
-	\vdots \\
-	\displaystyle \frac{\partial}{\partial x_m}
-	\end{matrix}
-	\right]
-	\left[
-	\begin{matrix}
-	f_1 & \cdots & f_n
-	\end{matrix}
-	\right]
-	= \mathbf u^\top\nabla f.
-	$$
+\begin{example}
+	Let $X$ be a topological space. $2^X$ itself is a \textit{discrete topology} on $X$. It is the finest topology on $X$. The \textit{indiscrete topology} on $X$ is $\{ \emptyset, \mathcal T \}$. It is the coarsest topology on $X$.
+\end{example}
+
+
+\begin{definition}
+	\label{def: closed sets}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
-	For convenience, we denote
+	$A$ is said to be \textit{closed} in $\mathbb X$ iff
 	$$
-	(\mathbf u^\top \nabla)^k f = \mathbf u^\top \nabla\Big( \cdots \big(\mathbf u^\top \nabla(\mathbf u^\top \nabla f) \big) \cdots \Big) \quad \text{$k$ times}.
+	\exists U \in \mathcal T: A = X \setminus U.
 	$$
-	In the case $f: \mathbb R^m \to \mathbb R$, as $f (\mathbf p) \in \mathbb R$ for any $\mathbf p \in \mathbb R^m$, $\nabla f(\mathbf p)$ can be considered as an $m$ dimensional vector ($m \times 1$), which is called \textit{gradient} of $f$ at $\mathbf p$. In this case,
+\end{definition}
+
+
+\begin{lemma}
+	\label{lm: closed sets axioms}
+	
+	Let $\mathbb X = (X, \mathcal T)$ be a topological spaces, and let $\mathcal C$ be the family of all closed sets in $\mathbb X$. Then,
+	\begin{enumerate}[C1.]
+		\item $\emptyset, X \in \mathcal C$;
+		\item $\forall \mathcal A \subseteq \mathcal C: \bigcap \mathcal A \in \mathcal C$ ($\mathcal C$ is closed under arbitrary intersection);
+		\item $\forall \mathcal B \subseteq \mathcal C: \# \mathcal B < \aleph_0: \bigcup \mathcal B \in \mathcal C$ ($\mathcal C$ is closed under finite union).
+	\end{enumerate}
+	
+	\begin{proof}		
+		\begin{enumerate}[C1.]
+			\item
+			By Definition \ref{def: closed sets}, as $X \in \mathcal T$ and $\emptyset = X \setminus X$, we have $\emptyset \in \mathcal C$. Similarly, as $\emptyset \in \mathcal T$, $X = X \setminus \emptyset$, we have $X \in \mathcal C$.
+				\qedlm
+				
+			\item
+			By Definition \ref{def: closed sets}, $\forall \mathcal A \subseteq \mathcal C: \exists \mathcal A' \subseteq \mathcal T:$
+			$$
+			\mathcal A = \left\{ X \setminus A : A \in \mathcal A' \right\}.
+			$$
+	
+			Then, by De Morgan's Law,
+			$$
+			\bigcap \mathcal A = X \setminus \bigcup \mathcal A'.
+			$$
+			
+			By Open Set Axiom O2, we have $\bigcup \mathcal A' \in \mathcal T$. Then, by Definition \ref{def: closed sets}, we have $\bigcap \mathcal B \in \mathcal C$.
+			\qedlm
+			
+			\item
+			By Definition \ref{def: closed sets}, $\forall \mathcal B \subseteq \mathcal C: \#\mathcal B < \aleph_0: \exists \mathcal B' \subseteq \mathcal T:$
+			$$
+			\mathcal B = \left\{ X \setminus B : B \in \mathcal B' \right\}.
+			$$
+			
+			Then, by De Morgan's Law
+			$$
+			\bigcup \mathcal B = X \setminus \bigcap \mathcal B'.
+			$$
+			
+			As $\# \mathcal B' = \# \mathcal B < \aleph_0$, (indeed, $\mathcal B \leftrightarrow \mathcal B'$ here can be considered as a bijection), by Open Set Axioms O2, $\bigcap \mathcal B' \in \mathcal T$. By Definition \ref{def: closed sets}, $\bigcup \mathcal B \in \mathcal C$.
+		\end{enumerate}
+	\end{proof}
+\end{lemma}
+
+
+\section{Interior}
+%================================================
+%------------------------------------------------
+
+
+\begin{definition}
+	\label{def: interior}
+	
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	The \textit{interior} of $A$ is defined as
 	$$
-	\mathbf u \cdot \nabla f(\mathbf p) = \nabla f(\mathbf p) \cdot \mathbf u = \nabla_{\mathbf u}f(\mathbf p).
+	A^\circ := \left\{ x \in \bigcup (\mathcal T \cap 2^A) \right\}.
 	$$
-	where $\cdot$ denotes the inner product.
+\end{definition}
+
+\begin{note}
+	Sometime, we write $A^\circ_\mathbb X$ or $A^\circ_\mathcal T$ for $A^\circ$ for reminding in which topological space the interior of $A$ is. For example, for topological spaces $\mathbb X_1 = (\mathbb R, \{\emptyset, X\})$ and $\mathbb X_2 = (\mathbb R, 2^X)$,
+	$$
+	(0,1]^\circ_{\mathbb X_1} = \emptyset, \text{ but } (0,1]^\circ_{\mathbb X_1} = (0,1].
+	$$
 \end{note}
 
 
-\begin{theorem}
-	[Chain Rule]
-	\label{thm: chain rule}
+\begin{lemma}
+	\label{lm: interior: subset of the set}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
 	
-	Let $f: \mathbb R^m \to \mathbb R^n: \mathbf x \to \mathbf y$, and let $g: \mathbb R^n \to \mathbb R^k: \mathbf t \to \mathbf x$. For convenience, let $h = g \circ f$.
+	Then $A^\circ \subseteq A$.
 	
-	If $f$ is differentiable at a point $\mathbf p \in \mathbb R^m$ and $g$ is differentiable at $f(\mathbf p) = \mathbf q \in \mathbb R^n$, then
+	\begin{proof}
+		By Definition \ref{def: interior}, $\forall U \subseteq A^\circ: U \subseteq \bigcup(\mathcal T \cap 2^A)$. By Lemma \ref{lm: subset of the union of a family and powerset}, $U \subseteq A$. As $A^\circ \subseteq A^\circ$ also, $A^\circ \subseteq A$.
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	
+	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			A \subseteq B &\implies 2^A \subseteq 2^B \\
+			&\implies \mathcal T \cap 2^A \subseteq \mathcal T \cap 2^B \\
+			&\implies \bigcup (\mathcal T \cap 2^A) \subseteq \bigcup (\mathcal T \cap 2^B) \\
+			&\implies A^\circ \subseteq B^\circ.
+		\end{aligned}
+		$$
+	\end{proof}
+\end{lemma}
+
+
+\begin{note}
+	$A^\circ \subseteq B^\circ$ does not implies $A \subseteq B$.
+	
+	Let $\mathbb X = (\{1,2\}, \{\emptyset, X, \{2\} \})$, and let $A = \{1\}$ and $B = \{2\}$. Then $A^\circ = \emptyset \subseteq B = \{2\}$, but $A \not \subseteq B$.
+\end{note}
+
+
+\begin{lemma}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
+	
+	If $A \in \mathcal T$, then $A = A^\circ$.
+	
+	\begin{proof}
+		Assume $A \in \mathcal T$.
+		
+		As $A \in 2^A$ and $A \in \mathcal T$, by Definition \ref{def: interior}, we have
+		$$
+		A \in \mathcal T \cap 2^A \implies A \subseteq A^\circ.
+		$$
+		
+		By Lemma \ref{lm: interior: subset of the set}, $A^\circ \subseteq A$. Therefore, $A = A^\circ$.
+		\qedlm
+		
+		Conversely, Assume $A = A^\circ$.
+		
+		By Definition \ref{def: interior}, we have
+		$$
+		A = \bigcup (\mathcal T \cap 2^A) = \bigcup_{U \in \mathcal T \land U \subseteq A} U
+		$$
+		
+		As $U \in \mathcal T$, by Open Axioms O2, $A \in \mathcal T$.
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	\label{lm: interior of union}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal A \subseteq 2^X$.
+	
+	Then, we have
 	$$
-	\nabla h(\mathbf p) = [\nabla g(f(\mathbf p))]^\top \nabla f(\mathbf p) \in \mathbb R^{k \times m}.
+	\left( \bigcap \mathcal A \right)^\circ \subseteq \bigcap_{A \in \mathcal A} A^\circ.
 	$$
 	
 	\begin{proof}
-		By Theorem \ref{thm: differentiable mappings: composed}, $h$ is differentiable at $\mathbf p$, and there exists $\phi: \mathbb R^m \to \mathbb R^n$ and $\lambda: \mathbb R^n \to \mathbb R^k$, such that for any $\mathbf t \in \mathbb R^m$
 		$$
-		\lim_{\mathbf t \to \mathbf 0_{\mathbb R^m}} \frac{g(f(\mathbf p) + \phi(\mathbf t)) - g(f(\mathbf p)) - \lambda(\phi(\mathbf t))}{\| \mathbf t \|_{\mathbb R^m}} = \mathbf 0_{\mathbb R^k}.
+		\begin{aligned}
+			\left( \bigcap \mathcal A \right)^\circ &= \bigcup \left(\mathcal T \cap 2^{\bigcap \mathcal A}\right)
+			& \text{(Definition \ref{def: interior})}
+			\\
+			&= \bigcup \left( \mathcal T \cap \bigcap_{A \in \mathcal A} 2^A \right)
+			& \text{(Lemma \ref{lm: intersection of power sets})}
+			\\
+			&= \bigcup \left( \bigcap_{A \in \mathcal A} (\mathcal T \cap 2^A) \right) \\
+			&\subseteq \bigcap_{A \in \mathcal A} \left( \bigcup (\mathcal T \cap 2^A) \right) 
+			&\text{(Lemma \ref{lm: union of intersections of indexed families})}
+			\\
+			&= \bigcap_{A \in \mathcal A} A^\circ.
+			&\text{(Definition \ref{def: interior})}
+		\end{aligned}
 		$$
 	\end{proof}
-\end{theorem}
+\end{lemma}
 
 
+\begin{note}
+	The equality in Lemma \ref{lm: interior of union} may not hold.
+	
+	Let $\mathbb X = (\mathbb R, \mathcal T)$ be a topological space with
+	$$
+	\mathcal T = \{\emptyset, X, (0,2), (1,3)\}.
+	$$
+	
+	Then we have
+	$$
+	((0,2) \cap (1,3))^\circ = \emptyset \quad \not \subseteq \quad (0, 2)^\circ \cap (1, 3)^\circ = (1,2).
+	$$
+\end{note}
+
+
+\begin{lemma}
+	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
+	
+	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
+	
+	\begin{proof}
+		$$
+		\begin{aligned}
+			A \subseteq B &\implies 2^A \subseteq 2^B
+		\end{aligned}
+		$$
+	\end{proof}
+\end{lemma}
 
 
 %------------------------------------------------
