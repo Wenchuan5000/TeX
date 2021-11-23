@@ -1,343 +1,316 @@
 
-\chapter{Set Theory}
+
+
+\chapter{Limit and Continuity}
+%================================================
+%::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+In the sections below, the capitals with blackboard bold font, such as $\mathbb A$, denote the normed vector spaces.
+
+
+\section{O Notations}
+%================================================
+%------------------------------------------------
+
+
+\begin{definition}
+	\label{def: little-o}
+	Let $f: \mathbb X \to \mathbb Y: \mathbf x \mapsto f(\mathbf x)$ and $g: \mathbb X \to \mathbb S: \mathbf x \mapsto g(\mathbf x)$.
+	
+	$f$ is a \textit{little-o of $g$ as $\mathbf x \to \mathbf p$}, denoted
+	$$
+	f(\mathbf x) = o(g(\mathbf x)) \quad \text{as $\mathbf x \to \mathbf p$},
+	$$
+	iff for any $\varepsilon \in \mathbb R_{> 0}$, there exists a neighbourhood $N$ of $\mathbf p$, such that for any $\mathbf x \in N$, $\| f(\mathbf x) \|_{\mathbb Y} \le \varepsilon \| g (\mathbf x)\|_{\mathbb S}$; equivalently, that is,
+	$$
+	\lim_{\mathbf x \to \mathbf p} \frac{\|f(\mathbf x)\|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S}} = 0 \text{ or, equivalently, } \lim_{\mathbf x \to \mathbf p} \frac{f(\mathbf x)}{\| g(\mathbf x) \|_{\mathbb S}} = \mathbf 0_{\mathbb Y}
+	$$
+\end{definition}
+
+
+\begin{lemma}
+	\label{lm: little-o: zero limit}
+	With the condition in Definition \ref{def: little-o}, suppose
+	$$
+	\lim_{\mathbf x \to \mathbf p} \| g(\mathbf x) \| \in \mathbb R,
+	$$
+	
+	Then
+	$$
+	f(\mathbf x) = o(g(\mathbf x)) \quad \text{as $\mathbf x \to \mathbf p$},
+	$$
+	implies
+	$$
+	\lim_{\mathbf x \to \mathbf p} f(\mathbf x) = \mathbf 0_{\mathbb Y}.
+	$$
+	
+	\begin{proof}
+		Aiming for a contradiction, suppose there exists $\mathbf r \in \mathbb Y \setminus \{ \mathbf 0_{\mathbb Y} \}$, such that
+		$$
+		\lim_{\mathbf x \to \mathbf p} f(\mathbf x) = \mathbf r,
+		$$
+		then, we have
+		$$
+		\begin{aligned}
+			\lim_{\mathbf x \to \mathbf p} \frac{\| f(\mathbf x) \|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S}} = \lim_{\mathbf x \to \mathbf p} \frac{\| \mathbf r \|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S}} > 0.
+		\end{aligned}
+		$$
+		
+		This contradicts the assumption.
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	\label{lm: little-o: negative}
+	With the condition in Definition \ref{def: little-o}, $f$ is a little-o of $g$ iff $-f$ is a little-o of $g$.
+	
+	\begin{proof}
+		$$
+		\lim_{\mathbf x \to \mathbf p} \frac{\| - f(\mathbf x) \|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S}} = \lim_{\mathbf x \to \mathbf p} \frac{\| f(\mathbf x) \|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S}} = 0.
+		$$
+	\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+	\label{lm: little-o: finite sum}
+	Let $f_1, f_2: \mathbb X \to \mathbb Y: \mathbf x \mapsto f_1(\mathbf x), f_2(\mathbf x)$, and let $g: \mathbb X \to \mathbb S: \mathbf x \mapsto g(\mathbf x)$.
+	
+	If $f_1$ and $f_2$ are both little-o of $g$ as $\mathbf x \to \mathbf p$, i.e.,
+	$$
+	f_1(\mathbf x) = o_1(g(\mathbf x)) \text{ and } f_2(\mathbf x) = o_2(g(\mathbf x)) \text{ as $\mathbf x \to \mathbf p$},
+	$$
+	then $f_1 + f_2$ is also a little-o of $g$ as $\mathbf x \to \mathbf p$, i.e.,
+	$$
+	f_1(\mathbf x) + f_2(\mathbf x) = o_3(g(\mathbf x))
+	$$
+	
+	\begin{proof}
+		By triangle inequality,  we have
+		$$
+		\begin{aligned}
+			\lim_{\mathbf x \to \mathbf p}\frac{\| f_1(\mathbf x) + f_2(\mathbf x) \|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S} } &\le \lim_{\mathbf x \to \mathbf p} \frac{\| f_1(\mathbf x) \|_{\mathbb Y} + \| f_2(\mathbf x) \|_{\mathbb Y}}{\| g(\mathbf x) \|_{\mathbb S}} \\
+			&\le 2 \lim_{\mathbf x \to \mathbf p} \frac{\max\{ \| f_1(\mathbf x) \|_{\mathbb Y} + \| f_2(\mathbf x) \|_{\mathbb Y} \}}{\| g(\mathbf x) \|_{\mathbb S}} \\
+			&= 0.
+		\end{aligned}
+		$$
+		
+		By Definition \ref{def: little-o}, $f_1 + f_2$ is a little-o of $g$ as $\mathbf x \to \mathbf p$.
+	\end{proof}
+\end{lemma}
+
+
+
+\begin{note}
+	In Lemma \ref{lm: little-o: finite sum}, consider $A$ be the set of all mappings being little-o of $g$ as $\mathbf x \to \mathbf p$, then Lemma \ref{lm: little-o: finite sum} tells that $A$ is finitely additive. That is, for any finite $B \subseteq A$,
+	$$
+	\sum_{o \in B} o(g(\mathbf p)) \in A.
+	$$
+\end{note}
+
+
+
+
+\chapter{Differentiation}
 %================================================
 %::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-\section{Unused!!!!!!}
+\section{Differentiable Mappings}
 %================================================
 %------------------------------------------------
 
 
-\begin{lemma}
-	\label{power set of subset}
+\begin{definition}
+	\label{def: differentiable mappings}
 	
-	Let $X$ be any sets.
+	Let $f: \mathbb X \to \mathbb Y$.
 	
-	Then, $\forall X \subseteq Y: X$.
-\end{lemma}
+	$f$ is said to be \textit{differentiable at $\mathbf p \in \mathbb X$} iff there exists a linear mapping $\phi: \mathbb X \to \mathbb Y$ such that for any $\mathbf t \in \mathbb X$,
+	$$
+	f(\mathbf p + \mathbf t) = f(\mathbf p) + \phi(\mathbf t) + o(\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$}.
+	$$
+\end{definition}
 
 
 \begin{lemma}
-	\label{lm: subset of the union of a family and powerset}
-
-	Let $X$ be any set, let $A \subseteq X$, and let $\mathcal F \subseteq 2^X$.
+	\label{lm: uniqueness of phi}
 	
-	$\forall B \subseteq \bigcup( \mathcal F \cap 2^A): B \subseteq A$.
+	In Definition \ref{def: differentiable mappings}, the linear mapping $\phi$ is unique.
 	
 	\begin{proof}
+		Suppose there is another linear mapping $\lambda: \mathbb X \to \mathbb Y$, such that for any $\mathbf t \in \mathbb X$,
 		$$
-		\forall B \subseteq \bigcup( \mathcal F \cap 2^A) \implies \exists S \in \mathcal F \cap 2^A: B \subseteq S.
+		f(\mathbf p + \mathbf t) = f(\mathbf p) + \lambda(\mathbf t) + o_\lambda (\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$},
 		$$
-		$S \in \mathcal F \cap 2^A$ implies $S \in 2^A$, thus $S \subseteq A$. As $B \subseteq S$, we have $B \subseteq A$.
+		then we have
+		$$
+		\begin{aligned}
+			& \phi(\mathbf{\hat t}) - \lambda(\mathbf{\hat t}) = \lim_{\mathbf t \to \mathbf 0_{\mathbb X}}\frac{\phi(\mathbf t) - \lambda(\mathbf t)}{\| \mathbf t \|_{\mathbb X}} = \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{o(\mathbf t) - o_\lambda(\mathbf t)}{\| \mathbf t\|_{\mathbb X}}
+		\end{aligned}
+		$$
+		
+		By Lemma \ref{lm: little-o: negative}, $-o_{\lambda}(\mathbf t)$ is also a little-o of $\mathbf t$ as $\mathbf t \to \mathbf 0_{\mathbb X}$, thus, by Lemma \ref{lm: little-o: finite sum}, $o(\mathbf t) - o_\lambda(\mathbf t)$ is a little-o of $\mathbf t$ as $\mathbf t \to \mathbf 0_{\mathbb X}$. By Definition \ref{def: little-o},
+		$$
+		\phi(\mathbf{\hat t}) - \lambda(\mathbf{\hat t}) = \mathbf 0_{\mathbb X}.
+		$$
+		
+		As $\mathbf t$ is arbitrarily given, $\mathbf{\hat t}$ defines all possible directions in $\mathbb X$. Thus,
+		$$
+		\phi = \lambda.
+		$$
 	\end{proof}
 \end{lemma}
 
 
+
 \begin{lemma}
-	\label{lm: intersection of power sets}
-	
-	Let $X$ be any set, and let $\mathcal A \subseteq 2^X$.
-	
-	Then, we have
-	$$
-	\bigcap_{A \in \mathcal A} 2^A = 2^{\bigcap \mathcal A}.
-	$$
+	With the condition in Definition \ref{def: differentiable mappings}, $f$ is differentiable at $\mathbf p \in \mathbb X$ iff there exists a linear mapping $\phi: \mathbb X \to \mathbb Y$ such that for any $\mathbf t \in \mathbb X$,
+	\begin{equation}
+		\tag{i}
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{\| f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t) \|_{\mathbb Y}}{\| \mathbf t \|_{\mathbb X}} = 0.
+	\end{equation}
+	Equivalently, that is,
+	\begin{equation}
+		\tag{i'}
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{ f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t) }{\| \mathbf t \|_{\mathbb X}} = \mathbf 0_{\mathbb Y}.
+	\end{equation}
 	
 	\begin{proof}
-		Let $S \in A$, then we have
+		This can be proved from both sides. Consider the equations in this proposition and in Definition \ref{def: differentiable mappings}. We observe that the equation in Definition \ref{def: differentiable mappings} holds iff
 		$$
 		\begin{aligned}
-			S \in 2^{\bigcap \mathcal A} &\iff S \subseteq \bigcap \mathcal A \\
-			&\iff \bigwedge_{A \in \mathcal A} S \subseteq A \\
-			&\iff \bigwedge_{A \in \mathcal A} S \in 2^A \\
-			&\iff S \in \bigcap_{A \in \mathcal A} 2^A.
+			& \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb X}} = \frac{o(\mathbf t)}{\| \mathbf t \|_{\mathbb X}}\\
+			\iff & \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)}{\| \mathbf t \|_{\mathbb X}} = \mathbf 0_{\mathbb X} & \text{((i') is proved)} \\
+			\iff & \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{\| f(\mathbf p + \mathbf t) - f(\mathbf p) - \phi(\mathbf t)\|_{\mathbb Y}}{\| \mathbf t \|_{\mathbb X}} = 0. & \text{((i) is proved)}
 		\end{aligned}
 		$$
 	\end{proof}
 \end{lemma}
 
 
+
 \begin{lemma}
-	\label{lm: union of intersections of indexed families}
-	Let $X$ be any set, and let
-	$$
-	\forall i \in I: \mathcal A_i \subseteq 2^X,
-	$$
-	where $I$ is an indexed set.
+	With the condition in Definition \ref{def: differentiable mappings}, if $f$ is differentiable at $\mathbf p$, then $f$ is continuous at $\mathbf p$.
 	
-	Then, we have
-	$$
-	\bigcup \left( \bigcap_{i \in I} \mathcal A_i \right) \subseteq \bigcap_{i \in I} \left( \bigcup \mathcal A_i \right).
-	$$
+	\begin{proof}
+		As $f$ is differentiable at $\mathbf p$, there exists a linear mapping $\phi: \mathbb X \to \mathbb Y$, such that for any $\mathbf t \in \mathbb X$,
+		$$
+		f(\mathbf p + \mathbf t) = f(\mathbf p) + \phi(\mathbf t) + o(\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb R^m}$}.
+		$$
+		
+		As
+		$$
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \phi(\mathbf t) = \mathbf 0_{\mathbb Y}
+		$$
+		and, by Lemma \ref{lm: little-o: zero limit},
+		$$
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb X}}o(\mathbf t) = \mathbf 0_{\mathbb Y},
+		$$
+		
+		we have
+		$$
+		\lim_{\mathbf t \to \mathbf 0_{\mathbb X}} f(\mathbf p + \mathbf t) = f(\mathbf p),
+		$$
+		which implies that $f$ is continuous at $\mathbf p$.
+	\end{proof}
 \end{lemma}
 
 
 
-\chapter{Topological Spaces}
-%================================================
-%::::::::::::::::::::::::::::::::::::::::::::::::
+\begin{lemma}
+	\label{lm: differentiable: composed}
+	
+	Let $f: \mathbb X \to \mathbb Y$ and let $g: \mathbb Y \to \mathbb S$. If $f$ is differentiable at a point $\mathbf p \in \mathbb X$, and $g$ is differentiable at $f(\mathbf x)$, then $g \circ f$ is differentiable at $\mathbf p$.
+	
+	\begin{proof}
+		As $g$ is differentiable at $f(\mathbf p)$, there exists $\lambda: \mathbb Y \to \mathbb S$ such that for any $\mathbf s \in \mathbb Y$ with $f(\mathbf p) + \mathbf s \in f[\mathbb X]$,
+		$$
+		g(f(\mathbf p) + \mathbf s) = g(f(\mathbf p)) + \lambda(\mathbf s) + o(\mathbf s) \quad \text{as $\mathbf s \to \mathbf 0_{\mathbb Y}$}.
+		$$
+		
+		As $f$ is differentiable at $\mathbf p$, $f$ is continuous at $\mathbf p$, thus, there exists $\mathbf t \in \mathbb X$, such that $\displaystyle\lim_{\mathbf t \to \mathbf 0_{\mathbb X}} f(\mathbf p + \mathbf t) = f(\mathbf p) + \mathbf s$. Since $f$ is differentiable at $\mathbf p$, there exists a linear mapping $\phi: \mathbb X \to \mathbb Y$, such that
+		$$
+		f(\mathbf p + \mathbf t) = f(\mathbf p) + \phi(\mathbf t) + o_1 (\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$}.
+		$$
+		
+		Then we have
+		$$
+		g(f(\mathbf p + \mathbf t)) = g(f(\mathbf t)) + \lambda(\Delta f) + o(\Delta f) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$},
+		$$
+		where
+		$$
+		\Delta f = f(\mathbf p + \mathbf t) - f(\mathbf p) = \phi(\mathbf t) + o_1(\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$}.
+		$$
+		
+		First, find $\lambda(\Delta f)$. As $\lambda$ is linear,
+		$$
+		\begin{aligned}
+			\lambda(\Delta f) &= \lambda(\phi(\mathbf t) + o_1(\mathbf t))
+			= \lambda(\phi(\mathbf t)) + \lambda(o_1 (\mathbf t)) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$}.
+		\end{aligned}
+		$$
+		As $\lambda$ is linear, $\lambda \circ \phi$ is also linear, and $\lambda(o_1(\mathbf t))$ is a little-o of $\mathbf t$, i.e., $o_2(\mathbf t) = \lambda(o_1(\mathbf t))$ as $\mathbf t \to \mathbf 0_{\mathbb X}$, for
+		$$
+		\begin{aligned}
+			\lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{\lambda(o_1(\mathbf t))}{\| \mathbf t \|_{\mathbb X}} &= \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \lambda\left( \frac{ o_1 (\mathbf t) }{ \| \mathbf t \|_{\mathbb X} } \right) \\
+			&= \lambda(\mathbf 0_{\mathbb Y}) \\
+			&= \mathbf 0_{\mathbb S}.
+		\end{aligned}
+		$$
+		
+		Let $\gamma = \lambda \circ \phi$ for convenience.
+		
+		Then, find $o(\Delta f)$.
+		$$
+		\begin{aligned}
+			\mathbf 0_{\mathbb S} &= \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{o(\phi(\mathbf t) + o_1(\mathbf t))}{\| \phi(\mathbf t) + o_1(\mathbf t) \|_{\mathbb Y}}
+			&\text{(Definition \ref{def: little-o})} \\
+			&= \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{ o(\phi(\mathbf t) + o_1(\mathbf t)) \| \mathbf t \|_{\mathbb X}^{-1} }{ \| \phi(\mathbf t) + o_1(\mathbf t) \|_{\mathbb Y} \| \mathbf t \|_{\mathbb X}^{-1} } \\
+			&= \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{o(\phi(\mathbf t) + o_1(\mathbf t))}{\| \mathbf t \|_{\mathbb X} \| \phi(\mathbf{\hat t})\| _{\mathbb Y}}
+			&\text{(as $\phi$ is linear)} \\
+			&= \| \phi(\mathbf{\hat t}) \|_{\mathbb Y}^{-1} \lim_{\mathbf t \to \mathbf 0_{\mathbb X}} \frac{o(\phi(\mathbf t) - o_1(\mathbf t))}{\| \mathbf t \|_{\mathbb X}}.
+		\end{aligned}
+		$$
+		
+		Thus, $o(\phi(\mathbf t) - o_1(\mathbf t)) = o_3(\mathbf t)$ as $\mathbf t \to \mathbf 0_{\mathbb X}$.
+		
+		Now, we have
+		$$
+		g(f(\mathbf p + \mathbf t)) = g(f(\mathbf t)) + \gamma(\mathbf t) + o_2(\mathbf t) + o_3(\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$}.
+		$$
+		
+		By Lemma \ref{lm: little-o: finite sum},
+		$$
+		o_2(\mathbf t) + o_3(\mathbf t) = o_4(\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$}.
+		$$
+		
+		Finally, we have
+		$$
+		g(f(\mathbf p + \mathbf t)) = g(f(\mathbf t)) + \gamma(\mathbf t) + o_4(\mathbf t) \quad \text{as $\mathbf t \to \mathbf 0_{\mathbb X}$},
+		$$
+		which implies $g \circ f$ is differentiable at $\mathbf p$.
+	\end{proof}
+\end{lemma}
 
 
-\section{Topological Spaces}
+\section{Directional Derivatives}
 %================================================
 %------------------------------------------------
 
 
 \begin{definition}
-	\label{def: topological spaces}
-	Let $X$ be any set. A family $\mathcal T \subseteq 2^X$ is a \textit{topology} on $X$, iff it satisfies the \textit{open set axioms}. That is,
-	\begin{enumerate}[O1.]
-		\item $X \in \mathcal T$;
-		\item $\forall \mathcal A \subseteq \mathcal T: \bigcup \mathcal A \in \mathcal T$ ($\mathcal T$ is closed under arbitrary union);
-		\item $\forall \mathcal B \subseteq \mathcal T: \#\mathcal B < \aleph_0: \bigcap \mathcal B \in \mathcal T$ ($\mathcal T$ is closed under finite intersection).
-	\end{enumerate}
+	\label{def: directional derivatives}
 	
-	The ordered pair $\mathbb X = (X, \mathcal T)$ is called a \textit{topological space}.
+	Let $f: \mathbb X \to \mathbb Y$, and let $\mathbf u \in \mathbb X \setminus \{ \mathbf 0_{\mathbb X} \}$.
 	
-	A subset $A \subseteq X$ is said to be \textit{open} iff $A \in \mathcal T$.
+	The \textit{$\mathbf u$-directional derived mapping}
 \end{definition}
 
 
-\begin{lemma}
-	\label{lm: topological spaces: emptyset in topology}
-
-	For any topology $\mathcal T$, $\emptyset \in \mathcal T$.
-	
-	\begin{proof}
-		As $\emptyset$ is a subset of any set, $\emptyset \subseteq \mathcal T$, and
-		$$
-		\bigcup \emptyset = \emptyset,
-		$$
-		by Open Set Axiom O2, $\emptyset \in \mathcal T$.
-	\end{proof}
-\end{lemma}
-
-
-\begin{definition}
-	Let $X$ be any set and let $\mathcal T$ and $\mathcal T'$ be topologies on $X$.
-	
-	$\mathcal T$ is said to be \textit{coarser} than $\mathcal T'$, or $\mathcal T'$ is said to be \textit{finer} than $\mathcal T$, iff $\mathcal T \subseteq \mathcal T'$.
-\end{definition}
-
-
-\begin{example}
-	Let $X$ be a topological space. $2^X$ itself is a \textit{discrete topology} on $X$. It is the finest topology on $X$. The \textit{indiscrete topology} on $X$ is $\{ \emptyset, \mathcal T \}$. It is the coarsest topology on $X$.
-\end{example}
-
-
-\begin{definition}
-	\label{def: closed sets}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
-	
-	$A$ is said to be \textit{closed} in $\mathbb X$ iff
-	$$
-	\exists U \in \mathcal T: A = X \setminus U.
-	$$
-\end{definition}
-
-
-\begin{lemma}
-	\label{lm: closed sets axioms}
-	
-	Let $\mathbb X = (X, \mathcal T)$ be a topological spaces, and let $\mathcal C$ be the family of all closed sets in $\mathbb X$. Then,
-	\begin{enumerate}[C1.]
-		\item $\emptyset, X \in \mathcal C$;
-		\item $\forall \mathcal A \subseteq \mathcal C: \bigcap \mathcal A \in \mathcal C$ ($\mathcal C$ is closed under arbitrary intersection);
-		\item $\forall \mathcal B \subseteq \mathcal C: \# \mathcal B < \aleph_0: \bigcup \mathcal B \in \mathcal C$ ($\mathcal C$ is closed under finite union).
-	\end{enumerate}
-	
-	\begin{proof}		
-		\begin{enumerate}[C1.]
-			\item
-			By Definition \ref{def: closed sets}, as $X \in \mathcal T$ and $\emptyset = X \setminus X$, we have $\emptyset \in \mathcal C$. Similarly, as $\emptyset \in \mathcal T$, $X = X \setminus \emptyset$, we have $X \in \mathcal C$.
-				\qedlm
-				
-			\item
-			By Definition \ref{def: closed sets}, $\forall \mathcal A \subseteq \mathcal C: \exists \mathcal A' \subseteq \mathcal T:$
-			$$
-			\mathcal A = \left\{ X \setminus A : A \in \mathcal A' \right\}.
-			$$
-	
-			Then, by De Morgan's Law,
-			$$
-			\bigcap \mathcal A = X \setminus \bigcup \mathcal A'.
-			$$
-			
-			By Open Set Axiom O2, we have $\bigcup \mathcal A' \in \mathcal T$. Then, by Definition \ref{def: closed sets}, we have $\bigcap \mathcal B \in \mathcal C$.
-			\qedlm
-			
-			\item
-			By Definition \ref{def: closed sets}, $\forall \mathcal B \subseteq \mathcal C: \#\mathcal B < \aleph_0: \exists \mathcal B' \subseteq \mathcal T:$
-			$$
-			\mathcal B = \left\{ X \setminus B : B \in \mathcal B' \right\}.
-			$$
-			
-			Then, by De Morgan's Law
-			$$
-			\bigcup \mathcal B = X \setminus \bigcap \mathcal B'.
-			$$
-			
-			As $\# \mathcal B' = \# \mathcal B < \aleph_0$, (indeed, $\mathcal B \leftrightarrow \mathcal B'$ here can be considered as a bijection), by Open Set Axioms O2, $\bigcap \mathcal B' \in \mathcal T$. By Definition \ref{def: closed sets}, $\bigcup \mathcal B \in \mathcal C$.
-		\end{enumerate}
-	\end{proof}
-\end{lemma}
-
-
-\section{Interior}
-%================================================
-%------------------------------------------------
-
-
-\begin{definition}
-	\label{def: interior}
-	
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
-	
-	The \textit{interior} of $A$ is defined as
-	$$
-	A^\circ := \left\{ x \in \bigcup (\mathcal T \cap 2^A) \right\}.
-	$$
-\end{definition}
-
-\begin{note}
-	Sometime, we write $A^\circ_\mathbb X$ or $A^\circ_\mathcal T$ for $A^\circ$ for reminding in which topological space the interior of $A$ is. For example, for topological spaces $\mathbb X_1 = (\mathbb R, \{\emptyset, X\})$ and $\mathbb X_2 = (\mathbb R, 2^X)$,
-	$$
-	(0,1]^\circ_{\mathbb X_1} = \emptyset, \text{ but } (0,1]^\circ_{\mathbb X_1} = (0,1].
-	$$
-\end{note}
-
-
-\begin{lemma}
-	\label{lm: interior: subset of the set}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
-	
-	Then $A^\circ \subseteq A$.
-	
-	\begin{proof}
-		By Definition \ref{def: interior}, $\forall U \subseteq A^\circ: U \subseteq \bigcup(\mathcal T \cap 2^A)$. By Lemma \ref{lm: subset of the union of a family and powerset}, $U \subseteq A$. As $A^\circ \subseteq A^\circ$ also, $A^\circ \subseteq A$.
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
-	
-	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
-	
-	\begin{proof}
-		$$
-		\begin{aligned}
-			A \subseteq B &\implies 2^A \subseteq 2^B \\
-			&\implies \mathcal T \cap 2^A \subseteq \mathcal T \cap 2^B \\
-			&\implies \bigcup (\mathcal T \cap 2^A) \subseteq \bigcup (\mathcal T \cap 2^B) \\
-			&\implies A^\circ \subseteq B^\circ.
-		\end{aligned}
-		$$
-	\end{proof}
-\end{lemma}
-
-
-\begin{note}
-	$A^\circ \subseteq B^\circ$ does not implies $A \subseteq B$.
-	
-	Let $\mathbb X = (\{1,2\}, \{\emptyset, X, \{2\} \})$, and let $A = \{1\}$ and $B = \{2\}$. Then $A^\circ = \emptyset \subseteq B = \{2\}$, but $A \not \subseteq B$.
-\end{note}
-
-
-\begin{lemma}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A \subseteq X$.
-	
-	If $A \in \mathcal T$, then $A = A^\circ$.
-	
-	\begin{proof}
-		Assume $A \in \mathcal T$.
-		
-		As $A \in 2^A$ and $A \in \mathcal T$, by Definition \ref{def: interior}, we have
-		$$
-		A \in \mathcal T \cap 2^A \implies A \subseteq A^\circ.
-		$$
-		
-		By Lemma \ref{lm: interior: subset of the set}, $A^\circ \subseteq A$. Therefore, $A = A^\circ$.
-		\qedlm
-		
-		Conversely, Assume $A = A^\circ$.
-		
-		By Definition \ref{def: interior}, we have
-		$$
-		A = \bigcup (\mathcal T \cap 2^A) = \bigcup_{U \in \mathcal T \land U \subseteq A} U
-		$$
-		
-		As $U \in \mathcal T$, by Open Axioms O2, $A \in \mathcal T$.
-	\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-	\label{lm: interior of union}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $\mathcal A \subseteq 2^X$.
-	
-	Then, we have
-	$$
-	\left( \bigcap \mathcal A \right)^\circ \subseteq \bigcap_{A \in \mathcal A} A^\circ.
-	$$
-	
-	\begin{proof}
-		$$
-		\begin{aligned}
-			\left( \bigcap \mathcal A \right)^\circ &= \bigcup \left(\mathcal T \cap 2^{\bigcap \mathcal A}\right)
-			& \text{(Definition \ref{def: interior})}
-			\\
-			&= \bigcup \left( \mathcal T \cap \bigcap_{A \in \mathcal A} 2^A \right)
-			& \text{(Lemma \ref{lm: intersection of power sets})}
-			\\
-			&= \bigcup \left( \bigcap_{A \in \mathcal A} (\mathcal T \cap 2^A) \right) \\
-			&\subseteq \bigcap_{A \in \mathcal A} \left( \bigcup (\mathcal T \cap 2^A) \right) 
-			&\text{(Lemma \ref{lm: union of intersections of indexed families})}
-			\\
-			&= \bigcap_{A \in \mathcal A} A^\circ.
-			&\text{(Definition \ref{def: interior})}
-		\end{aligned}
-		$$
-	\end{proof}
-\end{lemma}
-
-
-\begin{note}
-	The equality in Lemma \ref{lm: interior of union} may not hold.
-	
-	Let $\mathbb X = (\mathbb R, \mathcal T)$ be a topological space with
-	$$
-	\mathcal T = \{\emptyset, X, (0,2), (1,3)\}.
-	$$
-	
-	Then we have
-	$$
-	((0,2) \cap (1,3))^\circ = \emptyset \quad \not \subseteq \quad (0, 2)^\circ \cap (1, 3)^\circ = (1,2).
-	$$
-\end{note}
-
-
-\begin{lemma}
-	Let $\mathbb X = (X, \mathcal T)$ be a topological space, and let $A, B \subseteq X$.
-	
-	If $A \subseteq B$, then $A^\circ \subseteq B^\circ$.
-	
-	\begin{proof}
-		$$
-		\begin{aligned}
-			A \subseteq B &\implies 2^A \subseteq 2^B
-		\end{aligned}
-		$$
-	\end{proof}
-\end{lemma}
-
-
-%------------------------------------------------
-%================================================
-
-
 
 ---
 
@@ -367,8 +340,7 @@
 
 
 
-%::::::::::::::::::::::::::::::::::::::::::::::::
-%================================================
+
 
 
 
